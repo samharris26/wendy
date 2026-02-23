@@ -48,8 +48,12 @@ export function CTA() {
         <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-secondaryText">
           No dashboards. No complexity. Just one command bar - inside WhatsApp.
         </p>
+        <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-secondaryText">
+          Join the early-access waitlist for deterministic scheduling, rescheduling, and daily
+          execution summaries.
+        </p>
 
-        <form id="waitlist" onSubmit={onSubmit} className="mx-auto mt-8 max-w-md">
+        <form id="waitlist" onSubmit={onSubmit} className="mx-auto mt-8 max-w-xl">
           <label htmlFor="waitlist-email" className="sr-only">
             Email address
           </label>
@@ -75,7 +79,7 @@ export function CTA() {
             />
             <button
               type="submit"
-              className="rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0b54d8]"
+              className="shrink-0 whitespace-nowrap rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0b54d8]"
             >
               Start using Wendy
             </button>
@@ -95,6 +99,11 @@ export function CTA() {
         <a href="#waitlist" className="mt-4 inline-block text-sm font-medium text-secondaryText underline-offset-4 hover:underline">
           Join beta
         </a>
+        <div className="mx-auto mt-6 grid max-w-3xl gap-2 text-left text-sm text-secondaryText sm:grid-cols-3">
+          <p>Calendar sync with controlled confirmations.</p>
+          <p>WhatsApp-native command flow.</p>
+          <p>No spam. Product and access updates only.</p>
+        </div>
       </div>
     </section>
   );
