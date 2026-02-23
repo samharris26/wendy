@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: #f6f7f8;
+  --color-surface: #ffffff;
+  --color-primary-text: #111111;
+  --color-secondary-text: #6b7280;
+  --color-accent: #0f62fe;
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-destructive: #dc2626;
+}
+
+* {
+  box-sizing: border-box;
+  border-color: rgba(17, 17, 17, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-inter), sans-serif;
+  background: var(--color-background);
+  color: var(--color-primary-text);
+}
+
+.font-mono {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+.system-dot {
+  animation: pulseDot 1.7s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
