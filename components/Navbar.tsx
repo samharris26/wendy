@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const navItems = [
   { label: "Product", href: "#product" },
   { label: "How it works", href: "#how-it-works" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Waitlist", href: "#pricing" },
 ];
 
 export function Navbar() {
@@ -53,7 +53,7 @@ export function Navbar() {
           href="#waitlist"
           className="rounded-xl bg-primaryText px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#0b223d]"
         >
-          Start using Wendy
+          Register interest
         </Link>
       </nav>
     </header>

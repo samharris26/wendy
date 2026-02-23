@@ -43,10 +43,10 @@ export function CTA() {
     <section id="pricing" className="px-6 py-20 lg:px-10">
       <div className="mx-auto w-full max-w-6xl rounded-3xl border border-primaryText/10 bg-card px-6 py-14 text-center shadow-surface-xs sm:px-10">
         <h2 className="mx-auto max-w-2xl text-balance text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl">
-          Start running your life through Wendy.
+          Register your interest in Wendy.
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-secondaryText">
-          No dashboards. No complexity. Just one command bar - inside WhatsApp.
+          WhatsApp-first execution, with a supporting iOS app for visibility and control.
         </p>
         <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-secondaryText">
           Join the early-access waitlist for deterministic scheduling, rescheduling, and daily
@@ -81,7 +81,7 @@ export function CTA() {
               type="submit"
               className="shrink-0 whitespace-nowrap rounded-xl bg-primaryText px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0b223d]"
             >
-              Start using Wendy
+              Register interest
             </button>
           </div>
 
@@ -97,7 +97,7 @@ export function CTA() {
         </form>
 
         <a href="#waitlist" className="mt-4 inline-block text-sm font-medium text-secondaryText underline-offset-4 hover:underline">
-          Join beta
+          Join waitlist
         </a>
         <div className="mx-auto mt-6 grid max-w-3xl gap-2 text-left text-sm text-secondaryText sm:grid-cols-3">
           <p>Calendar sync with controlled confirmations.</p>

@@ -20,7 +20,7 @@ export function Hero() {
               href="#waitlist"
               className="rounded-xl bg-primaryText px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0b223d]"
             >
-              Start using Wendy
+              Join waitlist
             </Link>
             <Link
               href="#capabilities"
