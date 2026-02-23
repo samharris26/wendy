@@ -41,7 +41,7 @@ export function CTA() {
 
   return (
     <section id="pricing" className="px-6 py-20 lg:px-10">
-      <div className="mx-auto w-full max-w-6xl rounded-3xl border border-black/10 bg-surface px-6 py-14 text-center shadow-surface-xs sm:px-10">
+      <div className="mx-auto w-full max-w-6xl rounded-3xl border border-primaryText/10 bg-card px-6 py-14 text-center shadow-surface-xs sm:px-10">
         <h2 className="mx-auto max-w-2xl text-balance text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl">
           Start running your life through Wendy.
         </h2>
@@ -73,13 +73,13 @@ export function CTA() {
                   success: false,
                 }))
               }
-              className="w-full rounded-xl border border-black/15 bg-white px-4 py-3 text-sm text-primaryText outline-none transition-colors placeholder:text-secondaryText focus:border-accent"
+              className="w-full rounded-xl border border-primaryText/15 bg-white px-4 py-3 text-sm text-primaryText outline-none transition-colors placeholder:text-secondaryText focus:border-accent"
               aria-invalid={Boolean(state.error)}
               aria-describedby={state.error ? "waitlist-error" : undefined}
             />
             <button
               type="submit"
-              className="shrink-0 whitespace-nowrap rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0b54d8]"
+              className="shrink-0 whitespace-nowrap rounded-xl bg-primaryText px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0b223d]"
             >
               Start using Wendy
             </button>

@@ -64,7 +64,7 @@ export function Philosophy() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#eef0f2] px-6 py-20 lg:px-10">
+    <section ref={sectionRef} className="bg-surface px-6 py-20 lg:px-10">
       <div className="mx-auto w-full max-w-6xl">
         <p className="text-sm font-medium text-secondaryText">Most AI assistants optimise for personality.</p>
         <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
@@ -75,7 +75,7 @@ export function Philosophy() {
         </p>
         <div className="mt-8 grid gap-3 md:grid-cols-3">
           {principles.map((principle) => (
-            <article key={principle.title} className="rounded-2xl border border-black/10 bg-white/70 p-4">
+            <article key={principle.title} className="rounded-2xl border border-primaryText/10 bg-white/70 p-4">
               <p className="text-sm font-semibold uppercase tracking-[0.06em] text-primaryText">
                 {principle.title}
               </p>

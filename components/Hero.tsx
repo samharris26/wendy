@@ -21,13 +21,13 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="#waitlist"
-              className="rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0b54d8]"
+              className="rounded-xl bg-primaryText px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0b223d]"
             >
               Start using Wendy
             </Link>
             <Link
               href="#capabilities"
-              className="rounded-xl border border-black/15 bg-white px-5 py-3 text-sm font-semibold text-primaryText transition-colors hover:border-black/25"
+              className="rounded-xl border border-primaryText/15 bg-white px-5 py-3 text-sm font-semibold text-primaryText transition-colors hover:border-primaryText/25"
             >
               View demo
             </Link>

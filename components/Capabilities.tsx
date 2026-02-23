@@ -35,16 +35,16 @@ export function Capabilities() {
         </div>
 
         <div className="grid gap-5 lg:grid-cols-3">
-          <article className="rounded-2xl border border-black/10 bg-surface p-5 shadow-surface-xs">
+          <article className="rounded-2xl border border-primaryText/10 bg-card p-5 shadow-surface-xs">
             <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-primaryText">
               <Sparkles size={16} />
               <span>Natural Language -&gt; Structured Execution</span>
             </div>
             <div className="space-y-4">
-              <div className="rounded-xl border border-black/10 bg-[#f9fafb] p-3 text-sm text-primaryText">
+              <div className="rounded-xl border border-primaryText/10 bg-[#f9fafb] p-3 text-sm text-primaryText">
                 Add dinner Friday at 7pm
               </div>
-              <pre className="font-mono overflow-x-auto rounded-xl border border-black/10 bg-[#0f1115] p-3 text-xs leading-6 text-[#d2d6db]">
+              <pre className="font-mono overflow-x-auto rounded-xl border border-primaryText/10 bg-[#0f1115] p-3 text-xs leading-6 text-[#d2d6db]">
 {`intent: create_event
 title: "Dinner"
 start_time: "2026-02-27T19:00:00"
@@ -57,14 +57,14 @@ confidence: 0.97`}
             </div>
           </article>
 
-          <article className="rounded-2xl border border-black/10 bg-surface p-5 shadow-surface-xs">
+          <article className="rounded-2xl border border-primaryText/10 bg-card p-5 shadow-surface-xs">
             <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-primaryText">
               <CalendarClock size={16} />
               <span>Reschedule &amp; Cancel Flow</span>
             </div>
             <div className="space-y-4 text-sm">
-              <div className="rounded-xl bg-accent px-3 py-2.5 text-white">Move hockey to 4pm</div>
-              <div className="rounded-xl border border-black/10 bg-[#f9fafb] px-3 py-2.5 text-primaryText">
+              <div className="rounded-xl bg-primaryText px-3 py-2.5 text-white">Move hockey to 4pm</div>
+              <div className="rounded-xl border border-primaryText/10 bg-[#f9fafb] px-3 py-2.5 text-primaryText">
                 Which one?
               </div>
               <div className="flex flex-wrap gap-2">
@@ -77,8 +77,8 @@ confidence: 0.97`}
                       onClick={() => setSelectedOptionId(option.id)}
                       className={`rounded-full border px-3 py-1.5 font-medium transition-colors ${
                         isSelected
-                          ? "border-accent bg-[#0f62fe]/10 text-accent"
-                          : "border-black/15 bg-white text-primaryText hover:border-black/25"
+                          ? "border-accent/35 bg-accent/10 text-accent"
+                          : "border-primaryText/15 bg-white text-primaryText hover:border-primaryText/25"
                       }`}
                     >
                       {option.label} - {option.calendar} - {option.time}
@@ -90,7 +90,7 @@ confidence: 0.97`}
                 className={`rounded-xl border px-3 py-2.5 transition-all duration-200 ${
                   selectedOption
                     ? "border-success/25 bg-success/10 text-primaryText"
-                    : "border-black/10 bg-[#f9fafb] text-secondaryText"
+                    : "border-primaryText/10 bg-[#f9fafb] text-secondaryText"
                 }`}
               >
                 {selectedOption
@@ -100,7 +100,7 @@ confidence: 0.97`}
             </div>
           </article>
 
-          <article className="rounded-2xl border border-black/10 bg-surface p-5 shadow-surface-xs">
+          <article className="rounded-2xl border border-primaryText/10 bg-card p-5 shadow-surface-xs">
             <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-primaryText">
               <CircleCheck size={16} />
               <span>Daily System Summary</span>
@@ -109,13 +109,13 @@ confidence: 0.97`}
               <button
                 type="button"
                 onClick={() => setShowClearFlow((value) => !value)}
-                className="rounded-full border border-black/15 bg-white px-3 py-1.5 text-xs font-medium text-primaryText transition-colors hover:border-black/30"
+                className="rounded-full border border-primaryText/15 bg-white px-3 py-1.5 text-xs font-medium text-primaryText transition-colors hover:border-primaryText/30"
               >
                 {showClearFlow ? "Show morning summary" : "Show clear-afternoon flow"}
               </button>
 
               {!showClearFlow ? (
-                <div className="rounded-xl border border-black/10 bg-[#f9fafb] p-4">
+                <div className="rounded-xl border border-primaryText/10 bg-[#f9fafb] p-4">
                   <p className="text-sm leading-relaxed text-primaryText">
                     Good morning.
                     <br />
@@ -128,7 +128,7 @@ confidence: 0.97`}
                 </div>
               ) : (
                 <div className="space-y-3">
-                  <div className="rounded-xl bg-accent px-3 py-2.5 text-sm text-white">
+                  <div className="rounded-xl bg-primaryText px-3 py-2.5 text-sm text-white">
                     Clear tomorrow afternoon
                   </div>
                   <div className="rounded-xl border border-success/25 bg-success/10 px-3 py-2.5 text-sm text-primaryText">

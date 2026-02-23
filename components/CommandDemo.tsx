@@ -77,7 +77,7 @@ export function CommandDemo() {
   return (
     <div
       ref={panelRef}
-      className="rounded-2xl border border-black/10 bg-surface p-5 shadow-[0_8px_28px_rgba(17,17,17,0.06)]"
+      className="rounded-2xl border border-primaryText/10 bg-card p-5 shadow-[0_8px_28px_rgba(15,42,74,0.12)]"
     >
       <div className="mb-4 flex items-center justify-between">
         <p className="text-sm font-medium text-secondaryText">WhatsApp Command</p>
@@ -99,14 +99,14 @@ export function CommandDemo() {
               <div
                 className={`max-w-[90%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                   isUser
-                    ? "rounded-br-md bg-accent text-white"
-                    : "rounded-bl-md border border-black/10 bg-[#f9fafb] text-primaryText"
+                    ? "rounded-br-md bg-primaryText text-white"
+                    : "rounded-bl-md border border-primaryText/10 bg-[#f9fafb] text-primaryText"
                 }`}
               >
                 <p>{message.text}</p>
                 {!isUser ? (
                   <div className="mt-2 flex items-center gap-2">
-                    <span className="rounded-full border border-[#0f62fe]/20 bg-[#0f62fe]/10 px-2.5 py-1 text-[11px] font-medium text-[#0f62fe]">
+                    <span className="rounded-full border border-primaryText/20 bg-primaryText/10 px-2.5 py-1 text-[11px] font-medium text-primaryText">
                       Work
                     </span>
                     <span className="text-[11px] text-secondaryText">Calendar</span>

@@ -3,19 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --color-background: #f6f7f8;
-  --color-surface: #ffffff;
-  --color-primary-text: #111111;
-  --color-secondary-text: #6b7280;
-  --color-accent: #0f62fe;
-  --color-success: #16a34a;
+  --color-background: #f2f0e9;
+  --color-surface: #eae7de;
+  --color-card: #ffffff;
+  --color-primary-text: #0f2a4a;
+  --color-secondary-text: #586576;
+  --color-accent: #cc5833;
+  --color-charcoal: #1a1a1a;
+  --color-success: #2f9e63;
   --color-warning: #f59e0b;
-  --color-destructive: #dc2626;
+  --color-destructive: #d1432f;
 }
 
 * {
   box-sizing: border-box;
-  border-color: rgba(17, 17, 17, 0.1);
+  border-color: rgba(15, 42, 74, 0.14);
 }
 
 html {
@@ -24,13 +26,29 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-outfit), sans-serif;
   background: var(--color-background);
   color: var(--color-primary-text);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading,
+button,
+nav a {
+  font-family: var(--font-plus-jakarta), sans-serif;
+}
+
 .font-mono {
-  font-family: var(--font-jetbrains-mono), monospace;
+  font-family: var(--font-ibm-plex-mono), monospace;
+}
+
+.font-drama {
+  font-family: var(--font-cormorant), serif;
 }
 
 .system-dot {

@@ -26,7 +26,7 @@ export function HowItWorks() {
 
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {steps.map((step) => (
-            <article key={step.title} className="rounded-2xl border border-black/10 bg-surface p-5 shadow-surface-xs">
+            <article key={step.title} className="rounded-2xl border border-primaryText/10 bg-card p-5 shadow-surface-xs">
               <step.icon size={18} className="text-accent" aria-hidden />
               <h3 className="mt-4 text-lg font-semibold text-primaryText">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-secondaryText">{step.description}</p>

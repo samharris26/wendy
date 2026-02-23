@@ -7,20 +7,22 @@ const config: Config = {
       colors: {
         background: "var(--color-background)",
         surface: "var(--color-surface)",
+        card: "var(--color-card)",
         primaryText: "var(--color-primary-text)",
         secondaryText: "var(--color-secondary-text)",
         accent: "var(--color-accent)",
+        charcoal: "var(--color-charcoal)",
         success: "var(--color-success)",
         warning: "var(--color-warning)",
-        destructive: "var(--color-destructive)"
+        destructive: "var(--color-destructive)",
       },
       boxShadow: {
-        "surface-sm": "0 8px 24px rgba(17, 17, 17, 0.06)",
-        "surface-xs": "0 2px 8px rgba(17, 17, 17, 0.04)"
-      }
-    }
+        "surface-sm": "0 8px 24px rgba(15, 42, 74, 0.10)",
+        "surface-xs": "0 2px 10px rgba(15, 42, 74, 0.08)",
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
 
 export default config;

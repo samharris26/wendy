@@ -27,7 +27,7 @@ export function Navbar() {
     <header
       className={`sticky top-0 z-50 border-b transition-colors duration-150 ${
         isScrolled
-          ? "border-black/10 bg-white/95 shadow-[0_6px_18px_rgba(17,17,17,0.06)] backdrop-blur"
+          ? "border-primaryText/10 bg-white/95 shadow-[0_6px_18px_rgba(15,42,74,0.12)] backdrop-blur"
           : "border-transparent bg-transparent"
       }`}
     >
@@ -51,7 +51,7 @@ export function Navbar() {
 
         <Link
           href="#waitlist"
-          className="rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#0b54d8]"
+          className="rounded-xl bg-primaryText px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#0b223d]"
         >
           Start using Wendy
         </Link>
