@@ -90,7 +90,7 @@ function TasksCard() {
           <CheckSquare className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Smart Tasks</h3>
         </div>
-        <p className="text-sm leading-relaxed text-secondaryText">Priorities, due dates, recurring schedules, and assignees. Manage via WhatsApp or the app.</p>
+        <p className="text-sm leading-relaxed text-secondaryText">Priorities, due dates, recurring schedules, and assignees. Manage from the app or via WhatsApp.</p>
       </div>
     </article>
   );
@@ -125,7 +125,7 @@ function ListsCard() {
           <ListChecks className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Lists & Collections</h3>
         </div>
-        <p className="text-sm leading-relaxed text-secondaryText">Shopping, packing, gift ideas — any list you need. Add items from WhatsApp and share with family.</p>
+        <p className="text-sm leading-relaxed text-secondaryText">Shopping, packing, gift ideas — any list you need. Share with family and add items on the go.</p>
       </div>
     </article>
   );
@@ -215,12 +215,12 @@ export function Features() {
     <section id="features" className="px-6 py-20 lg:px-10">
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-12 text-center">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">WhatsApp + iOS App</p>
+          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">iOS App + WhatsApp</p>
           <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
             Everything your family needs, unified.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-secondaryText">
-            Message Wendy on WhatsApp or use the companion app. Either way, everything stays in sync.
+            A beautiful app to manage your household. Add WhatsApp integration for voice and text control on the go.
           </p>
         </div>
 

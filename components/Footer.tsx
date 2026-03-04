@@ -11,10 +11,10 @@ export function Footer() {
         <div className="max-w-lg">
           <p className="text-3xl font-bold tracking-tight text-primaryText md:text-4xl">Wendy</p>
           <p className="mt-4 text-lg leading-relaxed text-secondaryText">
-            Your family&apos;s operating system. Calendars, tasks, lists, and household coordination — from WhatsApp and a beautiful iOS app.
+            Your family&apos;s operating system. Calendars, tasks, lists, and household coordination — beautifully designed for iOS.
           </p>
         </div>
-        <div className="w-full md:w-auto">
+        <div className="w-full md:w-[400px]">
           <WaitlistForm variant="compact" />
         </div>
       </div>

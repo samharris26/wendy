@@ -38,7 +38,7 @@ const cormorantGaramond = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Wendy | Your Family's Operating System",
   description:
-    "Calendars, tasks, lists, and family coordination — all from WhatsApp and a beautiful iOS app.",
+    "Calendars, tasks, lists, and family coordination — beautifully designed for iOS. Upgrade to WhatsApp for hands-free control.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

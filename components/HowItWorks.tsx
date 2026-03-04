@@ -4,19 +4,19 @@ const steps = [
   {
     num: "01",
     title: "Connect.",
-    description: "Link WhatsApp, connect Google & Apple Calendar, and invite your household. Setup takes under two minutes.",
+    description: "Download the app, connect Google & Apple Calendar, and invite your household. Setup takes under two minutes.",
     icon: Link2,
   },
   {
     num: "02",
-    title: "Message.",
-    description: "Add events, create tasks, manage lists — all in natural language from WhatsApp. Wendy confirms before acting.",
+    title: "Organise.",
+    description: "Add events, create tasks, manage lists — all from a single, beautifully designed app. Upgrade to WhatsApp for hands-free control.",
     icon: MessageCircle,
   },
   {
     num: "03",
     title: "Stay in Sync.",
-    description: "The iOS app, home screen widgets, and smart notifications keep everyone on the same page.",
+    description: "Home screen widgets, smart notifications, and shared views keep everyone on the same page.",
     icon: RefreshCw,
   },
 ];

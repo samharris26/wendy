@@ -40,7 +40,7 @@ export function WaitlistForm({ variant = "default" }: { variant?: "default" | "c
   const isCompact = variant === "compact";
 
   return (
-    <form onSubmit={handleSubmit} className={`flex w-full flex-col gap-3 ${isCompact ? "max-w-sm" : "max-w-md"}`}>
+    <form onSubmit={handleSubmit} className={`flex w-full flex-col gap-3 ${isCompact ? "max-w-md" : "max-w-md"}`}>
       <div className={`flex ${isCompact ? "flex-col" : "flex-col sm:flex-row"} gap-3`}>
         <input
           type="text"

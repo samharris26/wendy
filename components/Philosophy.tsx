@@ -52,7 +52,7 @@ export function Philosophy() {
             <span className="text-secondaryText">all in one place.</span>
           </h2>
           <p className="mx-auto mt-8 max-w-xl text-lg text-secondaryText">
-            WhatsApp for control. The app for visibility. Your household, always in sync.
+            One app for your whole household. Add WhatsApp for hands-free control.
           </p>
         </div>
       </div>
