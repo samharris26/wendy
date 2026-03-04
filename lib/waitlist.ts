@@ -9,16 +9,15 @@ export async function submitWaitlist({ name, email }: { name: string; email: str
     return { ok: true, dev: true };
   }
 
-  const res = await fetch(sheetUrl, {
+  // Apps Script returns a 302 redirect that browsers can't follow cross-origin.
+  // Using no-cors mode means we can't read the response, but the data is still
+  // written to the sheet. We treat a successful fetch (no network error) as success.
+  await fetch(sheetUrl, {
     method: "POST",
+    mode: "no-cors",
     headers: { "Content-Type": "text/plain" },
     body: JSON.stringify({ name, email }),
   });
-
-  if (!res.ok) throw new Error("Network error");
-
-  const data = await res.json();
-  if (data.result !== "success") throw new Error(data.error || "Unknown error");
 
   return { ok: true };
 }
