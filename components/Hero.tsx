@@ -1,37 +1,28 @@
-import Link from "next/link";
+"use client";
 
-import { CommandDemo } from "@/components/CommandDemo";
+import { WaitlistForm } from "./WaitlistForm";
 
 export function Hero() {
   return (
-    <section id="product" className="px-6 pb-10 pt-14 lg:px-10 lg:pb-14 lg:pt-20">
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_520px] lg:gap-16">
-        <div className="max-w-2xl">
-          <h1 className="text-balance text-4xl font-semibold tracking-tight text-primaryText sm:text-5xl lg:text-[3.4rem] lg:leading-[1.04]">
-            Run your life from a single command.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-secondaryText">
-            Wendy is your Personal OS inside WhatsApp. Add events. Move plans. Clear your day.
-            Just message naturally.
-          </p>
+    <section className="relative flex min-h-[85vh] w-full items-center justify-center overflow-hidden bg-background px-6 pb-24 pt-12 md:px-16">
+      {/* Background glow */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute left-1/2 top-1/4 h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-primaryText/5 opacity-70 blur-[100px]" />
+      </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link
-              href="#waitlist"
-              className="rounded-xl bg-primaryText px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0b223d]"
-            >
-              Join waitlist
-            </Link>
-            <Link
-              href="#capabilities"
-              className="rounded-xl border border-primaryText/15 bg-white px-5 py-3 text-sm font-semibold text-primaryText transition-colors hover:border-primaryText/25"
-            >
-              View demo
-            </Link>
-          </div>
+      <div className="relative z-10 w-full max-w-4xl text-center">
+        <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-secondaryText">
+          Your family&apos;s
+        </p>
+        <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-primaryText md:text-7xl lg:text-8xl">
+          Operating System.
+        </h1>
+        <p className="mx-auto mt-8 mb-12 max-w-2xl text-xl leading-relaxed text-secondaryText md:text-2xl">
+          Calendars, tasks, lists, and family coordination — all from WhatsApp and a beautiful iOS app.
+        </p>
+        <div className="inline-flex w-full justify-center">
+          <WaitlistForm />
         </div>
-
-        <CommandDemo />
       </div>
     </section>
   );

@@ -36,9 +36,9 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Wendy | Personal OS inside WhatsApp",
+  title: "Wendy | Your Family's Operating System",
   description:
-    "Wendy is your Personal OS inside WhatsApp. Add events, reschedule plans, manage tasks, and run life commands with deterministic execution.",
+    "Calendars, tasks, lists, and family coordination — all from WhatsApp and a beautiful iOS app.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -4,24 +4,24 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { label: "Product", href: "#product" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Waitlist", href: "#pricing" },
+  { label: "Features", href: "#features" },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Philosophy", href: "#philosophy" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setIsScrolled(window.scrollY > 8);
-    };
-
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const scrollToWaitlist = () => {
+    document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <header
@@ -32,7 +32,7 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-[72px] w-full max-w-6xl items-center justify-between px-6 lg:px-10">
-        <Link href="#product" className="text-lg font-semibold tracking-tight text-primaryText">
+        <Link href="/" className="text-lg font-semibold tracking-tight text-primaryText">
           Wendy
         </Link>
 
@@ -49,12 +49,12 @@ export function Navbar() {
           ))}
         </ul>
 
-        <Link
-          href="#waitlist"
+        <button
+          onClick={scrollToWaitlist}
           className="rounded-xl bg-primaryText px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#0b223d]"
         >
-          Register interest
-        </Link>
+          Join Waitlist
+        </button>
       </nav>
     </header>
   );

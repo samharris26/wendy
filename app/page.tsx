@@ -1,5 +1,4 @@
-import { CTA } from "@/components/CTA";
-import { Capabilities } from "@/components/Capabilities";
+import { Features } from "@/components/Features";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -12,10 +11,9 @@ export default function Page() {
       <Navbar />
       <main>
         <Hero />
-        <Capabilities />
+        <Features />
         <Philosophy />
         <HowItWorks />
-        <CTA />
       </main>
       <Footer />
     </div>

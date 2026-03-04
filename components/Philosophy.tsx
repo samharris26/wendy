@@ -2,49 +2,26 @@
 
 import { useEffect, useRef } from "react";
 
-const principles = [
-  {
-    title: "Parse",
-    detail: "Commands are converted into explicit intent and arguments before action.",
-  },
-  {
-    title: "Confirm",
-    detail: "Ambiguous requests trigger clarification before any update is applied.",
-  },
-  {
-    title: "Execute",
-    detail: "Changes run against the right calendar and return deterministic results.",
-  },
-];
-
 export function Philosophy() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const node = sectionRef.current;
-    if (!node) {
-      return;
-    }
+    if (!node) return;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
-      return;
-    }
+    if (reduceMotion) return;
 
     let active = true;
 
     const observer = new IntersectionObserver(
       async (entries) => {
         const entry = entries[0];
-        if (!entry?.isIntersecting || !active) {
-          return;
-        }
+        if (!entry?.isIntersecting || !active) return;
 
         observer.disconnect();
         const { gsap } = await import("gsap");
-        if (!active) {
-          return;
-        }
+        if (!active) return;
 
         gsap.fromTo(
           node,
@@ -64,29 +41,20 @@ export function Philosophy() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-surface px-6 py-20 lg:px-10">
-      <div className="mx-auto w-full max-w-6xl">
-        <p className="text-sm font-medium text-secondaryText">Most AI assistants optimise for personality.</p>
-        <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
-          Wendy optimises for <span className="text-accent">determinism</span>.
-        </h2>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-secondaryText">
-          Wendy doesn&apos;t guess. It parses. Confirms. Executes. Your life - structured.
-        </p>
-        <div className="mt-8 grid gap-3 md:grid-cols-3">
-          {principles.map((principle) => (
-            <article key={principle.title} className="rounded-2xl border border-primaryText/10 bg-white/70 p-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.06em] text-primaryText">
-                {principle.title}
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-secondaryText">{principle.detail}</p>
-            </article>
-          ))}
+    <section id="philosophy" ref={sectionRef} className="bg-surface px-6 py-20 lg:px-10">
+      <div className="mx-auto w-full max-w-5xl">
+        <div className="rounded-3xl border border-primaryText/5 bg-card p-12 text-center shadow-surface-sm md:p-20">
+          <p className="text-lg text-secondaryText md:text-xl">
+            Other tools scatter your life across a dozen apps.
+          </p>
+          <h2 className="mt-6 text-4xl font-bold tracking-tight text-primaryText md:text-6xl lg:text-7xl">
+            Wendy keeps it{" "}
+            <span className="text-secondaryText">all in one place.</span>
+          </h2>
+          <p className="mx-auto mt-8 max-w-xl text-lg text-secondaryText">
+            WhatsApp for control. The app for visibility. Your household, always in sync.
+          </p>
         </div>
-        <p className="mt-6 max-w-2xl text-sm leading-relaxed text-secondaryText">
-          Example: if two events match a reschedule command, Wendy asks which one to modify before
-          execution.
-        </p>
       </div>
     </section>
   );
