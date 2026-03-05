@@ -21,9 +21,9 @@ function CalendarCard() {
     <article className="flex h-full flex-col rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
       <div className="flex flex-1 flex-col gap-4">
         <div className="flex gap-2">
-          <span className="rounded-full border border-accent/20 bg-accent/10 px-2.5 py-1 font-mono text-[10px] text-accent">Google</span>
-          <span className="rounded-full border border-blue-400/20 bg-blue-400/10 px-2.5 py-1 font-mono text-[10px] text-blue-500">Apple</span>
-          <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1 font-mono text-[10px] text-emerald-600">Wendy</span>
+          <span className="rounded-full border border-accent/30 px-2.5 py-1 font-mono text-[10px] text-accent">Sam</span>
+          <span className="rounded-full border border-blue-400/30 px-2.5 py-1 font-mono text-[10px] text-blue-500">Jane</span>
+          <span className="rounded-full border border-emerald-500/30 px-2.5 py-1 font-mono text-[10px] text-emerald-600">Kids</span>
         </div>
         <div className="flex justify-between">
           {days.map((day, i) => (
