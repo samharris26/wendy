@@ -10,7 +10,7 @@ const steps = [
   {
     num: "02",
     title: "Organise.",
-    description: "Add events, create tasks, manage lists — all from a single, beautifully designed app. Upgrade to WhatsApp for hands-free control.",
+    description: "Add events, create tasks, manage lists — all from a single, beautifully designed app. Say \"Add hockey at 3pm tomorrow\" via WhatsApp on paid plans.",
     icon: MessageCircle,
   },
   {

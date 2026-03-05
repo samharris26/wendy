@@ -18,7 +18,7 @@ export function Hero() {
           Operating System.
         </h1>
         <p className="mx-auto mt-8 mb-12 max-w-2xl text-xl leading-relaxed text-secondaryText md:text-2xl">
-          Calendars, tasks, lists, and family coordination — beautifully designed for iOS. Upgrade to WhatsApp for hands-free control.
+          Calendars, tasks, lists, and family coordination — beautifully designed for iOS. Start free, add WhatsApp when you need hands-free control.
         </p>
         <div className="inline-flex w-full justify-center">
           <WaitlistForm />

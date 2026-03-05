@@ -90,7 +90,7 @@ function TasksCard() {
           <CheckSquare className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Smart Tasks</h3>
         </div>
-        <p className="text-sm leading-relaxed text-secondaryText">Priorities, due dates, recurring schedules, and assignees. Manage from the app or via WhatsApp.</p>
+        <p className="text-sm leading-relaxed text-secondaryText">Priorities, due dates, recurring schedules, and assignees. Add tasks by voice or text with WhatsApp.</p>
       </div>
     </article>
   );
@@ -160,7 +160,7 @@ function HouseholdCard() {
           <Users className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Household</h3>
         </div>
-        <p className="text-sm leading-relaxed text-secondaryText">Invite family members, share calendars and lists, assign tasks. Everyone stays in sync.</p>
+        <p className="text-sm leading-relaxed text-secondaryText">Invite family members, share calendars and lists, assign tasks. Available on the Household plan.</p>
       </div>
     </article>
   );
@@ -214,12 +214,12 @@ export function Features() {
     <section id="features" className="px-6 py-20 lg:px-10">
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-12 text-center">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">iOS App + WhatsApp</p>
+          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">Free on iOS</p>
           <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
             Everything your family needs, unified.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-secondaryText">
-            A beautiful app to manage your household. Add WhatsApp integration for voice and text control on the go.
+            A beautiful app to manage your household — free to start. Add natural language control via WhatsApp on paid plans.
           </p>
         </div>
 

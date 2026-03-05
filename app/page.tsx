@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Navbar } from "@/components/Navbar";
 import { Philosophy } from "@/components/Philosophy";
+import { Pricing } from "@/components/Pricing";
 
 export default function Page() {
   return (
@@ -14,6 +15,7 @@ export default function Page() {
         <Features />
         <Philosophy />
         <HowItWorks />
+        <Pricing />
       </main>
       <Footer />
     </div>
