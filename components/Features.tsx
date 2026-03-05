@@ -216,7 +216,7 @@ export function Features() {
         <div className="mb-12 text-center">
           <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">Built for Families</p>
           <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
-            Everything your household needs.
+            Everything your household needs. In one place.
           </h2>
         </div>
 

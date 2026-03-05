@@ -11,7 +11,7 @@ export function Value() {
     <section className="bg-surface px-6 py-20 lg:px-10">
       <div className="mx-auto w-full max-w-3xl text-center">
         <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
-          Stop juggling five different apps.
+          Your household shouldn&apos;t require five different apps.
         </h2>
 
         <div className="mx-auto mt-8 flex flex-wrap justify-center gap-2">

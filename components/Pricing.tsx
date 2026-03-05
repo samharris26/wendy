@@ -70,7 +70,7 @@ export function Pricing() {
             Start free. Upgrade when you need more.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-secondaryText">
-            Use Wendy in the app for free. Add WhatsApp control with paid plans.
+            Use Wendy in the app for free. WhatsApp assistant available on paid plans.
           </p>
         </div>
 

@@ -18,9 +18,10 @@ export function Hero() {
           Operating System.
         </h1>
         <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-secondaryText md:text-xl">
-          Run your household from one calm, beautifully designed app.
-          Calendars, tasks, lists and reminders live in one place.
-          Add things instantly in the app or simply message Wendy on WhatsApp.
+          Run your household from one calm, beautifully designed app. Calendars, tasks, lists and reminders all in one place.
+        </p>
+        <p className="mx-auto mt-3 max-w-2xl text-lg leading-relaxed text-secondaryText md:text-xl">
+          Add things instantly in the app or just message Wendy on WhatsApp.
         </p>
 
         <div className="mt-10 inline-flex w-full justify-center">

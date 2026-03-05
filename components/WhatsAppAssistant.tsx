@@ -16,7 +16,7 @@ export function WhatsAppAssistant() {
               Your household assistant on WhatsApp.
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-secondaryText">
-              Sometimes opening an app is one step too many. Just message Wendy. She understands your questions and keeps everything in sync.
+              Sometimes opening an app is one step too many. Just message Wendy. Ask questions or add things instantly without opening the app.
             </p>
           </div>
 

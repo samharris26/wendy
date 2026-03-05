@@ -10,7 +10,7 @@ const steps = [
   {
     num: "02",
     title: "Capture.",
-    description: "Add things in seconds. In the app or by messaging Wendy on WhatsApp.",
+    description: "Add things naturally. In the app or by messaging Wendy on WhatsApp.",
     icon: PenLine,
   },
   {
