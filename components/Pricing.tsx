@@ -81,7 +81,7 @@ export function Pricing() {
               key={plan.name}
               className={`relative flex flex-col rounded-2xl border p-6 shadow-surface-xs ${
                 plan.highlight
-                  ? "border-accent bg-accent/[0.03]"
+                  ? "border-accent bg-card"
                   : "border-primaryText/10 bg-card"
               }`}
             >
