@@ -42,18 +42,6 @@ const examples = [
       </>
     ),
   },
-  {
-    user: "What's on this weekend?",
-    wendy: (
-      <>
-        <span className="mb-1.5 block font-medium">Saturday</span>
-        <span className="block text-white/80">10:00 Phoebe football</span>
-        <span className="block text-white/80">14:00 Garden party prep</span>
-        <span className="mb-1.5 mt-2 block font-medium">Sunday</span>
-        <span className="block text-white/80">11:00 Family lunch</span>
-      </>
-    ),
-  },
 ];
 
 export function SeeWendyInAction() {
