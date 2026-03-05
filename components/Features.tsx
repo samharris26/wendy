@@ -18,8 +18,8 @@ function CalendarCard() {
   }, []);
 
   return (
-    <article className="flex h-full flex-col gap-6 rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
-      <div className="flex min-h-[180px] flex-1 flex-col gap-4">
+    <article className="flex h-full flex-col rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
+      <div className="flex flex-1 flex-col gap-4">
         <div className="flex gap-2">
           <span className="rounded-full border border-accent/20 bg-accent/10 px-2.5 py-1 font-mono text-[10px] text-accent">Google</span>
           <span className="rounded-full border border-blue-400/20 bg-blue-400/10 px-2.5 py-1 font-mono text-[10px] text-blue-500">Apple</span>
@@ -41,7 +41,7 @@ function CalendarCard() {
           ))}
         </div>
       </div>
-      <div>
+      <div className="mt-6 min-h-[88px]">
         <div className="mb-2 flex items-center gap-2">
           <Calendar className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Unified Calendar</h3>
@@ -69,8 +69,8 @@ function TasksCard() {
   const priorityColor = { high: "bg-red-400", medium: "bg-amber-400", low: "bg-emerald-400" };
 
   return (
-    <article className="flex h-full flex-col gap-6 rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
-      <div className="flex min-h-[180px] flex-1 flex-col gap-3">
+    <article className="flex h-full flex-col rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
+      <div className="flex flex-1 flex-col gap-3">
         <div className="mb-2 flex gap-2">
           <span className="rounded-full border border-primaryText/10 bg-primaryText/5 px-2.5 py-1 font-mono text-[10px] text-secondaryText">Inbox</span>
           <span className="rounded-full border border-accent/20 bg-accent/10 px-2.5 py-1 font-mono text-[10px] text-accent">Home</span>
@@ -85,7 +85,7 @@ function TasksCard() {
           </div>
         ))}
       </div>
-      <div>
+      <div className="mt-6 min-h-[88px]">
         <div className="mb-2 flex items-center gap-2">
           <CheckSquare className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Smart Tasks</h3>
@@ -101,12 +101,11 @@ function ListsCard() {
     { label: "Oat milk", checked: true },
     { label: "Sourdough bread", checked: false },
     { label: "Avocados", checked: false },
-    { label: "Cherry tomatoes", checked: true },
   ];
 
   return (
-    <article className="flex h-full flex-col gap-6 rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
-      <div className="flex min-h-[180px] flex-1 flex-col gap-3">
+    <article className="flex h-full flex-col rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
+      <div className="flex flex-1 flex-col gap-3">
         <div className="mb-2 flex items-center justify-between">
           <span className="rounded-full border border-accent/20 bg-accent/10 px-2.5 py-1 font-mono text-[10px] text-accent">Shopping List</span>
           <span className="font-mono text-[10px] text-secondaryText/60">Shared</span>
@@ -120,7 +119,7 @@ function ListsCard() {
           </div>
         ))}
       </div>
-      <div>
+      <div className="mt-6 min-h-[88px]">
         <div className="mb-2 flex items-center gap-2">
           <ListChecks className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Lists & Collections</h3>
@@ -133,8 +132,8 @@ function ListsCard() {
 
 function HouseholdCard() {
   return (
-    <article className="flex h-full flex-col gap-6 rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
-      <div className="flex min-h-[180px] flex-1 flex-col gap-4">
+    <article className="flex h-full flex-col rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
+      <div className="flex flex-1 flex-col gap-4">
         <div className="flex items-center gap-3 rounded-xl border border-primaryText/5 bg-white p-4">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primaryText/10 text-sm font-bold text-primaryText">SH</div>
           <div className="flex-1">
@@ -156,7 +155,7 @@ function HouseholdCard() {
           <span className="rounded-full border border-primaryText/10 bg-primaryText/5 px-2.5 py-1 font-mono text-[10px] text-secondaryText">2 shared lists</span>
         </div>
       </div>
-      <div>
+      <div className="mt-6 min-h-[88px]">
         <div className="mb-2 flex items-center gap-2">
           <Users className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Household</h3>
@@ -169,8 +168,8 @@ function HouseholdCard() {
 
 function WidgetsCard() {
   return (
-    <article className="flex h-full flex-col gap-6 rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
-      <div className="flex min-h-[180px] flex-1 flex-col gap-4">
+    <article className="flex h-full flex-col rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
+      <div className="flex flex-1 flex-col gap-4">
         <div className="rounded-2xl border border-primaryText/5 bg-white p-4 shadow-sm">
           <div className="mb-3 flex items-center justify-between">
             <span className="text-xs font-bold text-primaryText">Today</span>
@@ -199,7 +198,7 @@ function WidgetsCard() {
           </div>
         </div>
       </div>
-      <div>
+      <div className="mt-6 min-h-[88px]">
         <div className="mb-2 flex items-center gap-2">
           <Bell className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Widgets & Alerts</h3>
