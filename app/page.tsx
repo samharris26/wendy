@@ -1,5 +1,5 @@
 import { Features } from "@/components/Features";
-import { FinalCTA } from "@/components/FinalCTA";
+
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -25,7 +25,7 @@ export default function Page() {
         <Value />
         <HowItWorks />
         <Pricing />
-        <FinalCTA />
+
       </main>
       <Footer />
     </div>
