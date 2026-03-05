@@ -1,7 +1,6 @@
 "use client";
 
 import { WaitlistForm } from "./WaitlistForm";
-import { ChatExchange } from "./ChatExchange";
 
 export function Hero() {
   return (
@@ -23,20 +22,6 @@ export function Hero() {
           Calendars, tasks, lists and reminders live in one place.
           Add things instantly in the app or simply message Wendy on WhatsApp.
         </p>
-
-        {/* WhatsApp demo */}
-        <div className="mx-auto mt-10 max-w-sm rounded-2xl border border-primaryText/10 bg-card/80 p-5 shadow-surface-xs backdrop-blur-sm">
-          <ChatExchange
-            userMessage="Add dentist next Tuesday at 3pm for family"
-            wendyResponse={
-              <>
-                <span className="mb-1 block font-mono text-[10px] text-white/50">Event created</span>
-                <span className="font-medium">Tuesday 3:00pm</span>
-                <span className="ml-1.5 text-white/70">Family calendar</span>
-              </>
-            }
-          />
-        </div>
 
         <div className="mt-10 inline-flex w-full justify-center">
           <WaitlistForm />
