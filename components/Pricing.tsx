@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Minus } from "lucide-react";
+import { Check } from "lucide-react";
 
 const plans = [
   {
@@ -52,29 +52,6 @@ const plans = [
   },
 ];
 
-type RowKey = "calendar" | "tasks" | "lists" | "whatsapp" | "ai" | "natural" | "household" | "assign";
-
-const comparison: { label: string; key: RowKey }[] = [
-  { label: "Calendar", key: "calendar" },
-  { label: "Tasks & Lists", key: "tasks" },
-  { label: "Basic reminders", key: "lists" },
-  { label: "WhatsApp assistant", key: "whatsapp" },
-  { label: "AI daily summary", key: "ai" },
-  { label: "Natural language", key: "natural" },
-  { label: "Shared household", key: "household" },
-  { label: "Assign tasks", key: "assign" },
-];
-
-const availability: Record<RowKey, [boolean, boolean, boolean]> = {
-  calendar: [true, true, true],
-  tasks: [true, true, true],
-  lists: [true, true, true],
-  whatsapp: [false, true, true],
-  ai: [false, true, true],
-  natural: [false, true, true],
-  household: [false, false, true],
-  assign: [false, false, true],
-};
 
 export function Pricing() {
   const scrollToWaitlist = () => {
@@ -151,45 +128,6 @@ export function Pricing() {
           ))}
         </div>
 
-        {/* Comparison table */}
-        <div className="mt-16">
-          <h3 className="mb-6 text-center text-lg font-semibold text-primaryText">
-            Compare plans
-          </h3>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[480px]">
-              <thead>
-                <tr className="border-b border-primaryText/10">
-                  <th className="py-3 text-left text-sm font-medium text-secondaryText">Feature</th>
-                  {["Free", "Single", "Household"].map((name) => (
-                    <th key={name} className="py-3 text-center text-sm font-semibold text-primaryText">
-                      {name}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {comparison.map((row, i) => (
-                  <tr
-                    key={row.key}
-                    className={i < comparison.length - 1 ? "border-b border-primaryText/5" : ""}
-                  >
-                    <td className="py-3 text-sm text-secondaryText">{row.label}</td>
-                    {availability[row.key].map((has, j) => (
-                      <td key={j} className="py-3 text-center">
-                        {has ? (
-                          <Check className="mx-auto h-4 w-4 text-accent" />
-                        ) : (
-                          <Minus className="mx-auto h-4 w-4 text-primaryText/20" />
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
     </section>
   );
