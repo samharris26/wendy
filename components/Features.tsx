@@ -46,7 +46,7 @@ function CalendarCard() {
           <Calendar className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Unified Calendar</h3>
         </div>
-        <p className="text-sm leading-relaxed text-secondaryText">Google, Apple, and Wendy calendars merged into one view. Filter, color-code, and share with your household.</p>
+        <p className="text-sm leading-relaxed text-secondaryText">See work, school and family plans together.</p>
       </div>
     </article>
   );
@@ -90,7 +90,7 @@ function TasksCard() {
           <CheckSquare className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Smart Tasks</h3>
         </div>
-        <p className="text-sm leading-relaxed text-secondaryText">Priorities, due dates, recurring schedules, and assignees. Add tasks by voice or text with WhatsApp.</p>
+        <p className="text-sm leading-relaxed text-secondaryText">Capture things quickly and stay on top of everyday life.</p>
       </div>
     </article>
   );
@@ -124,7 +124,7 @@ function ListsCard() {
           <ListChecks className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Lists & Collections</h3>
         </div>
-        <p className="text-sm leading-relaxed text-secondaryText">Shopping, packing, gift ideas — any list you need. Share with family and add items on the go.</p>
+        <p className="text-sm leading-relaxed text-secondaryText">Shopping lists, packing lists and shared planning.</p>
       </div>
     </article>
   );
@@ -160,7 +160,7 @@ function HouseholdCard() {
           <Users className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Household</h3>
         </div>
-        <p className="text-sm leading-relaxed text-secondaryText">Invite family members, share calendars and lists, assign tasks. Available on the Household plan.</p>
+        <p className="text-sm leading-relaxed text-secondaryText">Invite family members and assign tasks.</p>
       </div>
     </article>
   );
@@ -177,9 +177,9 @@ function WidgetsCard() {
           </div>
           <div className="flex flex-col gap-2">
             {[
-              { color: "bg-accent", text: "9:00 — Team standup" },
-              { color: "bg-blue-400", text: "12:30 — Lunch with Sarah" },
-              { color: "bg-emerald-500", text: "15:00 — School pickup" },
+              { color: "bg-accent", text: "9:00 Team standup" },
+              { color: "bg-blue-400", text: "12:30 Lunch with Sarah" },
+              { color: "bg-emerald-500", text: "15:00 School pickup" },
             ].map((e, i) => (
               <div key={i} className="flex items-center gap-2">
                 <div className={`h-1.5 w-1.5 rounded-full ${e.color}`} />
@@ -194,7 +194,7 @@ function WidgetsCard() {
           </div>
           <div>
             <p className="text-[11px] font-medium text-primaryText">Overdue: Submit insurance claim</p>
-            <p className="font-mono text-[9px] text-secondaryText/50">Nudge — 2 days overdue</p>
+            <p className="font-mono text-[9px] text-secondaryText/50">Nudge · 2 days overdue</p>
           </div>
         </div>
       </div>
@@ -203,7 +203,7 @@ function WidgetsCard() {
           <Bell className="h-5 w-5 text-accent" />
           <h3 className="text-lg font-semibold text-primaryText">Widgets & Alerts</h3>
         </div>
-        <p className="text-sm leading-relaxed text-secondaryText">Home screen widgets, daily briefings, smart reminders, and overdue nudges keep you on track.</p>
+        <p className="text-sm leading-relaxed text-secondaryText">See today at a glance and get reminders before things slip.</p>
       </div>
     </article>
   );
@@ -214,13 +214,10 @@ export function Features() {
     <section id="features" className="px-6 py-20 lg:px-10">
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-12 text-center">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">Free on iOS</p>
+          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">Built for Families</p>
           <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
-            Everything your family needs, unified.
+            Everything your household needs.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-secondaryText">
-            A beautiful app to manage your household — free to start. Add natural language control via WhatsApp on paid plans.
-          </p>
         </div>
 
         <div className="grid gap-5 md:grid-cols-3">

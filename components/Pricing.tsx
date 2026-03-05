@@ -90,10 +90,10 @@ export function Pricing() {
             Simple Pricing
           </p>
           <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
-            Start free. Upgrade when you&apos;re ready.
+            Start free. Upgrade when you need more.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-secondaryText">
-            Start free. Upgrade when you want Wendy on WhatsApp.
+            Use Wendy in the app for free. Add WhatsApp control with paid plans.
           </p>
         </div>
 

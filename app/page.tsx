@@ -1,10 +1,15 @@
 import { Features } from "@/components/Features";
+import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Navbar } from "@/components/Navbar";
-import { Philosophy } from "@/components/Philosophy";
 import { Pricing } from "@/components/Pricing";
+import { Problem } from "@/components/Problem";
+import { ProductVisual } from "@/components/ProductVisual";
+import { SeeWendyInAction } from "@/components/SeeWendyInAction";
+import { Value } from "@/components/Value";
+import { WhatsAppAssistant } from "@/components/WhatsAppAssistant";
 
 export default function Page() {
   return (
@@ -12,10 +17,15 @@ export default function Page() {
       <Navbar />
       <main>
         <Hero />
+        <SeeWendyInAction />
+        <Problem />
+        <WhatsAppAssistant />
+        <ProductVisual />
         <Features />
-        <Philosophy />
+        <Value />
         <HowItWorks />
         <Pricing />
+        <FinalCTA />
       </main>
       <Footer />
     </div>

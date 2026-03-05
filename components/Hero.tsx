@@ -1,6 +1,7 @@
 "use client";
 
 import { WaitlistForm } from "./WaitlistForm";
+import { ChatExchange } from "./ChatExchange";
 
 export function Hero() {
   return (
@@ -17,10 +18,27 @@ export function Hero() {
         <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-primaryText md:text-7xl lg:text-8xl">
           Operating System.
         </h1>
-        <p className="mx-auto mt-8 mb-12 max-w-2xl text-xl leading-relaxed text-secondaryText md:text-2xl">
-          Calendars, tasks, lists, and family coordination — beautifully designed for iOS. Start free, add WhatsApp when you need hands-free control.
+        <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-secondaryText md:text-xl">
+          Run your household from one calm, beautifully designed app.
+          Calendars, tasks, lists and reminders live in one place.
+          Add things instantly in the app or simply message Wendy on WhatsApp.
         </p>
-        <div className="inline-flex w-full justify-center">
+
+        {/* WhatsApp demo */}
+        <div className="mx-auto mt-10 max-w-sm rounded-2xl border border-primaryText/10 bg-card/80 p-5 shadow-surface-xs backdrop-blur-sm">
+          <ChatExchange
+            userMessage="Add dentist next Tuesday at 3pm for family"
+            wendyResponse={
+              <>
+                <span className="mb-1 block font-mono text-[10px] text-white/50">Event created</span>
+                <span className="font-medium">Tuesday 3:00pm</span>
+                <span className="ml-1.5 text-white/70">Family calendar</span>
+              </>
+            }
+          />
+        </div>
+
+        <div className="mt-10 inline-flex w-full justify-center">
           <WaitlistForm />
         </div>
       </div>

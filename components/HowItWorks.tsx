@@ -1,22 +1,22 @@
-import { Link2, MessageCircle, RefreshCw } from "lucide-react";
+import { Link2, PenLine, RefreshCw } from "lucide-react";
 
 const steps = [
   {
     num: "01",
     title: "Connect.",
-    description: "Download the app, connect Google & Apple Calendar, and invite your household. Setup takes under two minutes.",
+    description: "Bring in your Apple or Google calendars. Invite your household.",
     icon: Link2,
   },
   {
     num: "02",
-    title: "Organise.",
-    description: "Add events, create tasks, manage lists — all from a single, beautifully designed app. Say \"Add hockey at 3pm tomorrow\" via WhatsApp on paid plans.",
-    icon: MessageCircle,
+    title: "Capture.",
+    description: "Add things in seconds. In the app or by messaging Wendy on WhatsApp.",
+    icon: PenLine,
   },
   {
     num: "03",
-    title: "Stay in Sync.",
-    description: "Home screen widgets, smart notifications, and shared views keep everyone on the same page.",
+    title: "Stay in sync.",
+    description: "Shared calendars, reminders and widgets keep everyone aligned.",
     icon: RefreshCw,
   },
 ];
