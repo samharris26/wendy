@@ -15,10 +15,7 @@ export function Hero() {
           Your life, organised.
         </h1>
         <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-secondaryText md:text-xl">
-          Calendars, tasks, lists and reminders — all in one calm, beautifully designed app.
-        </p>
-        <p className="mx-auto mt-3 max-w-2xl text-lg leading-relaxed text-secondaryText md:text-xl">
-          Add things instantly or just ask Noa on WhatsApp.
+          Calendars, tasks, lists and reminders — all in one calm, beautifully designed app. Add things instantly or just ask Noa on WhatsApp.
         </p>
 
         <div className="mt-10 inline-flex w-full justify-center">

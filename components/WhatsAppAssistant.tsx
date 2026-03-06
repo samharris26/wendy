@@ -13,10 +13,10 @@ export function WhatsAppAssistant() {
               WhatsApp Assistant
             </p>
             <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl">
-              Your household assistant on WhatsApp.
+              Also available on WhatsApp.
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-secondaryText">
-              Sometimes opening an app is one step too many. Just ask Noa. Add things or ask questions instantly on WhatsApp.
+              Don&apos;t want to open the app? Just message Noa on WhatsApp. Add things, ask questions or check your schedule — it all stays in sync.
             </p>
           </div>
 
