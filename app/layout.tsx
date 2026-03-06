@@ -5,6 +5,7 @@ import {
   Outfit,
   Plus_Jakarta_Sans,
 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -47,7 +48,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       lang="en"
       className={`${outfit.variable} ${plusJakartaSans.variable} ${ibmPlexMono.variable} ${cormorantGaramond.variable}`}
     >
-      <body className="bg-background text-primaryText antialiased">{children}</body>
+      <body className="bg-background text-primaryText antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
