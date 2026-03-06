@@ -5,8 +5,8 @@ import { ChatExchange } from "./ChatExchange";
 const moments = [
   {
     time: "Morning",
-    user: "Wendy, what's on today?",
-    wendy: (
+    user: "Noa, what's on today?",
+    noa: (
       <>
         <span className="block text-white/80">9:00 Team standup</span>
         <span className="block text-white/80">12:30 Lunch with Sarah</span>
@@ -17,7 +17,7 @@ const moments = [
   {
     time: "Afternoon",
     user: "Add football training Thursday at 6pm",
-    wendy: (
+    noa: (
       <>
         <span className="mb-1 block font-mono text-[10px] text-white/50">Event created</span>
         <span className="font-medium">Thursday 18:00</span>
@@ -28,7 +28,7 @@ const moments = [
   {
     time: "Evening",
     user: "Add milk and bananas to the shopping list",
-    wendy: (
+    noa: (
       <>
         <span className="mb-1 block font-mono text-[10px] text-white/50">Added to Shopping List</span>
         Milk, Bananas
@@ -37,7 +37,7 @@ const moments = [
   },
 ];
 
-export function DayWithWendy() {
+export function DayWithNoa() {
   return (
     <section className="bg-surface px-6 py-20 lg:px-10">
       <div className="mx-auto w-full max-w-6xl">
@@ -46,7 +46,7 @@ export function DayWithWendy() {
             Real Usage
           </p>
           <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
-            A day with Wendy.
+            A day with Noa.
           </h2>
         </div>
 
@@ -59,7 +59,7 @@ export function DayWithWendy() {
               <span className="mb-4 inline-block rounded-full border border-primaryText/10 bg-primaryText/5 px-3 py-1 font-mono text-[10px] text-secondaryText">
                 {m.time}
               </span>
-              <ChatExchange userMessage={m.user} wendyResponse={m.wendy} />
+              <ChatExchange userMessage={m.user} noaResponse={m.noa} />
             </div>
           ))}
         </div>

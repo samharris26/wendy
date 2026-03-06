@@ -9,9 +9,9 @@ export function Footer() {
       {/* Top — Waitlist CTA */}
       <div id="waitlist" className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-12 border-b border-primaryText/10 pb-16 md:flex-row md:items-end">
         <div className="max-w-lg">
-          <p className="text-3xl font-bold tracking-tight text-primaryText md:text-4xl">Wendy</p>
+          <p className="text-3xl font-bold tracking-tight text-primaryText md:text-4xl">Noa</p>
           <p className="mt-4 text-lg leading-relaxed text-secondaryText">
-            Your family&apos;s operating system. Calendars, tasks, lists, and household coordination — beautifully designed for iOS.
+            Your life, organised. Calendars, tasks, lists and reminders — beautifully designed for iOS.
           </p>
         </div>
         <div className="w-full md:w-[400px]">
@@ -29,7 +29,7 @@ export function Footer() {
         <div className="flex gap-8 font-mono text-xs text-secondaryText">
           <Link href="/privacy" className="transition-colors hover:text-primaryText">Privacy</Link>
           <Link href="/terms" className="transition-colors hover:text-primaryText">Terms</Link>
-          <span>&copy; {new Date().getFullYear()} Wendy OS.</span>
+          <span>&copy; {new Date().getFullYear()} Noa.</span>
         </div>
       </div>
     </footer>

@@ -2,11 +2,11 @@
 
 interface ChatExchangeProps {
   userMessage: string;
-  wendyResponse: React.ReactNode;
+  noaResponse: React.ReactNode;
   className?: string;
 }
 
-export function ChatExchange({ userMessage, wendyResponse, className = "" }: ChatExchangeProps) {
+export function ChatExchange({ userMessage, noaResponse, className = "" }: ChatExchangeProps) {
   return (
     <div className={`flex flex-col gap-3 ${className}`}>
       {/* User message — right-aligned */}
@@ -16,13 +16,13 @@ export function ChatExchange({ userMessage, wendyResponse, className = "" }: Cha
         </div>
       </div>
 
-      {/* Wendy response — left-aligned with avatar */}
+      {/* Noa response — left-aligned with avatar */}
       <div className="flex items-start gap-2.5">
         <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-[11px] font-bold text-white">
-          W
+          N
         </div>
         <div className="max-w-[85%] rounded-2xl rounded-tl-md bg-primaryText px-4 py-3 text-sm text-white shadow-sm">
-          {wendyResponse}
+          {noaResponse}
         </div>
       </div>
     </div>

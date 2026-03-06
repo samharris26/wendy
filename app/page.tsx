@@ -1,4 +1,4 @@
-import { DayWithWendy } from "@/components/DayWithWendy";
+import { DayWithNoa } from "@/components/DayWithNoa";
 import { Features } from "@/components/Features";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
@@ -6,7 +6,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { Navbar } from "@/components/Navbar";
 import { Pricing } from "@/components/Pricing";
 import { Problem } from "@/components/Problem";
-import { SeeWendyInAction } from "@/components/SeeWendyInAction";
+import { SeeNoaInAction } from "@/components/SeeNoaInAction";
 import { Value } from "@/components/Value";
 import { WhatsAppAssistant } from "@/components/WhatsAppAssistant";
 
@@ -16,10 +16,10 @@ export default function Page() {
       <Navbar />
       <main>
         <Hero />
-        <SeeWendyInAction />
+        <SeeNoaInAction />
         <Problem />
         <WhatsAppAssistant />
-        <DayWithWendy />
+        <DayWithNoa />
         <Features />
         <Value />
         <HowItWorks />

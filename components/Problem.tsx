@@ -10,7 +10,7 @@ export function Problem() {
             Plans live in one app. Shopping lists somewhere else. Tasks and reminders scattered everywhere. Things get missed.
           </p>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-primaryText font-medium">
-            Wendy brings everything together so your household runs smoothly.
+            Noa brings everything together so your life runs smoothly.
           </p>
         </div>
       </div>

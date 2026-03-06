@@ -7,7 +7,7 @@ const plans = [
     name: "Free",
     price: "£0",
     period: "",
-    tagline: "Try Wendy for yourself.",
+    tagline: "Try Noa for yourself.",
     cta: "Start Free",
     highlight: false,
     features: [
@@ -70,7 +70,7 @@ export function Pricing() {
             Start free. Upgrade when you need more.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-secondaryText">
-            Use Wendy in the app for free. WhatsApp assistant available on paid plans.
+            Use Noa in the app for free. WhatsApp assistant available on paid plans.
           </p>
         </div>
 

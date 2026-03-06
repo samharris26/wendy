@@ -26,7 +26,7 @@ export function Value() {
         </div>
 
         <p className="mx-auto mt-8 max-w-lg text-lg leading-relaxed text-secondaryText">
-          Wendy brings everything together into one calm system.
+          Noa brings everything together into one calm system.
         </p>
       </div>
     </section>

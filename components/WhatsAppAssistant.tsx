@@ -16,7 +16,7 @@ export function WhatsAppAssistant() {
               Your household assistant on WhatsApp.
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-secondaryText">
-              Sometimes opening an app is one step too many. Just message Wendy. Ask questions or add things instantly without opening the app.
+              Sometimes opening an app is one step too many. Just ask Noa. Add things or ask questions instantly on WhatsApp.
             </p>
           </div>
 
@@ -25,7 +25,7 @@ export function WhatsAppAssistant() {
             <div className="rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
               <ChatExchange
                 userMessage="What's on this weekend?"
-                wendyResponse={
+                noaResponse={
                   <>
                     <span className="mb-1.5 block font-medium">Saturday</span>
                     <span className="block text-white/80">10:00 Phoebe football</span>
@@ -39,7 +39,7 @@ export function WhatsAppAssistant() {
             <div className="rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
               <ChatExchange
                 userMessage="Am I free Thursday evening?"
-                wendyResponse="Yes. You are free after 5:30pm."
+                noaResponse="Yes. You are free after 5:30pm."
               />
             </div>
           </div>

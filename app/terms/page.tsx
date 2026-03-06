@@ -6,11 +6,11 @@ export default function TermsPage() {
       <div className="mx-auto w-full max-w-3xl rounded-2xl border border-primaryText/10 bg-card p-8">
         <h1 className="text-3xl font-semibold tracking-tight text-primaryText">Terms</h1>
         <p className="mt-4 text-sm leading-relaxed text-secondaryText">
-          Wendy provides deterministic automation workflows for personal operations. This placeholder
+          Noa provides deterministic automation workflows for personal operations. This placeholder
           page will be replaced with full terms.
         </p>
         <Link href="/" className="mt-6 inline-block text-sm font-medium text-accent hover:underline">
-          Back to Wendy
+          Back to Noa
         </Link>
       </div>
     </main>

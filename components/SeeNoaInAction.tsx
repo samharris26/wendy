@@ -5,7 +5,7 @@ import { ChatExchange } from "./ChatExchange";
 const examples = [
   {
     user: "Add football training Thursday at 6pm",
-    wendy: (
+    noa: (
       <>
         <span className="mb-1 block font-mono text-[10px] text-white/50">Event created</span>
         <span className="font-medium">Thursday 18:00</span>
@@ -15,7 +15,7 @@ const examples = [
   },
   {
     user: "Add milk, bananas and pasta to the shopping list",
-    wendy: (
+    noa: (
       <>
         <span className="mb-1 block font-mono text-[10px] text-white/50">Added to Shopping List</span>
         Milk, Bananas, Pasta
@@ -24,7 +24,7 @@ const examples = [
   },
   {
     user: "Remind me to renew car insurance in May",
-    wendy: (
+    noa: (
       <>
         <span className="mb-1 block font-mono text-[10px] text-white/50">Reminder created</span>
         <span className="font-medium">1 May</span>
@@ -34,7 +34,7 @@ const examples = [
   },
   {
     user: "Move dentist to next Wednesday",
-    wendy: (
+    noa: (
       <>
         <span className="mb-1 block font-mono text-[10px] text-white/50">Event updated</span>
         <span className="font-medium">Wednesday 15:00</span>
@@ -44,7 +44,7 @@ const examples = [
   },
 ];
 
-export function SeeWendyInAction() {
+export function SeeNoaInAction() {
   return (
     <section className="px-6 py-20 lg:px-10">
       <div className="mx-auto w-full max-w-6xl">
@@ -53,7 +53,7 @@ export function SeeWendyInAction() {
             Natural Language
           </p>
           <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
-            Just say it. Wendy handles the rest.
+            Just ask Noa.
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-secondaryText">
             No menus. No complicated setup. Just type naturally.
@@ -66,7 +66,7 @@ export function SeeWendyInAction() {
               key={i}
               className="rounded-2xl border border-primaryText/10 bg-card p-7 shadow-surface-xs md:p-8"
             >
-              <ChatExchange userMessage={ex.user} wendyResponse={ex.wendy} />
+              <ChatExchange userMessage={ex.user} noaResponse={ex.noa} />
             </div>
           ))}
         </div>

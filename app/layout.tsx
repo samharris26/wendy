@@ -36,9 +36,9 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Wendy | Your Family's Operating System",
+  title: "Noa | Your Life, Organised",
   description:
-    "Run your household from one calm app. Calendars, tasks, lists and reminders in one place. Add things instantly or message Wendy on WhatsApp.",
+    "Calendars, tasks, lists and reminders — all in one calm, beautifully designed app. Add things instantly or just ask Noa on WhatsApp.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
