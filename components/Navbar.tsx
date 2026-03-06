@@ -32,7 +32,7 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-[72px] w-full max-w-6xl items-center justify-between px-6 lg:px-10">
-        <Link href="/" className="text-lg font-semibold tracking-tight text-primaryText">
+        <Link href="/" className="text-2xl font-bold tracking-tight text-primaryText">
           Noa
         </Link>
 
