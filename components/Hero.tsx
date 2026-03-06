@@ -11,9 +11,6 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 w-full max-w-4xl text-center">
-        <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-secondaryText">
-          Noa
-        </p>
         <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-primaryText md:text-7xl lg:text-8xl">
           Your life, organised.
         </h1>
