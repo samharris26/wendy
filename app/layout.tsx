@@ -41,6 +41,9 @@ export const metadata: Metadata = {
   title: "Noa | Your Life, Organised",
   description:
     "Calendars, tasks, lists and reminders — all in one calm, beautifully designed app. Add things instantly or just ask Noa on WhatsApp.",
+  verification: {
+    google: "muIDe0NqiiYt-X9zFnw2E0A52WS9qRxZ1HQihIuruqs",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
