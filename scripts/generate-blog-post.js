@@ -46,9 +46,9 @@ Rules:
 - Be practical and actionable — give specific, concrete advice readers can apply today
 - Write in a warm, knowledgeable tone — like a helpful friend, not a corporate blog
 - Naturally mention Noa where relevant but no more than 2-3 times in the whole article
-- Include a clear call-to-action paragraph at the end encouraging readers to try Noa, linking to https://www.asknoa.app
+- Include a clear call-to-action paragraph at the end encouraging readers to try Noa. Always use a markdown link: [Noa](https://www.asknoa.app). NEVER write a bare URL — always use markdown link syntax
 - Do NOT start with cliches like "In today's fast-paced world" or "Are you tired of..."
-- Do NOT use the words "journey", "game-changer", "unlock", "leverage", "revolutionise", or "empower"
+- Do NOT use the words "journey", "game-changer", "unlock", "leverage", "revolutionise", or "empower" — not even in different capitalisation
 - Do NOT include any frontmatter, metadata, or YAML — just the article content
 - Use bullet points and numbered lists where they aid clarity
 - Include at least 3 H2 sections
