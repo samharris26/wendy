@@ -27,6 +27,7 @@ export function Footer() {
         </div>
 
         <div className="flex gap-8 font-mono text-xs text-secondaryText">
+          <Link href="/blog" className="transition-colors hover:text-primaryText">Blog</Link>
           <Link href="/privacy" className="transition-colors hover:text-primaryText">Privacy</Link>
           <Link href="/terms" className="transition-colors hover:text-primaryText">Terms</Link>
           <span>&copy; {new Date().getFullYear()} Noa.</span>

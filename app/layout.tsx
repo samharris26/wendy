@@ -38,10 +38,29 @@ const cormorantGaramond = Cormorant_Garamond({
   display: "swap",
 });
 
+const siteUrl = "https://www.asknoa.app";
+
 export const metadata: Metadata = {
   title: "Noa | Your Life, Organised",
   description:
     "Calendars, tasks, lists and reminders — all in one calm, beautifully designed app. Add things instantly or just ask Noa on WhatsApp.",
+  metadataBase: new URL(siteUrl),
+  openGraph: {
+    title: "Noa | Your Life, Organised",
+    description:
+      "Calendars, tasks, lists and reminders — all in one calm, beautifully designed app.",
+    url: siteUrl,
+    siteName: "Noa",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Noa — Your life, organised" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Noa | Your Life, Organised",
+    description:
+      "Calendars, tasks, lists and reminders — all in one calm, beautifully designed app.",
+    images: ["/og.png"],
+  },
   verification: {
     google: "muIDe0NqiiYt-X9zFnw2E0A52WS9qRxZ1HQihIuruqs",
   },
