@@ -88,7 +88,7 @@ export function LandingPage({ data }: { data: LandingPageData }) {
         <div className="mx-auto w-full max-w-6xl">
           <div className="mb-12 text-center">
             <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
-              Key Features
+              Key features
             </p>
             <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
               Why families choose Noa
@@ -164,23 +164,6 @@ export function LandingPage({ data }: { data: LandingPageData }) {
                 {link.label}
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Bottom CTA ── */}
-      <section className="bg-surface px-6 py-20 lg:px-10">
-        <div className="mx-auto w-full max-w-6xl">
-          <div className="mx-auto max-w-3xl rounded-3xl border border-primaryText/5 bg-card p-12 text-center shadow-surface-sm md:p-20">
-            <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl">
-              Ready to simplify your family life?
-            </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-secondaryText">
-              Join the waitlist and be among the first to try Noa.
-            </p>
-            <div className="mt-10 flex justify-center">
-              <WaitlistForm />
-            </div>
           </div>
         </div>
       </section>
