@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
+import { landingPages } from "@/lib/landing-pages";
 
 const BASE_URL = "https://www.asknoa.app";
 
@@ -39,5 +40,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...blogPages];
+  const landingPageEntries: MetadataRoute.Sitemap = landingPages.map((page) => ({
+    url: `${BASE_URL}/${page.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...blogPages, ...landingPageEntries];
 }
