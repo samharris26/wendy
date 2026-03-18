@@ -5,6 +5,7 @@ import {
   Outfit,
   Plus_Jakarta_Sans,
 } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CookieBanner } from "@/components/CookieBanner";
@@ -72,6 +73,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       lang="en"
       className={`${outfit.variable} ${plusJakartaSans.variable} ${ibmPlexMono.variable} ${cormorantGaramond.variable}`}
     >
+      <head>
+        <Script
+          defer
+          data-website-id="dfid_7ukGdquhSwRimDxFFrNNp"
+          data-domain="asknoa.app"
+          src="https://datafa.st/js/script.js"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="bg-background text-primaryText antialiased">
         {children}
         <CookieBanner />
