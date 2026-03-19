@@ -68,6 +68,11 @@ export function Footer() {
                 Terms of service
               </Link>
             </li>
+            <li>
+              <a href="https://www.instagram.com/asknoa.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primaryText">
+                Instagram
+              </a>
+            </li>
           </ul>
         </div>
       </div>
