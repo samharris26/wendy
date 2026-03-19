@@ -1,7 +1,16 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Terms of Service | Noa",
+  title: "Terms of service — Noa family organiser and calendar app",
+  description:
+    "Read the terms of service for Noa, the family organiser app. Covers account usage, subscriptions, acceptable use, data ownership, and your rights.",
+  alternates: { canonical: "/terms" },
+  openGraph: {
+    title: "Terms of service — Noa family organiser and calendar app",
+    description:
+      "Read the terms of service for Noa, the family organiser app. Covers account usage, subscriptions, acceptable use, data ownership, and your rights.",
+    type: "website",
+  },
 };
 
 export default function TermsPage() {

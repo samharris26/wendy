@@ -48,9 +48,9 @@ export interface LandingPageData {
 const familyCalendarApp: LandingPageData = {
   slug: "family-calendar-app",
   keyword: "Family Calendar App",
-  metaTitle: "Family calendar app | Noa",
+  metaTitle: "Family calendar app — shared schedules and reminders | Noa",
   metaDescription:
-    "Noa is a family calendar app that keeps everyone in sync. Shared schedules, smart reminders, and WhatsApp access.",
+    "Noa is a family calendar app that keeps everyone in sync. Colour-coded schedules, smart reminders, WhatsApp access, and Apple and Google Calendar sync.",
   heroHeadline: "The family calendar app that keeps everyone in sync",
   heroSubheadline:
     "See the whole family's schedule in one calm, colour-coded view. Add events from WhatsApp, sync with Apple and Google Calendar, and never double-book again.",
@@ -108,9 +108,9 @@ const familyCalendarApp: LandingPageData = {
 const sharedCalendarApp: LandingPageData = {
   slug: "shared-calendar-app",
   keyword: "Shared Calendar App",
-  metaTitle: "Shared calendar app | Noa",
+  metaTitle: "Shared calendar app for busy households — sync all | Noa",
   metaDescription:
-    "Noa is the shared calendar app for busy households. See everyone's schedule, sync calendars, and add events via WhatsApp.",
+    "Noa is the shared calendar app for busy households. See everyone's schedule in one place, sync existing calendars, and add events via WhatsApp.",
   heroHeadline: "The shared calendar app for busy households",
   heroSubheadline:
     "One calendar for the whole family. Colour-coded schedules, real-time sync, and the ability to add events just by sending a message.",
@@ -168,9 +168,9 @@ const sharedCalendarApp: LandingPageData = {
 const sharedFamilyCalendar: LandingPageData = {
   slug: "shared-family-calendar",
   keyword: "Shared Family Calendar",
-  metaTitle: "Shared family calendar | Noa",
+  metaTitle: "Shared family calendar — colour-coded with reminders | Noa",
   metaDescription:
-    "Keep your family organised with Noa's shared family calendar. Colour-coded events, WhatsApp access, and smart reminders.",
+    "Keep your family organised with Noa's shared family calendar. Colour-coded events for every family member, WhatsApp event creation, and smart reminders.",
   heroHeadline: "Your shared family calendar, simplified",
   heroSubheadline:
     "Coordinate schedules without the chaos. Noa gives your family a beautiful, shared calendar that everyone can access — even from WhatsApp.",
@@ -232,9 +232,9 @@ const sharedFamilyCalendar: LandingPageData = {
 const familyTaskManager: LandingPageData = {
   slug: "family-task-manager",
   keyword: "Family Task Manager",
-  metaTitle: "Family task manager | Noa",
+  metaTitle: "Family task manager — assign and track tasks | Noa",
   metaDescription:
-    "Noa is a family task manager that lets you assign, track, and complete tasks together. Manage it all from WhatsApp.",
+    "Noa is a family task manager that lets you assign tasks to family members, track progress, and send automatic reminders. Manage it all from WhatsApp.",
   heroHeadline: "The family task manager that actually gets used",
   heroSubheadline:
     "Create tasks, assign them to family members, and track progress — all from one calm, simple app. Or just message Noa on WhatsApp.",
@@ -292,9 +292,9 @@ const familyTaskManager: LandingPageData = {
 const sharedTaskList: LandingPageData = {
   slug: "shared-task-list",
   keyword: "Shared Task List",
-  metaTitle: "Shared task list | Noa",
+  metaTitle: "Shared task list for families — assign and track | Noa",
   metaDescription:
-    "Keep your family on the same page with Noa's shared task list. Assign tasks, set reminders, and manage via WhatsApp.",
+    "Keep your family on the same page with Noa's shared task list. Assign tasks to family members, set automatic reminders, and manage everything via WhatsApp.",
   heroHeadline: "A shared task list the whole family can rely on",
   heroSubheadline:
     "Stop losing track of who's doing what. Noa's shared task list keeps everyone aligned — and you can manage it all from WhatsApp.",
@@ -352,9 +352,9 @@ const sharedTaskList: LandingPageData = {
 const assignTasksFamily: LandingPageData = {
   slug: "assign-tasks-family",
   keyword: "Assign Tasks to Family Members",
-  metaTitle: "Assign tasks to family members | Noa",
+  metaTitle: "Assign tasks to family members — automatic reminders | Noa",
   metaDescription:
-    "Easily assign tasks to family members with Noa. Track progress, send reminders, and manage everything via WhatsApp.",
+    "Assign tasks to family members with Noa and let the app handle reminders. Track progress, see what's done, and manage everything via WhatsApp.",
   heroHeadline: "Assign tasks to family members, effortlessly",
   heroSubheadline:
     "Create a task, pick a family member, and let Noa handle the reminders. You can even assign tasks through WhatsApp.",
@@ -416,9 +416,9 @@ const assignTasksFamily: LandingPageData = {
 const familyShoppingList: LandingPageData = {
   slug: "family-shopping-list",
   keyword: "Family Shopping List",
-  metaTitle: "Family shopping list app | Noa",
+  metaTitle: "Family shopping list app — shared and synced | Noa",
   metaDescription:
-    "Noa's family shopping list syncs instantly for everyone. Add items via WhatsApp and never forget the milk again.",
+    "Noa's family shopping list syncs instantly for everyone. Add items via WhatsApp, check them off in the shop, and never forget what you need.",
   heroHeadline: "The family shopping list that stays up to date",
   heroSubheadline:
     "A shopping list the whole family can add to — from the app or WhatsApp. Real-time sync means everyone sees the latest version.",
@@ -476,9 +476,9 @@ const familyShoppingList: LandingPageData = {
 const sharedListApp: LandingPageData = {
   slug: "shared-list-app",
   keyword: "Shared List App",
-  metaTitle: "Shared list app | Noa",
+  metaTitle: "Shared list app for families — real-time sync | Noa",
   metaDescription:
-    "Noa is the shared list app for families. Real-time sync, WhatsApp access, and beautifully simple design.",
+    "Noa is the shared list app for families. Create shopping lists, packing lists, and more — all synced in real time and manageable from WhatsApp.",
   heroHeadline: "The shared list app for families who want less chaos",
   heroSubheadline:
     "Shopping lists, to-do lists, packing lists — all shared, synced, and accessible from WhatsApp. Noa makes household lists effortless.",
@@ -536,9 +536,9 @@ const sharedListApp: LandingPageData = {
 const familyListApp: LandingPageData = {
   slug: "family-list-app",
   keyword: "Family List App",
-  metaTitle: "Family list app | Noa",
+  metaTitle: "Family list app — shopping, packing and more | Noa",
   metaDescription:
-    "Noa is the family list app that keeps your household organised. Shared lists, real-time sync, and WhatsApp access.",
+    "Noa is the family list app that keeps your household organised. Shared shopping lists, packing lists, and to-do lists — all synced via WhatsApp.",
   heroHeadline: "A family list app for everything you need to track",
   heroSubheadline:
     "From weekly shopping to holiday packing, Noa keeps your family's lists organised, shared, and always up to date.",
@@ -600,9 +600,9 @@ const familyListApp: LandingPageData = {
 const coziAlternative: LandingPageData = {
   slug: "cozi-alternative",
   keyword: "Cozi Alternative",
-  metaTitle: "Cozi alternative | Noa",
+  metaTitle: "Best Cozi alternative for modern family organisation | Noa",
   metaDescription:
-    "Looking for a Cozi alternative? Noa combines calendar, tasks, and lists with WhatsApp integration for modern families.",
+    "Looking for a Cozi alternative? Noa combines a shared family calendar, task manager, and lists with WhatsApp integration — all in one modern app.",
   heroHeadline: "Looking for a Cozi alternative? Meet Noa.",
   heroSubheadline:
     "Noa is a modern family organiser that combines a shared calendar, task manager, and lists — with the simplicity of WhatsApp.",
@@ -660,9 +660,9 @@ const coziAlternative: LandingPageData = {
 const googleCalendarAlternative: LandingPageData = {
   slug: "google-calendar-alternative",
   keyword: "Google Calendar Alternative",
-  metaTitle: "Google Calendar alternative | Noa",
+  metaTitle: "Google Calendar alternative for family scheduling | Noa",
   metaDescription:
-    "Noa is a Google Calendar alternative built for families. Shared calendar, tasks, lists, and WhatsApp — all in one app.",
+    "Noa is a Google Calendar alternative built for families. Shared calendar, task management, household lists, and WhatsApp integration — all in one app.",
   heroHeadline: "A Google Calendar alternative built for families",
   heroSubheadline:
     "Google Calendar is great for work. Noa is built for home — combining a shared calendar, tasks, and lists with WhatsApp integration.",
@@ -718,6 +718,254 @@ const googleCalendarAlternative: LandingPageData = {
 };
 
 // ---------------------------------------------------------------------------
+// FEATURE PAGES
+// ---------------------------------------------------------------------------
+
+const featureSharedFamilyCalendar: LandingPageData = {
+  slug: "features/shared-family-calendar",
+  keyword: "Shared Family Calendar",
+  metaTitle: "Shared family calendar — colour-coded and synced | Noa",
+  metaDescription:
+    "Noa's shared family calendar keeps everyone's schedules visible in one colour-coded view. Sync existing calendars and add events via WhatsApp.",
+  heroHeadline: "Shared family calendar for busy households",
+  heroSubheadline:
+    "See every family member's schedule in one calm, colour-coded calendar. Sync your existing calendars, add events by messaging WhatsApp, and keep the whole household in the loop.",
+  heroImage: "/images/calendar.png",
+  features: [
+    {
+      iconName: "Calendar",
+      title: "Colour-coded family view",
+      description:
+        "Each person gets their own colour. Glance at the week and instantly see who's busy, who's free, and where there's a clash.",
+    },
+    {
+      iconName: "RefreshCw",
+      title: "Sync existing calendars",
+      description:
+        "Connect Apple Calendar and Google Calendar so work diaries, school schedules, and social plans all appear automatically.",
+    },
+    {
+      iconName: "MessageCircle",
+      title: "Add events from WhatsApp",
+      description:
+        "Message Noa something like \"dentist for Lily on Thursday at 3\" and the event is created and shared instantly.",
+    },
+  ],
+  contentSections: [
+    {
+      heading: "One calendar the whole family can see",
+      paragraphs: [
+        "Most households juggle separate calendars on separate phones. One parent knows about the school play, the other has the dentist appointment, and no one is quite sure who's picking up the kids on Friday. A shared family calendar fixes this by putting every event in one place, visible to everyone.",
+        "Noa's shared family calendar is designed for exactly this. Events are colour-coded by family member, so you can scan the week at a glance. Connect your existing Apple or Google calendars and everything syncs automatically — no manual copying, no duplication.",
+      ],
+    },
+    {
+      heading: "Add events without opening the app",
+      paragraphs: [
+        "The fastest way to add to your shared family calendar is through WhatsApp. Message Noa with something like \"football practice every Tuesday at 4pm\" and the recurring event is created instantly. Move appointments, check your schedule for the week, or ask what's coming up tomorrow — all from a chat.",
+        "This natural language approach means managing your calendar happens in the flow of life. While cooking dinner, on the school run, or during a work break — just send a message and it's done.",
+      ],
+    },
+    {
+      heading: "Connected to tasks and lists",
+      paragraphs: [
+        "Noa goes beyond a standalone calendar. Your shared family calendar connects with task lists and shopping lists, so \"buy a birthday present\" lives alongside the party on Saturday. Smart reminders make sure nothing sneaks up on you, and everyone stays aligned without a single nagging text.",
+        "This joined-up approach means your calendar, tasks, and lists all live in one app instead of three. Whether you prefer tapping through the app or sending a quick WhatsApp message, your whole household stays on the same page.",
+      ],
+    },
+  ],
+  internalLinks: [
+    { href: "/features/tasks", label: "Family task management" },
+    { href: "/features/shared-lists", label: "Shared family lists" },
+    { href: "/features/whatsapp-assistant", label: "WhatsApp assistant" },
+    { href: "/family-calendar-app", label: "Family calendar app" },
+  ],
+};
+
+const featureTasks: LandingPageData = {
+  slug: "features/tasks",
+  keyword: "Family Task Management",
+  metaTitle: "Family task management — assign, remind, done | Noa",
+  metaDescription:
+    "Assign tasks to family members, set automatic reminders, and track what's done — all from one app or via WhatsApp. Household task management, simplified.",
+  heroHeadline: "Family task management made simple",
+  heroSubheadline:
+    "Create tasks, assign them to the right person, and let Noa handle the reminders. Manage everything from the app or just message WhatsApp.",
+  heroImage: "/images/tasks.png",
+  features: [
+    {
+      iconName: "CheckSquare",
+      title: "Assign tasks to anyone",
+      description:
+        "Tap to assign a task to a specific family member. They see it on their list immediately and get a reminder when it's due.",
+    },
+    {
+      iconName: "Bell",
+      title: "Automatic reminders",
+      description:
+        "Noa nudges family members when tasks are due or overdue. No more nagging — the app does it for you.",
+    },
+    {
+      iconName: "MessageCircle",
+      title: "Manage tasks from WhatsApp",
+      description:
+        "Say \"remind Jake to take out the bins on Tuesday\" and Noa creates the task, assigns it, and sets the reminder.",
+    },
+  ],
+  contentSections: [
+    {
+      heading: "Get the invisible to-do list out of your head",
+      paragraphs: [
+        "Every household has an invisible to-do list. Book the car service. Order school uniform. Cancel that subscription. These tasks float around in someone's head — usually one parent's — and that's neither fair nor sustainable. Family task management with Noa puts everything in the open.",
+        "When tasks are visible, shared, and assigned, the mental load gets distributed. Everyone can see what needs doing, who's responsible, and what's already been ticked off. It's a small change that makes a big difference to how your household runs.",
+      ],
+    },
+    {
+      heading: "Assign tasks without the awkward chase",
+      paragraphs: [
+        "With Noa you can assign tasks to specific family members with a tap — or by messaging WhatsApp. The app sends gentle reminders automatically so you don't have to be the one chasing. Everyone sees their own task list, marks things complete as they go, and the whole family stays on track.",
+        "You can also create tasks through natural language. Message Noa \"ask Mum to book the dentist this week\" and the task is created, assigned, and dated — all from a single message.",
+      ],
+    },
+    {
+      heading: "Tasks that connect to your calendar and lists",
+      paragraphs: [
+        "Noa's task management doesn't exist in isolation. Tasks with dates appear on your shared family calendar. Tasks that require buying something link naturally to your shopping list. Everything works together in one calm, connected app — and it's all accessible from WhatsApp.",
+        "Instead of switching between a calendar app, a to-do app, and a shopping list app, your family gets one place for everything. Fewer apps, less friction, and a household that actually runs smoothly.",
+      ],
+    },
+  ],
+  internalLinks: [
+    { href: "/features/shared-family-calendar", label: "Shared family calendar" },
+    { href: "/features/shared-lists", label: "Shared family lists" },
+    { href: "/features/whatsapp-assistant", label: "WhatsApp assistant" },
+    { href: "/family-task-manager", label: "Family task manager" },
+  ],
+};
+
+const featureSharedLists: LandingPageData = {
+  slug: "features/shared-lists",
+  keyword: "Shared Family Lists",
+  metaTitle: "Shared family lists — real-time sync via WhatsApp | Noa",
+  metaDescription:
+    "Create and share shopping lists, packing lists, and household lists with your family. Real-time sync, WhatsApp access, and beautifully simple design.",
+  heroHeadline: "Shared lists your whole family can edit",
+  heroSubheadline:
+    "Shopping lists, packing lists, gift ideas — all shared, synced in real time, and accessible from WhatsApp. No more forgotten items or duplicate purchases.",
+  heroImage: "/images/lists.png",
+  features: [
+    {
+      iconName: "ListChecks",
+      title: "Lists for everything",
+      description:
+        "Weekly shopping, holiday packing, Christmas gifts, household repairs — create as many shared lists as your family needs.",
+    },
+    {
+      iconName: "RefreshCw",
+      title: "Real-time sync",
+      description:
+        "Add an item on your phone and your partner sees it instantly. Check it off in the shop and it's gone for everyone.",
+    },
+    {
+      iconName: "MessageCircle",
+      title: "Add items via WhatsApp",
+      description:
+        "Message Noa \"add oat milk and bananas to the shopping list\" and the items appear on the shared list immediately.",
+    },
+  ],
+  contentSections: [
+    {
+      heading: "One source of truth for every list",
+      paragraphs: [
+        "Paper lists get left at home. Notes apps don't sync between partners. Group chats get buried. A shared family list solves all of this by giving everyone access to the same list, updated in real time. When someone adds \"birthday candles\" to the shopping list, the whole household sees it immediately.",
+        "Noa lets you create unlimited shared lists — shopping, packing, gift ideas, home repairs, meal plans — and every list syncs instantly across the family. No screenshots, no forwarded messages, just one reliable source of truth.",
+      ],
+    },
+    {
+      heading: "Add items the moment you think of them",
+      paragraphs: [
+        "The best time to add something to a list is the moment it crosses your mind. With Noa's WhatsApp integration, you can do exactly that. Message \"add sunscreen to the holiday packing list\" and it's done. No app to open, no fields to fill in — just a quick message.",
+        "This means your shared lists stay genuinely up to date. Items get captured in the moment, not when you remember to open an app later. It's the most natural way to keep household lists current.",
+      ],
+    },
+    {
+      heading: "Part of a bigger picture",
+      paragraphs: [
+        "Noa's shared lists connect naturally with your family calendar and task manager. A task can link to a shopping list. A calendar event can prompt a packing list. Your household runs more smoothly when everything lives in one beautifully designed app.",
+        "And because everything is accessible from WhatsApp, your family doesn't need to learn a new app or change their habits. Just send a message and Noa takes care of the rest — whether it's adding to a list, creating a task, or checking the schedule.",
+      ],
+    },
+  ],
+  internalLinks: [
+    { href: "/features/shared-family-calendar", label: "Shared family calendar" },
+    { href: "/features/tasks", label: "Family task management" },
+    { href: "/features/whatsapp-assistant", label: "WhatsApp assistant" },
+    { href: "/family-shopping-list", label: "Family shopping list" },
+  ],
+};
+
+const featureWhatsAppAssistant: LandingPageData = {
+  slug: "features/whatsapp-assistant",
+  keyword: "WhatsApp Family Assistant",
+  metaTitle: "WhatsApp family assistant for calendar and tasks | Noa",
+  metaDescription:
+    "Manage your family calendar, tasks, and lists by messaging Noa on WhatsApp. Add events, assign tasks, and update lists using natural language.",
+  heroHeadline: "Manage your family life from WhatsApp",
+  heroSubheadline:
+    "Add calendar events, create tasks, and update shopping lists just by sending a message. Noa's WhatsApp assistant understands natural language and acts instantly.",
+  heroImage: "/images/calendar.png",
+  features: [
+    {
+      iconName: "MessageCircle",
+      title: "Natural language input",
+      description:
+        "Type the way you normally would — \"swimming moved to 5pm Thursday\" — and Noa understands and updates your calendar.",
+    },
+    {
+      iconName: "Zap",
+      title: "Instant actions",
+      description:
+        "Events are created, tasks assigned, and list items added the moment you send the message. No confirmation screens or extra steps.",
+    },
+    {
+      iconName: "Users",
+      title: "Works for the whole family",
+      description:
+        "Every family member can message Noa directly. Changes sync across the household in real time.",
+    },
+  ],
+  contentSections: [
+    {
+      heading: "Your family organiser, inside WhatsApp",
+      paragraphs: [
+        "Opening an app, navigating menus, and filling in form fields takes time you don't have. Noa's WhatsApp assistant lets you skip all of that. Send a message like \"dentist for Lily on Thursday at 3\" and the event appears on your shared family calendar instantly. Ask \"what's happening this weekend?\" and Noa replies with your schedule.",
+        "It works for tasks and lists too. \"Remind Dad to book the car service\" creates an assigned task with a reminder. \"Add bread and milk to the shopping list\" updates your shared list in real time. Everything you can do in the app, you can do from WhatsApp.",
+      ],
+    },
+    {
+      heading: "No learning curve, no new habits",
+      paragraphs: [
+        "The reason Noa works through WhatsApp is simple: your family already uses it. There's no new app to learn, no passwords to remember, and no notifications to configure. You message Noa the same way you'd message a partner or friend — in plain, natural language.",
+        "This is especially powerful for family members who don't love apps. A grandparent, a teenager, or a partner who never opens the calendar can all contribute just by sending a text. Everyone stays in the loop without changing their habits.",
+      ],
+    },
+    {
+      heading: "Connected to everything in Noa",
+      paragraphs: [
+        "The WhatsApp assistant isn't a separate product — it's a window into your full Noa setup. Calendar events, task assignments, list updates, and reminders all flow through the same system. Whether you use the app or WhatsApp, your family sees the same information, always in sync.",
+        "This means there's no trade-off between convenience and completeness. The WhatsApp assistant gives you full access to your shared family calendar, task lists, and shopping lists — all from a chat you already check every day.",
+      ],
+    },
+  ],
+  internalLinks: [
+    { href: "/features/shared-family-calendar", label: "Shared family calendar" },
+    { href: "/features/tasks", label: "Family task management" },
+    { href: "/features/shared-lists", label: "Shared family lists" },
+    { href: "/shared-calendar-app", label: "Shared calendar app" },
+  ],
+};
+
+// ---------------------------------------------------------------------------
 // EXPORTS
 // ---------------------------------------------------------------------------
 
@@ -735,8 +983,18 @@ export const landingPages: LandingPageData[] = [
   googleCalendarAlternative,
 ];
 
+export const featurePages: LandingPageData[] = [
+  featureSharedFamilyCalendar,
+  featureTasks,
+  featureSharedLists,
+  featureWhatsAppAssistant,
+];
+
 export function getLandingPageBySlug(
   slug: string,
 ): LandingPageData | undefined {
-  return landingPages.find((p) => p.slug === slug);
+  return (
+    landingPages.find((p) => p.slug === slug) ??
+    featurePages.find((p) => p.slug === slug)
+  );
 }

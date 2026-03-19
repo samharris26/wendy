@@ -5,9 +5,16 @@ import { getAllPosts } from "@/lib/blog";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog | Noa",
+  title: "Blog — family organisation tips, guides and ideas | Noa",
   description:
-    "Tips, guides and insights on family productivity, calendar management, and getting organised.",
+    "Tips, guides, and insights on family productivity, shared calendar management, household task organisation, and getting your busy family life in order with Noa.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "Blog — family organisation tips, guides and ideas | Noa",
+    description:
+      "Tips, guides, and insights on family productivity, shared calendar management, household task organisation, and getting your busy family life in order with Noa.",
+    type: "website",
+  },
 };
 
 export default function BlogPage() {

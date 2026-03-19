@@ -7,6 +7,7 @@ const data = getLandingPageBySlug("family-task-manager")!;
 export const metadata: Metadata = {
   title: data.metaTitle,
   description: data.metaDescription,
+  alternates: { canonical: `/${data.slug}` },
   openGraph: {
     title: data.metaTitle,
     description: data.metaDescription,

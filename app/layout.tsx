@@ -42,14 +42,14 @@ const cormorantGaramond = Cormorant_Garamond({
 const siteUrl = "https://www.asknoa.app";
 
 export const metadata: Metadata = {
-  title: "Noa | Your Life, Organised",
+  title: "Noa — family organiser app for calendar, tasks and lists",
   description:
-    "Calendars, tasks, lists and reminders — all in one calm, beautifully designed app. Add things instantly or just ask Noa on WhatsApp.",
+    "Noa is the family organiser app that brings calendars, tasks, lists, and reminders into one calm, beautifully designed app. Manage everything via WhatsApp.",
   metadataBase: new URL(siteUrl),
   openGraph: {
-    title: "Noa | Your Life, Organised",
+    title: "Noa — family organiser app for calendar, tasks and lists",
     description:
-      "Calendars, tasks, lists and reminders — all in one calm, beautifully designed app.",
+      "Noa is the family organiser app that brings calendars, tasks, lists, and reminders into one calm, beautifully designed app.",
     url: siteUrl,
     siteName: "Noa",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Noa — Your life, organised" }],
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Noa | Your Life, Organised",
+    title: "Noa — family organiser app for calendar, tasks and lists",
     description:
-      "Calendars, tasks, lists and reminders — all in one calm, beautifully designed app.",
+      "Noa is the family organiser app that brings calendars, tasks, lists, and reminders into one calm, beautifully designed app.",
     images: ["/og.png"],
   },
   verification: {

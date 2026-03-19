@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { LandingPage } from "@/components/LandingPage";
 import { getLandingPageBySlug } from "@/lib/landing-pages";
 
-const data = getLandingPageBySlug("family-list-app")!;
+const data = getLandingPageBySlug("features/whatsapp-assistant")!;
 
 export const metadata: Metadata = {
   title: data.metaTitle,
   description: data.metaDescription,
-  alternates: { canonical: `/${data.slug}` },
+  alternates: { canonical: "/features/whatsapp-assistant" },
   openGraph: {
     title: data.metaTitle,
     description: data.metaDescription,

@@ -19,17 +19,67 @@ export function Footer() {
         </div>
       </div>
 
+      {/* Link columns */}
+      <div className="mx-auto mt-12 grid w-full max-w-6xl grid-cols-2 gap-8 border-b border-primaryText/10 pb-12 sm:grid-cols-3 md:grid-cols-4">
+        <div>
+          <p className="mb-4 font-mono text-xs font-medium uppercase tracking-widest text-primaryText">
+            Features
+          </p>
+          <ul className="space-y-3 text-sm text-secondaryText">
+            <li>
+              <Link href="/features/shared-family-calendar" className="transition-colors hover:text-primaryText">
+                Shared family calendar
+              </Link>
+            </li>
+            <li>
+              <Link href="/features/tasks" className="transition-colors hover:text-primaryText">
+                Tasks
+              </Link>
+            </li>
+            <li>
+              <Link href="/features/shared-lists" className="transition-colors hover:text-primaryText">
+                Shared lists
+              </Link>
+            </li>
+            <li>
+              <Link href="/features/whatsapp-assistant" className="transition-colors hover:text-primaryText">
+                WhatsApp assistant
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p className="mb-4 font-mono text-xs font-medium uppercase tracking-widest text-primaryText">
+            Company
+          </p>
+          <ul className="space-y-3 text-sm text-secondaryText">
+            <li>
+              <Link href="/blog" className="transition-colors hover:text-primaryText">
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link href="/privacy" className="transition-colors hover:text-primaryText">
+                Privacy policy
+              </Link>
+            </li>
+            <li>
+              <Link href="/terms" className="transition-colors hover:text-primaryText">
+                Terms of service
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       {/* Bottom */}
-      <div className="mx-auto mt-10 flex w-full max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
+      <div className="mx-auto mt-8 flex w-full max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
         <div className="flex items-center gap-2 font-mono text-xs text-secondaryText">
           <span className="system-dot inline-block h-2.5 w-2.5 rounded-full bg-success" aria-hidden />
           <span>System Operational</span>
         </div>
 
-        <div className="flex gap-8 font-mono text-xs text-secondaryText">
-          <Link href="/blog" className="transition-colors hover:text-primaryText">Blog</Link>
-          <Link href="/privacy" className="transition-colors hover:text-primaryText">Privacy</Link>
-          <Link href="/terms" className="transition-colors hover:text-primaryText">Terms</Link>
+        <div className="font-mono text-xs text-secondaryText">
           <span>&copy; {new Date().getFullYear()} Noa.</span>
         </div>
       </div>

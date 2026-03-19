@@ -20,6 +20,12 @@ export function Hero() {
             Calendars, tasks, lists and reminders — all in one calm, beautifully
             designed app. Add things instantly or just ask Noa on WhatsApp.
           </p>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-secondaryText lg:mx-0">
+            Noa is the household organisation app that brings your shared family
+            calendar, family task management, and shopping lists together in one
+            place. Sync Apple and Google Calendar, assign tasks to family members,
+            and manage it all through natural language on WhatsApp.
+          </p>
 
           <div className="mt-10 flex justify-center lg:justify-start">
             <WaitlistForm />

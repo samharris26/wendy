@@ -1,7 +1,16 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Privacy Policy | Noa",
+  title: "Privacy policy — how Noa protects your family's data",
+  description:
+    "Learn how Noa collects, uses, and protects your personal data. Covers calendar, task, and list data, WhatsApp messages, and your rights under UK GDPR.",
+  alternates: { canonical: "/privacy" },
+  openGraph: {
+    title: "Privacy policy — how Noa protects your family's data",
+    description:
+      "Learn how Noa collects, uses, and protects your personal data. Covers calendar, task, and list data, WhatsApp messages, and your rights under UK GDPR.",
+    type: "website",
+  },
 };
 
 export default function PrivacyPage() {
