@@ -113,23 +113,45 @@ export default function TermsPage() {
               </h2>
               <ul className="list-disc space-y-2 pl-5">
                 <li>
-                  Noa offers a free tier and paid subscription plans (Single and
-                  Household). Pricing is displayed on our website and within the
-                  app.
+                  Noa offers a free tier and paid auto-renewable subscription
+                  plans: <strong>Single</strong> (&pound;5.99/month or
+                  &pound;29.99/year) and <strong>Household</strong>{" "}
+                  (&pound;12.99/month or &pound;44.99/year). Pricing is
+                  displayed on our website and within the app.
                 </li>
                 <li>
-                  Paid subscriptions are billed monthly. You authorise us to
-                  charge your chosen payment method on a recurring basis.
+                  Payment is charged to your Apple ID account at confirmation
+                  of purchase. Subscriptions automatically renew unless
+                  cancelled at least 24 hours before the end of the current
+                  billing period.
                 </li>
                 <li>
-                  You may cancel your subscription at any time. Cancellation
-                  takes effect at the end of the current billing period. No
-                  partial refunds are provided for the remaining period.
+                  Your account will be charged for renewal within 24 hours
+                  prior to the end of the current period at the same price.
+                </li>
+                <li>
+                  You may manage or cancel your subscription at any time by
+                  going to your device Settings &rarr; Apple ID &rarr;
+                  Subscriptions. Cancellation takes effect at the end of the
+                  current billing period. No partial refunds are provided for
+                  the remaining period.
                 </li>
                 <li>
                   We may change pricing with at least 30 days&apos; notice. If
                   you do not agree to a price change you may cancel before the
                   new price takes effect.
+                </li>
+                <li>
+                  Use of the App Store is subject to the{" "}
+                  <a
+                    href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent underline"
+                  >
+                    Apple Standard EULA
+                  </a>
+                  .
                 </li>
               </ul>
             </section>
