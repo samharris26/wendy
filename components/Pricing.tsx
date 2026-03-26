@@ -7,6 +7,7 @@ const plans = [
     name: "Free",
     price: "£0",
     period: "",
+    annual: "",
     tagline: "Try Noa for yourself.",
     cta: "Start Free",
     highlight: false,
@@ -20,8 +21,9 @@ const plans = [
   },
   {
     name: "Single",
-    price: "£6.99",
+    price: "£5.99",
     period: "/mo",
+    annual: "£29.99/yr — save over 50%",
     tagline: "Your life, organised.",
     cta: "Upgrade to Single",
     highlight: false,
@@ -36,8 +38,9 @@ const plans = [
   },
   {
     name: "Household",
-    price: "£14.99",
+    price: "£12.99",
     period: "/mo",
+    annual: "£44.99/yr — save over 70%",
     tagline: "Run your life together.",
     cta: "Start Household Plan",
     highlight: true,
@@ -96,12 +99,17 @@ export function Pricing() {
                 <p className="mt-1 text-sm text-secondaryText">{plan.tagline}</p>
               </div>
 
-              <div className="mb-6 flex items-baseline gap-1">
-                <span className="text-4xl font-bold tracking-tight text-primaryText">
-                  {plan.price}
-                </span>
-                {plan.period && (
-                  <span className="text-sm text-secondaryText">{plan.period}</span>
+              <div className="mb-6">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-4xl font-bold tracking-tight text-primaryText">
+                    {plan.price}
+                  </span>
+                  {plan.period && (
+                    <span className="text-sm text-secondaryText">{plan.period}</span>
+                  )}
+                </div>
+                {"annual" in plan && plan.annual && (
+                  <p className="mt-1.5 text-xs font-medium text-accent">{plan.annual}</p>
                 )}
               </div>
 
