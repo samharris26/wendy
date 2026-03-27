@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { WaitlistForm } from "./WaitlistForm";
+import { AppStoreButton } from "./AppStoreButton";
 
 const FLOATING_CHIPS = [
   { label: "Milk added to shopping", icon: "🛒", delay: 0 },
@@ -122,7 +122,7 @@ export function Hero() {
               transitionDelay: "640ms",
             }}
           >
-            <WaitlistForm />
+            <AppStoreButton />
           </div>
         </div>
 

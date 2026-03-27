@@ -1,6 +1,7 @@
-"use client";
-
 import { Check } from "lucide-react";
+
+const APP_STORE_URL =
+  "https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752";
 
 const plans = [
   {
@@ -57,10 +58,6 @@ const plans = [
 
 
 export function Pricing() {
-  const scrollToWaitlist = () => {
-    document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section id="pricing" className="px-6 py-20 lg:px-10">
       <div className="mx-auto w-full max-w-6xl">
@@ -122,16 +119,18 @@ export function Pricing() {
                 ))}
               </ul>
 
-              <button
-                onClick={scrollToWaitlist}
-                className={`w-full rounded-xl px-4 py-3 text-sm font-semibold transition-colors ${
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`block w-full rounded-xl px-4 py-3 text-center text-sm font-semibold transition-colors ${
                   plan.highlight
                     ? "bg-accent text-white hover:bg-accent/90"
                     : "bg-primaryText text-white hover:bg-[#0b223d]"
                 }`}
               >
                 {plan.cta}
-              </button>
+              </a>
             </article>
           ))}
         </div>

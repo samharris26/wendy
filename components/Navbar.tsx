@@ -19,10 +19,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToWaitlist = () => {
-    document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <header
       className={`sticky top-0 z-50 border-b transition-colors duration-150 ${
@@ -49,12 +45,14 @@ export function Navbar() {
           ))}
         </ul>
 
-        <button
-          onClick={scrollToWaitlist}
+        <a
+          href="https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752"
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-xl bg-primaryText px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#0b223d]"
         >
-          Join Waitlist
-        </button>
+          Download
+        </a>
       </nav>
     </header>
   );

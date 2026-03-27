@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import { WaitlistForm } from "./WaitlistForm";
+import { AppStoreButton } from "./AppStoreButton";
 import type { LandingPageData, IconName } from "@/lib/landing-pages";
 
 const iconMap: Record<IconName, React.ComponentType<{ className?: string }>> = {
@@ -58,7 +58,7 @@ export function LandingPage({ data }: { data: LandingPageData }) {
               {data.heroSubheadline}
             </p>
             <div className="mt-10 flex justify-center lg:justify-start">
-              <WaitlistForm />
+              <AppStoreButton />
             </div>
           </div>
 

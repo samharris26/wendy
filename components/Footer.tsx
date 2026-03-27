@@ -1,22 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { WaitlistForm } from "./WaitlistForm";
+import { AppStoreButton } from "./AppStoreButton";
 
 export function Footer() {
   return (
     <footer className="border-t border-primaryText/10 bg-background px-6 pb-12 pt-20 lg:px-10">
-      {/* Top — Waitlist CTA */}
-      <div id="waitlist" className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-12 border-b border-primaryText/10 pb-16 md:flex-row md:items-end">
+      {/* Top — Download CTA */}
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-12 border-b border-primaryText/10 pb-16 md:flex-row md:items-center">
         <div className="max-w-lg">
           <p className="text-3xl font-bold tracking-tight text-primaryText md:text-4xl">Noa</p>
           <p className="mt-4 text-lg leading-relaxed text-secondaryText">
             Your life, organised. Calendars, tasks, lists and reminders — beautifully designed for iOS.
           </p>
         </div>
-        <div className="w-full md:w-[400px]">
-          <WaitlistForm variant="compact" />
-        </div>
+        <AppStoreButton />
       </div>
 
       {/* Link columns */}
