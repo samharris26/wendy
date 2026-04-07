@@ -2,7 +2,8 @@
 title: "Digital vs Paper Planning Systems for Families: Finding the Perfect Balance"
 date: "2026-03-26"
 description: "There's no denying the satisfaction many find in writing things by hand. Paper planners have a tactile appeal that digital options simply can't replicate...."
-tags: ["productivity", "family", "organisation", "technology"]
+author: "The Noa Team"
+tags: ["digital-planning", "paper-planners", "family", "technology"]
 ---
 
 ## The Tangible Appeal of Paper Planners
@@ -25,7 +26,7 @@ Enter the world of digital planners, where convenience meets versatility. Many f
 
 - **Instant Updates**: Digital planners shine in their ability to make quick adjustments. Updates sync across all your devices, ensuring everyone in the family is on the same page instantly. This can be a lifesaver when plans change at the drop of a hat.
 
-- **Integration and Automation**: Apps like [Noa](https://www.asknoa.app) offer integrations with tools your family might already be using, such as WhatsApp. This means you can automate reminders and integrate family conversations directly into your planning process, enhancing efficiency.
+- **Integration and Automation**: Apps like [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) offer integrations with tools your family might already be using, such as WhatsApp. This means you can automate reminders and integrate family conversations directly into your planning process, enhancing efficiency.
 
 - **Searchability**: The ease of locating information with a quick search function cannot be overstated. Whether it’s finding last week’s homework assignment or looking up a friend’s birthday, digital planners make it easy.
 
@@ -33,7 +34,7 @@ Despite these advantages, some people find digital planners overwhelming due to 
 
 ## Combining the Best of Both Worlds
 
-For many families, the ideal planning system lies somewhere in between the nostalgia of paper and the functionality of digital. Luckily, a well-designed app like [Noa](https://www.asknoa.app) strives to bridge this gap, offering benefits that cater to both camps:
+For many families, the ideal planning system lies somewhere in between the nostalgia of paper and the functionality of digital. Luckily, a well-designed app like [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) strives to bridge this gap, offering benefits that cater to both camps:
 
 - **Customisability**: Noa allows you to customise your digital space just as you would a paper planner. From organising your tasks by colour to choosing layouts that suit your needs, customisability lets you personalise without sacrificing features.
 
@@ -57,4 +58,4 @@ Deciding between digital and paper isn't about picking sides—it's about assess
 
 Both paper and digital planning systems have unique benefits and potential downsides. However, Noa’s approach to family organisation integrates the best of digital's convenience with the personal touch of traditional methods. 
 
-Let your family find their balance; give Noa a try. With its seamless design and practical features, Noa could be the friendly assistant your family didn’t know they needed. Try it out: [Noa](https://www.asknoa.app).
+Let your family find their balance; give Noa a try. With its seamless design and practical features, Noa could be the friendly assistant your family didn’t know they needed. Try it out: [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752).

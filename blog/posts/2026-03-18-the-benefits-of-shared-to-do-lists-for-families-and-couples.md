@@ -2,7 +2,8 @@
 title: "The Benefits of Shared To-Do Lists for Families and Couples"
 date: "2026-03-18"
 description: "Shared to-do lists serve as an indispensable tool for modern families and couples, enabling effective delegation of tasks. In the hustle and bustle of dail..."
-tags: ["productivity", "family", "organisation"]
+author: "The Noa Team"
+tags: ["shared-lists", "family", "delegation", "productivity"]
 ---
 
 ## The Power of Delegation
@@ -45,4 +46,4 @@ Noa supports families in lightening the mental load by seamlessly integrating ta
 
 Embracing the simplicity and organisation of shared to-do lists can markedly benefit family dynamics and partner relationships. By facilitating effective delegation, fostering accountability, and significantly reducing mental load, shared lists help create a more harmonious and organised home environment.
 
-Noa is designed to integrate these elements effortlessly into your family life. If you're ready to enjoy a more organised household with less stress and more clarity, try [Noa](https://www.asknoa.app) today. Your path to simpler, more connected family living awaits.
+Noa is designed to integrate these elements effortlessly into your family life. If you're ready to enjoy a more organised household with less stress and more clarity, download [Noa from the App Store](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) today. Your path to simpler, more connected family living awaits.

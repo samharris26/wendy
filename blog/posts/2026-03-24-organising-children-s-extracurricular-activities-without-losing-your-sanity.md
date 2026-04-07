@@ -2,7 +2,8 @@
 title: "Organising Children's Extracurricular Activities Without Losing Your Sanity"
 date: "2026-03-24"
 description: "When juggling multiple extracurriculars, it's essential to have a clear overview of what's happening and when. One effective technique is calendar colour-c..."
-tags: ["productivity", "family", "organisation"]
+author: "The Noa Team"
+tags: ["extracurriculars", "kids-activities", "scheduling", "transport"]
 ---
 
 ## Mastering Calendar Colour-Coding
@@ -13,7 +14,7 @@ Here’s how you can implement this in your own calendar system:
 
 - **Choose Distinct Colours**: Select vibrant, varied colours for each of your children. You could choose blue for football practice, red for ballet, green for piano lessons, etc. This makes it easy to differentiate between activities when you look at your calendar.
 
-- **Digital Calendars**: Use digital calendars like Google Calendar, Apple Calendar, or [Noa](https://www.asknoa.app) to apply colour-coding. These platforms often allow for easy integration across devices and can sync between parents, ensuring everyone is on the same page.
+- **Digital Calendars**: Use digital calendars like Google Calendar, Apple Calendar, or [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) to apply colour-coding. These platforms often allow for easy integration across devices and can sync between parents, ensuring everyone is on the same page.
 
 - **Shared Family Calendar**: Having a shared family calendar with colour-coding can be particularly helpful. This way, you and your partner can coordinate drop-offs and pick-ups without the confusion of clashing schedules.
 
@@ -31,7 +32,7 @@ One of the trickiest parts of extracurricular activities is getting your little 
 
 - **Plan B**: Create a flexible backup plan should there be traffic issues or last-minute changes. For instance, a trusted neighbour or a taxi app could serve as an alternative means of transport when needed.
 
-- **Use Technology**: Apps like [Noa](https://www.asknoa.app) can help plan and map out routes, factor in real-time traffic updates, and remind you when it's time to leave, helping keep your day running smoothly.
+- **Use Technology**: Apps like [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) can help plan and map out routes, factor in real-time traffic updates, and remind you when it's time to leave, helping keep your day running smoothly.
 
 ## Harnessing Automated Reminders
 
@@ -41,7 +42,7 @@ Despite the best-laid plans, human memory can occasionally fail us, particularly
 
 - **Use Smart Devices**: Smart speakers and devices like Amazon Echo or Google Home can be configured to announce reminders out loud, making sure everyone in the house hears the alert.
 
-- **Task Lists**: Maintain digital task lists for preparations related to activities. Apps like [Noa](https://www.asknoa.app) allow you to create, share, and assign tasks related to specific events, ensuring that nothing slips through the cracks.
+- **Task Lists**: Maintain digital task lists for preparations related to activities. Apps like [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) allow you to create, share, and assign tasks related to specific events, ensuring that nothing slips through the cracks.
 
 - **Parent-Child Collaboration**: Get your children involved in setting up reminders, which can be a fun way to teach them about managing their schedules and responsibilities.
 
@@ -51,4 +52,4 @@ Despite the best-laid plans, human memory can occasionally fail us, particularly
 
 Balancing the whirlwind of children's extracurricular activities without succumbing to chaos is entirely possible with the right strategies. By employing calendar colour-coding for clarity, optimising transport logistics, and harnessing automated reminders, you can establish a system that keeps your family organised and stress at bay.
 
-If you're ready to streamline your family’s schedules and gain a little more sanity, why not give [Noa](https://www.asknoa.app) a try? It combines calendars, tasks, lists, and reminders in one beautifully designed app, complete with family-friendly features to keep everyone coordinated and informed.
+If you're ready to streamline your family’s schedules and gain a little more sanity, why not give [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) a try? It combines calendars, tasks, lists, and reminders in one beautifully designed app, complete with family-friendly features to keep everyone coordinated and informed.

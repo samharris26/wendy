@@ -2,7 +2,8 @@
 title: "Creative Ways to Use WhatsApp for Family Organisation"
 date: "2026-03-21"
 description: "Keeping a family organised can often feel like juggling a variety of different priorities. WhatsApp, with its widespread use and intuitive interface, offer..."
-tags: ["productivity", "family", "organisation", "technology"]
+author: "The Noa Team"
+tags: ["whatsapp", "family-chat", "organisation", "technology"]
 ---
 
 ## Seamless Family Communication
@@ -59,4 +60,4 @@ By consciously integrating these practices, your family can leverage WhatsApp as
 
 ## Try Noa for a Seamless Experience
 
-When it comes to turning WhatsApp into a hub for family organisation, adding Noa's AI capabilities can significantly enhance your experience. Why not give it a try and see how seamless organising tasks, schedules, and reminders can be? [Noa](https://www.asknoa.app) offers an innovative way to keep everything in one place, reducing the chaos and giving your family more time to enjoy the important things in life.
+When it comes to turning WhatsApp into a hub for family organisation, adding Noa's AI capabilities can significantly enhance your experience. Why not give it a try and see how seamless organising tasks, schedules, and reminders can be? [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) offers an innovative way to keep everything in one place, reducing the chaos and giving your family more time to enjoy the important things in life.

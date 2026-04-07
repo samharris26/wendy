@@ -2,7 +2,8 @@
 title: "How to Conduct a Successful Weekly Family Planning Session"
 date: "2026-03-22"
 description: "Gathering everyone for a family planning session each week might seem like a daunting task, but with a little organisation, it can become a cornerstone of..."
-tags: ["productivity", "family", "organisation", "calendar"]
+author: "The Noa Team"
+tags: ["weekly-planning", "family-meetings", "meal-planning", "organisation"]
 ---
 
 ## Setting Up for Success
@@ -15,7 +16,7 @@ The first step to making your family planning session a habit is to choose a reg
 
 ### Gather the Right Tools
 
-To ensure smooth sailing, gather tools that can aid your planning. Consider a large whiteboard or a pinboard where you can post notes and reminders for all to see. Equally important is a shared digital platform where you can track everyone's schedules and lists on the go. The [Noa](https://www.asknoa.app) app is perfect for this, as it combines calendars, tasks, lists, and reminders, making it easier to keep everyone on the same page, anywhere and anytime.
+To ensure smooth sailing, gather tools that can aid your planning. Consider a large whiteboard or a pinboard where you can post notes and reminders for all to see. Equally important is a shared digital platform where you can track everyone's schedules and lists on the go. The [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) app is perfect for this, as it combines calendars, tasks, lists, and reminders, making it easier to keep everyone on the same page, anywhere and anytime.
 
 ## Setting the Agenda
 
@@ -96,4 +97,4 @@ Encourage ongoing feedback to refine these sessions. Establish a platform for ev
 
 ## Call-to-Action
 
-These weekly family planning sessions can transform how you navigate the week, reducing stress and fostering a harmonious home environment. To bring more cohesion and efficiency to your family's planning process, try [Noa](https://www.asknoa.app). With its seamless integration of calendars, tasks, and reminders, it's the perfect tool to enhance your family organisation game. Download Noa today, and take the first step towards a more organised and joyful family life.
+These weekly family planning sessions can transform how you navigate the week, reducing stress and fostering a harmonious home environment. To bring more cohesion and efficiency to your family's planning process, try [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752). With its seamless integration of calendars, tasks, and reminders, it's the perfect tool to enhance your family organisation game. Download Noa today, and take the first step towards a more organised and joyful family life.

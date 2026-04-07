@@ -2,7 +2,8 @@
 title: "Redistributing the Mental Load in Family Life with Productivity Tools"
 date: "2026-03-20"
 description: "The mental load refers to the invisible task of managing a household and is often likened to being the project's manager. In many families, this burdens on..."
-tags: ["productivity", "family", "organisation"]
+author: "The Noa Team"
+tags: ["mental-load", "family", "wellbeing", "shared-responsibility"]
 ---
 
 ## Understanding the Mental Load in Family Life
@@ -61,4 +62,4 @@ Implementing these strategies with the use of productivity tools can significant
 
 By making even small changes towards sharing the mental load, families can enjoy a more harmonious home environment. Let technology be your ally — rather than frantically juggling tasks, use it to create a strategy that works for everyone.
 
-Don't let one partner bear the burden alone. Explore how Noa can seamlessly integrate with your family life to relieve the mental load. Try [Noa](https://www.asknoa.app) today and discover a more balanced approach to family organisation and productivity.
+Don't let one partner bear the burden alone. Explore how Noa can seamlessly integrate with your family life to relieve the mental load. Download [Noa from the App Store](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) today and discover a more balanced approach to family organisation and productivity.

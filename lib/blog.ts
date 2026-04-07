@@ -12,6 +12,8 @@ export interface BlogPostMeta {
   date: string;
   description: string;
   tags: string[];
+  author: string;
+  readTime: number; // minutes
 }
 
 export interface BlogPost extends BlogPostMeta {
@@ -29,11 +31,15 @@ export function getAllPosts(): BlogPostMeta[] {
   const posts: BlogPostMeta[] = files.map((filename) => {
     const filePath = path.join(POSTS_DIR, filename);
     const fileContent = fs.readFileSync(filePath, "utf-8");
-    const { data } = matter(fileContent);
+    const { data, content } = matter(fileContent);
 
     // Derive slug: strip date prefix and .md extension
     // Filename format: YYYY-MM-DD-title-slug.md
     const slug = filename.replace(/\.md$/, "").replace(/^\d{4}-\d{2}-\d{2}-/, "");
+
+    // Estimate read time: ~200 words per minute
+    const wordCount = content.trim().split(/\s+/).length;
+    const readTime = Math.max(1, Math.round(wordCount / 200));
 
     return {
       slug,
@@ -41,6 +47,8 @@ export function getAllPosts(): BlogPostMeta[] {
       date: data.date ?? "",
       description: data.description ?? "",
       tags: Array.isArray(data.tags) ? data.tags : [],
+      author: data.author ?? "The Noa Team",
+      readTime,
     };
   });
 
@@ -70,12 +78,18 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
+  // Estimate read time: ~200 words per minute
+  const wordCount = content.trim().split(/\s+/).length;
+  const readTime = Math.max(1, Math.round(wordCount / 200));
+
   return {
     slug,
     title: data.title ?? "Untitled",
     date: data.date ?? "",
     description: data.description ?? "",
     tags: Array.isArray(data.tags) ? data.tags : [],
+    author: data.author ?? "The Noa Team",
+    readTime,
     contentHtml,
   };
 }

@@ -2,7 +2,8 @@
 title: "Practical Tips for Parents Preparing for the School Term"
 date: "2026-03-23"
 description: "The beginning of the school term often brings with it a flurry of activity, and one of the most immediate needs is ensuring your child's uniform is ready t..."
-tags: ["productivity", "family", "organisation"]
+author: "The Noa Team"
+tags: ["school-run", "parents", "back-to-school", "organisation"]
 ---
 
 ## Organising Uniforms for the School Term
@@ -20,13 +21,13 @@ Once your list is in place, review the current state of your child's wardrobe. I
 
 Set aside time to label each item with your child's name. Iron-on labels are a hassle-free option, or you can sew or write in permanent ink. This will help prevent loss and save you money on replacements.
 
-Finally, set a specific area of your home as the 'uniform station'. This can be a designated drawer or a section in a wardrobe. Having everything in one place reduces the morning scramble, ensuring a stress-free school run. Use a [Noa](https://www.asknoa.app) list to check items off as you organise, making sure nothing is missed.
+Finally, set a specific area of your home as the 'uniform station'. This can be a designated drawer or a section in a wardrobe. Having everything in one place reduces the morning scramble, ensuring a stress-free school run. Use a [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) list to check items off as you organise, making sure nothing is missed.
 
 ## Managing Activity Schedules
 
 School terms are filled with extracurricular activities, from sports to music lessons and clubs. Begin by collecting all relevant schedules as early as possible. This includes term timetables from the school, as well as schedules from any external organisations your child is involved with. 
 
-Once you've gathered all the necessary information, use a digital calendar, like the one offered by [Noa](https://www.asknoa.app), to input each activity along with its time, location, and any special requirements (such as equipment or snacks). This ensures that logistics are clear for all family members. 
+Once you've gathered all the necessary information, use a digital calendar, like the one offered by [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752), to input each activity along with its time, location, and any special requirements (such as equipment or snacks). This ensures that logistics are clear for all family members. 
 
 Here are some practical tips to manage these schedules effectively:
 
@@ -48,7 +49,7 @@ For tracking homework, consider these strategies:
 
 2. **Weekly Check-ins:** Set aside time each week to discuss upcoming assignments with your child. Go over each subject and its deliverables, helping to prioritise tasks based on due dates.
 
-3. **Leverage Technology:** Define reminders in a shared family calendar app such as [Noa](https://www.asknoa.app) to keep track of important deadlines. Older children can participate by adding their own reminders.
+3. **Leverage Technology:** Define reminders in a shared family calendar app such as [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) to keep track of important deadlines. Older children can participate by adding their own reminders.
 
 By maintaining a clear overview of what needs to be done and when everyone can work together to prevent the dreaded night-before scramble.
 
@@ -69,4 +70,4 @@ Lastly, if possible, encourage your children to help with meal prepping. This no
 
 ## Call to Action
 
-As you prepare for the school term, staying organised is key. From uniforms to lunches and everything in between, having a reliable system can make all the difference. Why not integrate these efforts with an app like [Noa](https://www.asknoa.app)? With its ability to combine calendars, tasks, lists, and reminders all in one place, you'll have everything you need to glide through the school term with ease. Let Noa help you keep things running smoothly, so you can focus on enjoying more quality time with your family.
+As you prepare for the school term, staying organised is key. From uniforms to lunches and everything in between, having a reliable system can make all the difference. Why not integrate these efforts with an app like [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752)? With its ability to combine calendars, tasks, lists, and reminders all in one place, you'll have everything you need to glide through the school term with ease. Let Noa help you keep things running smoothly, so you can focus on enjoying more quality time with your family.

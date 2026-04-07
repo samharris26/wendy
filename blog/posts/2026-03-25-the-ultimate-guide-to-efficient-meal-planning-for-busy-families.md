@@ -2,7 +2,8 @@
 title: "The Ultimate Guide to Efficient Meal Planning for Busy Families"
 date: "2026-03-25"
 description: "If you've ever found yourself scratching your head at 6 pm, wondering what to prepare for dinner, you're certainly not alone. Meal planning can often feel..."
-tags: ["productivity", "family", "organisation", "calendar", "lifestyle"]
+author: "The Noa Team"
+tags: ["meal-planning", "grocery-lists", "family", "batch-cooking"]
 ---
 
 ## Mastering Batch Cooking for a Stress-Free Week
@@ -26,7 +27,7 @@ Here’s how you can craft the perfect shared grocery list:
 
 1. **Plan Your Meals**: Before jotting down items, decide on the meals you want to prepare for the week. This allows you to methodically think through the ingredients required.
    
-2. **Digital Tools**: Use apps like [Noa](https://www.asknoa.app) to create and share grocery lists with family members. This ensures everyone is on the same page and contributions can be made collectively.
+2. **Digital Tools**: Use apps like [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) to create and share grocery lists with family members. This ensures everyone is on the same page and contributions can be made collectively.
 
 3. **Organise by Category**: Break the list into categories such as produce, dairy, pantry staples, etc., to make your shopping trip faster and more efficient.
 
@@ -42,7 +43,7 @@ The nightly question of "what's for dinner?" can become a thorn in the side of e
 
 1. **Plan Ahead**: Allocate one hour each week for meal planning. Use this time to decide on dinners, lunches, and breakfasts, factoring in leftovers from batch cooking.
 
-2. **Digital Calendars**: Implement digital meal-planning tools like the calendar feature on [Noa](https://www.asknoa.app). This makes it straightforward to track what meals are on the agenda and when.
+2. **Digital Calendars**: Implement digital meal-planning tools like the calendar feature on [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752). This makes it straightforward to track what meals are on the agenda and when.
 
 3. **Visual Aid in the Kitchen**: If tech isn't your thing, a simple whiteboard or chalkboard in the kitchen can communicate the meal plan for the week — banishing the dinner indecisiveness for good.
 
@@ -56,4 +57,4 @@ By eliminating the 'what's for dinner?' dilemma, you can free up mental space an
 
 Efficient meal planning is a powerful strategy that keeps your nutritional choices intentional and stress-free. With batch cooking, shared grocery lists, and digital tools, you can bring sanity to you and your family's daily routines, ensuring that meal times become cherished rather than dreaded.
 
-Take your meal planning to the next level by downloading [Noa](https://www.asknoa.app). This tool is designed to streamline your family’s calendar, tasks and lists — giving you more control and ease in your day-to-day life. Sign up today and discover how organisational bliss can free up more time for what truly matters.
+Take your meal planning to the next level by downloading [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752). This tool is designed to streamline your family’s calendar, tasks and lists — giving you more control and ease in your day-to-day life. Sign up today and discover how organisational bliss can free up more time for what truly matters.

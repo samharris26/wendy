@@ -4,6 +4,8 @@ import { Footer } from "@/components/Footer";
 import { getAllPosts } from "@/lib/blog";
 import type { Metadata } from "next";
 
+const POSTS_PER_PAGE = 6;
+
 export const metadata: Metadata = {
   title: "Blog — family organisation tips, guides and ideas | Noa",
   description:
@@ -17,8 +19,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+interface BlogPageProps {
+  searchParams: Promise<{ page?: string }>;
+}
+
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+  const params = await searchParams;
+  const allPosts = getAllPosts();
+  const currentPage = Math.max(1, parseInt(params.page ?? "1", 10) || 1);
+  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  const page = Math.min(currentPage, totalPages || 1);
+  const posts = allPosts.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
 
   return (
     <div className="min-h-screen bg-background">
@@ -48,13 +59,19 @@ export default function BlogPage() {
               {posts.map((post) => (
                 <article key={post.slug} className="group">
                   <Link href={`/blog/${post.slug}`} className="block">
-                    <time className="font-mono text-xs text-secondaryText">
-                      {new Date(post.date).toLocaleDateString("en-GB", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })}
-                    </time>
+                    <div className="flex items-center gap-3 text-xs text-secondaryText">
+                      <time className="font-mono">
+                        {new Date(post.date).toLocaleDateString("en-GB", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })}
+                      </time>
+                      <span className="text-primaryText/20">&middot;</span>
+                      <span>{post.author}</span>
+                      <span className="text-primaryText/20">&middot;</span>
+                      <span>{post.readTime} min read</span>
+                    </div>
                     <h2 className="mt-1 text-xl font-semibold tracking-tight text-primaryText transition-colors group-hover:text-accent">
                       {post.title}
                     </h2>
@@ -75,6 +92,43 @@ export default function BlogPage() {
                 </article>
               ))}
             </div>
+          )}
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <nav className="mt-16 flex items-center justify-center gap-2">
+              {page > 1 && (
+                <Link
+                  href={page === 2 ? "/blog" : `/blog?page=${page - 1}`}
+                  className="rounded-lg border border-primaryText/10 px-4 py-2 text-sm font-medium text-secondaryText transition-colors hover:border-primaryText/20 hover:text-primaryText"
+                >
+                  &larr; Previous
+                </Link>
+              )}
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                <Link
+                  key={p}
+                  href={p === 1 ? "/blog" : `/blog?page=${p}`}
+                  className={`rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
+                    p === page
+                      ? "bg-primaryText text-white"
+                      : "text-secondaryText hover:text-primaryText"
+                  }`}
+                >
+                  {p}
+                </Link>
+              ))}
+
+              {page < totalPages && (
+                <Link
+                  href={`/blog?page=${page + 1}`}
+                  className="rounded-lg border border-primaryText/10 px-4 py-2 text-sm font-medium text-secondaryText transition-colors hover:border-primaryText/20 hover:text-primaryText"
+                >
+                  Next &rarr;
+                </Link>
+              )}
+            </nav>
           )}
         </div>
       </main>

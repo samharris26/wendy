@@ -2,7 +2,8 @@
 title: "Building a Productive Morning Routine: Tips for Busy Parents"
 date: "2026-03-19"
 description: "Getting a head start on your day as a parent involves more than just waking up early. Time-blocking can transform those precious pre-breakfast hours into a..."
-tags: ["productivity", "family", "organisation"]
+author: "The Noa Team"
+tags: ["morning-routine", "time-management", "parents", "productivity"]
 ---
 
 ## The Power of Time-Blocking for Morning Productivity
@@ -57,4 +58,4 @@ Remember, adopting these techniques is about creating a morning tailored to your
 
 ## Call to Action
 
-If you’re ready to revolutionise your mornings, why not try incorporating these practices into your daily life with a little help from modern technology? [Noa](https://www.asknoa.app) is designed to bring families together in their organisational efforts, with features that support time-blocking, task batching, and smart reminders. Start today by downloading the app and see the difference a well-structured morning can make for you and your family.
+If you’re ready to revolutionise your mornings, why not try incorporating these practices into your daily life with a little help from modern technology? [Noa](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752) is designed to bring families together in their organisational efforts, with features that support time-blocking, task batching, and smart reminders. Start today by downloading the app and see the difference a well-structured morning can make for you and your family.

@@ -28,6 +28,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: post.description,
       type: "article",
       publishedTime: post.date,
+      authors: [post.author],
+      images: [
+        {
+          url: `/api/og?title=${encodeURIComponent(post.title)}`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [`/api/og?title=${encodeURIComponent(post.title)}`],
     },
   };
 }
@@ -52,14 +67,20 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           <article className="rounded-2xl border border-primaryText/10 bg-card p-8 md:p-12">
             <header>
-              <time className="font-mono text-xs text-secondaryText">
-                {new Date(post.date).toLocaleDateString("en-GB", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })}
-              </time>
-              <h1 className="mt-2 text-3xl font-semibold tracking-tight text-primaryText">
+              <div className="flex items-center gap-3 text-xs text-secondaryText">
+                <time className="font-mono">
+                  {new Date(post.date).toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </time>
+                <span className="text-primaryText/20">&middot;</span>
+                <span>{post.author}</span>
+                <span className="text-primaryText/20">&middot;</span>
+                <span>{post.readTime} min read</span>
+              </div>
+              <h1 className="mt-3 text-3xl font-semibold tracking-tight text-primaryText">
                 {post.title}
               </h1>
               <div className="mt-4 flex flex-wrap gap-2">

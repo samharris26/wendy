@@ -2,7 +2,8 @@
 title: "Mastering the Family Calendar: Strategies for Syncing Schedules, Preventing Double-Bookings, and Keeping Everyone Updated"
 date: "2026-03-17"
 description: "A shared family calendar is an invaluable tool for households with packed agendas. It centralises all activities, appointments, and events into one visible..."
-tags: ["productivity", "family", "organisation", "calendar"]
+author: "The Noa Team"
+tags: ["family-calendar", "scheduling", "organisation", "time-management"]
 ---
 
 ## Simplify Scheduling with a Shared Family Calendar
@@ -53,4 +54,4 @@ Regular family routines shouldn’t be overlooked amidst the chaos of organised 
 
 Balancing a packed family calendar requires effective strategies and reliable tools. By employing a shared digital calendar, like the Noa app, and maintaining clear boundaries and open communication, families can enjoy more harmonious schedules. The goal is to manage not only to-dos but also to make room for quality time together, creating a balanced approach to hectic family life.
 
-Take charge of your family’s time today with the help of Noa. Simplify scheduling, reduce the stress of double-bookings, and ensure everyone remains in the loop. Discover how Noa can streamline your family’s day-to-day life by visiting https://www.asknoa.app.
+Take charge of your family’s time today with the help of Noa. Simplify scheduling, reduce the stress of double-bookings, and ensure everyone remains in the loop. Discover how Noa can streamline your family’s day-to-day life by downloading [Noa from the App Store](https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752).
