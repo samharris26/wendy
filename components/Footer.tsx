@@ -82,6 +82,11 @@ export function Footer() {
           <span>System Operational</span>
         </div>
 
+        <a href="https://peerpush.net/p/noa" target="_blank" rel="noopener">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://peerpush.net/p/noa/badge.png" alt="Noa on PeerPush" width={230} height={54} className="opacity-80 transition-opacity hover:opacity-100" />
+        </a>
+
         <div className="font-mono text-xs text-secondaryText">
           <span>&copy; {new Date().getFullYear()} Noa.</span>
         </div>
