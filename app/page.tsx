@@ -5,8 +5,9 @@ import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Navbar } from "@/components/Navbar";
 import { Pricing } from "@/components/Pricing";
-import { Problem } from "@/components/Problem";
+import { ReviewTrust } from "@/components/ReviewTrust";
 import { SeeNoaInAction } from "@/components/SeeNoaInAction";
+import { TwoWays } from "@/components/TwoWays";
 import { Value } from "@/components/Value";
 import { WhatsAppAssistant } from "@/components/WhatsAppAssistant";
 
@@ -20,11 +21,12 @@ export default function Page() {
       <Navbar />
       <main>
         <Hero />
+        <TwoWays />
         <SeeNoaInAction />
-        <Problem />
-        <WhatsAppAssistant />
+        <ReviewTrust />
         <Features />
         <Value />
+        <WhatsAppAssistant />
         <HowItWorks />
         <Pricing />
       </main>

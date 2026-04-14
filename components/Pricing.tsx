@@ -30,6 +30,7 @@ const plans = [
     highlight: false,
     features: [
       "Everything in Free",
+      "Import plans from ChatGPT or Notes",
       "WhatsApp assistant",
       "Natural language commands",
       "AI daily schedule summary",
@@ -49,6 +50,7 @@ const plans = [
       "Everything in Single",
       "Shared calendars & lists",
       "Assign tasks to people",
+      "Review & edit imported plans",
       "Household timeline",
       "Multiple WhatsApp numbers",
       "Family command centre",
@@ -70,7 +72,7 @@ export function Pricing() {
             Start free. Upgrade when you need more.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-secondaryText">
-            Use Noa in the app for free. WhatsApp assistant available on paid plans.
+            Use Noa free in the app. Import, WhatsApp and household features on paid plans.
           </p>
         </div>
 

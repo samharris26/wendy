@@ -1,4 +1,4 @@
-import { Link2, PenLine, RefreshCw } from "lucide-react";
+import { Link2, PenLine, ScanEye, RefreshCw } from "lucide-react";
 
 const steps = [
   {
@@ -9,12 +9,20 @@ const steps = [
   },
   {
     num: "02",
-    title: "Capture.",
-    description: "Add things naturally. In the app or by asking Noa on WhatsApp.",
+    title: "Ask or import.",
+    description:
+      "Capture things quickly with Ask Noa, or paste a bigger plan from ChatGPT, Notes, or anywhere else.",
     icon: PenLine,
   },
   {
     num: "03",
+    title: "Review and save.",
+    description:
+      "Check what Noa understood, edit if needed, and confirm before anything is created.",
+    icon: ScanEye,
+  },
+  {
+    num: "04",
     title: "Stay in sync.",
     description: "Shared calendars, reminders and widgets keep everyone aligned.",
     icon: RefreshCw,
@@ -29,7 +37,7 @@ export function HowItWorks() {
           How it works
         </h2>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 md:grid-cols-4">
           {steps.map((step) => (
             <article key={step.num} className="rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs">
               <div className="mb-4 flex items-center gap-3">

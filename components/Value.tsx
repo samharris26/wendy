@@ -2,6 +2,7 @@ const items = [
   "Calendar",
   "Tasks",
   "Shopping lists",
+  "Import a plan",
   "Reminders",
   "Family coordination",
 ];

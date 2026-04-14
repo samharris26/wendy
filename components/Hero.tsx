@@ -96,8 +96,8 @@ export function Hero() {
               transitionDelay: "400ms",
             }}
           >
-            Calendars, tasks, lists and reminders — all in one calm, beautifully
-            designed app. Add things instantly or just ask Noa on WhatsApp.
+            Capture things quickly, or paste a bigger plan from ChatGPT, Notes, or
+            anywhere else. Noa turns it into tasks, lists and shared household action.
           </p>
 
           <p
@@ -108,10 +108,9 @@ export function Hero() {
               transitionDelay: "520ms",
             }}
           >
-            Noa is the household organisation app that brings your shared family
-            calendar, family task management, and shopping lists together in one
-            place. Sync Apple and Google Calendar, assign tasks to family members,
-            and manage it all through natural language on WhatsApp.
+            Shared family calendar, smart tasks, shopping lists and reminders —
+            all in one calm, beautifully designed app. Quick capture with Ask Noa.
+            Bigger plans with Import.
           </p>
 
           <div
