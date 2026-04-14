@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Navbar } from "@/components/Navbar";
 import { Pricing } from "@/components/Pricing";
+import { ImportDemo } from "@/components/ImportDemo";
 import { ReviewTrust } from "@/components/ReviewTrust";
 import { SeeNoaInAction } from "@/components/SeeNoaInAction";
 import { TwoWays } from "@/components/TwoWays";
@@ -23,6 +24,7 @@ export default function Page() {
         <Hero />
         <TwoWays />
         <SeeNoaInAction />
+        <ImportDemo />
         <ReviewTrust />
         <Features />
         <Value />
