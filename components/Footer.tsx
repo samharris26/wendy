@@ -82,10 +82,26 @@ export function Footer() {
           <span>System Operational</span>
         </div>
 
-        <a href="https://peerpush.net/p/noa" target="_blank" rel="noopener">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="https://peerpush.net/p/noa/badge.png" alt="Noa on PeerPush" width={230} height={54} className="opacity-80 transition-opacity hover:opacity-100" />
-        </a>
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="https://www.producthunt.com/products/noa-4?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-noa-4"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              alt="Noa - Your life admin for quick availability and scheduling | Product Hunt"
+              width={250}
+              height={54}
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1125090&theme=light&t=1776411913924"
+              className="opacity-80 transition-opacity hover:opacity-100"
+            />
+          </a>
+          <a href="https://peerpush.net/p/noa" target="_blank" rel="noopener">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://peerpush.net/p/noa/badge.png" alt="Noa on PeerPush" width={230} height={54} className="opacity-80 transition-opacity hover:opacity-100" />
+          </a>
+        </div>
 
         <div className="font-mono text-xs text-secondaryText">
           <span>&copy; {new Date().getFullYear()} Noa.</span>

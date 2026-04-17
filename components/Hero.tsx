@@ -114,7 +114,7 @@ export function Hero() {
           </p>
 
           <div
-            className="mt-10 flex justify-center lg:justify-start transition-all duration-700 ease-out"
+            className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start transition-all duration-700 ease-out"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(16px)",
@@ -122,6 +122,19 @@ export function Hero() {
             }}
           >
             <AppStoreButton />
+            <a
+              href="https://www.producthunt.com/products/noa-4?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-noa-4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                alt="Noa - Your life admin for quick availability and scheduling | Product Hunt"
+                width={250}
+                height={54}
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1125090&theme=light&t=1776411913924"
+              />
+            </a>
           </div>
         </div>
 
