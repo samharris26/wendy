@@ -9,7 +9,7 @@ export function Footer() {
       {/* Top — Download CTA */}
       <div className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-12 border-b border-primaryText/10 pb-16 md:flex-row md:items-center">
         <div className="max-w-lg">
-          <p className="text-3xl font-bold tracking-tight text-primaryText md:text-4xl">Noa</p>
+          <p className="text-3xl italic text-accent md:text-4xl" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>Noa</p>
           <p className="mt-4 text-lg leading-relaxed text-secondaryText">
             Your life, organised. Calendars, tasks, lists and reminders — beautifully designed for iOS.
           </p>

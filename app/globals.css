@@ -3,12 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --color-background: #f2f0e9;
-  --color-surface: #eae7de;
+  --color-background: #ECE5D8;
+  --color-surface: #E4DDD0;
   --color-card: #ffffff;
-  --color-primary-text: #0f2a4a;
-  --color-secondary-text: #586576;
-  --color-accent: #cc5833;
+  --color-primary-text: #0B2440;
+  --color-secondary-text: #6B7280;
+  --color-border: #C7BFAD;
+  --color-accent: #D9623C;
+  --color-accent-soft: #F7DACB;
+  --color-accent-deep: #B84C27;
   --color-charcoal: #1a1a1a;
   --color-success: #2f9e63;
   --color-warning: #f59e0b;
@@ -17,7 +20,7 @@
 
 * {
   box-sizing: border-box;
-  border-color: rgba(15, 42, 74, 0.14);
+  border-color: rgba(11, 36, 64, 0.12);
 }
 
 html {
@@ -31,16 +34,29 @@ body {
   color: var(--color-primary-text);
 }
 
+/* Editorial headings — Georgia serif, matching the app design system */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-.font-heading,
+.font-heading {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+
+/* UI chrome stays on Plus Jakarta */
 button,
-nav a {
+nav a,
+.font-ui {
   font-family: var(--font-plus-jakarta), sans-serif;
+}
+
+/* Italic orange accent — used on key words in headings (the brand signature) */
+.accent-italic {
+  font-style: italic;
+  color: var(--color-accent);
 }
 
 .font-mono {
@@ -49,6 +65,14 @@ nav a {
 
 .font-drama {
   font-family: var(--font-cormorant), serif;
+}
+
+/* Card style matching app: near-zero shadow, warm background */
+.noa-card {
+  background: var(--color-card);
+  border-radius: 22px;
+  border: 1px solid rgba(11, 36, 64, 0.08);
+  box-shadow: 0 1px 2px rgba(11, 36, 64, 0.04);
 }
 
 .system-dot {

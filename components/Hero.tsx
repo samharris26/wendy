@@ -71,9 +71,9 @@ export function Hero() {
         <div className="flex-1 text-center lg:text-left">
           <h1
             ref={headingRef}
-            className="text-5xl font-bold leading-[1.05] tracking-tight text-primaryText md:text-6xl lg:text-7xl"
+            className="text-5xl leading-[1.08] text-primaryText md:text-6xl lg:text-7xl"
           >
-            {["Your", "life,", "organised."].map((word, i) => (
+            {(["Your", "life,"] as const).map((word, i) => (
               <span
                 key={word}
                 className="inline-block transition-all duration-700 ease-out"
@@ -83,9 +83,19 @@ export function Hero() {
                   transitionDelay: `${i * 120}ms`,
                 }}
               >
-                {word}{i < 2 ? "\u00A0" : ""}
+                {word}&nbsp;
               </span>
             ))}
+            <span
+              className="inline-block italic text-accent transition-all duration-700 ease-out"
+              style={{
+                opacity: loaded ? 1 : 0,
+                transform: loaded ? "translateY(0)" : "translateY(24px)",
+                transitionDelay: "240ms",
+              }}
+            >
+              organised.
+            </span>
           </h1>
 
           <p

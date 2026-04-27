@@ -16,7 +16,7 @@ export function ReviewTrust() {
             <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
               You Stay in Control
             </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
+            <h2 className="text-3xl text-primaryText sm:text-4xl lg:text-5xl">
               Review before you save.
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-secondaryText">

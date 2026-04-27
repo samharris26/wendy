@@ -45,7 +45,7 @@ export function DayWithNoa() {
           <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
             Real Usage
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl text-primaryText sm:text-4xl lg:text-5xl">
             A day with Noa.
           </h2>
         </div>

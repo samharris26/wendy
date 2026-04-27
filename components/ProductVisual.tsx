@@ -39,7 +39,7 @@ export function ProductVisual() {
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-10 text-center">
           <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">The App</p>
-          <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl text-primaryText sm:text-4xl lg:text-5xl">
             Everything in one calm timeline.
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-secondaryText">

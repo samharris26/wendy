@@ -12,7 +12,7 @@ export function WhatsAppAssistant() {
             <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
               WhatsApp Assistant
             </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl">
+            <h2 className="text-3xl text-primaryText sm:text-4xl">
               Also available on WhatsApp.
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-secondaryText">

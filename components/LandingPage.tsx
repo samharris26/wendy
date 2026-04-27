@@ -90,7 +90,7 @@ export function LandingPage({ data }: { data: LandingPageData }) {
             <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
               Key features
             </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
+            <h2 className="text-3xl text-primaryText sm:text-4xl lg:text-5xl">
               Why families choose Noa
             </h2>
           </div>
@@ -106,7 +106,7 @@ export function LandingPage({ data }: { data: LandingPageData }) {
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-accent/10">
                     <Icon className="h-5 w-5 text-accent" />
                   </div>
-                  <h3 className="text-lg font-semibold text-primaryText">
+                  <h3 className="text-lg text-primaryText">
                     {feature.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-secondaryText">
@@ -125,7 +125,7 @@ export function LandingPage({ data }: { data: LandingPageData }) {
           <div className="rounded-2xl border border-primaryText/10 bg-card p-8 md:p-12">
             {data.contentSections.map((section) => (
               <div key={section.heading} className="mb-10 last:mb-0">
-                <h2 className="mb-4 text-2xl font-semibold tracking-tight text-primaryText">
+                <h2 className="mb-4 text-2xl text-primaryText">
                   {section.heading}
                 </h2>
                 {section.paragraphs.map((para, i) => (
@@ -145,7 +145,7 @@ export function LandingPage({ data }: { data: LandingPageData }) {
       {/* ── Internal Links ── */}
       <section className="px-6 py-16 lg:px-10">
         <div className="mx-auto w-full max-w-3xl">
-          <h2 className="mb-6 text-center text-2xl font-semibold tracking-tight text-primaryText">
+          <h2 className="mb-6 text-center text-2xl text-primaryText">
             Explore more
           </h2>
           <div className="flex flex-wrap justify-center gap-3">

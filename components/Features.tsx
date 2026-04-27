@@ -44,7 +44,7 @@ function CalendarCard() {
       <div className="mt-6 min-h-[88px]">
         <div className="mb-2 flex items-center gap-2">
           <Calendar className="h-5 w-5 text-accent" />
-          <h3 className="text-lg font-semibold text-primaryText">Unified Calendar</h3>
+          <h3 className="text-lg text-primaryText">Unified Calendar</h3>
         </div>
         <p className="text-sm leading-relaxed text-secondaryText">See work, school and family plans together.</p>
       </div>
@@ -88,7 +88,7 @@ function TasksCard() {
       <div className="mt-6 min-h-[88px]">
         <div className="mb-2 flex items-center gap-2">
           <CheckSquare className="h-5 w-5 text-accent" />
-          <h3 className="text-lg font-semibold text-primaryText">Smart Tasks</h3>
+          <h3 className="text-lg text-primaryText">Smart Tasks</h3>
         </div>
         <p className="text-sm leading-relaxed text-secondaryText">Capture things quickly and stay on top of everyday life.</p>
       </div>
@@ -122,7 +122,7 @@ function ListsCard() {
       <div className="mt-6 min-h-[88px]">
         <div className="mb-2 flex items-center gap-2">
           <ListChecks className="h-5 w-5 text-accent" />
-          <h3 className="text-lg font-semibold text-primaryText">Lists & Collections</h3>
+          <h3 className="text-lg text-primaryText">Lists & Collections</h3>
         </div>
         <p className="text-sm leading-relaxed text-secondaryText">Shopping lists, packing lists and shared planning.</p>
       </div>
@@ -158,7 +158,7 @@ function HouseholdCard() {
       <div className="mt-6 min-h-[88px]">
         <div className="mb-2 flex items-center gap-2">
           <Users className="h-5 w-5 text-accent" />
-          <h3 className="text-lg font-semibold text-primaryText">Household</h3>
+          <h3 className="text-lg text-primaryText">Household</h3>
         </div>
         <p className="text-sm leading-relaxed text-secondaryText">Invite family members and assign tasks.</p>
       </div>
@@ -201,7 +201,7 @@ function WidgetsCard() {
       <div className="mt-6 min-h-[88px]">
         <div className="mb-2 flex items-center gap-2">
           <Bell className="h-5 w-5 text-accent" />
-          <h3 className="text-lg font-semibold text-primaryText">Widgets & Alerts</h3>
+          <h3 className="text-lg text-primaryText">Widgets & Alerts</h3>
         </div>
         <p className="text-sm leading-relaxed text-secondaryText">See today at a glance and get reminders before things slip.</p>
       </div>
@@ -215,7 +215,7 @@ export function Features() {
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-12 text-center">
           <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">Built for Families</p>
-          <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl text-primaryText sm:text-4xl lg:text-5xl">
             Everything your household needs. In one place.
           </h2>
         </div>

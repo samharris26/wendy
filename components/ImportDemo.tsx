@@ -43,7 +43,7 @@ export function ImportDemo() {
           <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
             See It Work
           </p>
-          <h2 className="text-2xl font-semibold tracking-tight text-primaryText sm:text-3xl lg:text-4xl">
+          <h2 className="text-2xl text-primaryText sm:text-3xl lg:text-4xl">
             Paste a plan. Noa does the rest.
           </h2>
         </div>

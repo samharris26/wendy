@@ -36,7 +36,7 @@ export function TwoWays() {
           <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
             Two Ways In
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl text-primaryText sm:text-4xl lg:text-5xl">
             Quick things or bigger plans.
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-secondaryText">
@@ -59,7 +59,7 @@ export function TwoWays() {
                 </span>
               </div>
 
-              <h3 className="text-2xl font-bold text-primaryText">
+              <h3 className="text-2xl text-primaryText">
                 {mode.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-secondaryText">

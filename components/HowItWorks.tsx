@@ -33,7 +33,7 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="px-6 py-20 lg:px-10">
       <div className="mx-auto w-full max-w-6xl">
-        <h2 className="text-3xl font-semibold tracking-tight text-primaryText sm:text-4xl">
+        <h2 className="text-3xl text-primaryText sm:text-4xl">
           How it works
         </h2>
 
@@ -44,7 +44,7 @@ export function HowItWorks() {
                 <step.icon size={18} className="text-accent" aria-hidden />
                 <span className="font-mono text-xs tracking-widest text-accent">STEP_{step.num}</span>
               </div>
-              <h3 className="text-2xl font-bold text-primaryText">{step.title}</h3>
+              <h3 className="text-2xl text-primaryText">{step.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-secondaryText">{step.description}</p>
             </article>
           ))}
