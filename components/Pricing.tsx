@@ -8,6 +8,23 @@ const APP_STORE_URL =
 // Household: £5.99 × 12 = £71.88  vs £39.99  → 44% off
 const plans = [
   {
+    name: "Free",
+    annualPrice: "£0",
+    monthlyPrice: null,
+    saving: null,
+    firstYear: null,
+    tagline: "Forever free.",
+    cta: "Download free",
+    highlight: false,
+    features: [
+      "Up to 25 tasks",
+      "Up to 3 lists",
+      "1 calendar source",
+      "20 WhatsApp messages/month",
+      "5 voice commands/month",
+    ],
+  },
+  {
     name: "Single",
     annualPrice: "£19.99",
     annualPriceUS: "$19.99",
@@ -20,10 +37,10 @@ const plans = [
     highlight: false,
     features: [
       "Unlimited tasks & lists",
-      "Calendar sync",
-      "WhatsApp assistant",
-      "Natural language capture",
-      "Daily schedule summary",
+      "Unlimited calendar sources",
+      "Unlimited WhatsApp messages",
+      "Unlimited voice commands",
+      "Daily briefing",
     ],
   },
   {
@@ -61,12 +78,12 @@ export function Pricing() {
             <em className="italic text-accent">no surprises.</em>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-secondaryText">
-            Annual saves you 44% compared to monthly. First year on Household is even better.
+            Start free, forever. Upgrade when you want more.
           </p>
         </div>
 
         {/* Cards */}
-        <div className="mx-auto grid max-w-2xl gap-5 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-3">
           {plans.map((plan) => (
             <article
               key={plan.name}
@@ -77,7 +94,7 @@ export function Pricing() {
               }`}
             >
               {/* Saving badge */}
-              {plan.highlight && (
+              {plan.highlight && plan.saving && (
                 <span className="absolute -top-3 right-6 rounded-full bg-accent px-3 py-1 font-mono text-[10px] font-semibold tracking-wider text-white uppercase">
                   Save {plan.saving}%
                 </span>
@@ -91,18 +108,27 @@ export function Pricing() {
 
               {/* Price block */}
               <div className="mb-6">
-                <div className="flex items-baseline gap-1.5">
-                  <span className="text-4xl text-primaryText">{plan.annualPrice}</span>
-                  <span className="text-sm text-secondaryText">/yr</span>
-                </div>
-                {plan.firstYear && (
-                  <p className="mt-1 text-xs font-medium text-accent">
-                    {plan.firstYear}/yr first year
-                  </p>
+                {plan.monthlyPrice ? (
+                  <>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-4xl text-primaryText">{plan.annualPrice}</span>
+                      <span className="text-sm text-secondaryText">/yr</span>
+                    </div>
+                    {plan.firstYear && (
+                      <p className="mt-1 text-xs font-medium text-accent">
+                        {plan.firstYear}/yr first year
+                      </p>
+                    )}
+                    <p className="mt-1 text-xs text-secondaryText">
+                      or {plan.monthlyPrice}/mo
+                    </p>
+                  </>
+                ) : (
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-4xl text-primaryText">{plan.annualPrice}</span>
+                    <span className="text-sm text-secondaryText">forever</span>
+                  </div>
                 )}
-                <p className="mt-1 text-xs text-secondaryText">
-                  or {plan.monthlyPrice}/mo
-                </p>
               </div>
 
               {/* Features */}
@@ -119,7 +145,7 @@ export function Pricing() {
                 href={APP_STORE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`block w-full rounded-full px-4 py-3.5 text-center text-sm font-semibold transition-colors font-ui ${
+                className={`block w-full rounded-full px-4 py-3.5 text-center text-sm font-semibold transition-colors ${
                   plan.highlight
                     ? "bg-primaryText text-white hover:bg-primaryText/90"
                     : "bg-primaryText text-white hover:bg-primaryText/90"
