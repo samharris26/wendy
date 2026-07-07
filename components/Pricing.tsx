@@ -12,9 +12,10 @@ const plans = [
     annualPrice: "£0",
     monthlyPrice: null,
     saving: null,
-    firstYear: null,
+    badge: null,
     tagline: "Forever free.",
     cta: "Download free",
+    ctaNote: null,
     highlight: false,
     features: [
       "Up to 25 tasks",
@@ -27,13 +28,12 @@ const plans = [
   {
     name: "Single",
     annualPrice: "£19.99",
-    annualPriceUS: "$19.99",
     monthlyPrice: "£2.99",
-    monthlyPriceUS: "$2.99",
     saving: "44",
-    firstYear: null,
+    badge: null,
     tagline: "Your life, organised.",
     cta: "Get Single",
+    ctaNote: null,
     highlight: false,
     features: [
       "Unlimited tasks & lists",
@@ -46,13 +46,12 @@ const plans = [
   {
     name: "Household",
     annualPrice: "£39.99",
-    annualPriceUS: "$39.99",
     monthlyPrice: "£5.99",
-    monthlyPriceUS: "$5.99",
     saving: "44",
-    firstYear: "£34.99",
+    badge: "7-day free trial",
     tagline: "Up to 6 people.",
-    cta: "Get Household",
+    cta: "Start your free trial",
+    ctaNote: "Free for 7 days, then £39.99/yr. Cancel anytime.",
     highlight: true,
     features: [
       "Everything in Single",
@@ -74,11 +73,12 @@ export function Pricing() {
             Pricing
           </p>
           <h2 className="text-3xl text-primaryText sm:text-4xl lg:text-5xl">
-            Simple pricing,{" "}
-            <em className="italic text-accent">no surprises.</em>
+            Free to start,{" "}
+            <em className="italic text-accent">free to try.</em>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-secondaryText">
-            Start free, forever. Upgrade when you want more.
+            Download free and use Noa forever. Try everything Household offers,
+            free for 7 days.
           </p>
         </div>
 
@@ -87,16 +87,16 @@ export function Pricing() {
           {plans.map((plan) => (
             <article
               key={plan.name}
-              className={`relative flex flex-col rounded-[22px] p-7 shadow-[0_1px_2px_rgba(11,36,64,0.04)] ${
+              className={`relative flex flex-col rounded-xl p-7 shadow-[0_1px_2px_rgba(11,36,64,0.04)] ${
                 plan.highlight
                   ? "border-[1.5px] border-accent bg-accentSoft"
                   : "border border-primaryText/10 bg-card"
               }`}
             >
-              {/* Saving badge */}
-              {plan.highlight && plan.saving && (
+              {/* Trial badge */}
+              {plan.badge && (
                 <span className="absolute -top-3 right-6 rounded-full bg-accent px-3 py-1 font-mono text-[10px] font-semibold tracking-wider text-white uppercase">
-                  Save {plan.saving}%
+                  {plan.badge}
                 </span>
               )}
 
@@ -114,13 +114,13 @@ export function Pricing() {
                       <span className="text-4xl text-primaryText">{plan.annualPrice}</span>
                       <span className="text-sm text-secondaryText">/yr</span>
                     </div>
-                    {plan.firstYear && (
-                      <p className="mt-1 text-xs font-medium text-accent">
-                        {plan.firstYear}/yr first year
+                    {plan.highlight && (
+                      <p className="mt-1 text-xs font-semibold text-accentDeep">
+                        First 7 days free
                       </p>
                     )}
                     <p className="mt-1 text-xs text-secondaryText">
-                      or {plan.monthlyPrice}/mo
+                      or {plan.monthlyPrice}/mo &middot; save {plan.saving}% annually
                     </p>
                   </>
                 ) : (
@@ -145,15 +145,20 @@ export function Pricing() {
                 href={APP_STORE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`block w-full rounded-full px-4 py-3.5 text-center text-sm font-semibold transition-colors ${
+                className={`block w-full rounded-xl px-4 py-3.5 text-center text-sm font-semibold transition-colors ${
                   plan.highlight
-                    ? "bg-primaryText text-white hover:bg-primaryText/90"
+                    ? "bg-accent text-white hover:bg-accentDeep"
                     : "bg-primaryText text-white hover:bg-primaryText/90"
                 }`}
-                style={{ fontFamily: 'var(--font-plus-jakarta), sans-serif' }}
+                style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}
               >
                 {plan.cta}
               </a>
+              {plan.ctaNote && (
+                <p className="mt-3 text-center text-[11px] leading-snug text-secondaryText">
+                  {plan.ctaNote}
+                </p>
+              )}
             </article>
           ))}
         </div>

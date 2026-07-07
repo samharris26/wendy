@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {
   Cormorant_Garamond,
   IBM_Plex_Mono,
-  Outfit,
   Plus_Jakarta_Sans,
 } from "next/font/google";
 import Script from "next/script";
@@ -10,13 +9,6 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CookieBanner } from "@/components/CookieBanner";
 import "./globals.css";
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-outfit",
-  display: "swap",
-});
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -71,7 +63,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${plusJakartaSans.variable} ${ibmPlexMono.variable} ${cormorantGaramond.variable}`}
+      className={`${plusJakartaSans.variable} ${ibmPlexMono.variable} ${cormorantGaramond.variable}`}
     >
       <head>
         <Script

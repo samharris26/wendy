@@ -4,7 +4,7 @@
 
 :root {
   --color-background: #ECE5D8;
-  --color-surface: #E4DDD0;
+  --color-surface: #DBD2C1;
   --color-card: #ffffff;
   --color-primary-text: #0B2440;
   --color-secondary-text: #6B7280;
@@ -29,7 +29,8 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-outfit), sans-serif;
+  /* Plus Jakarta Sans — the app's UI face (FAFont) */
+  font-family: var(--font-plus-jakarta), sans-serif;
   background: var(--color-background);
   color: var(--color-primary-text);
 }
@@ -67,10 +68,10 @@ nav a,
   font-family: var(--font-cormorant), serif;
 }
 
-/* Card style matching app: near-zero shadow, warm background */
+/* Card style matching app (FACard): 12pt radius, near-zero shadow */
 .noa-card {
   background: var(--color-card);
-  border-radius: 22px;
+  border-radius: 12px;
   border: 1px solid rgba(11, 36, 64, 0.08);
   box-shadow: 0 1px 2px rgba(11, 36, 64, 0.04);
 }

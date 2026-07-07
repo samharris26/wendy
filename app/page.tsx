@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
+import { Faq } from "@/components/Faq";
 import { Features } from "@/components/Features";
+import { FinalCta } from "@/components/FinalCta";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
+import { HouseholdTrial } from "@/components/HouseholdTrial";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Navbar } from "@/components/Navbar";
 import { Pricing } from "@/components/Pricing";
-import { ImportDemo } from "@/components/ImportDemo";
-import { ReviewTrust } from "@/components/ReviewTrust";
-import { SeeNoaInAction } from "@/components/SeeNoaInAction";
-import { TwoWays } from "@/components/TwoWays";
+import { StickyDownloadBar } from "@/components/StickyDownloadBar";
 import { Value } from "@/components/Value";
 import { WhatsAppAssistant } from "@/components/WhatsAppAssistant";
 
@@ -22,17 +22,17 @@ export default function Page() {
       <Navbar />
       <main>
         <Hero />
-        <TwoWays />
-        <SeeNoaInAction />
-        <ImportDemo />
-        <ReviewTrust />
-        <Features />
         <Value />
-        <WhatsAppAssistant />
+        <Features />
         <HowItWorks />
+        <WhatsAppAssistant />
+        <HouseholdTrial />
         <Pricing />
+        <Faq />
+        <FinalCta />
       </main>
       <Footer />
+      <StickyDownloadBar />
     </div>
   );
 }

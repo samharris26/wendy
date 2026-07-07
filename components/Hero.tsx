@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { AppStoreButton } from "./AppStoreButton";
 
 const FLOATING_CHIPS = [
@@ -12,7 +13,6 @@ const FLOATING_CHIPS = [
 export function Hero() {
   const phoneRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
   const [loaded, setLoaded] = useState(false);
 
   // Mouse-tracking parallax on phone
@@ -49,10 +49,16 @@ export function Hero() {
     return () => clearTimeout(t);
   }, []);
 
+  const reveal = (delay: number) => ({
+    opacity: loaded ? 1 : 0,
+    transform: loaded ? "translateY(0)" : "translateY(20px)",
+    transitionDelay: `${delay}ms`,
+  });
+
   return (
     <section
       ref={heroRef}
-      className="relative flex min-h-[85vh] w-full items-center overflow-x-clip overflow-y-visible bg-background px-6 md:px-16"
+      className="relative flex min-h-[88vh] w-full items-center overflow-x-clip overflow-y-visible bg-background px-6 md:px-16"
     >
       {/* Noise grain overlay */}
       <div className="pointer-events-none absolute inset-0 z-20 opacity-[0.035]" style={{
@@ -66,86 +72,66 @@ export function Hero() {
         <div className="absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-primaryText/[0.04] blur-[100px]" />
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-12 pt-16 md:pt-0 lg:flex-row lg:items-center lg:gap-16">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-12 pb-16 pt-16 md:pt-8 lg:flex-row lg:items-center lg:gap-16">
         {/* Copy — left side */}
         <div className="flex-1 text-center lg:text-left">
-          <h1
-            ref={headingRef}
-            className="text-5xl leading-[1.08] text-primaryText md:text-6xl lg:text-7xl"
+          {/* Eyebrow */}
+          <p
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accentSoft/60 px-4 py-1.5 font-mono text-[11px] uppercase tracking-widest text-accentDeep transition-all duration-700 ease-out"
+            style={reveal(0)}
           >
-            {(["Your", "life,"] as const).map((word, i) => (
-              <span
-                key={word}
-                className="inline-block transition-all duration-700 ease-out"
-                style={{
-                  opacity: loaded ? 1 : 0,
-                  transform: loaded ? "translateY(0)" : "translateY(24px)",
-                  transitionDelay: `${i * 120}ms`,
-                }}
-              >
-                {word}&nbsp;
-              </span>
-            ))}
-            <span
-              className="inline-block italic text-accent transition-all duration-700 ease-out"
-              style={{
-                opacity: loaded ? 1 : 0,
-                transform: loaded ? "translateY(0)" : "translateY(24px)",
-                transitionDelay: "240ms",
-              }}
-            >
-              organised.
+            Free on the App&nbsp;Store
+          </p>
+
+          <h1 className="text-5xl leading-[1.08] text-primaryText md:text-6xl lg:text-7xl">
+            <span className="block transition-all duration-700 ease-out" style={reveal(100)}>
+              One calm app for
+            </span>
+            <span className="block italic text-accent transition-all duration-700 ease-out" style={reveal(240)}>
+              the whole household.
             </span>
           </h1>
 
           <p
-            className="mt-8 max-w-xl text-lg leading-relaxed text-secondaryText md:text-xl lg:mx-0 transition-all duration-700 ease-out"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(16px)",
-              transitionDelay: "400ms",
-            }}
+            className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-secondaryText md:text-xl lg:mx-0 transition-all duration-700 ease-out"
+            style={reveal(400)}
           >
-            Capture things quickly, or paste a bigger plan from ChatGPT, Notes, or
-            anywhere else. Noa turns it into tasks, lists and shared household action.
-          </p>
-
-          <p
-            className="mt-4 max-w-xl text-base leading-relaxed text-secondaryText lg:mx-0 transition-all duration-700 ease-out"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(16px)",
-              transitionDelay: "520ms",
-            }}
-          >
-            Shared family calendar, smart tasks, shopping lists and reminders —
-            all in one calm, beautifully designed app. Quick capture with Ask Noa.
-            Bigger plans with Import.
+            Noa brings your family&apos;s calendars, tasks, shopping lists and
+            reminders into one place — and keeps everyone in sync, even over
+            WhatsApp.
           </p>
 
           <div
-            className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start transition-all duration-700 ease-out"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(16px)",
-              transitionDelay: "640ms",
-            }}
+            className="mt-10 flex flex-wrap items-center justify-center gap-5 lg:justify-start transition-all duration-700 ease-out"
+            style={reveal(560)}
           >
             <AppStoreButton />
-            <a
-              href="https://www.producthunt.com/products/noa-4?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-noa-4"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                alt="Noa - Your life admin for quick availability and scheduling | Product Hunt"
-                width={250}
-                height={54}
-                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1125090&theme=light&t=1776411913924"
+
+            {/* QR — desktop visitors can scan straight to the store */}
+            <div className="hidden items-center gap-3 lg:flex">
+              <Image
+                src="/qr-app-store.svg"
+                alt="QR code linking to Noa on the App Store"
+                width={64}
+                height={64}
+                className="rounded-lg border border-border bg-white p-1"
               />
-            </a>
+              <span className="max-w-[110px] text-left text-xs leading-snug text-secondaryText">
+                Scan with your iPhone to download
+              </span>
+            </div>
           </div>
+
+          <p
+            className="mt-5 text-sm text-secondaryText transition-all duration-700 ease-out"
+            style={reveal(680)}
+          >
+            Free to download &middot;{" "}
+            <span className="font-semibold text-accentDeep">
+              Try Household free for 7 days
+            </span>{" "}
+            &middot; Cancel anytime
+          </p>
         </div>
 
         {/* iPhone mockup — right side with parallax */}
@@ -189,14 +175,13 @@ export function Hero() {
 
               {/* Screen */}
               <div className="relative overflow-hidden rounded-[34px]">
-                <video
-                  src="/demo.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
+                <Image
+                  src="/app-screenshot.png"
+                  alt="Noa app"
+                  width={390}
+                  height={844}
                   className="block w-full"
-                  ref={(el) => { if (el) el.playbackRate = 1.5; }}
+                  priority
                 />
               </div>
             </div>

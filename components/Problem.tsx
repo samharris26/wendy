@@ -10,7 +10,7 @@ export function Problem() {
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-secondaryText">
             Plans live in one app. Shopping lists somewhere else. Tasks and reminders scattered everywhere. Things get missed.
           </p>
-          <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-primaryText" style={{ fontFamily: 'var(--font-outfit), sans-serif', fontWeight: 500 }}>
+          <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-primaryText" style={{ fontFamily: 'var(--font-plus-jakarta), sans-serif', fontWeight: 500 }}>
             Noa brings everything together so your life runs smoothly.
           </p>
         </div>

@@ -13,6 +13,9 @@ export function Footer() {
           <p className="mt-4 text-lg leading-relaxed text-secondaryText">
             Your life, organised. Calendars, tasks, lists and reminders — beautifully designed for iOS.
           </p>
+          <p className="mt-2 text-sm text-secondaryText">
+            Free to download &middot; Household free for 7 days.
+          </p>
         </div>
         <AppStoreButton />
       </div>
@@ -91,15 +94,19 @@ export function Footer() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               alt="Noa - Your life admin for quick availability and scheduling | Product Hunt"
-              width={250}
-              height={54}
+              width={160}
+              height={35}
               src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1125090&theme=light&t=1776411913924"
               className="opacity-80 transition-opacity hover:opacity-100"
             />
           </a>
           <a href="https://peerpush.net/p/noa" target="_blank" rel="noopener">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://peerpush.net/p/noa/badge.png" alt="Noa on PeerPush" width={230} height={54} className="opacity-80 transition-opacity hover:opacity-100" />
+            <img src="https://peerpush.net/p/noa/badge.png" alt="Noa on PeerPush" width={160} height={35} className="opacity-80 transition-opacity hover:opacity-100" />
+          </a>
+          <a href="https://tinylaunch.com" target="_blank" rel="noopener">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://tinylaunch.com/tinylaunch_badge_featured_on.svg" alt="Featured on TinyLaunch" width={160} height={35} className="opacity-80 transition-opacity hover:opacity-100" />
           </a>
         </div>
 

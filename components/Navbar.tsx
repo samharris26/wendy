@@ -3,10 +3,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+const APP_STORE_URL =
+  "https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752";
+
 const navItems = [
   { label: "Features", href: "/#features" },
   { label: "How it works", href: "/#how-it-works" },
   { label: "Pricing", href: "/#pricing" },
+  { label: "FAQ", href: "/#faq" },
   { label: "Blog", href: "/blog" },
 ];
 
@@ -46,14 +50,19 @@ export function Navbar() {
           ))}
         </ul>
 
-        <a
-          href="https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-xl bg-primaryText px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#0b223d]"
-        >
-          Download
-        </a>
+        <div className="flex items-center gap-4">
+          <span className="hidden font-mono text-[11px] uppercase tracking-wider text-accentDeep lg:block">
+            Household free for 7 days
+          </span>
+          <a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl bg-primaryText px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#0b223d]"
+          >
+            Download free
+          </a>
+        </div>
       </nav>
     </header>
   );
