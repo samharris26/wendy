@@ -36,7 +36,7 @@ const siteUrl = "https://www.asknoa.app";
 export const metadata: Metadata = {
   title: "Noa — family organiser app for calendar, tasks and lists",
   description:
-    "Noa is the family organiser app that brings calendars, tasks, lists, and reminders into one calm, beautifully designed app. Manage everything via WhatsApp.",
+    "Noa brings your family's calendars, tasks, lists and reminders into one calm, beautifully designed app — even over WhatsApp. Free to download on iOS, with a 7-day free trial of Household.",
   metadataBase: new URL(siteUrl),
   openGraph: {
     title: "Noa — family organiser app for calendar, tasks and lists",
