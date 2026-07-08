@@ -79,7 +79,7 @@ export function Pricing() {
               <article
                 className={`relative flex h-full flex-col rounded-xl p-8 ${
                   plan.highlight
-                    ? "border-[1.5px] border-accent bg-accentSoft/70 shadow-surface-sm"
+                    ? "border-[1.5px] border-accent bg-card shadow-surface-sm"
                     : "noa-card"
                 }`}
               >

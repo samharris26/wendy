@@ -43,12 +43,12 @@ export function HowItWorks() {
               }`}
             >
               <span
-                className="font-drama block text-[5.5rem] leading-none text-accent/90"
+                className="font-drama block text-[5.5rem] leading-[0.75] text-accent/90"
                 aria-hidden
               >
                 {step.num}
               </span>
-              <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.22em] text-secondaryText">
+              <span className="mt-5 block font-mono text-[10px] uppercase tracking-[0.22em] text-secondaryText">
                 Step {step.num} of 3
               </span>
               <h3 className="mt-4 text-2xl text-primaryText">{step.title}</h3>

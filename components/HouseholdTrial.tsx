@@ -22,9 +22,9 @@ export function HouseholdTrial() {
         </Reveal>
 
         <Reveal>
-          <div className="relative mx-auto grid max-w-4xl overflow-hidden rounded-xl border border-primaryText/15 bg-card shadow-surface-sm md:grid-cols-[1.6fr_1fr]">
+          <div className="mx-auto grid max-w-4xl overflow-hidden rounded-xl border border-primaryText/15 bg-accentSoft shadow-surface-sm md:grid-cols-[1.6fr_1fr]">
             {/* Main panel */}
-            <div className="relative bg-accentSoft p-8 md:p-12">
+            <div className="p-8 md:p-12">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accentDeep">
                 Noa · Household pass
               </p>
@@ -54,15 +54,18 @@ export function HouseholdTrial() {
               </p>
             </div>
 
-            {/* Perforation */}
-            <div className="relative hidden md:block" aria-hidden>
-              <div className="absolute -left-px bottom-0 top-0 border-l-2 border-dashed border-primaryText/20" />
-              <div className="absolute -left-4 -top-4 h-8 w-8 rounded-full border border-primaryText/15 bg-background" />
-              <div className="absolute -bottom-4 -left-4 h-8 w-8 rounded-full border border-primaryText/15 bg-background" />
-            </div>
+            {/* Stub — perforated tear-off */}
+            <div className="relative border-t-2 border-dashed border-primaryText/20 bg-card p-8 md:border-l-2 md:border-t-0 md:p-10">
+              {/* Perforation notches on the fold */}
+              <span
+                className="absolute -left-4 -top-4 hidden h-8 w-8 rounded-full border border-primaryText/15 bg-background md:block"
+                aria-hidden
+              />
+              <span
+                className="absolute -bottom-4 -left-4 hidden h-8 w-8 rounded-full border border-primaryText/15 bg-background md:block"
+                aria-hidden
+              />
 
-            {/* Stub */}
-            <div className="relative border-t-2 border-dashed border-primaryText/20 p-8 md:border-t-0 md:p-10 md:pl-6">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-secondaryText">
                 Admit six
               </p>
