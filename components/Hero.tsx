@@ -149,12 +149,12 @@ export function Hero() {
 
             {/* QR — stamp-style for desktop visitors */}
             <div className="hidden items-center gap-3 lg:flex">
-              <div className="rounded-lg border border-dashed border-accent/50 bg-white p-1.5">
+              <div className="rounded-lg border border-dashed border-accent/50 bg-white p-2">
                 <Image
                   src="/qr-app-store.svg"
                   alt="QR code linking to Noa on the App Store"
-                  width={58}
-                  height={58}
+                  width={76}
+                  height={76}
                 />
               </div>
               <span className="max-w-[110px] text-left font-mono text-[10px] uppercase leading-relaxed tracking-wider text-secondaryText">
