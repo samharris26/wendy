@@ -5,10 +5,44 @@ import Image from "next/image";
 import { AppStoreButton } from "./AppStoreButton";
 
 const FLOATING_CHIPS = [
-  { label: "Milk added to shopping", icon: "🛒", delay: 0 },
-  { label: "School pick-up at 3pm", icon: "📅", delay: 2.2 },
-  { label: "Sam: book dentist", icon: "✅", delay: 4.4 },
+  { label: "Milk added to shopping", time: "08:12", delay: 0 },
+  { label: "School pick-up at 3pm", time: "TODAY", delay: 2.2 },
+  { label: "Sam: book dentist", time: "DONE", delay: 4.4 },
 ];
+
+/** Hand-drawn marker underline, drawn in on load. */
+function Underline() {
+  return (
+    <svg
+      className="absolute -bottom-2 left-0 w-full md:-bottom-3"
+      viewBox="0 0 300 14"
+      fill="none"
+      preserveAspectRatio="none"
+      aria-hidden
+    >
+      <path
+        d="M4 10 C 60 4, 150 3, 296 7"
+        stroke="var(--color-accent)"
+        strokeWidth="4"
+        strokeLinecap="round"
+        pathLength="1"
+        className="stroke-draw is-revealed"
+      />
+    </svg>
+  );
+}
+
+/** Little hand-drawn sparkle. */
+function Sparkle({ className = "" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M12 2 C 12.8 7.5, 16.5 11.2, 22 12 C 16.5 12.8, 12.8 16.5, 12 22 C 11.2 16.5, 7.5 12.8, 2 12 C 7.5 11.2, 11.2 7.5, 12 2 Z"
+        fill="var(--color-accent)"
+      />
+    </svg>
+  );
+}
 
 export function Hero() {
   const phoneRef = useRef<HTMLDivElement>(null);
@@ -28,11 +62,11 @@ export function Hero() {
       const rect = hero.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
-      phone.style.transform = `translate(${x * 12}px, ${y * 8}px) rotateY(${x * 3}deg) rotateX(${-y * 3}deg)`;
+      phone.style.transform = `translate(${x * 12}px, ${y * 8}px) rotate(2deg)`;
     };
 
     const handleLeave = () => {
-      phone.style.transform = "translate(0, 0) rotateY(0) rotateX(0)";
+      phone.style.transform = "rotate(2deg)";
     };
 
     hero.addEventListener("mousemove", handleMove);
@@ -52,124 +86,152 @@ export function Hero() {
   const reveal = (delay: number) => ({
     opacity: loaded ? 1 : 0,
     transform: loaded ? "translateY(0)" : "translateY(20px)",
+    transition: "opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1)",
     transitionDelay: `${delay}ms`,
   });
 
   return (
     <section
       ref={heroRef}
-      className="relative flex min-h-[88vh] w-full items-center overflow-x-clip overflow-y-visible bg-background px-6 md:px-16"
+      className="relative w-full overflow-x-clip bg-background px-6 pb-10 pt-14 md:px-16 md:pb-16 md:pt-20"
     >
-      {/* Noise grain overlay */}
-      <div className="pointer-events-none absolute inset-0 z-20 opacity-[0.035]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-        backgroundRepeat: "repeat",
-      }} />
+      {/* Concentric arcs radiating from the phone side */}
+      <svg
+        className="pointer-events-none absolute -right-40 top-1/2 hidden h-[900px] w-[900px] -translate-y-1/2 lg:block"
+        viewBox="0 0 900 900"
+        fill="none"
+        aria-hidden
+      >
+        {[180, 260, 340, 420].map((r) => (
+          <circle
+            key={r}
+            cx="450"
+            cy="450"
+            r={r}
+            stroke="var(--color-rule)"
+            strokeWidth="1"
+          />
+        ))}
+        <circle cx="450" cy="450" r="500" stroke="rgba(217,98,60,0.18)" strokeWidth="1" strokeDasharray="2 8" />
+      </svg>
 
-      {/* Warm gradient glow */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute left-1/2 top-1/4 h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-[120px]" />
-        <div className="absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-primaryText/[0.04] blur-[100px]" />
-      </div>
-
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-12 pb-16 pt-16 md:pt-8 lg:flex-row lg:items-center lg:gap-16">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
         {/* Copy — left side */}
-        <div className="flex-1 text-center lg:text-left">
-          {/* Eyebrow */}
-          <p
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accentSoft/60 px-4 py-1.5 font-mono text-[11px] uppercase tracking-widest text-accentDeep transition-all duration-700 ease-out"
-            style={reveal(0)}
-          >
-            Free on the App&nbsp;Store
+        <div className="text-center lg:text-left">
+          <p className="eyebrow justify-center lg:justify-start" style={reveal(0)}>
+            Free on the App Store — iPhone
           </p>
 
-          <h1 className="text-5xl leading-[1.08] text-primaryText md:text-6xl lg:text-7xl">
-            <span className="block transition-all duration-700 ease-out" style={reveal(100)}>
+          <h1 className="mt-6 text-[2.9rem] leading-[1.05] text-primaryText sm:text-6xl lg:text-[4.6rem]">
+            <span className="block" style={reveal(100)}>
               One calm app for
             </span>
-            <span className="block italic text-accent transition-all duration-700 ease-out" style={reveal(240)}>
-              the whole household.
+            <span className="relative inline-block" style={reveal(240)}>
+              <em className="italic text-accent">the whole household.</em>
+              {loaded && <Underline />}
             </span>
           </h1>
 
           <p
-            className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-secondaryText md:text-xl lg:mx-0 transition-all duration-700 ease-out"
+            className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-secondaryText md:text-xl lg:mx-0"
             style={reveal(400)}
           >
-            Noa brings your family&apos;s calendars, tasks, shopping lists and
-            reminders into one place — and keeps everyone in sync, even over
-            WhatsApp.
+            Calendars, tasks, shopping lists and reminders — together in one
+            place, shared with your family, and in sync even over WhatsApp.
           </p>
 
+          {/* CTA row */}
           <div
-            className="mt-10 flex flex-wrap items-center justify-center gap-5 lg:justify-start transition-all duration-700 ease-out"
+            className="mt-10 flex flex-wrap items-center justify-center gap-5 lg:justify-start"
             style={reveal(560)}
           >
             <AppStoreButton />
 
-            {/* QR — desktop visitors can scan straight to the store */}
+            {/* QR — stamp-style for desktop visitors */}
             <div className="hidden items-center gap-3 lg:flex">
-              <Image
-                src="/qr-app-store.svg"
-                alt="QR code linking to Noa on the App Store"
-                width={64}
-                height={64}
-                className="rounded-lg border border-border bg-white p-1"
-              />
-              <span className="max-w-[110px] text-left text-xs leading-snug text-secondaryText">
-                Scan with your iPhone to download
+              <div className="rounded-lg border border-dashed border-accent/50 bg-white p-1.5">
+                <Image
+                  src="/qr-app-store.svg"
+                  alt="QR code linking to Noa on the App Store"
+                  width={58}
+                  height={58}
+                />
+              </div>
+              <span className="max-w-[110px] text-left font-mono text-[10px] uppercase leading-relaxed tracking-wider text-secondaryText">
+                Scan to download
               </span>
             </div>
           </div>
 
-          <p
-            className="mt-5 text-sm text-secondaryText transition-all duration-700 ease-out"
-            style={reveal(680)}
-          >
-            Free to download &middot;{" "}
-            <span className="font-semibold text-accentDeep">
-              Try Household free for 7 days
-            </span>{" "}
-            &middot; Cancel anytime
+          <p className="mt-6 font-mono text-[11px] uppercase tracking-wider text-secondaryText" style={reveal(680)}>
+            Free to download&ensp;&middot;&ensp;
+            <span className="text-accentDeep">Household free for 7 days</span>
+            &ensp;&middot;&ensp;Cancel anytime
           </p>
         </div>
 
-        {/* iPhone mockup — right side with parallax */}
-        <div className="flex shrink-0 justify-center overflow-visible" style={{ perspective: "800px" }}>
+        {/* Phone — right side */}
+        <div className="relative mx-auto w-fit lg:mx-0 lg:justify-self-center">
+          {/* Tilted paper card behind the phone */}
           <div
-            ref={phoneRef}
-            className="relative w-[260px] md:w-[280px] transition-transform duration-200 ease-out"
+            className="absolute -left-8 top-10 hidden h-[85%] w-[110%] -rotate-3 rounded-xl border border-border bg-surface/70 md:block"
             style={{
               opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(32px)",
-              transitionProperty: "opacity",
+              transition: "opacity 900ms ease 500ms",
+            }}
+            aria-hidden
+          />
+          {/* Mono annotation on the card */}
+          <span
+            className="absolute -left-16 top-4 hidden -rotate-6 font-mono text-[10px] uppercase tracking-[0.2em] text-secondaryText md:block"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transition: "opacity 900ms ease 900ms",
+            }}
+            aria-hidden
+          >
+            fig. 01 — your week
+          </span>
+
+          <Sparkle
+            className="absolute -right-10 -top-8 hidden h-7 w-7 md:block"
+            aria-hidden
+          />
+
+          <div
+            ref={phoneRef}
+            className="relative w-[250px] transition-transform duration-200 ease-out md:w-[280px]"
+            style={{
+              opacity: loaded ? 1 : 0,
+              transform: "rotate(2deg)",
+              transitionProperty: "opacity, transform",
               transitionDuration: "800ms",
               transitionDelay: "300ms",
             }}
           >
-            {/* Floating chips */}
+            {/* Floating chips — app-style cards with mono timestamps */}
             {FLOATING_CHIPS.map((chip, i) => (
               <div
                 key={chip.label}
-                className="absolute z-30 hidden md:flex items-center gap-2 rounded-xl border border-primaryText/[0.08] bg-white/90 px-3 py-2 shadow-lg shadow-primaryText/[0.06] backdrop-blur-sm"
+                className="noa-card absolute z-30 hidden items-center gap-3 px-3.5 py-2.5 md:flex"
                 style={{
-                  top: i === 0 ? "5%" : i === 1 ? "45%" : "80%",
-                  left: i === 0 ? "-45%" : i === 2 ? "-40%" : undefined,
-                  right: i === 1 ? "-35%" : undefined,
+                  top: i === 0 ? "8%" : i === 1 ? "44%" : "78%",
+                  left: i === 1 ? undefined : "-62%",
+                  right: i === 1 ? "-40%" : undefined,
+                  transform: `rotate(${i === 1 ? 2 : -2}deg)`,
                   opacity: loaded ? 1 : 0,
-                  transform: loaded ? "translateY(0) scale(1)" : "translateY(12px) scale(0.9)",
-                  transition: "opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1)",
+                  transition: "opacity 600ms cubic-bezier(0.16, 1, 0.3, 1)",
                   transitionDelay: `${800 + i * 200}ms`,
-                  animation: loaded ? `floatChip${i} 5s ease-in-out ${chip.delay}s infinite` : "none",
+                  animation: loaded ? `floatChip 5s ease-in-out ${chip.delay}s infinite` : "none",
                 }}
               >
-                <span className="text-sm">{chip.icon}</span>
+                <span className="font-mono text-[9px] tracking-widest text-accent">{chip.time}</span>
                 <span className="whitespace-nowrap text-xs font-medium text-primaryText">{chip.label}</span>
               </div>
             ))}
 
             {/* Phone frame */}
-            <div className="relative overflow-hidden rounded-[40px] border-[6px] border-primaryText/90 bg-primaryText shadow-2xl shadow-primaryText/20">
+            <div className="relative overflow-hidden rounded-[40px] border-[6px] border-primaryText/90 bg-primaryText shadow-2xl shadow-primaryText/25">
               {/* Dynamic Island */}
               <div className="absolute left-1/2 top-2 z-20 h-[28px] w-[100px] -translate-x-1/2 rounded-full bg-primaryText" />
 
@@ -177,7 +239,7 @@ export function Hero() {
               <div className="relative overflow-hidden rounded-[34px]">
                 <Image
                   src="/app-screenshot.png"
-                  alt="Noa app"
+                  alt="The Noa app home screen showing today's plan"
                   width={390}
                   height={844}
                   className="block w-full"
@@ -189,19 +251,15 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Floating chip keyframes */}
       <style jsx>{`
-        @keyframes floatChip0 {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-6px); }
-        }
-        @keyframes floatChip1 {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-5px); }
-        }
-        @keyframes floatChip2 {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-7px); }
+        @keyframes floatChip {
+          0%,
+          100% {
+            translate: 0 0;
+          }
+          50% {
+            translate: 0 -6px;
+          }
         }
       `}</style>
     </section>

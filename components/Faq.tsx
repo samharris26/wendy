@@ -1,3 +1,5 @@
+import { Reveal } from "./Reveal";
+
 const faqs = [
   {
     q: "Is Noa free?",
@@ -27,36 +29,41 @@ const faqs = [
 
 export function Faq() {
   return (
-    <section id="faq" className="px-6 py-20 lg:px-10">
-      <div className="mx-auto w-full max-w-3xl">
-        <div className="mb-10 text-center">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
-            FAQ
-          </p>
-          <h2 className="text-3xl text-primaryText sm:text-4xl lg:text-5xl">
-            Questions, <em className="italic text-accent">answered.</em>
+    <section id="faq" className="border-t border-[var(--color-rule)] px-6 py-24 lg:px-10">
+      <div className="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-[1fr_1.8fr]">
+        <Reveal>
+          <p className="eyebrow">FAQ</p>
+          <h2 className="mt-5 text-4xl text-primaryText sm:text-5xl">
+            Questions,{" "}
+            <em className="italic text-accent">answered.</em>
           </h2>
-        </div>
+          <p className="mt-5 max-w-xs text-sm leading-relaxed text-secondaryText">
+            The short version: it&apos;s free to download, the Household trial
+            is genuinely free, and cancelling takes two taps.
+          </p>
+        </Reveal>
 
-        <div className="flex flex-col gap-3">
-          {faqs.map((faq) => (
-            <details
-              key={faq.q}
-              className="group rounded-xl border border-primaryText/10 bg-card px-6 py-4 shadow-[0_1px_2px_rgba(11,36,64,0.04)] open:pb-6"
-            >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold text-primaryText [&::-webkit-details-marker]:hidden">
-                {faq.q}
-                <span
-                  aria-hidden
-                  className="text-xl leading-none text-accent transition-transform duration-200 group-open:rotate-45"
-                >
-                  +
-                </span>
-              </summary>
-              <p className="mt-3 text-sm leading-relaxed text-secondaryText">
-                {faq.a}
-              </p>
-            </details>
+        <div className="flex flex-col">
+          {faqs.map((faq, i) => (
+            <Reveal key={faq.q} delay={i * 60}>
+              <details className="group border-t border-[var(--color-rule)] py-5 last:border-b">
+                <summary className="flex cursor-pointer list-none items-baseline gap-5 text-left [&::-webkit-details-marker]:hidden">
+                  <span className="font-mono text-[10px] tracking-[0.22em] text-accent">
+                    Q_{String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flex-1 text-lg text-primaryText md:text-xl">{faq.q}</span>
+                  <span
+                    aria-hidden
+                    className="font-mono text-xl leading-none text-accent transition-transform duration-200 group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="mt-4 max-w-2xl pl-[52px] text-sm leading-relaxed text-secondaryText md:pl-[58px]">
+                  {faq.a}
+                </p>
+              </details>
+            </Reveal>
           ))}
         </div>
       </div>

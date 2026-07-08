@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DayWithNoa } from "@/components/DayWithNoa";
 import { Faq } from "@/components/Faq";
 import { Features } from "@/components/Features";
 import { FinalCta } from "@/components/FinalCta";
@@ -9,7 +10,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { Navbar } from "@/components/Navbar";
 import { Pricing } from "@/components/Pricing";
 import { StickyDownloadBar } from "@/components/StickyDownloadBar";
-import { Value } from "@/components/Value";
+import { Ticker } from "@/components/Ticker";
 import { WhatsAppAssistant } from "@/components/WhatsAppAssistant";
 
 export const metadata: Metadata = {
@@ -22,8 +23,9 @@ export default function Page() {
       <Navbar />
       <main>
         <Hero />
-        <Value />
+        <Ticker />
         <Features />
+        <DayWithNoa />
         <HowItWorks />
         <WhatsAppAssistant />
         <HouseholdTrial />

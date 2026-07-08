@@ -5,7 +5,7 @@ import { AppStoreButton } from "./AppStoreButton";
 
 export function Footer() {
   return (
-    <footer className="border-t border-primaryText/10 bg-background px-6 pb-12 pt-20 lg:px-10">
+    <footer className="border-t border-[var(--color-rule)] bg-background px-6 pb-12 pt-20 lg:px-10">
       {/* Top — Download CTA */}
       <div className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-12 border-b border-primaryText/10 pb-16 md:flex-row md:items-center">
         <div className="max-w-lg">

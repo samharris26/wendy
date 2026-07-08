@@ -16,6 +16,8 @@
   --color-success: #2f9e63;
   --color-warning: #f59e0b;
   --color-destructive: #d1432f;
+  /* Hairline rule — FAColor.rule */
+  --color-rule: rgba(11, 36, 64, 0.1);
 }
 
 * {
@@ -33,6 +35,24 @@ body {
   font-family: var(--font-plus-jakarta), sans-serif;
   background: var(--color-background);
   color: var(--color-primary-text);
+}
+
+/* Paper grain over the whole page — the hero's old noise, promoted to a
+   site-wide texture so every section sits on the same warm paper. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-deep);
 }
 
 /* Editorial headings — Georgia serif, matching the app design system */
@@ -64,8 +84,37 @@ nav a,
   font-family: var(--font-ibm-plex-mono), monospace;
 }
 
+/* Cormorant Garamond — the app's FAFont.drama, for oversized display moments */
 .font-drama {
   font-family: var(--font-cormorant), serif;
+}
+
+/* ── Editorial system pieces ─────────────────────────────────── */
+
+/* Mono eyebrow with a small accent square — every section opens with one */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent-deep);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* Hairline rule matching FAColor.rule */
+.rule {
+  border: 0;
+  border-top: 1px solid var(--color-rule);
 }
 
 /* Card style matching app (FACard): 12pt radius, near-zero shadow */
@@ -75,6 +124,53 @@ nav a,
   border: 1px solid rgba(11, 36, 64, 0.08);
   box-shadow: 0 1px 2px rgba(11, 36, 64, 0.04);
 }
+
+/* Rotated sticker/stamp badge */
+.sticker {
+  transform: rotate(6deg);
+  font-family: var(--font-ibm-plex-mono), monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ── Scroll reveal ───────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Ticker marquee ──────────────────────────────────────────── */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ── Small ambient animations ────────────────────────────────── */
 
 .system-dot {
   animation: pulseDot 1.7s ease-in-out infinite;
@@ -95,6 +191,43 @@ nav a,
   }
 }
 
+@keyframes typingDot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+.typing-dot {
+  animation: typingDot 1.2s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* Hand-drawn stroke draw-in (SVG paths with pathLength="1") */
+.stroke-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 900ms cubic-bezier(0.65, 0, 0.35, 1) 400ms;
+}
+
+.is-revealed .stroke-draw,
+.stroke-draw.is-revealed {
+  stroke-dashoffset: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -105,5 +238,14 @@ nav a,
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .stroke-draw {
+    stroke-dashoffset: 0;
   }
 }
