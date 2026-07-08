@@ -5,70 +5,90 @@ const path = require("path");
 const POSTS_DIR = path.join(__dirname, "..", "blog", "posts");
 const TOPICS_PATH = path.join(__dirname, "topics.json");
 
+// Pages the model may link to inline (1–2 per post, only where genuinely relevant)
+const INTERNAL_LINKS = `
+- https://www.asknoa.app/features/shared-family-calendar — shared family calendar feature
+- https://www.asknoa.app/features/tasks — tasks & assignment feature
+- https://www.asknoa.app/features/shared-lists — shared lists feature
+- https://www.asknoa.app/features/whatsapp-assistant — WhatsApp assistant feature`;
+
 async function main() {
-  // Ensure posts directory exists
   if (!fs.existsSync(POSTS_DIR)) {
     fs.mkdirSync(POSTS_DIR, { recursive: true });
   }
 
-  // Load topics
-  const topics = JSON.parse(fs.readFileSync(TOPICS_PATH, "utf-8"));
+  // Topic queue: each topic is written exactly once. No rotation, no repeats —
+  // repeating a topic produces a near-duplicate post competing with our own
+  // earlier one for the same query.
+  const topicsFile = JSON.parse(fs.readFileSync(TOPICS_PATH, "utf-8"));
+  const topic = topicsFile.topics.find((t) => t.status === "todo");
 
-  // Count existing posts for topic rotation
+  if (!topic) {
+    console.log(
+      "Topic queue is empty — no post generated. Add new topics to scripts/topics.json (source them from Search Console queries and People-Also-Ask boxes)."
+    );
+    return;
+  }
+
   const existingPosts = fs
     .readdirSync(POSTS_DIR)
     .filter((f) => f.endsWith(".md"));
-  const topicIndex = existingPosts.length % topics.length;
-  const topic = topics[topicIndex];
 
-  console.log(`Generating post ${existingPosts.length + 1}`);
-  console.log(`Topic: ${topic.title} (index ${topicIndex}/${topics.length})`);
-
-  // Build today's date
   const today = new Date();
   const dateStr = today.toISOString().split("T")[0]; // YYYY-MM-DD
 
-  // Check if a post already exists for today
-  const todayPrefix = dateStr;
-  const alreadyExists = existingPosts.some((f) => f.startsWith(todayPrefix));
+  const alreadyExists = existingPosts.some((f) => f.startsWith(dateStr));
   if (alreadyExists) {
     console.log(`A post for ${dateStr} already exists. Skipping.`);
     return;
   }
 
-  const systemPrompt = `You are a blog writer for Noa (www.asknoa.app), a family productivity app that combines calendars, tasks, lists, and reminders in one beautifully designed iOS app with WhatsApp integration.
+  console.log(`Generating draft: ${topic.title}`);
+  console.log(`Target query: ${topic.keyword}`);
 
-Write in UK English (organisation not organization, colour not color, etc.). Target audience: busy parents, couples, and families who want to be more organised.
+  const systemPrompt = `You write for the blog of Noa (www.asknoa.app), an iPhone app that brings a family's calendars, tasks and shopping lists into one place, with a WhatsApp assistant. Readers are busy UK parents and couples.
 
-Rules:
-- Write between 900 and 1200 words
-- Use ## for section headings (H2). Do NOT include an H1 title — the title is handled separately in the page template
-- Be practical and actionable — give specific, concrete advice readers can apply today
-- Write in a warm, knowledgeable tone — like a helpful friend, not a corporate blog
-- Naturally mention Noa where relevant but no more than 2-3 times in the whole article
-- Include a clear call-to-action paragraph at the end encouraging readers to try Noa. Always use a markdown link: [Noa](https://www.asknoa.app). NEVER write a bare URL — always use markdown link syntax
-- Do NOT start with cliches like "In today's fast-paced world" or "Are you tired of..."
-- Do NOT use the words "journey", "game-changer", "unlock", "leverage", "revolutionise", or "empower" — not even in different capitalisation
-- Do NOT include any frontmatter, metadata, or YAML — just the article content
-- Use bullet points and numbered lists where they aid clarity
-- Include at least 3 H2 sections
-- Write for SEO: naturally incorporate relevant keywords without stuffing`;
+Your job is a strong FIRST DRAFT for a human editor — clarity and specificity beat polish.
 
-  const userPrompt = `${topic.prompt}
+VOICE — this is the most important section:
+- Open inside a specific, recognisable scene from family life (the overflowing bin, the crumpled letter in the book bag, the 9pm "have we got a card?"). Never open with a definition, a statistic, or a question to the reader.
+- Write like one specific person with opinions, not a consensus document. Take positions ("chore charts die by week three, and it's not your fault").
+- Concrete beats abstract, always: "the £2 bake-sale coins" not "school-related financial obligations". UK texture: school run, book bags, bin night, half-term, the big shop.
+- Vary sentence length aggressively. Some sentences should be four words. Contractions always.
+- It's fine to be funny once or twice; it must never be fine to be bland.
 
-Return the article title on the very first line, prefixed with "TITLE: ". Then leave a blank line and write the full article body in markdown.
+STRUCTURE:
+- 700–1000 words. Shorter and sharper beats longer and thorough.
+- ## for section headings (no H1 — the template handles the title). Headings should be interesting on their own, not labels ("The Argument That Isn't About the Bins", not "Communication Problems").
+- Bullet lists only when a list is genuinely the clearest form — at most one per post. Never end a post with a list.
+- End with one closing thought that lands the core idea, followed by a single soft sentence pointing at Noa with a markdown link: [Noa](https://www.asknoa.app). No hard sell, no feature list.
 
-Example format:
-TITLE: Your Article Title Here
+SEO (quiet, not stuffed):
+- The post targets ONE query, given by the user. Work it (or a close natural variant) into the title, exactly one H2, and the first 100 words. Nowhere else on purpose.
+- Where genuinely relevant, link 1–2 of these pages inline with descriptive anchor text (markdown links only):${INTERNAL_LINKS}
 
-## First Section
-Content here...`;
+BANNED — these mark text as machine-written:
+- Openers: "In today's fast-paced world", "Are you tired of", "We've all been there", "Picture this", "Let's face it", "In the hustle and bustle".
+- Words: journey, game-changer, unlock, leverage, revolutionise, empower, seamless, effortless, dive in, delve, elevate, supercharge, foster, streamline, robust.
+- Structures: a bold-label bullet list of "benefits"; three-item parallel sentences ("It's not X. It's not Y. It's Z.") more than once; a summary section that restates the post; rhetorical questions as transitions.
+- Any sentence that could appear unchanged in a competitor's blog.
 
-  // Call OpenAI API
+FORMAT: no frontmatter or YAML. UK English throughout.`;
+
+  const userPrompt = `Target query: "${topic.keyword}"
+
+Brief: ${topic.prompt}
+
+Return exactly this format:
+TITLE: <title — compelling first, keyword-bearing second; sentence case; no colons-plus-subtitle formula>
+DESCRIPTION: <140–155 chars for the meta description — a hook written for a human skimming search results, not a summary>
+
+<article body in markdown>`;
+
   const client = new OpenAI();
   const response = await client.chat.completions.create({
     model: "gpt-4o",
-    max_tokens: 2000,
+    max_tokens: 2200,
     messages: [
       { role: "system", content: systemPrompt },
       { role: "user", content: userPrompt },
@@ -77,70 +97,75 @@ Content here...`;
 
   const content = response.choices[0].message.content;
 
-  // Parse title from response
+  // Parse TITLE / DESCRIPTION header lines
   const lines = content.split("\n");
-  let title = topic.title; // fallback
+  let title = topic.title;
+  let description = "";
   let bodyStartIndex = 0;
 
-  if (lines[0].startsWith("TITLE: ")) {
-    title = lines[0].replace("TITLE: ", "").trim();
-    bodyStartIndex = 1;
-    // Skip blank line after title
-    if (lines[bodyStartIndex] && lines[bodyStartIndex].trim() === "") {
-      bodyStartIndex++;
+  for (let i = 0; i < Math.min(lines.length, 5); i++) {
+    if (lines[i].startsWith("TITLE: ")) {
+      title = lines[i].replace("TITLE: ", "").trim();
+      bodyStartIndex = i + 1;
+    } else if (lines[i].startsWith("DESCRIPTION: ")) {
+      description = lines[i].replace("DESCRIPTION: ", "").trim();
+      bodyStartIndex = i + 1;
     }
+  }
+  while (lines[bodyStartIndex] && lines[bodyStartIndex].trim() === "") {
+    bodyStartIndex++;
   }
 
   const body = lines.slice(bodyStartIndex).join("\n").trim();
 
-  // Generate slug from title
+  // Fallback description: first paragraph, stripped
+  if (!description) {
+    const firstParagraph = body
+      .split("\n\n")
+      .find((p) => p && !p.startsWith("#"));
+    description = firstParagraph
+      ? firstParagraph
+          .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+          .replace(/[*_`]/g, "")
+          .slice(0, 155)
+          .trim() + "..."
+      : topic.title;
+  }
+
   const slug = title
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
-  // Generate description (first ~155 chars of first paragraph)
-  const firstParagraph = body
-    .split("\n\n")
-    .find((p) => p && !p.startsWith("#"));
-  const description = firstParagraph
-    ? firstParagraph
-        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // strip markdown links
-        .replace(/[*_`]/g, "") // strip formatting
-        .slice(0, 155)
-        .trim() + "..."
-    : topic.title;
-
-  // Build tags
-  const baseTags = ["productivity", "family", "organisation"];
-  const topicWords = topic.title.toLowerCase().split(/\s+/);
+  const baseTags = ["family", "organisation"];
+  const kw = topic.keyword.toLowerCase();
   const extraTags = [];
-  if (topicWords.some((w) => ["calendar", "scheduling", "planning"].includes(w)))
-    extraTags.push("calendar");
-  if (topicWords.some((w) => ["task", "tasks", "chore", "chores", "todo"].includes(w)))
-    extraTags.push("tasks");
-  if (topicWords.some((w) => ["whatsapp", "digital", "tech", "screen"].includes(w)))
-    extraTags.push("technology");
-  if (topicWords.some((w) => ["meal", "holiday", "travel", "school"].includes(w)))
-    extraTags.push("lifestyle");
+  if (/calendar|schedul|plan/.test(kw)) extraTags.push("calendar");
+  if (/task|chore|todo|to-do/.test(kw)) extraTags.push("tasks");
+  if (/whatsapp|digital|tech|screen/.test(kw)) extraTags.push("technology");
+  if (/meal|holiday|travel|school|birthday/.test(kw)) extraTags.push("lifestyle");
   const tags = [...new Set([...baseTags, ...extraTags])];
 
-  // Build frontmatter + file content
   const frontmatter = `---
 title: "${title.replace(/"/g, '\\"')}"
 date: "${dateStr}"
 description: "${description.replace(/"/g, '\\"')}"
+keyword: "${topic.keyword.replace(/"/g, '\\"')}"
+author: "The Noa Team"
 tags: [${tags.map((t) => `"${t}"`).join(", ")}]
 ---`;
 
   const fileContent = `${frontmatter}\n\n${body}\n`;
   const filename = `${dateStr}-${slug}.md`;
-  const filepath = path.join(POSTS_DIR, filename);
+  fs.writeFileSync(path.join(POSTS_DIR, filename), fileContent, "utf-8");
 
-  fs.writeFileSync(filepath, fileContent, "utf-8");
+  // Mark the topic done so it is never written twice
+  topic.status = "done";
+  fs.writeFileSync(TOPICS_PATH, JSON.stringify(topicsFile, null, 2) + "\n", "utf-8");
+
   console.log(`Written: blog/posts/${filename}`);
   console.log(`Title: ${title}`);
-  console.log(`Tags: ${tags.join(", ")}`);
+  console.log(`Remaining topics in queue: ${topicsFile.topics.filter((t) => t.status === "todo").length}`);
 }
 
 main().catch((err) => {
