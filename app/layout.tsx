@@ -32,6 +32,57 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 const siteUrl = "https://www.asknoa.app";
+const appStoreUrl =
+  "https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752";
+
+// Site-wide structured data: helps Google consolidate the brand panel for
+// "noa app" queries and understand the product (no rich results are shown
+// for SoftwareApplication without ratings, but the entity data still counts).
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: "Noa",
+      alternateName: "Ask Noa",
+      url: siteUrl,
+      logo: `${siteUrl}/og.png`,
+      sameAs: [
+        appStoreUrl,
+        "https://www.instagram.com/asknoa.app",
+        "https://www.producthunt.com/products/noa-4",
+      ],
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${siteUrl}/#app`,
+      name: "Noa — your life, organised",
+      operatingSystem: "iOS",
+      applicationCategory: "LifestyleApplication",
+      description:
+        "Noa brings a family's calendars, tasks, shopping lists and reminders into one calm app, with a WhatsApp assistant. Free to download; Household plan free for 7 days.",
+      url: siteUrl,
+      installUrl: appStoreUrl,
+      author: { "@id": `${siteUrl}/#organization` },
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Free",
+          price: "0",
+          priceCurrency: "GBP",
+        },
+        {
+          "@type": "Offer",
+          name: "Household (annual)",
+          price: "39.99",
+          priceCurrency: "GBP",
+          description: "Up to 6 people. 7-day free trial.",
+        },
+      ],
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   title: "Noa — family organiser app for calendar, tasks and lists",
@@ -75,6 +126,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
       </head>
       <body className="bg-background text-primaryText antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         {children}
         <CookieBanner />
         <Analytics />

@@ -724,9 +724,9 @@ const googleCalendarAlternative: LandingPageData = {
 const featureSharedFamilyCalendar: LandingPageData = {
   slug: "features/shared-family-calendar",
   keyword: "Shared Family Calendar",
-  metaTitle: "Shared family calendar — colour-coded and synced | Noa",
+  metaTitle: "Shared family calendar — free on iPhone | Noa",
   metaDescription:
-    "Noa's shared family calendar keeps everyone's schedules visible in one colour-coded view. Sync existing calendars and add events via WhatsApp.",
+    "School, work and clubs in one colour-coded view. Syncs with the Apple and Google calendars you already use; add events from WhatsApp. Free to download.",
   heroHeadline: "Shared family calendar for busy households",
   heroSubheadline:
     "See every family member's schedule in one calm, colour-coded calendar. Sync your existing calendars, add events by messaging WhatsApp, and keep the whole household in the loop.",
@@ -785,9 +785,9 @@ const featureSharedFamilyCalendar: LandingPageData = {
 const featureTasks: LandingPageData = {
   slug: "features/tasks",
   keyword: "Family Task Management",
-  metaTitle: "Family task management — assign, remind, done | Noa",
+  metaTitle: "Family task manager — assign it, Noa chases it | Noa",
   metaDescription:
-    "Assign tasks to family members, set automatic reminders, and track what's done — all from one app or via WhatsApp. Household task management, simplified.",
+    "Give every job an owner. Noa reminds whoever's turn it is — by push or WhatsApp — so you don't have to nag. Free on iPhone; Household free for 7 days.",
   heroHeadline: "Family task management made simple",
   heroSubheadline:
     "Create tasks, assign them to the right person, and let Noa handle the reminders. Manage everything from the app or just message WhatsApp.",
@@ -846,9 +846,9 @@ const featureTasks: LandingPageData = {
 const featureSharedLists: LandingPageData = {
   slug: "features/shared-lists",
   keyword: "Shared Family Lists",
-  metaTitle: "Shared family lists — real-time sync via WhatsApp | Noa",
+  metaTitle: "Shared shopping & family lists that sync live | Noa",
   metaDescription:
-    "Create and share shopping lists, packing lists, and household lists with your family. Real-time sync, WhatsApp access, and beautifully simple design.",
+    "One shopping list every phone can tick off — plus packing lists and to-dos. Add items from WhatsApp mid-aisle. Free on iPhone, shared with the household.",
   heroHeadline: "Shared lists your whole family can edit",
   heroSubheadline:
     "Shopping lists, packing lists, gift ideas — all shared, synced in real time, and accessible from WhatsApp. No more forgotten items or duplicate purchases.",
@@ -907,9 +907,9 @@ const featureSharedLists: LandingPageData = {
 const featureWhatsAppAssistant: LandingPageData = {
   slug: "features/whatsapp-assistant",
   keyword: "WhatsApp Family Assistant",
-  metaTitle: "WhatsApp family assistant for calendar and tasks | Noa",
+  metaTitle: "Run your family calendar from WhatsApp | Noa",
   metaDescription:
-    "Manage your family calendar, tasks, and lists by messaging Noa on WhatsApp. Add events, assign tasks, and update lists using natural language.",
+    "Message Noa like a person — 'swimming Thursday 5pm' — and it's on the family calendar. Tasks, shopping lists and daily briefings too. Free on iPhone.",
   heroHeadline: "Manage your family life from WhatsApp",
   heroSubheadline:
     "Add calendar events, create tasks, and update shopping lists just by sending a message. Noa's WhatsApp assistant understands natural language and acts instantly.",
@@ -965,6 +965,185 @@ const featureWhatsAppAssistant: LandingPageData = {
   ],
 };
 
+const timetreeAlternative: LandingPageData = {
+  slug: "timetree-alternative",
+  keyword: "TimeTree Alternative",
+  metaTitle: "TimeTree alternative with tasks, lists & WhatsApp | Noa",
+  metaDescription:
+    "Love TimeTree's shared calendar but juggling separate apps for tasks and shopping? Noa puts calendar, tasks and lists in one place. Free on iPhone.",
+  heroHeadline: "Liked TimeTree? Noa finishes the job.",
+  heroSubheadline:
+    "TimeTree nailed the shared calendar. Noa adds the rest of family life — tasks, shopping lists, reminders and a WhatsApp assistant — in one calm app.",
+  heroImage: "/images/calendar.png",
+  features: [
+    {
+      iconName: "CheckSquare",
+      title: "More than a calendar",
+      description:
+        "TimeTree stops at events. Noa adds shared tasks with assignment, shopping lists, and reminders — the other half of running a household.",
+    },
+    {
+      iconName: "MessageCircle",
+      title: "Add things from WhatsApp",
+      description:
+        "No keeping-another-app-open. Message Noa on WhatsApp and events, tasks and list items file themselves.",
+    },
+    {
+      iconName: "Shield",
+      title: "Calm, ad-free design",
+      description:
+        "No banner ads in your family's schedule. A quiet, warm interface designed to be glanced at, not lived in.",
+    },
+  ],
+  contentSections: [
+    {
+      heading: "Why families outgrow TimeTree",
+      paragraphs: [
+        "TimeTree does one thing genuinely well: a shared calendar that several people can see and edit. For plenty of families that's where it starts and ends — and if all you need is events, it's a fine choice.",
+        "The trouble is that family life isn't only events. The dentist appointment sits in TimeTree, but the 'book the dentist' task lives in someone's head, the shopping list lives in a notes app, and the 'whose turn is the school run' conversation lives in WhatsApp. Four systems, one household, and the gaps between them are where things get dropped.",
+      ],
+    },
+    {
+      heading: "What Noa does differently as a TimeTree alternative",
+      paragraphs: [
+        "Noa keeps the shared calendar — connected to the Apple and Google calendars you already use, so nothing moves — and adds shared tasks, shopping lists and reminders in the same app. Assign the birthday-present buying to a named person. Tick off the big shop from either phone.",
+        "Then there's the part no calendar app does: you can message Noa on WhatsApp. 'Add sports day to the calendar, 14 July' or 'put batteries on the shopping list' — sent from the school car park, filed correctly, visible to the whole household.",
+      ],
+    },
+    {
+      heading: "Switching takes minutes, not an afternoon",
+      paragraphs: [
+        "Because Noa connects to Apple and Google Calendar rather than replacing them, there's no export/import dance. Download Noa free, connect your calendars, invite your household — up to six people share one plan, free for the first 7 days.",
+        "Keep TimeTree installed while you try it if you like. Most families find that once tasks, lists and the calendar live in one place, the second app quietly stops being opened.",
+      ],
+    },
+  ],
+  internalLinks: [
+    { href: "/shared-family-calendar", label: "Shared family calendar" },
+    { href: "/family-task-manager", label: "Family task manager" },
+    { href: "/cozi-alternative", label: "Cozi alternative" },
+  ],
+};
+
+const skylightCalendarAlternative: LandingPageData = {
+  slug: "skylight-calendar-alternative",
+  keyword: "Skylight Calendar Alternative",
+  metaTitle: "Skylight Calendar alternative — no wall screen needed | Noa",
+  metaDescription:
+    "Get the family command centre without the wall-mounted hardware. Noa puts shared calendars, chores and lists in every pocket. Free on iPhone.",
+  heroHeadline: "The family display that's already in your pocket.",
+  heroSubheadline:
+    "Skylight puts your family's schedule on a screen in the kitchen. Noa puts it on the phones you already own — plus tasks, lists and WhatsApp — with nothing to buy.",
+  heroImage: "/images/calendar.png",
+  features: [
+    {
+      iconName: "Smartphone",
+      title: "No hardware to buy",
+      description:
+        "No wall screen, no power lead, no deciding which room the family hub lives in. Everyone's phone is the display.",
+    },
+    {
+      iconName: "Bell",
+      title: "Works when you're out",
+      description:
+        "A kitchen screen can't remind you about pick-up while you're at work. Noa's reminders and widgets travel with each person.",
+    },
+    {
+      iconName: "ListChecks",
+      title: "Chores and lists included",
+      description:
+        "Shared task assignment and live shopping lists, synced to every phone in the household — no premium hardware tier.",
+    },
+  ],
+  contentSections: [
+    {
+      heading: "The wall calendar, reconsidered",
+      paragraphs: [
+        "Skylight Calendar is a lovely idea: an always-on screen in the kitchen showing the family's week, chore charts and meal plans. It's the paper wall planner, upgraded. If your household genuinely gathers in one room and glances at one spot, it can work well.",
+        "But it inherits the wall planner's oldest flaw: it only works when you're standing in front of it. The schedule conflict surfaces at work; the shopping list matters in the supermarket; the 'leave now for pick-up' nudge is needed in the car. A fixed screen — a three-figure purchase before any optional subscription — can't follow you out of the door.",
+      ],
+    },
+    {
+      heading: "Noa as a Skylight Calendar alternative",
+      paragraphs: [
+        "Noa takes the same job — one shared picture of family life — and does it on the phones your household already carries. A shared, colour-coded calendar synced with Apple and Google Calendar. Chores assigned to named people, with nudges that follow them around. Shopping lists that update live from any phone, including in the supermarket queue.",
+        "And because Noa has a WhatsApp assistant, adding things doesn't even require opening the app. Message 'swimming moved to 5pm Thursday' and it's on everyone's calendar. A kitchen screen can't do that.",
+      ],
+    },
+    {
+      heading: "Try the whole thing free",
+      paragraphs: [
+        "There's no hardware cost to recover, so trying Noa is genuinely low-stakes: the app is free to download and use, and the Household plan — shared calendars, lists and task assignment for up to six people — is free for the first 7 days. If a screen for the kitchen still appeals afterwards, an old iPad on a stand running Noa does the job nicely.",
+      ],
+    },
+  ],
+  internalLinks: [
+    { href: "/family-calendar-app", label: "Family calendar app" },
+    { href: "/assign-tasks-family", label: "Assign tasks to family" },
+    { href: "/family-shopping-list", label: "Family shopping list" },
+  ],
+};
+
+const familywallAlternative: LandingPageData = {
+  slug: "familywall-alternative",
+  keyword: "FamilyWall Alternative",
+  metaTitle: "FamilyWall alternative — calmer, with WhatsApp | Noa",
+  metaDescription:
+    "Want family organisation without the busy all-in-one feed? Noa does calendar, tasks and lists with a calm design and WhatsApp capture. Free on iPhone.",
+  heroHeadline: "Family organisation, minus the noise.",
+  heroSubheadline:
+    "FamilyWall bundles everything into a feed. Noa keeps the essentials — calendar, tasks, lists — in a calm app your whole household will actually keep using.",
+  heroImage: "/images/lists.png",
+  features: [
+    {
+      iconName: "Zap",
+      title: "Essentials, done properly",
+      description:
+        "Calendar, tasks, shopping lists and reminders — the four things every household runs on, without a social feed bolted on.",
+    },
+    {
+      iconName: "MessageCircle",
+      title: "Capture from WhatsApp",
+      description:
+        "Your family already talks in WhatsApp. Noa turns those messages into events, tasks and list items instead of scroll-away chat.",
+    },
+    {
+      iconName: "Users",
+      title: "One plan, six people",
+      description:
+        "Household covers up to six people — partners, kids, grandparents on the school run — with a 7-day free trial.",
+    },
+  ],
+  contentSections: [
+    {
+      heading: "When all-in-one becomes all-over-the-place",
+      paragraphs: [
+        "FamilyWall's pitch is everything in one app: calendar, lists, meal planner, photo feed, location sharing, messaging. For some families that breadth is the appeal. For many, it's why the app gets abandoned — every screen is busy, the essentials share space with features nobody asked for, and the one person who set it up becomes the only person who opens it.",
+        "A family organiser only works if the least-enthusiastic person in the household keeps using it. That's a design problem, not a feature-count problem.",
+      ],
+    },
+    {
+      heading: "Noa as a FamilyWall alternative",
+      paragraphs: [
+        "Noa is deliberately narrower and deliberately calmer. A shared calendar that syncs with Apple and Google. Tasks you can assign to a named person, with reminders that chase so you don't have to. Shopping and packing lists that update live on every phone. A morning briefing that tells each person what their day holds. That's it — and that's the point.",
+        "For the family members who won't open another app, Noa meets them where they already are: WhatsApp. Grandma can ask 'what's on this weekend?' and get the family schedule back as a message. No app, no login, no onboarding for her at all.",
+      ],
+    },
+    {
+      heading: "Built for the phone-reluctant household",
+      paragraphs: [
+        "Switching costs almost nothing: Noa connects to the calendars you already have, the app is free to download, and Household — everything shared, up to six people — is free for the first 7 days and cancellable in two taps.",
+        "If your FamilyWall experiment ended with one parent maintaining a system nobody else looked at, try the opposite approach: fewer features, less friction, and a way in through the chat app your family already checks forty times a day.",
+      ],
+    },
+  ],
+  internalLinks: [
+    { href: "/cozi-alternative", label: "Cozi alternative" },
+    { href: "/shared-list-app", label: "Shared list app" },
+    { href: "/features/whatsapp-assistant", label: "WhatsApp assistant" },
+  ],
+};
+
 // ---------------------------------------------------------------------------
 // EXPORTS
 // ---------------------------------------------------------------------------
@@ -981,6 +1160,9 @@ export const landingPages: LandingPageData[] = [
   familyListApp,
   coziAlternative,
   googleCalendarAlternative,
+  timetreeAlternative,
+  skylightCalendarAlternative,
+  familywallAlternative,
 ];
 
 export const featurePages: LandingPageData[] = [
