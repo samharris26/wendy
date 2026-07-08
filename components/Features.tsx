@@ -1,4 +1,17 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Reveal } from "./Reveal";
+
+/** Start an interval only for users who are okay with motion. */
+function useTick(callback: () => void, ms: number) {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(callback, ms);
+    return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ms]);
+}
 
 /* ── Shared mini-UI atoms (app-faithful: 8–12px radii, hairlines, mono) ── */
 
@@ -6,7 +19,7 @@ function MiniCheck({ done, tint = "accent" }: { done?: boolean; tint?: "accent" 
   const color = tint === "accent" ? "var(--color-accent)" : "var(--color-primary-text)";
   return (
     <span
-      className="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2"
+      className="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors duration-300"
       style={{
         borderColor: done ? color : "rgba(11,36,64,0.2)",
         background: done ? color : "transparent",
@@ -76,6 +89,9 @@ function CellChrome({
 
 function CalendarCell() {
   const days = ["M", "T", "W", "T", "F", "S", "S"];
+  const [activeDay, setActiveDay] = useState(4);
+  useTick(() => setActiveDay((d) => (d + 1) % 7), 2500);
+
   return (
     <CellChrome
       index="01"
@@ -92,8 +108,8 @@ function CalendarCell() {
           {days.map((d, i) => (
             <span
               key={i}
-              className={`flex h-7 w-7 items-center justify-center rounded-full font-mono text-[11px] ${
-                i === 4 ? "bg-accent text-white" : "text-secondaryText"
+              className={`flex h-7 w-7 items-center justify-center rounded-full font-mono text-[11px] transition-all duration-300 ${
+                i === activeDay ? "scale-110 bg-accent text-white" : "text-secondaryText"
               }`}
             >
               {d}
@@ -120,6 +136,9 @@ function CalendarCell() {
 }
 
 function TasksCell() {
+  const [dentistDone, setDentistDone] = useState(true);
+  useTick(() => setDentistDone((d) => !d), 3000);
+
   return (
     <CellChrome
       index="02"
@@ -128,8 +147,14 @@ function TasksCell() {
     >
       <div className="flex flex-col gap-2">
         <Row>
-          <MiniCheck done />
-          <span className="flex-1 text-xs text-secondaryText/50 line-through">Book dentist</span>
+          <MiniCheck done={dentistDone} />
+          <span
+            className={`flex-1 text-xs transition-all duration-300 ${
+              dentistDone ? "text-secondaryText/50 line-through" : "text-primaryText"
+            }`}
+          >
+            Book dentist
+          </span>
           <PersonChip name="Sam" hue="orange" />
         </Row>
         <Row>
@@ -148,6 +173,10 @@ function TasksCell() {
 }
 
 function ListsCell() {
+  const items = ["Oat milk", "Sourdough bread", "Avocados"];
+  const [checkedCount, setCheckedCount] = useState(1);
+  useTick(() => setCheckedCount((c) => (c >= items.length ? 1 : c + 1)), 2200);
+
   return (
     <CellChrome
       index="03"
@@ -161,24 +190,52 @@ function ListsCell() {
             Shared
           </span>
         </div>
-        {[
-          { label: "Oat milk", done: true },
-          { label: "Sourdough bread", done: false },
-          { label: "Avocados", done: false },
-        ].map((item) => (
-          <Row key={item.label}>
-            <MiniCheck done={item.done} />
-            <span className={`text-xs ${item.done ? "text-secondaryText/50 line-through" : "text-primaryText"}`}>
-              {item.label}
-            </span>
-          </Row>
-        ))}
+        {items.map((label, i) => {
+          const done = i < checkedCount;
+          return (
+            <Row key={label}>
+              <MiniCheck done={done} />
+              <span
+                className={`text-xs transition-all duration-300 ${
+                  done ? "text-secondaryText/50 line-through" : "text-primaryText"
+                }`}
+              >
+                {label}
+              </span>
+            </Row>
+          );
+        })}
       </div>
     </CellChrome>
   );
 }
 
+const BRIEFING_TEXT =
+  "Morning, Sam. 3 events today — school pick-up moved to 15:00. One task due: renew car insurance.";
+
 function BriefingCell() {
+  const [chars, setChars] = useState(0);
+  const [started, setStarted] = useState(false);
+
+  // Typing dots for a beat, then the briefing types itself out (once).
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setStarted(true);
+      setChars(BRIEFING_TEXT.length);
+      return;
+    }
+    const start = setTimeout(() => setStarted(true), 1400);
+    return () => clearTimeout(start);
+  }, []);
+
+  useEffect(() => {
+    if (!started || chars >= BRIEFING_TEXT.length) return;
+    const id = setTimeout(() => setChars((c) => Math.min(c + 2, BRIEFING_TEXT.length)), 24);
+    return () => clearTimeout(id);
+  }, [started, chars]);
+
+  const finished = chars >= BRIEFING_TEXT.length;
+
   return (
     <CellChrome
       index="04"
@@ -193,10 +250,23 @@ function BriefingCell() {
           <span className="text-[11px] font-semibold text-primaryText">Noa</span>
           <span className="ml-auto font-mono text-[9px] text-secondaryText">07:00</span>
         </div>
-        <p className="text-xs leading-relaxed text-secondaryText">
-          Morning, Sam. 3 events today — school pick-up moved to 15:00. One task
-          due: <span className="text-primaryText">renew car insurance</span>.
-        </p>
+        {!started ? (
+          <span className="flex w-fit items-center gap-1 py-1">
+            <span className="typing-dot h-1.5 w-1.5 rounded-full bg-secondaryText" />
+            <span className="typing-dot h-1.5 w-1.5 rounded-full bg-secondaryText" />
+            <span className="typing-dot h-1.5 w-1.5 rounded-full bg-secondaryText" />
+          </span>
+        ) : finished ? (
+          <p className="min-h-[48px] text-xs leading-relaxed text-secondaryText">
+            Morning, Sam. 3 events today — school pick-up moved to 15:00. One
+            task due: <span className="text-primaryText">renew car insurance</span>.
+          </p>
+        ) : (
+          <p className="min-h-[48px] text-xs leading-relaxed text-secondaryText">
+            {BRIEFING_TEXT.slice(0, chars)}
+            <span className="inline-block h-3 w-[5px] translate-y-0.5 bg-accent" aria-hidden />
+          </p>
+        )}
       </div>
     </CellChrome>
   );
@@ -215,7 +285,7 @@ function HouseholdCell() {
           { initials: "JH", name: "Jane Harris", role: "Member", tint: "bg-accent/15 text-accentDeep" },
           { initials: "PH", name: "Phoebe", role: "Member", tint: "bg-blue-400/15 text-blue-600" },
           { initials: "AH", name: "Archie", role: "Member", tint: "bg-emerald-500/15 text-emerald-700" },
-        ].map((m) => (
+        ].map((m, i) => (
           <Row key={m.initials}>
             <span className={`flex h-8 w-8 items-center justify-center rounded-full text-[11px] font-bold ${m.tint}`}>
               {m.initials}
@@ -224,7 +294,10 @@ function HouseholdCell() {
               <span className="block text-xs font-medium text-primaryText">{m.name}</span>
               <span className="font-mono text-[9px] uppercase tracking-wider text-secondaryText/70">{m.role}</span>
             </span>
-            <span className="system-dot h-2 w-2 rounded-full bg-success" />
+            <span
+              className="system-dot h-2 w-2 rounded-full bg-success"
+              style={{ animationDelay: `${i * 0.4}s` }}
+            />
           </Row>
         ))}
       </div>
@@ -233,6 +306,14 @@ function HouseholdCell() {
 }
 
 function WidgetsCell() {
+  const events = [
+    { color: "bg-accent", text: "09:00 Team standup" },
+    { color: "bg-blue-400", text: "12:30 Lunch with Sarah" },
+    { color: "bg-emerald-500", text: "15:00 School pickup" },
+  ];
+  const [activeEvent, setActiveEvent] = useState(0);
+  useTick(() => setActiveEvent((e) => (e + 1) % events.length), 2000);
+
   return (
     <CellChrome
       index="05"
@@ -245,14 +326,20 @@ function WidgetsCell() {
           <span className="font-mono text-[9px] text-secondaryText">3 events</span>
         </div>
         <div className="flex flex-col gap-1.5">
-          {[
-            { color: "bg-accent", text: "09:00 Team standup" },
-            { color: "bg-blue-400", text: "12:30 Lunch with Sarah" },
-            { color: "bg-emerald-500", text: "15:00 School pickup" },
-          ].map((e) => (
+          {events.map((e, i) => (
             <div key={e.text} className="flex items-center gap-2">
-              <span className={`h-1.5 w-1.5 rounded-full ${e.color}`} />
-              <span className="text-[11px] text-secondaryText">{e.text}</span>
+              <span
+                className={`h-1.5 w-1.5 rounded-full transition-transform duration-300 ${e.color} ${
+                  i === activeEvent ? "scale-[1.7]" : ""
+                }`}
+              />
+              <span
+                className={`text-[11px] transition-colors duration-300 ${
+                  i === activeEvent ? "text-primaryText" : "text-secondaryText"
+                }`}
+              >
+                {e.text}
+              </span>
             </div>
           ))}
         </div>
