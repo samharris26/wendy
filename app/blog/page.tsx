@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     description:
       "Tips, guides, and insights on family productivity, shared calendar management, household task organisation, and getting your busy family life in order with Noa.",
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

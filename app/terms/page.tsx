@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import Link from "next/link";
 
 export const metadata = {
@@ -10,6 +11,7 @@ export const metadata = {
     description:
       "Read the terms of service for Noa, the family organiser app. Covers account usage, subscriptions, acceptable use, data ownership, and your rights.",
     type: "website",
+    images: OG_IMAGES,
   },
 };
 

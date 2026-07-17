@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { ShareButtons } from "@/components/ShareButtons";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/blog";
 import type { Metadata } from "next";
 
@@ -53,8 +55,31 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   if (!post) notFound();
 
+  const canonicalUrl = `https://www.asknoa.app/blog/${slug}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { "@type": "Organization", name: post.author, url: "https://www.asknoa.app" },
+    publisher: {
+      "@type": "Organization",
+      name: "Noa",
+      logo: { "@type": "ImageObject", url: "https://www.asknoa.app/og.png" },
+    },
+    image: "https://www.asknoa.app/og.png",
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+    keywords: post.tags.join(", "),
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
       <main className="px-6 py-20 lg:px-10">
         <div className="mx-auto w-full max-w-3xl">
@@ -103,6 +128,13 @@ export default async function BlogPostPage({ params }: PageProps) {
                 prose-li:text-secondaryText
                 prose-strong:text-primaryText"
               dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+            />
+
+            <RelatedLinks tags={post.tags} />
+
+            <ShareButtons
+              title={post.title}
+              url={canonicalUrl}
             />
           </article>
         </div>
