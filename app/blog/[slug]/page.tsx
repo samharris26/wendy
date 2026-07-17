@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { ShareButtons } from "@/components/ShareButtons";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/blog";
 import type { Metadata } from "next";
 
@@ -103,6 +104,11 @@ export default async function BlogPostPage({ params }: PageProps) {
                 prose-li:text-secondaryText
                 prose-strong:text-primaryText"
               dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+            />
+
+            <ShareButtons
+              title={post.title}
+              url={`https://www.asknoa.app/blog/${slug}`}
             />
           </article>
         </div>

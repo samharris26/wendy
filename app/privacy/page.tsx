@@ -1,3 +1,4 @@
+import { OG_IMAGES } from "@/lib/og";
 import Link from "next/link";
 
 export const metadata = {
@@ -10,6 +11,7 @@ export const metadata = {
     description:
       "Learn how Noa collects, uses, and protects your personal data. Covers calendar, task, and list data, WhatsApp messages, and your rights under UK GDPR.",
     type: "website",
+    images: OG_IMAGES,
   },
 };
 
