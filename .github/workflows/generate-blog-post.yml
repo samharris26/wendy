@@ -1,15 +1,15 @@
-name: Generate Blog Post Draft
+name: Generate Blog Post
 
 on:
   schedule:
-    # Run at 06:00 UTC on Tuesday (1 draft/week — quality over volume; the
-    # topic queue in scripts/topics.json is finite and never repeats)
+    # Run at 06:00 UTC on Tuesday (1 post/week). The topic queue in
+    # scripts/topics.json is finite and one-shot — each topic is written
+    # exactly once and marked done, so posts never duplicate.
     - cron: "0 6 * * 2"
   workflow_dispatch: # Allow manual trigger
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   generate:
@@ -30,29 +30,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate blog post draft
+      - name: Generate blog post
         run: npm run generate-blog
         env:
           OPENAI_API_KEY: ${{ secrets.NOA_BLOG }}
 
-      # Editorial policy (blog/EDITORIAL.md): drafts are never published
-      # unedited. The draft lands as a PR; a human rewrites weak sections,
-      # adds lived detail, then merges. If it isn't worth editing, close it.
-      - name: Open draft PR for editing
-        uses: peter-evans/create-pull-request@v7
-        with:
-          add-paths: |
-            blog/posts/
-            scripts/topics.json
-          branch: blog/draft-${{ github.run_id }}
-          commit-message: "blog: draft for $(date -u +%Y-%m-%d) — needs human edit"
-          title: "Blog draft: needs human edit before publishing"
-          body: |
-            Automated draft from the topic queue. **Do not merge as-is.**
-
-            Editing checklist (see `blog/EDITORIAL.md`):
-            - [ ] Rewrite the opening scene from real life if it feels generic
-            - [ ] Cut anything you wouldn't say out loud
-            - [ ] Check the target query appears in title + one H2, naturally
-            - [ ] Verify internal links point at real pages
-            - [ ] Read it aloud once
+      # Auto-commit the new post AND the updated topics.json (which marks the
+      # topic done). Committing topics.json is essential — without it the same
+      # topic regenerates every week and duplicates return.
+      - name: Commit and push
+        run: |
+          git config user.name "samharris26"
+          git config user.email "99657574+samharris26@users.noreply.github.com"
+          git add blog/posts/ scripts/topics.json
+          if git diff --cached --quiet; then
+            echo "No new post to commit (topic queue may be empty)"
+          else
+            git commit -m "blog: add post for $(date -u +%Y-%m-%d)"
+            git push
+          fi
