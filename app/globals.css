@@ -2,27 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ──────────────────────────────────────────────────────────────
+   Design tokens — mirrored from the iOS app (FAColor / FAFont /
+   FARadius, "4a/5a" redesign, Sept 2026). Cool blue-grey ground,
+   navy ink, periwinkle accent word, bright blue for anything
+   tappable. No paper texture, no mono, 8px card radius.
+   ────────────────────────────────────────────────────────────── */
 :root {
-  --color-background: #ECE5D8;
-  --color-surface: #DBD2C1;
+  --color-background: #EAEEF8;
+  --color-surface: #DEE3EE;
+  --color-surface-alt: #EFF2F7;
   --color-card: #ffffff;
-  --color-primary-text: #0B2440;
-  --color-secondary-text: #6B7280;
-  --color-border: #C7BFAD;
-  --color-accent: #D9623C;
-  --color-accent-soft: #F7DACB;
-  --color-accent-deep: #B84C27;
-  --color-charcoal: #1a1a1a;
-  --color-success: #2f9e63;
+  --color-primary-text: #0D2B45;
+  --color-secondary-text: #55637A;
+  --color-tertiary-text: #8B97AB;
+  --color-border: #C7CEDE;
+  --color-rule: rgba(15, 41, 74, 0.1);
+
+  /* Periwinkle — the accent word and quiet decoration (FAColor.accent) */
+  --color-accent: #4A5FD9;
+  --color-accent-soft: #E1E4F7;
+  --color-accent-deep: #33409C;
+
+  /* Bright blue — buttons, links, anything tappable (FAColor.interactive) */
+  --color-interactive: #2F6BED;
+  --color-interactive-ink: #1B4FC0;
+  --color-interactive-tint: #EDF2FE;
+
+  --color-charcoal: #0D2B45;
+  --color-success: #2E9E63;
   --color-warning: #f59e0b;
-  --color-destructive: #d1432f;
-  /* Hairline rule — FAColor.rule */
-  --color-rule: rgba(11, 36, 64, 0.1);
+  --color-destructive: #E06A5E;
 }
 
 * {
   box-sizing: border-box;
-  border-color: rgba(11, 36, 64, 0.12);
+  border-color: var(--color-rule);
 }
 
 html {
@@ -32,22 +47,10 @@ html {
 body {
   margin: 0;
   /* Plus Jakarta Sans — the app's UI face (FAFont) */
-  font-family: var(--font-plus-jakarta), sans-serif;
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
   background: var(--color-background);
   color: var(--color-primary-text);
-}
-
-/* Paper grain over the whole page — the hero's old noise, promoted to a
-   site-wide texture so every section sits on the same warm paper. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
@@ -55,7 +58,7 @@ body::before {
   color: var(--color-accent-deep);
 }
 
-/* Editorial headings — Georgia serif, matching the app design system */
+/* Editorial headings — Georgia serif, weight 500, matching the app */
 h1,
 h2,
 h3,
@@ -65,50 +68,33 @@ h6,
 .font-heading {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 /* UI chrome stays on Plus Jakarta */
 button,
 nav a,
 .font-ui {
-  font-family: var(--font-plus-jakarta), sans-serif;
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
 }
 
-/* Italic orange accent — used on key words in headings (the brand signature) */
+/* Italic accent — key word in a heading, periwinkle (the brand signature) */
 .accent-italic {
   font-style: italic;
   color: var(--color-accent);
 }
 
-.font-mono {
-  font-family: var(--font-ibm-plex-mono), monospace;
-}
-
-/* Cormorant Garamond — the app's FAFont.drama, for oversized display moments */
-.font-drama {
-  font-family: var(--font-cormorant), serif;
-}
-
-/* ── Editorial system pieces ─────────────────────────────────── */
-
-/* Mono eyebrow with a small accent square — every section opens with one */
+/* ── Section kicker ──────────────────────────────────────────────
+   Plain Jakarta label above a heading. Deliberately quiet — no mono,
+   no square, no wide tracking. Used sparingly; most sections let the
+   serif heading carry on its own. */
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-ibm-plex-mono), monospace;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--color-accent-deep);
-}
-
-.eyebrow::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  background: var(--color-accent);
-  flex-shrink: 0;
+  display: inline-block;
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-secondary-text);
 }
 
 /* Hairline rule matching FAColor.rule */
@@ -117,20 +103,12 @@ nav a,
   border-top: 1px solid var(--color-rule);
 }
 
-/* Card style matching app (FACard): 12pt radius, near-zero shadow */
+/* Card style matching the app (FACard): 8px radius, near-zero shadow */
 .noa-card {
   background: var(--color-card);
-  border-radius: 12px;
-  border: 1px solid rgba(11, 36, 64, 0.08);
-  box-shadow: 0 1px 2px rgba(11, 36, 64, 0.04);
-}
-
-/* Rotated sticker/stamp badge */
-.sticker {
-  transform: rotate(6deg);
-  font-family: var(--font-ibm-plex-mono), monospace;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 2px rgba(15, 41, 74, 0.05);
 }
 
 /* ── Scroll reveal ───────────────────────────────────────────── */
@@ -149,47 +127,7 @@ nav a,
   transform: translateY(0);
 }
 
-/* ── Ticker marquee ──────────────────────────────────────────── */
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 38s linear infinite;
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-/* ── Small ambient animations ────────────────────────────────── */
-
-.system-dot {
-  animation: pulseDot 1.7s ease-in-out infinite;
-}
-
-@keyframes pulseDot {
-  0% {
-    opacity: 0.45;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.12);
-  }
-  100% {
-    opacity: 0.45;
-    transform: scale(1);
-  }
-}
+/* ── Typing indicator (WhatsApp / briefing chat mocks) ───────── */
 
 @keyframes typingDot {
   0%,
@@ -216,18 +154,6 @@ nav a,
   animation-delay: 0.3s;
 }
 
-/* Hand-drawn stroke draw-in (SVG paths with pathLength="1") */
-.stroke-draw {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  transition: stroke-dashoffset 900ms cubic-bezier(0.65, 0, 0.35, 1) 400ms;
-}
-
-.is-revealed .stroke-draw,
-.stroke-draw.is-revealed {
-  stroke-dashoffset: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -243,9 +169,5 @@ nav a,
   .reveal {
     opacity: 1;
     transform: none;
-  }
-
-  .stroke-draw {
-    stroke-dashoffset: 0;
   }
 }
