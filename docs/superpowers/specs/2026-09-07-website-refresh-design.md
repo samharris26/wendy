@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-07
 **Branch:** `redesign/app-aligned-refresh`
-**Status:** approved direction, in progress (local only — no deploy until reviewed)
+**Status:** first pass complete on `redesign/app-aligned-refresh` (commits `25cb607`, `caf6748`, `261c78d`). `next build` green across all 70 routes. Local only — no deploy until reviewed.
 
 ## Why
 
