@@ -85,34 +85,34 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="mx-auto w-full max-w-3xl">
           <Link
             href="/blog"
-            className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+            className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-interactive hover:underline"
           >
             &larr; All posts
           </Link>
 
-          <article className="rounded-2xl border border-primaryText/10 bg-card p-8 md:p-12">
+          <article className="noa-card p-8 md:p-12">
             <header>
               <div className="flex items-center gap-3 text-xs text-secondaryText">
-                <time className="font-mono">
+                <time>
                   {new Date(post.date).toLocaleDateString("en-GB", {
                     day: "numeric",
                     month: "long",
                     year: "numeric",
                   })}
                 </time>
-                <span className="text-primaryText/20">&middot;</span>
+                <span className="text-border">&middot;</span>
                 <span>{post.author}</span>
-                <span className="text-primaryText/20">&middot;</span>
+                <span className="text-border">&middot;</span>
                 <span>{post.readTime} min read</span>
               </div>
-              <h1 className="mt-3 text-3xl font-semibold tracking-tight text-primaryText">
+              <h1 className="mt-3 text-3xl text-primaryText md:text-4xl">
                 {post.title}
               </h1>
               <div className="mt-4 flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-surface px-2.5 py-0.5 font-mono text-xs text-secondaryText"
+                    className="rounded-full bg-surfaceAlt px-2.5 py-0.5 text-xs text-secondaryText"
                   >
                     {tag}
                   </span>
@@ -122,9 +122,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 
             <div
               className="prose prose-slate mt-10 max-w-none
-                prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-primaryText
+                prose-headings:font-heading prose-headings:font-medium prose-headings:text-primaryText
                 prose-p:text-secondaryText prose-p:leading-relaxed
-                prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+                prose-a:text-interactive prose-a:no-underline hover:prose-a:underline
                 prose-li:text-secondaryText
                 prose-strong:text-primaryText"
               dangerouslySetInnerHTML={{ __html: post.contentHtml }}

@@ -21,12 +21,12 @@ export default function TermsPage() {
       <div className="mx-auto w-full max-w-3xl">
         <Link
           href="/"
-          className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+          className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-interactive hover:underline"
         >
           &larr; Back to Noa
         </Link>
 
-        <div className="rounded-2xl border border-primaryText/10 bg-card p-8 md:p-12">
+        <div className="noa-card p-8 md:p-12">
           <h1 className="text-3xl font-semibold tracking-tight text-primaryText">
             Terms of Service
           </h1>
@@ -85,7 +85,7 @@ export default function TermsPage() {
                   Notify us immediately at{" "}
                   <a
                     href="mailto:support@asknoa.app"
-                    className="font-medium text-accent hover:underline"
+                    className="font-medium text-interactive hover:underline"
                   >
                     support@asknoa.app
                   </a>{" "}
@@ -149,7 +149,7 @@ export default function TermsPage() {
                     href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-accent underline"
+                    className="text-interactive underline"
                   >
                     Apple Standard EULA
                   </a>
@@ -313,7 +313,7 @@ export default function TermsPage() {
                 If you have questions about these Terms, please contact us at{" "}
                 <a
                   href="mailto:support@asknoa.app"
-                  className="font-medium text-accent hover:underline"
+                  className="font-medium text-interactive hover:underline"
                 >
                   support@asknoa.app
                 </a>
