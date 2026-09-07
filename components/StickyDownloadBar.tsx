@@ -21,7 +21,7 @@ export function StickyDownloadBar() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-50 border-t border-primaryText/10 bg-white/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur transition-transform duration-300 md:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-50 border-t border-border bg-card/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur transition-transform duration-300 md:hidden ${
         visible ? "translate-y-0" : "translate-y-full"
       }`}
     >
@@ -38,7 +38,7 @@ export function StickyDownloadBar() {
           href={APP_STORE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="shrink-0 rounded-xl bg-primaryText px-5 py-3 text-sm font-semibold text-white"
+          className="shrink-0 rounded-[10px] bg-interactive px-5 py-3 text-sm font-semibold text-white"
         >
           Download
         </a>

@@ -29,13 +29,13 @@ const faqs = [
 
 export function Faq() {
   return (
-    <section id="faq" className="border-t border-[var(--color-rule)] px-6 py-24 lg:px-10">
+    <section id="faq" className="border-t border-rule px-6 py-24 lg:px-10">
       <div className="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-[1fr_1.8fr]">
         <Reveal>
           <p className="eyebrow">FAQ</p>
-          <h2 className="mt-5 text-4xl text-primaryText sm:text-5xl">
+          <h2 className="mt-4 text-4xl text-primaryText sm:text-5xl">
             Questions,{" "}
-            <em className="italic text-accent">answered.</em>
+            <em className="accent-italic">answered.</em>
           </h2>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-secondaryText">
             The short version: it&apos;s free to download, the Household trial
@@ -46,20 +46,17 @@ export function Faq() {
         <div className="flex flex-col">
           {faqs.map((faq, i) => (
             <Reveal key={faq.q} delay={i * 60}>
-              <details className="group border-t border-[var(--color-rule)] py-5 last:border-b">
+              <details className="group border-t border-rule py-5 last:border-b">
                 <summary className="flex cursor-pointer list-none items-baseline gap-5 text-left [&::-webkit-details-marker]:hidden">
-                  <span className="font-mono text-[10px] tracking-[0.22em] text-accent">
-                    Q_{String(i + 1).padStart(2, "0")}
-                  </span>
                   <span className="flex-1 text-lg text-primaryText md:text-xl">{faq.q}</span>
                   <span
                     aria-hidden
-                    className="font-mono text-xl leading-none text-accent transition-transform duration-200 group-open:rotate-45"
+                    className="text-xl leading-none text-interactive transition-transform duration-200 group-open:rotate-45"
                   >
                     +
                   </span>
                 </summary>
-                <p className="mt-4 max-w-2xl pl-[52px] text-sm leading-relaxed text-secondaryText md:pl-[58px]">
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-secondaryText">
                   {faq.a}
                 </p>
               </details>

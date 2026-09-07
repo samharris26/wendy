@@ -11,9 +11,9 @@ function NotificationMock() {
   return (
     <div className="noa-card w-full max-w-xs p-4">
       <div className="mb-2 flex items-center gap-2">
-        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-primaryText font-mono text-[10px] italic text-white">N</span>
+        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-primaryText text-[10px] italic text-white">N</span>
         <span className="text-[11px] font-semibold text-primaryText">Noa · Daily briefing</span>
-        <span className="ml-auto font-mono text-[9px] text-secondaryText">now</span>
+        <span className="ml-auto text-[10px] text-secondaryText">now</span>
       </div>
       <p className="text-xs leading-relaxed text-secondaryText">
         Morning, Sam. 3 events, 2 tasks. Phoebe&apos;s football moved to 10:00 —
@@ -47,9 +47,9 @@ function ReminderMock() {
         <span className="h-8 w-1.5 rounded-full bg-accent" />
         <div className="flex-1">
           <p className="text-xs font-semibold text-primaryText">School pick-up</p>
-          <p className="font-mono text-[9px] uppercase tracking-wider text-secondaryText">15:00 · leave by 14:40</p>
+          <p className="text-[10px] uppercase tracking-wide text-secondaryText">15:00 · leave by 14:40</p>
         </div>
-        <span className="rounded-full border border-accent/30 bg-accentSoft/50 px-2.5 py-0.5 font-mono text-[10px] text-accentDeep">
+        <span className="rounded-full border border-accent/25 bg-accentSoft/60 px-2.5 py-0.5 text-[10px] font-semibold text-accentDeep">
           Jane
         </span>
       </div>
@@ -63,9 +63,9 @@ function TomorrowMock() {
       <p className="mb-2 text-xs font-bold text-primaryText">Tomorrow — Wednesday</p>
       <div className="flex flex-col gap-1.5">
         {[
-          { color: "bg-blue-400", text: "08:00 Class photos" },
+          { color: "bg-interactive", text: "08:00 Class photos" },
           { color: "bg-accent", text: "13:00 Dentist — Archie" },
-          { color: "bg-emerald-500", text: "18:30 Swim squad" },
+          { color: "bg-success", text: "18:30 Swim squad" },
         ].map((e) => (
           <div key={e.text} className="flex items-center gap-2">
             <span className={`h-1.5 w-1.5 rounded-full ${e.color}`} />
@@ -106,19 +106,19 @@ const MOMENTS: Moment[] = [
 
 export function DayWithNoa() {
   return (
-    <section className="border-y border-[var(--color-rule)] bg-surface/40 px-6 py-24 lg:px-10">
+    <section className="border-y border-rule bg-surface/50 px-6 py-24 lg:px-10">
       <div className="mx-auto w-full max-w-5xl">
         <Reveal className="mb-16 text-center">
-          <p className="eyebrow justify-center">A day with Noa</p>
-          <h2 className="mt-5 text-4xl text-primaryText sm:text-5xl">
-            An ordinary Tuesday, <em className="italic text-accent">handled.</em>
+          <p className="eyebrow">A day with Noa</p>
+          <h2 className="mt-4 text-4xl text-primaryText sm:text-5xl">
+            An ordinary Tuesday, <em className="accent-italic">handled.</em>
           </h2>
         </Reveal>
 
         <div className="relative">
           {/* Spine */}
           <div
-            className="absolute bottom-4 left-[19px] top-2 w-px bg-[var(--color-rule)] md:left-1/2"
+            className="absolute bottom-4 left-[19px] top-2 w-px bg-rule md:left-1/2"
             aria-hidden
           />
 
@@ -131,14 +131,14 @@ export function DayWithNoa() {
                     <div className="grid items-center gap-6 pl-14 md:grid-cols-2 md:gap-16 md:pl-0">
                       {/* Time dot on the spine */}
                       <span
-                        className="absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background font-mono text-[9px] tracking-wide text-accentDeep md:left-1/2 md:-translate-x-1/2"
+                        className="absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-[10px] font-medium text-secondaryText md:left-1/2 md:-translate-x-1/2"
                         aria-hidden
                       >
                         {moment.time}
                       </span>
 
                       <div className={`${flip ? "md:order-2 md:pl-16" : "md:pr-16 md:text-right"}`}>
-                        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                        <p className="text-[12px] font-semibold uppercase tracking-wide text-interactive">
                           {moment.time}
                         </p>
                         <h3 className="mt-2 text-2xl text-primaryText">{moment.title}</h3>

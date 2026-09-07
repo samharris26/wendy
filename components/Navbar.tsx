@@ -28,12 +28,16 @@ export function Navbar() {
     <header
       className={`sticky top-0 z-50 border-b transition-colors duration-150 ${
         isScrolled
-          ? "border-[var(--color-rule)] bg-background/90 backdrop-blur-md"
+          ? "border-border bg-background/90 backdrop-blur-md"
           : "border-transparent bg-transparent"
       }`}
     >
       <nav className="mx-auto flex h-[72px] w-full max-w-6xl items-center justify-between px-6 lg:px-10">
-        <Link href="/" className="font-heading text-2xl italic text-accent" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+        <Link
+          href="/"
+          className="text-2xl italic text-accent"
+          style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+        >
           Noa
         </Link>
 
@@ -51,14 +55,14 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-4">
-          <span className="hidden font-mono text-[11px] uppercase tracking-wider text-accentDeep lg:block">
+          <span className="hidden text-[13px] font-medium text-secondaryText lg:block">
             Household free for 7 days
           </span>
           <a
             href={APP_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xl bg-primaryText px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#0b223d]"
+            className="rounded-[10px] bg-interactive px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-interactiveInk"
           >
             Download free
           </a>
