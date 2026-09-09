@@ -1,365 +1,247 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { Reveal } from "./Reveal";
 
-/** Start an interval only for users who are okay with motion. */
-function useTick(callback: () => void, ms: number) {
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = setInterval(callback, ms);
-    return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ms]);
+const WEEK = ["M", "T", "W", "T", "F", "S", "S"];
+const CAL_ROWS = [
+  { time: "09:00", bar: "bg-calA", label: "Team standup" },
+  { time: "15:00", bar: "bg-calB", label: "School pickup" },
+  { time: "19:00", bar: "bg-calC", label: "Dinner w/ James" },
+];
+
+function InsetPanel({ children }: { children: React.ReactNode }) {
+  return <div className="flex flex-col gap-2.5 rounded-[18px] bg-background p-3.5">{children}</div>;
 }
 
-/* ── Shared mini-UI atoms (app-faithful: 8px radii, hairlines) ── */
-
-function MiniCheck({ done }: { done?: boolean }) {
-  const color = "var(--color-interactive)";
+function ShowcaseCard({
+  panel,
+  title,
+  copy,
+}: {
+  panel: React.ReactNode;
+  title: string;
+  copy: string;
+}) {
   return (
-    <span
-      className="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors duration-300"
-      style={{
-        borderColor: done ? color : "var(--color-border)",
-        background: done ? color : "transparent",
-      }}
-    >
-      {done && (
-        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
-      )}
-    </span>
+    <div className="flex flex-col gap-[18px] rounded-[26px] bg-card p-6">
+      {panel}
+      <div className="flex flex-col gap-[7px]">
+        <h3 className="text-[20px] font-semibold leading-[1.25] text-primaryText">{title}</h3>
+        <p className="text-[15px] leading-[1.6] text-secondaryText">{copy}</p>
+      </div>
+    </div>
   );
 }
 
-function PersonChip({ name, hue }: { name: string; hue: "indigo" | "blue" | "green" }) {
-  const palette = {
-    indigo: "border-accent/25 bg-accentSoft/60 text-accentDeep",
-    blue: "border-interactive/25 bg-interactiveTint text-interactiveInk",
-    green: "border-success/25 bg-success/10 text-success",
-  } as const;
+function AssigneeChip({ name, swatch }: { name: string; swatch: string }) {
   return (
-    <span className={`rounded-full border px-2.5 py-0.5 text-[10px] font-semibold ${palette[hue]}`}>
+    <span className="ml-auto inline-flex flex-none items-center gap-[5px] rounded-full bg-surface px-2 py-1 text-[10px] font-semibold leading-none text-secondaryText">
+      <span className={`h-[7px] w-[7px] rounded-[2px] ${swatch}`} />
       {name}
     </span>
   );
 }
 
-function Row({ children }: { children: React.ReactNode }) {
+function ListRow({
+  swatch,
+  fill,
+  title,
+  meta,
+}: {
+  swatch: string;
+  fill: string;
+  title: string;
+  meta: string;
+}) {
   return (
-    <div className="flex items-center gap-3 rounded-lg border border-rule bg-surfaceAlt px-3 py-2.5">
-      {children}
+    <div className="flex items-center gap-[11px] border-b border-hairline py-[11px] last:border-b-0">
+      <span className="flex w-5 flex-none flex-col items-center gap-1">
+        <span className={`h-[9px] w-[9px] rounded-[3px] ${swatch}`} />
+        <span className="flex h-[3px] w-5 rounded-full bg-surfaceAlt">
+          <span className={`rounded-full bg-accent`} style={{ width: fill }} />
+        </span>
+      </span>
+      <span className="flex flex-col gap-1">
+        <span className="text-[13px] font-medium leading-[1.2] text-primaryText">{title}</span>
+        <span className="text-[11px] font-medium leading-none text-meta">{meta}</span>
+      </span>
     </div>
   );
 }
 
-/* ── Bento cells ─────────────────────────────────────────────── */
-
-function CellChrome({
+function OneLiner({
+  icon,
   title,
-  blurb,
-  children,
-  className = "",
+  copy,
 }: {
+  icon: React.ReactNode;
   title: string;
-  blurb: string;
-  children: React.ReactNode;
-  className?: string;
+  copy: string;
 }) {
   return (
-    <article
-      className={`noa-card group flex h-full flex-col p-6 transition-transform duration-300 hover:-translate-y-0.5 md:p-7 ${className}`}
-    >
-      <div className="flex-1">{children}</div>
-      <div className="mt-6">
-        <h3 className="text-xl text-primaryText md:text-2xl">{title}</h3>
-        <p className="mt-1.5 text-sm leading-relaxed text-secondaryText">{blurb}</p>
+    <div className="flex flex-col gap-3 rounded-[22px] bg-card p-[22px]">
+      <span className="flex h-[38px] w-[38px] items-center justify-center rounded-full bg-accentTint">{icon}</span>
+      <div className="flex flex-col gap-1.5">
+        <h3 className="text-[18px] font-semibold leading-[1.25] text-primaryText">{title}</h3>
+        <p className="text-[15px] leading-[1.6] text-secondaryText">{copy}</p>
       </div>
-    </article>
+    </div>
   );
 }
 
-function CalendarCell() {
-  const days = ["M", "T", "W", "T", "F", "S", "S"];
-  const [activeDay, setActiveDay] = useState(4);
-  useTick(() => setActiveDay((d) => (d + 1) % 7), 2500);
-
-  return (
-    <CellChrome
-      title="Everyone's calendar, one view."
-      blurb="Apple and Google calendars side by side — school, work and clubs together, clashes visible before they happen."
-    >
-      <div className="flex flex-col gap-3">
-        <div className="flex gap-2">
-          <PersonChip name="Sam" hue="indigo" />
-          <PersonChip name="Jane" hue="blue" />
-          <PersonChip name="Kids" hue="green" />
-        </div>
-        <div className="flex justify-between rounded-lg border border-rule bg-surfaceAlt px-3 py-2">
-          {days.map((d, i) => (
-            <span
-              key={i}
-              className={`flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-medium transition-all duration-300 ${
-                i === activeDay ? "scale-110 bg-interactive text-white" : "text-secondaryText"
-              }`}
-            >
-              {d}
-            </span>
-          ))}
-        </div>
-        <div className="grid gap-2 sm:grid-cols-2">
-          {[
-            { bar: "bg-interactive", label: "Team standup", time: "09:00" },
-            { bar: "bg-accent", label: "School pickup", time: "15:00" },
-            { bar: "bg-success", label: "Dinner w/ James", time: "19:00" },
-            { bar: "bg-interactive", label: "Football — Phoebe", time: "SAT" },
-          ].map((ev) => (
-            <Row key={ev.label}>
-              <span className={`h-6 w-1.5 rounded-full ${ev.bar}`} />
-              <span className="flex-1 truncate text-xs text-primaryText">{ev.label}</span>
-              <span className="text-[10px] font-medium tracking-wide text-secondaryText">{ev.time}</span>
-            </Row>
-          ))}
-        </div>
-      </div>
-    </CellChrome>
-  );
-}
-
-function TasksCell() {
-  const [dentistDone, setDentistDone] = useState(true);
-  useTick(() => setDentistDone((d) => !d), 3000);
-
-  return (
-    <CellChrome
-      title="Tasks that get done."
-      blurb="Capture in seconds, assign to a person, nudge when overdue."
-    >
-      <div className="flex flex-col gap-2">
-        <Row>
-          <MiniCheck done={dentistDone} />
-          <span
-            className={`flex-1 text-xs transition-all duration-300 ${
-              dentistDone ? "text-secondaryText/50 line-through" : "text-primaryText"
-            }`}
-          >
-            Book dentist
-          </span>
-          <PersonChip name="Sam" hue="indigo" />
-        </Row>
-        <Row>
-          <MiniCheck />
-          <span className="flex-1 text-xs text-primaryText">Buy birthday present</span>
-          <PersonChip name="Jane" hue="blue" />
-        </Row>
-        <Row>
-          <MiniCheck />
-          <span className="flex-1 text-xs text-primaryText">Renew car insurance</span>
-          <span className="text-[10px] font-semibold uppercase tracking-wide text-interactive">due fri</span>
-        </Row>
-      </div>
-    </CellChrome>
-  );
-}
-
-function ListsCell() {
-  const items = ["Oat milk", "Sourdough bread", "Avocados"];
-  const [checkedCount, setCheckedCount] = useState(1);
-  useTick(() => setCheckedCount((c) => (c >= items.length ? 1 : c + 1)), 2200);
-
-  return (
-    <CellChrome
-      title="Lists you can share."
-      blurb="Shopping, packing, gifts — ticked off live from anyone's phone."
-    >
-      <div className="flex flex-col gap-2">
-        <div className="mb-1 flex items-center justify-between">
-          <span className="text-[11px] font-semibold uppercase tracking-wide text-secondaryText">Shopping</span>
-          <span className="rounded-full border border-interactive/30 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-interactiveInk">
-            Shared
-          </span>
-        </div>
-        {items.map((label, i) => {
-          const done = i < checkedCount;
-          return (
-            <Row key={label}>
-              <MiniCheck done={done} />
-              <span
-                className={`text-xs transition-all duration-300 ${
-                  done ? "text-secondaryText/50 line-through" : "text-primaryText"
-                }`}
-              >
-                {label}
-              </span>
-            </Row>
-          );
-        })}
-      </div>
-    </CellChrome>
-  );
-}
-
-const BRIEFING_TEXT =
-  "Morning, Sam. 3 events today — school pick-up moved to 15:00. One task due: renew car insurance.";
-
-function BriefingCell() {
-  const [chars, setChars] = useState(0);
-  const [started, setStarted] = useState(false);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setStarted(true);
-      setChars(BRIEFING_TEXT.length);
-      return;
-    }
-    const start = setTimeout(() => setStarted(true), 1400);
-    return () => clearTimeout(start);
-  }, []);
-
-  useEffect(() => {
-    if (!started || chars >= BRIEFING_TEXT.length) return;
-    const id = setTimeout(() => setChars((c) => Math.min(c + 2, BRIEFING_TEXT.length)), 24);
-    return () => clearTimeout(id);
-  }, [started, chars]);
-
-  const finished = chars >= BRIEFING_TEXT.length;
-
-  return (
-    <CellChrome
-      title="A briefing, every morning."
-      blurb="7am, push or WhatsApp: today's events, tasks and what to not forget."
-    >
-      <div className="rounded-lg border border-rule bg-surfaceAlt p-4">
-        <div className="mb-2 flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center rounded-md bg-primaryText text-[10px] italic text-white">
-            N
-          </span>
-          <span className="text-[11px] font-semibold text-primaryText">Noa</span>
-          <span className="ml-auto text-[10px] text-secondaryText">07:00</span>
-        </div>
-        {!started ? (
-          <span className="flex w-fit items-center gap-1 py-1">
-            <span className="typing-dot h-1.5 w-1.5 rounded-full bg-secondaryText" />
-            <span className="typing-dot h-1.5 w-1.5 rounded-full bg-secondaryText" />
-            <span className="typing-dot h-1.5 w-1.5 rounded-full bg-secondaryText" />
-          </span>
-        ) : finished ? (
-          <p className="min-h-[48px] text-xs leading-relaxed text-secondaryText">
-            Morning, Sam. 3 events today — school pick-up moved to 15:00. One
-            task due: <span className="text-primaryText">renew car insurance</span>.
-          </p>
-        ) : (
-          <p className="min-h-[48px] text-xs leading-relaxed text-secondaryText">
-            {BRIEFING_TEXT.slice(0, chars)}
-            <span className="inline-block h-3 w-[5px] translate-y-0.5 bg-interactive" aria-hidden />
-          </p>
-        )}
-      </div>
-    </CellChrome>
-  );
-}
-
-function HouseholdCell() {
-  return (
-    <CellChrome
-      title="Built for the whole household."
-      blurb="Up to 6 people on one plan — everyone sees the same lists, calendars and tasks, from their own phone. Free for your first 7 days."
-    >
-      <div className="grid gap-2 sm:grid-cols-2">
-        {[
-          { initials: "SH", name: "Sam Harris", role: "Owner", tint: "bg-primaryText/10 text-primaryText" },
-          { initials: "JH", name: "Jane Harris", role: "Member", tint: "bg-accentSoft text-accentDeep" },
-          { initials: "PH", name: "Phoebe", role: "Member", tint: "bg-interactiveTint text-interactiveInk" },
-          { initials: "AH", name: "Archie", role: "Member", tint: "bg-success/15 text-success" },
-        ].map((m) => (
-          <Row key={m.initials}>
-            <span className={`flex h-8 w-8 items-center justify-center rounded-full text-[11px] font-bold ${m.tint}`}>
-              {m.initials}
-            </span>
-            <span className="flex-1">
-              <span className="block text-xs font-medium text-primaryText">{m.name}</span>
-              <span className="text-[10px] uppercase tracking-wide text-secondaryText/70">{m.role}</span>
-            </span>
-            <span className="h-2 w-2 rounded-full bg-success" />
-          </Row>
-        ))}
-      </div>
-    </CellChrome>
-  );
-}
-
-function WidgetsCell() {
-  const events = [
-    { color: "bg-interactive", text: "09:00 Team standup" },
-    { color: "bg-accent", text: "12:30 Lunch with Sarah" },
-    { color: "bg-success", text: "15:00 School pickup" },
-  ];
-  const [activeEvent, setActiveEvent] = useState(0);
-  useTick(() => setActiveEvent((e) => (e + 1) % events.length), 2000);
-
-  return (
-    <CellChrome
-      title="On your home screen."
-      blurb="Widgets for today at a glance; gentle nudges before things slip."
-    >
-      <div className="rounded-lg border border-rule bg-surfaceAlt p-4">
-        <div className="mb-2.5 flex items-center justify-between">
-          <span className="text-xs font-bold text-primaryText">Today</span>
-          <span className="text-[10px] text-secondaryText">3 events</span>
-        </div>
-        <div className="flex flex-col gap-1.5">
-          {events.map((e, i) => (
-            <div key={e.text} className="flex items-center gap-2">
-              <span
-                className={`h-1.5 w-1.5 rounded-full transition-transform duration-300 ${e.color} ${
-                  i === activeEvent ? "scale-[1.7]" : ""
-                }`}
-              />
-              <span
-                className={`text-[11px] transition-colors duration-300 ${
-                  i === activeEvent ? "text-primaryText" : "text-secondaryText"
-                }`}
-              >
-                {e.text}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </CellChrome>
-  );
-}
-
-/* ── Section ─────────────────────────────────────────────────── */
+const iconProps = {
+  width: 18,
+  height: 18,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "var(--color-accent)",
+  strokeWidth: 2,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+};
 
 export function Features() {
   return (
-    <section id="features" className="px-6 py-24 lg:px-10">
-      <div className="mx-auto w-full max-w-6xl">
-        <Reveal className="mb-14">
-          <p className="eyebrow">Built for families</p>
-          <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
-            <h2 className="max-w-2xl text-4xl leading-[1.12] text-primaryText sm:text-5xl">
-              Everything your household runs on,{" "}
-              <em className="accent-italic">in one place.</em>
-            </h2>
-            <p className="max-w-xs pb-1 text-sm leading-relaxed text-secondaryText">
-              Six things families juggle across five apps — Noa does them all,
-              calmly.
-            </p>
-          </div>
+    <section id="features" className="mx-auto flex w-full max-w-[1120px] flex-col gap-8 px-6 pt-24">
+      <Reveal className="flex max-w-[660px] flex-col gap-2.5">
+        <span className="eyebrow">Built for families</span>
+        <h2 className="font-display text-[clamp(32px,4.4vw,44px)] leading-[1.08] text-primaryText">
+          Everything your household runs on, in one place.
+        </h2>
+        <p className="text-[17px] leading-[1.6] text-secondaryText">
+          Six things families juggle across five apps — Noa does them all, calmly.
+        </p>
+      </Reveal>
+
+      {/* Row A — showcase cards */}
+      <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
+        <Reveal>
+          <ShowcaseCard
+            title="Everyone's calendar, one view."
+            copy="Apple and Google calendars side by side — school, work and clubs together, clashes visible before they happen."
+            panel={
+              <InsetPanel>
+                <div className="grid grid-cols-7 gap-[3px] text-center">
+                  {WEEK.map((d, i) => (
+                    <span key={i} className="text-[9px] font-bold leading-none text-[#5f6c81]">
+                      {d}
+                    </span>
+                  ))}
+                  {[7].map((d) => (
+                    <span key={d} className="py-[5px] text-[13px] font-medium leading-none text-meta">
+                      {d}
+                    </span>
+                  ))}
+                  <span className="py-[5px]">
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primaryText text-[13px] font-bold leading-none text-white">
+                      8
+                    </span>
+                  </span>
+                  {[9, 10, 11, 12, 13].map((d) => (
+                    <span key={d} className="py-[5px] text-[13px] font-medium leading-none text-primaryText">
+                      {d}
+                    </span>
+                  ))}
+                </div>
+                <div className="rounded-[14px] bg-card px-3 py-[2px]">
+                  {CAL_ROWS.map((r) => (
+                    <div key={r.label} className="flex items-center gap-2.5 border-b border-hairline py-[9px] last:border-b-0">
+                      <span className="w-[34px] flex-none text-[11px] font-semibold leading-none text-meta">{r.time}</span>
+                      <span className={`h-5 w-[3px] flex-none rounded-full ${r.bar}`} />
+                      <span className="text-[13px] font-medium leading-[1.2] text-primaryText">{r.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </InsetPanel>
+            }
+          />
         </Reveal>
 
-        <div className="grid gap-5 md:grid-cols-3">
-          <Reveal className="md:col-span-2"><CalendarCell /></Reveal>
-          <Reveal delay={100}><TasksCell /></Reveal>
-          <Reveal delay={50}><ListsCell /></Reveal>
-          <Reveal delay={100}><BriefingCell /></Reveal>
-          <Reveal delay={150}><WidgetsCell /></Reveal>
-          <Reveal className="md:col-span-3"><HouseholdCell /></Reveal>
-        </div>
+        <Reveal delay={80}>
+          <ShowcaseCard
+            title="Tasks that get done."
+            copy="Capture in seconds, assign to a person, nudge when overdue."
+            panel={
+              <div className="flex flex-col gap-2 rounded-[18px] bg-background p-3.5">
+                <div className="flex items-center gap-[7px] pl-[3px]">
+                  <span className="eyebrow text-[10px]">Overdue</span>
+                  <span className="rounded-full bg-dangerTint px-[7px] py-[3px] text-[10px] font-bold leading-[1.3] text-danger">2</span>
+                </div>
+                <div className="rounded-[14px] bg-card px-3 py-[2px]">
+                  <div className="flex items-center gap-[11px] border-b border-hairline py-[11px]">
+                    <span className="h-[18px] w-[18px] flex-none rounded-full border-2 border-[#a9b5c7]" />
+                    <span className="text-[13px] font-medium leading-[1.2] text-primaryText">Book dentist</span>
+                    <AssigneeChip name="Sam" swatch="bg-calA" />
+                  </div>
+                  <div className="flex items-center gap-[11px] border-b border-hairline py-[11px]">
+                    <span className="h-[18px] w-[18px] flex-none rounded-full border-2 border-[#a9b5c7]" />
+                    <span className="text-[13px] font-medium leading-[1.2] text-primaryText">Buy birthday present</span>
+                    <AssigneeChip name="Jane" swatch="bg-calB" />
+                  </div>
+                  <div className="flex items-center gap-[11px] py-[11px]">
+                    <span className="h-[18px] w-[18px] flex-none rounded-full border-2 border-[#a9b5c7]" />
+                    <span className="text-[13px] font-medium leading-[1.2] text-primaryText">Renew car insurance</span>
+                    <span className="ml-auto flex-none text-[11px] font-semibold leading-none text-danger">Due Fri</span>
+                  </div>
+                </div>
+              </div>
+            }
+          />
+        </Reveal>
+
+        <Reveal delay={160}>
+          <ShowcaseCard
+            title="Lists you can share."
+            copy="Shopping, packing, gifts — ticked off live from anyone's phone."
+            panel={
+              <div className="flex flex-col gap-2 rounded-[18px] bg-background p-3.5">
+                <div className="eyebrow pl-[3px] text-[10px]">Your lists</div>
+                <div className="rounded-[14px] bg-card px-3 py-[2px]">
+                  <ListRow swatch="bg-calA" fill="60%" title="Shopping" meta="3 open · shared with Jane" />
+                  <ListRow swatch="bg-calB" fill="25%" title="Holiday packing" meta="9 open · Sun cream, Passports…" />
+                </div>
+              </div>
+            }
+          />
+        </Reveal>
+      </div>
+
+      {/* Row B — one-liners */}
+      <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
+        <Reveal>
+          <OneLiner
+            title="A briefing, every morning."
+            copy="7am, push or WhatsApp: today's events, tasks and what not to forget."
+            icon={
+              <svg {...iconProps} aria-hidden>
+                <path d="M12 3.5l1.7 4.4 4.4 1.7-4.4 1.7L12 15.7l-1.7-4.4L5.9 9.6l4.4-1.7z" />
+              </svg>
+            }
+          />
+        </Reveal>
+        <Reveal delay={80}>
+          <OneLiner
+            title="On your home screen."
+            copy="Widgets for today at a glance; gentle nudges before things slip."
+            icon={
+              <svg {...iconProps} aria-hidden>
+                <rect x="6" y="2.5" width="12" height="19" rx="3" />
+                <path d="M10.5 5.5h3" />
+              </svg>
+            }
+          />
+        </Reveal>
+        <Reveal delay={160}>
+          <OneLiner
+            title="Up to 6 people, one plan."
+            copy="Everyone sees the same lists, calendars and tasks, from their own phone."
+            icon={
+              <svg {...iconProps} aria-hidden>
+                <circle cx="9" cy="8" r="3.2" />
+                <path d="M3.5 19c0-3 2.5-4.6 5.5-4.6s5.5 1.6 5.5 4.6" />
+                <path d="M17 9h5M19.5 6.5v5" />
+              </svg>
+            }
+          />
+        </Reveal>
       </div>
     </section>
   );

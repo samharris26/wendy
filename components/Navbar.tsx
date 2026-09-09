@@ -8,7 +8,7 @@ const APP_STORE_URL =
 
 const navItems = [
   { label: "Features", href: "/#features" },
-  { label: "How it works", href: "/#how-it-works" },
+  { label: "A day with Noa", href: "/#day" },
   { label: "Pricing", href: "/#pricing" },
   { label: "FAQ", href: "/#faq" },
   { label: "Blog", href: "/blog" },
@@ -26,48 +26,41 @@ export function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b transition-colors duration-150 ${
-        isScrolled
-          ? "border-border bg-background/90 backdrop-blur-md"
-          : "border-transparent bg-transparent"
+      className={`sticky top-0 z-20 border-b transition-colors duration-150 ${
+        isScrolled ? "border-border bg-background/88 backdrop-blur-md" : "border-transparent bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex h-[72px] w-full max-w-6xl items-center justify-between px-6 lg:px-10">
-        <Link
-          href="/"
-          className="text-2xl italic text-accent"
-          style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-        >
+      <div className="mx-auto flex w-full max-w-[1120px] flex-wrap items-center gap-x-5 gap-y-2 px-6 py-3.5">
+        <Link href="/" className="font-display text-2xl leading-none text-primaryText">
           Noa
         </Link>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <nav className="ml-3 flex flex-wrap gap-x-[22px] gap-y-1">
           {navItems.map((item) => (
-            <li key={item.label}>
-              <Link
-                href={item.href}
-                className="text-sm font-medium text-secondaryText transition-colors hover:text-primaryText"
-              >
-                {item.label}
-              </Link>
-            </li>
+            <Link
+              key={item.label}
+              href={item.href}
+              className="text-sm font-medium leading-none text-secondaryText transition-colors hover:text-primaryText"
+            >
+              {item.label}
+            </Link>
           ))}
-        </ul>
+        </nav>
 
-        <div className="flex items-center gap-4">
-          <span className="hidden text-[13px] font-medium text-secondaryText lg:block">
+        <div className="ml-auto flex items-center gap-3.5">
+          <span className="hidden text-[13px] font-medium leading-none text-meta sm:block">
             Household free for 7 days
           </span>
           <a
             href={APP_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-[10px] bg-interactive px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-interactiveInk"
+            className="rounded-full bg-primaryText px-5 py-3 text-[15px] font-semibold leading-none text-white transition-colors hover:bg-[#0a2338]"
           >
             Download free
           </a>
         </div>
-      </nav>
+      </div>
     </header>
   );
 }

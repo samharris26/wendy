@@ -3,41 +3,52 @@
 @tailwind utilities;
 
 /* ──────────────────────────────────────────────────────────────
-   Design tokens — mirrored from the iOS app (FAColor / FAFont /
-   FARadius, "4a/5a" redesign, Sept 2026). Cool blue-grey ground,
-   navy ink, periwinkle accent word, bright blue for anything
-   tappable. No paper texture, no mono, 8px card radius.
+   Design tokens — Claude Design handoff (Sept 2026), the same
+   values the refreshed iOS app uses. Two typefaces only:
+   Playfair Display (500) for display headings + the wordmark,
+   Plus Jakarta Sans for everything else.
    ────────────────────────────────────────────────────────────── */
 :root {
-  --color-background: #EAEEF8;
-  --color-surface: #DEE3EE;
-  --color-surface-alt: #EFF2F7;
-  --color-card: #ffffff;
-  --color-primary-text: #0D2B45;
-  --color-secondary-text: #55637A;
-  --color-tertiary-text: #8B97AB;
-  --color-border: #C7CEDE;
-  --color-rule: rgba(15, 41, 74, 0.1);
+  --color-background: #EAEEF8;   /* page ground, inset panels in white cards */
+  --color-card: #FFFFFF;
+  --color-surface: #EFF2F7;      /* neutral fill: secondary buttons, incoming bubble, chips */
+  --color-surface-alt: #EDF0F7;  /* progress tracks, active tab pill */
+  --color-track: #E1E7F2;        /* in-mock progress track, segmented ground */
 
-  /* Periwinkle — the accent word and quiet decoration (FAColor.accent) */
-  --color-accent: #4A5FD9;
-  --color-accent-soft: #E1E4F7;
-  --color-accent-deep: #33409C;
+  --color-primary-text: #0D2B45; /* ink — headings, primary buttons, wordmark */
+  --color-ink-panel: #143453;    /* inset panel in the navy trial block */
+  --color-secondary-text: #55637A; /* body, nav links, feature copy */
+  --color-meta: #6B7789;         /* meta lines, price cadence, fine print */
+  --color-placeholder: #8B97AB;  /* placeholder / hint / copyright */
+  --color-label: #7C89A0;        /* uppercase eyebrow labels */
 
-  /* Bright blue — buttons, links, anything tappable (FAColor.interactive) */
-  --color-interactive: #2F6BED;
-  --color-interactive-ink: #1B4FC0;
-  --color-interactive-tint: #EDF2FE;
+  --color-accent: #2F6BED;       /* ticks, times, bars, links, progress fill */
+  --color-accent-hover: #1B4FC0; /* link hover, accent text on tint */
+  --color-accent-tint: #EDF2FE;  /* icon circles, accent chips */
 
-  --color-charcoal: #0D2B45;
-  --color-success: #2E9E63;
-  --color-warning: #f59e0b;
-  --color-destructive: #E06A5E;
+  --color-border: #DBE2F0;       /* header / footer / page hairlines */
+  --color-hairline: #EDF0F6;     /* row dividers inside cards */
+  --color-hairline-navy: #29486A;/* dividers inside the navy price panel */
+  --color-dashed: #C4CDDD;
+
+  --color-danger: #B4413A;
+  --color-danger-tint: #FDECEA;
+  --color-success: #2F6BED;
+
+  --color-on-navy-body: #C3CFE2;
+  --color-on-navy-meta: #8FA6C8;
+  --color-on-navy-muted: #AAB8D0;
+
+  /* calendar / person colours for the product miniatures */
+  --color-cal-a: #2F6BED;
+  --color-cal-b: #6F8FE8;
+  --color-cal-c: #4B5BE8;
+  --color-cal-d: #8FA8F0;
 }
 
 * {
   box-sizing: border-box;
-  border-color: var(--color-rule);
+  border-color: var(--color-border);
 }
 
 html {
@@ -46,76 +57,76 @@ html {
 
 body {
   margin: 0;
-  /* Plus Jakarta Sans — the app's UI face (FAFont) */
   font-family: var(--font-plus-jakarta), system-ui, sans-serif;
   background: var(--color-background);
   color: var(--color-primary-text);
   -webkit-font-smoothing: antialiased;
 }
 
-::selection {
-  background: var(--color-accent-soft);
-  color: var(--color-accent-deep);
+p {
+  text-wrap: pretty;
 }
 
-/* Editorial headings — Georgia serif, weight 500, matching the app */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
+/* Anchor targets clear the sticky header */
+:target {
+  scroll-margin-top: 84px;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* Display serif — section headings, hero H1, wordmark, big figures. */
+.font-display,
 .font-heading {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 
-/* UI chrome stays on Plus Jakarta */
-button,
-nav a,
-.font-ui {
-  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+/* Headings default to the body face (card titles, FAQ questions are Jakarta). */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin: 0;
 }
 
-/* Italic accent — key word in a heading, periwinkle (the brand signature) */
-.accent-italic {
-  font-style: italic;
-  color: var(--color-accent);
-}
-
-/* ── Section kicker ──────────────────────────────────────────────
-   Plain Jakarta label above a heading. Deliberately quiet — no mono,
-   no square, no wide tracking. Used sparingly; most sections let the
-   serif heading carry on its own. */
+/* Uppercase eyebrow label */
 .eyebrow {
   display: inline-block;
   font-family: var(--font-plus-jakarta), system-ui, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--color-secondary-text);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-label);
 }
 
-/* Hairline rule matching FAColor.rule */
-.rule {
-  border: 0;
-  border-top: 1px solid var(--color-rule);
-}
-
-/* Card style matching the app (FACard): 8px radius, near-zero shadow */
+/* Flat white card, the handoff's default surface (no border, no shadow) */
 .noa-card {
   background: var(--color-card);
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 1px 2px rgba(15, 41, 74, 0.05);
+  border-radius: 26px;
+}
+
+/* Visible focus ring on every interactive element */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* ── Scroll reveal ───────────────────────────────────────────── */
 
 .reveal {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(20px);
   transition:
     opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
     transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -125,33 +136,6 @@ nav a,
 .reveal.is-revealed {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* ── Typing indicator (WhatsApp / briefing chat mocks) ───────── */
-
-@keyframes typingDot {
-  0%,
-  60%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.4;
-  }
-  30% {
-    transform: translateY(-3px);
-    opacity: 1;
-  }
-}
-
-.typing-dot {
-  animation: typingDot 1.2s ease-in-out infinite;
-}
-
-.typing-dot:nth-child(2) {
-  animation-delay: 0.15s;
-}
-
-.typing-dot:nth-child(3) {
-  animation-delay: 0.3s;
 }
 
 @media (prefers-reduced-motion: reduce) {
