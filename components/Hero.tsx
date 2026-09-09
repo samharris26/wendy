@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { StoreButton } from "./StoreButton";
 
 function Check() {
@@ -137,22 +136,7 @@ export function Hero() {
           shared with your family, and in sync even over WhatsApp.
         </p>
 
-        <div className="flex flex-wrap items-center gap-4">
-          <StoreButton />
-          <div className="flex items-center gap-3 rounded-[20px] bg-card py-3 pl-3 pr-4">
-            <Image
-              src="/qr-app-store.svg"
-              alt="QR code linking to Noa on the App Store"
-              width={58}
-              height={58}
-              className="rounded-[12px] bg-white p-1"
-            />
-            <span className="flex flex-col gap-1">
-              <span className="text-[14px] font-semibold leading-none text-primaryText">Scan to download</span>
-              <span className="text-[13px] leading-none text-meta">Opens the App Store</span>
-            </span>
-          </div>
-        </div>
+        <StoreButton className="self-start" />
 
         <div className="flex flex-wrap gap-[18px]">
           {["Free to download", "Household free for 7 days", "Cancel anytime"].map((t) => (

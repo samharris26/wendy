@@ -8,7 +8,7 @@ const CAL_ROWS = [
 ];
 
 function InsetPanel({ children }: { children: React.ReactNode }) {
-  return <div className="flex flex-col gap-2.5 rounded-[18px] bg-background p-3.5">{children}</div>;
+  return <div className="flex flex-1 flex-col gap-2.5 rounded-[18px] bg-background p-3.5">{children}</div>;
 }
 
 function ShowcaseCard({
@@ -21,7 +21,7 @@ function ShowcaseCard({
   copy: string;
 }) {
   return (
-    <div className="flex flex-col gap-[18px] rounded-[26px] bg-card p-6">
+    <div className="flex h-full flex-col gap-[18px] rounded-[26px] bg-card p-6">
       {panel}
       <div className="flex flex-col gap-[7px]">
         <h3 className="text-[20px] font-semibold leading-[1.25] text-primaryText">{title}</h3>
@@ -77,7 +77,7 @@ function OneLiner({
   copy: string;
 }) {
   return (
-    <div className="flex flex-col gap-3 rounded-[22px] bg-card p-[22px]">
+    <div className="flex h-full flex-col gap-3 rounded-[22px] bg-card p-[22px]">
       <span className="flex h-[38px] w-[38px] items-center justify-center rounded-full bg-accentTint">{icon}</span>
       <div className="flex flex-col gap-1.5">
         <h3 className="text-[18px] font-semibold leading-[1.25] text-primaryText">{title}</h3>
@@ -112,8 +112,8 @@ export function Features() {
       </Reveal>
 
       {/* Row A — showcase cards */}
-      <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
-        <Reveal>
+      <div className="grid items-stretch gap-5 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
+        <Reveal className="h-full">
           <ShowcaseCard
             title="Everyone's calendar, one view."
             copy="Apple and Google calendars side by side — school, work and clubs together, clashes visible before they happen."
@@ -155,12 +155,12 @@ export function Features() {
           />
         </Reveal>
 
-        <Reveal delay={80}>
+        <Reveal delay={80} className="h-full">
           <ShowcaseCard
             title="Tasks that get done."
             copy="Capture in seconds, assign to a person, nudge when overdue."
             panel={
-              <div className="flex flex-col gap-2 rounded-[18px] bg-background p-3.5">
+              <div className="flex flex-1 flex-col gap-2 rounded-[18px] bg-background p-3.5">
                 <div className="flex items-center gap-[7px] pl-[3px]">
                   <span className="eyebrow text-[10px]">Overdue</span>
                   <span className="rounded-full bg-dangerTint px-[7px] py-[3px] text-[10px] font-bold leading-[1.3] text-danger">2</span>
@@ -187,12 +187,12 @@ export function Features() {
           />
         </Reveal>
 
-        <Reveal delay={160}>
+        <Reveal delay={160} className="h-full">
           <ShowcaseCard
             title="Lists you can share."
             copy="Shopping, packing, gifts — ticked off live from anyone's phone."
             panel={
-              <div className="flex flex-col gap-2 rounded-[18px] bg-background p-3.5">
+              <div className="flex flex-1 flex-col gap-2 rounded-[18px] bg-background p-3.5">
                 <div className="eyebrow pl-[3px] text-[10px]">Your lists</div>
                 <div className="rounded-[14px] bg-card px-3 py-[2px]">
                   <ListRow swatch="bg-calA" fill="60%" title="Shopping" meta="3 open · shared with Jane" />
@@ -205,8 +205,8 @@ export function Features() {
       </div>
 
       {/* Row B — one-liners */}
-      <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
-        <Reveal>
+      <div className="grid items-stretch gap-5 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
+        <Reveal className="h-full">
           <OneLiner
             title="A briefing, every morning."
             copy="7am, push or WhatsApp: today's events, tasks and what not to forget."
@@ -217,7 +217,7 @@ export function Features() {
             }
           />
         </Reveal>
-        <Reveal delay={80}>
+        <Reveal delay={80} className="h-full">
           <OneLiner
             title="On your home screen."
             copy="Widgets for today at a glance; gentle nudges before things slip."
@@ -229,7 +229,7 @@ export function Features() {
             }
           />
         </Reveal>
-        <Reveal delay={160}>
+        <Reveal delay={160} className="h-full">
           <OneLiner
             title="Up to 6 people, one plan."
             copy="Everyone sees the same lists, calendars and tasks, from their own phone."
