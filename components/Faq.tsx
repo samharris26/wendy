@@ -39,11 +39,23 @@ export function Faq() {
 
       <Reveal>
         <div className="rounded-[26px] bg-card px-6 py-1">
-          {FAQS.map((f) => (
-            <div key={f.q} className="flex flex-col gap-2 border-b border-hairline py-5 last:border-b-0">
-              <h3 className="text-[17px] font-semibold leading-[1.35] text-primaryText">{f.q}</h3>
-              <p className="text-[15px] leading-[1.65] text-secondaryText">{f.a}</p>
-            </div>
+          {FAQS.map((f, i) => (
+            <details
+              key={f.q}
+              open={i === 0}
+              className="group border-b border-hairline py-5 last:border-b-0"
+            >
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 [&::-webkit-details-marker]:hidden">
+                <h3 className="text-[17px] font-semibold leading-[1.35] text-primaryText">{f.q}</h3>
+                <span
+                  aria-hidden
+                  className="mt-0.5 shrink-0 text-[18px] leading-none text-accent transition-transform duration-200 group-open:rotate-45"
+                >
+                  +
+                </span>
+              </summary>
+              <p className="mt-2 max-w-[680px] text-[15px] leading-[1.65] text-secondaryText">{f.a}</p>
+            </details>
           ))}
         </div>
       </Reveal>
