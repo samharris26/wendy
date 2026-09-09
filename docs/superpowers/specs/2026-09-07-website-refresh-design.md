@@ -35,10 +35,12 @@ It supersedes most of rev 1. Built faithfully in commit `5727426`.
 - **Docked download bar** (`DockedBar.tsx`) — persistent, navy, bottom of
   viewport; hidden over the hero, revealed on scroll, dismiss persists for
   the session, on `page.tsx` and `LandingPage.tsx`. `<body>` gets `pb-24`.
-- **App Store button** (`StoreButton.tsx`) is the handoff's site-styled
-  navy/white button, NOT Apple's official badge. **Flag:** Apple's marketing
-  guidelines ask for the official badge — swap `/app-store-badge.svg` back in
-  if App Store review requires it. (`components/AppStoreButton.tsx` deleted.)
+- **App Store button** (`StoreButton.tsx`) — resolved: renders Apple's
+  official "Download on the App Store" badge (unmodified, 119.664×40, ~54px
+  tall). The scan-to-download **QR card stays alongside it** in the hero and
+  closing CTA; trial panel uses the white badge on navy. (Old
+  `components/AppStoreButton.tsx` deleted; the handoff's custom navy button
+  was dropped per Sam.)
 - QR: `/qr-app-store.svg` already exists and is valid — reused, not regenerated.
 
 **Deleted components:** `HowItWorks`, `WhatsAppAssistant`, `FinalCta`,
@@ -46,7 +48,6 @@ It supersedes most of rev 1. Built faithfully in commit `5727426`.
 **New:** `StoreButton`, `TrialPanel`, `ClosingCta`, `DockedBar`.
 
 **Still open for Sam:**
-- Custom StoreButton vs official Apple badge (above).
 - Pricing keeps Free / Single / Household (handoff includes Free).
 - Blog kept in the nav (handoff nav lists only Features / A day with Noa /
   Pricing / FAQ) — kept for SEO.
