@@ -1,8 +1,63 @@
 # Marketing site refresh — align asknoa.app to the Sept 2026 app redesign
 
-**Date:** 2026-09-07
+**Date:** 2026-09-07 (rev 2: 2026-09-09)
 **Branch:** `redesign/app-aligned-refresh`
-**Status:** first pass complete on `redesign/app-aligned-refresh` (commits `25cb607`, `caf6748`, `261c78d`). `next build` green across all 70 routes. Local only — no deploy until reviewed.
+**Status:** homepage rebuilt to the Claude Design handoff (commits `5727426`, `367b4ad`). `next build` green across all 70 routes. Local only — no deploy until reviewed.
+
+---
+
+## Rev 2 — Claude Design handoff (2026-09-09)
+
+Sam supplied a full high-fidelity design from Claude Design
+(`~/Downloads/design_handoff_website/Noa Website Refresh.dc.html` + README).
+It supersedes most of rev 1. Built faithfully in commit `5727426`.
+
+**Key deltas from rev 1:**
+
+- **Type:** Playfair Display (500) for display headings + the wordmark only;
+  Plus Jakarta everything else. **Georgia dropped. No italic accent word.**
+  Card titles / FAQ questions are Jakarta 600, not serif.
+- **Rounder, not flat-8px:** 34px panels, 26px cards, 22px small cards,
+  20px buttons, 999px pills. `.noa-card` is now 26px, borderless, no shadow.
+- **Palette** locked to the handoff token table (globals `:root`): accent is
+  the one blue `#2F6BED` (hover `#1B4FC0`, tint `#EDF2FE`); page `#EAEEF8`;
+  ink `#0D2B45`; body `#55637A`; meta `#6B7789`; label `#7C89A0`;
+  hairline `#EDF0F6`; page border `#DBE2F0`; danger `#B4413A`.
+- **Sections:** Hero → Features → A day with Noa (+WhatsApp, one section) →
+  Trial panel (navy, restored) → Pricing → FAQ → Closing CTA (white) → Footer.
+  **"How it works" dropped.** Ticker stays gone.
+- **Hero** right column is the redesigned Home screen rendered as **DOM**
+  (`PhoneHomeMock` in `Hero.tsx`) — keep it in step with the app.
+- **Features:** 3 showcase cards (each with a static mini product UI) + 3
+  one-liner cards. The animated 6-cell bento is gone.
+- **FAQ:** flat list in one card, **not** an accordion (all answers in DOM).
+- **Closing CTA** is a white panel + 168px QR (was navy).
+- **Docked download bar** (`DockedBar.tsx`) — persistent, navy, bottom of
+  viewport; hidden over the hero, revealed on scroll, dismiss persists for
+  the session, on `page.tsx` and `LandingPage.tsx`. `<body>` gets `pb-24`.
+- **App Store button** (`StoreButton.tsx`) is the handoff's site-styled
+  navy/white button, NOT Apple's official badge. **Flag:** Apple's marketing
+  guidelines ask for the official badge — swap `/app-store-badge.svg` back in
+  if App Store review requires it. (`components/AppStoreButton.tsx` deleted.)
+- QR: `/qr-app-store.svg` already exists and is valid — reused, not regenerated.
+
+**Deleted components:** `HowItWorks`, `WhatsAppAssistant`, `FinalCta`,
+`StickyDownloadBar`, `AppStoreButton`, `Ticker`, `HouseholdTrial`.
+**New:** `StoreButton`, `TrialPanel`, `ClosingCta`, `DockedBar`.
+
+**Still open for Sam:**
+- Custom StoreButton vs official Apple badge (above).
+- Pricing keeps Free / Single / Household (handoff includes Free).
+- Blog kept in the nav (handoff nav lists only Features / A day with Noa /
+  Pricing / FAQ) — kept for SEO.
+- Third-party badges (Product Hunt / PeerPush / TinyLaunch) moved to a slim
+  greyscale row above the footer per the README.
+- Blog / privacy / terms got a light token pass only — not in the handoff.
+- Phone screenshots on landing pages still use the old captures.
+
+---
+
+### Rev 1 (2026-09-07) — superseded, kept for history
 
 ## Why
 
