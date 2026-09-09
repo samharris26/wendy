@@ -7,8 +7,12 @@ const CAL_ROWS = [
   { time: "19:00", bar: "bg-calC", label: "Dinner w/ James" },
 ];
 
+// Shared min-height so all three showcase panels are the same size and the
+// card titles sit on one line across the row.
+const PANEL = "flex min-h-[13rem] flex-col rounded-[18px] bg-background p-3.5";
+
 function InsetPanel({ children }: { children: React.ReactNode }) {
-  return <div className="flex flex-1 flex-col gap-2.5 rounded-[18px] bg-background p-3.5">{children}</div>;
+  return <div className={`${PANEL} gap-2.5`}>{children}</div>;
 }
 
 function ShowcaseCard({
@@ -160,7 +164,7 @@ export function Features() {
             title="Tasks that get done."
             copy="Capture in seconds, assign to a person, nudge when overdue."
             panel={
-              <div className="flex flex-1 flex-col gap-2 rounded-[18px] bg-background p-3.5">
+              <div className={`${PANEL} gap-2`}>
                 <div className="flex items-center gap-[7px] pl-[3px]">
                   <span className="eyebrow text-[10px]">Overdue</span>
                   <span className="rounded-full bg-dangerTint px-[7px] py-[3px] text-[10px] font-bold leading-[1.3] text-danger">2</span>
@@ -192,7 +196,7 @@ export function Features() {
             title="Lists you can share."
             copy="Shopping, packing, gifts — ticked off live from anyone's phone."
             panel={
-              <div className="flex flex-1 flex-col gap-2 rounded-[18px] bg-background p-3.5">
+              <div className={`${PANEL} gap-2`}>
                 <div className="eyebrow pl-[3px] text-[10px]">Your lists</div>
                 <div className="rounded-[14px] bg-card px-3 py-[2px]">
                   <ListRow swatch="bg-calA" fill="60%" title="Shopping" meta="3 open · shared with Jane" />
