@@ -1,7 +1,5 @@
+import { AppStoreLink } from "./AppStoreLink";
 import { Reveal } from "./Reveal";
-
-const APP_STORE_URL =
-  "https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752";
 
 // Annual saving vs paying monthly for a year
 // Single:    £2.99 × 12 = £35.88  vs £19.99  → 44% off
@@ -119,10 +117,8 @@ export function Pricing() {
                   ))}
                 </ul>
 
-                <a
-                  href={APP_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <AppStoreLink
+                  placement={`pricing-${plan.name.toLowerCase()}`}
                   className={`block w-full rounded-xl px-4 py-3.5 text-center text-sm font-semibold transition-colors ${
                     plan.highlight
                       ? "bg-accent text-white hover:bg-accentDeep"
@@ -131,7 +127,7 @@ export function Pricing() {
                   style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}
                 >
                   {plan.cta}
-                </a>
+                </AppStoreLink>
                 {plan.ctaNote && (
                   <p className="mt-3 text-center text-[11px] leading-snug text-secondaryText">
                     {plan.ctaNote}

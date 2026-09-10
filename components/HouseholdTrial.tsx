@@ -47,7 +47,7 @@ export function HouseholdTrial() {
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <AppStoreButton />
+                <AppStoreButton placement="household-trial" />
               </div>
               <p className="mt-4 font-mono text-[10px] uppercase tracking-wider text-secondaryText">
                 Start the trial inside the app · no commitment

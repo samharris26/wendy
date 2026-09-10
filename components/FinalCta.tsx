@@ -43,7 +43,7 @@ export function FinalCta() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
-          <AppStoreButton variant="white" />
+          <AppStoreButton placement="final-cta" variant="white" />
           <div className="hidden items-center gap-3 lg:flex">
             <div className="rounded-lg border border-dashed border-white/40 bg-white p-2">
               <Image

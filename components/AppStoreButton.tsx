@@ -1,20 +1,18 @@
 import Image from "next/image";
-
-const APP_STORE_URL =
-  "https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752";
+import { AppStoreLink } from "./AppStoreLink";
 
 export function AppStoreButton({
+  placement,
   variant = "black",
   className = "",
 }: {
+  placement: string;
   variant?: "black" | "white";
   className?: string;
 }) {
   return (
-    <a
-      href={APP_STORE_URL}
-      target="_blank"
-      rel="noopener noreferrer"
+    <AppStoreLink
+      placement={placement}
       className={`inline-block transition-opacity hover:opacity-80 ${className}`}
     >
       <Image
@@ -24,6 +22,6 @@ export function AppStoreButton({
         height={60}
         priority
       />
-    </a>
+    </AppStoreLink>
   );
 }

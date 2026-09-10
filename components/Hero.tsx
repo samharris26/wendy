@@ -145,7 +145,7 @@ export function Hero() {
             className="mt-10 flex flex-wrap items-center justify-center gap-5 lg:justify-start"
             style={reveal(560)}
           >
-            <AppStoreButton />
+            <AppStoreButton placement="hero" />
 
             {/* QR — stamp-style for desktop visitors */}
             <div className="hidden items-center gap-3 lg:flex">

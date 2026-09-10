@@ -17,7 +17,7 @@ export function Footer() {
             Free to download &middot; Household free for 7 days.
           </p>
         </div>
-        <AppStoreButton />
+        <AppStoreButton placement="footer" />
       </div>
 
       {/* Link columns */}

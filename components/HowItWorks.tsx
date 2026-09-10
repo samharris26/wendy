@@ -60,7 +60,7 @@ export function HowItWorks() {
         </div>
 
         <Reveal className="mt-14 flex flex-wrap items-center gap-5">
-          <AppStoreButton />
+          <AppStoreButton placement="how-it-works" />
           <span className="font-mono text-[11px] uppercase tracking-wider text-secondaryText">
             Two minutes to set up · free
           </span>

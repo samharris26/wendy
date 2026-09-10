@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const APP_STORE_URL =
-  "https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752";
+import { AppStoreLink } from "./AppStoreLink";
 
 /**
  * Mobile-only download bar that slides in once the visitor scrolls past the
@@ -34,14 +32,12 @@ export function StickyDownloadBar() {
             Household free for 7 days
           </p>
         </div>
-        <a
-          href={APP_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <AppStoreLink
+          placement="sticky-bar"
           className="shrink-0 rounded-xl bg-primaryText px-5 py-3 text-sm font-semibold text-white"
         >
           Download
-        </a>
+        </AppStoreLink>
       </div>
     </div>
   );

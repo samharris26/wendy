@@ -58,7 +58,7 @@ export function LandingPage({ data }: { data: LandingPageData }) {
               {data.heroSubheadline}
             </p>
             <div className="mt-10 flex justify-center lg:justify-start">
-              <AppStoreButton />
+              <AppStoreButton placement="landing-hero" />
             </div>
           </div>
 
