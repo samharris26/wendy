@@ -25,7 +25,10 @@ const FAQS = [
 
 export function Faq() {
   return (
-    <section id="faq" className="mx-auto flex w-full max-w-[800px] flex-col gap-7 px-6 pt-24">
+    <section
+      id="faq"
+      className="mx-auto grid w-full max-w-[1120px] items-start gap-x-16 gap-y-8 px-6 pt-24 lg:grid-cols-[1fr_1.7fr]"
+    >
       <Reveal className="flex flex-col gap-2.5">
         <span className="eyebrow">FAQ</span>
         <h2 className="font-display text-[clamp(32px,4.4vw,44px)] leading-[1.08] text-primaryText">
@@ -54,7 +57,7 @@ export function Faq() {
                   +
                 </span>
               </summary>
-              <p className="mt-2 max-w-[680px] text-[15px] leading-[1.65] text-secondaryText">{f.a}</p>
+              <p className="mt-2 text-[15px] leading-[1.65] text-secondaryText">{f.a}</p>
             </details>
           ))}
         </div>
