@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AppStoreButton } from "./AppStoreButton";
+import { AndroidWaitlist } from "./AndroidWaitlist";
 
 const FLOATING_CHIPS = [
   { label: "Milk added to shopping", time: "08:12", delay: 0 },
@@ -161,6 +162,10 @@ export function Hero() {
                 Scan to download
               </span>
             </div>
+          </div>
+
+          <div className="mt-5 flex justify-center lg:justify-start" style={reveal(640)}>
+            <AndroidWaitlist placement="hero" />
           </div>
 
           <p className="mt-6 font-mono text-[11px] uppercase tracking-wider text-secondaryText" style={reveal(680)}>

@@ -19,6 +19,7 @@ import {
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { AppStoreButton } from "./AppStoreButton";
+import { AndroidWaitlist } from "./AndroidWaitlist";
 import type { LandingPageData, IconName } from "@/lib/landing-pages";
 
 const iconMap: Record<IconName, React.ComponentType<{ className?: string }>> = {
@@ -59,6 +60,9 @@ export function LandingPage({ data }: { data: LandingPageData }) {
             </p>
             <div className="mt-10 flex justify-center lg:justify-start">
               <AppStoreButton placement="landing-hero" />
+            </div>
+            <div className="mt-5 flex justify-center lg:justify-start">
+              <AndroidWaitlist placement="landing-hero" />
             </div>
           </div>
 
