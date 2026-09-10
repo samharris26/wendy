@@ -5,7 +5,7 @@ export const APP_STORE_BASE_URL =
 // Campaign Link" → the pt= value). With it set, each link carries a campaign
 // (ct) so installs show up per placement under Sources → Campaigns. Without
 // it Apple ignores ct, so the links still work but aren't attributed.
-const PROVIDER_TOKEN = "";
+const PROVIDER_TOKEN = "128639431";
 
 /** App Store URL tagged with a campaign name (Apple caps ct at 40 chars). */
 export function appStoreUrl(placement: string): string {
