@@ -33,7 +33,9 @@ It supersedes most of rev 1. Built faithfully in commit `5727426`.
 - **FAQ:** accordion (`<details>`, first item open, all answers stay in the
   DOM for SEO) — Sam asked for collapsible to cut the section height.
   Deviates from the handoff's "deliberately not an accordion", but its README
-  permits it "for SEO or length reasons".
+  permits it "for SEO or length reasons". Also widened from the handoff's
+  800px column to the standard 1120px (Sam: match the other sections) —
+  heading + accordion two-column on desktop.
 - **Closing CTA** is a white panel + 168px QR (was navy).
 - **Docked download bar** (`DockedBar.tsx`) — persistent, navy, bottom of
   viewport; hidden over the hero, revealed on scroll, dismiss persists for
