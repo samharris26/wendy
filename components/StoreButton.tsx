@@ -1,7 +1,5 @@
 import Image from "next/image";
-
-const APP_STORE_URL =
-  "https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752";
+import { AppStoreLink } from "./AppStoreLink";
 
 // Apple's official "Download on the App Store" badge. Rendered per Apple's
 // marketing guidelines: unmodified artwork, fixed proportions (119.664 x 40),
@@ -9,21 +7,22 @@ const APP_STORE_URL =
 const BADGE_RATIO = 119.66407 / 40;
 
 export function StoreButton({
+  placement,
   variant = "navy",
   height = 54,
   className = "",
 }: {
+  /** Where this button sits on the site — tags the App Store campaign and the click event. */
+  placement: string;
   /** "navy" -> black badge (light grounds); "white" -> white badge (dark grounds) */
   variant?: "navy" | "white";
   height?: number;
   className?: string;
 }) {
   return (
-    <a
-      href={APP_STORE_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Download Noa on the App Store"
+    <AppStoreLink
+      placement={placement}
+      ariaLabel="Download Noa on the App Store"
       className={`inline-block transition-opacity hover:opacity-85 ${className}`}
     >
       <Image
@@ -33,6 +32,6 @@ export function StoreButton({
         height={height}
         priority
       />
-    </a>
+    </AppStoreLink>
   );
 }

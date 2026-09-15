@@ -5,10 +5,12 @@ const SHEET_URL = process.env.NEXT_PUBLIC_SHEET_URL;
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json() as { name?: string; email?: string };
+    const body = await req.json() as { name?: string; email?: string; source?: string };
     const { name, email } = body;
+    const source = body.source === 'android' ? 'android' : 'waitlist';
 
-    if (!email || !name) {
+    // The Android waitlist only asks for an email address.
+    if (!email || (!name && source !== 'android')) {
       return NextResponse.json({ error: 'Name and email required' }, { status: 400 });
     }
 
@@ -18,7 +20,7 @@ export async function POST(req: NextRequest) {
         ? fetch(`${BACKEND_API_URL}/api/subscribe`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, source: 'waitlist' }),
+            body: JSON.stringify({ name, email, source }),
           })
         : Promise.resolve(null),
 
@@ -27,7 +29,7 @@ export async function POST(req: NextRequest) {
         ? fetch(SHEET_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'text/plain' },
-            body: JSON.stringify({ name, email }),
+            body: JSON.stringify({ name, email, source }),
           })
         : Promise.resolve(null),
     ]);

@@ -1,7 +1,5 @@
 import { Reveal } from "./Reveal";
-
-const APP_STORE_URL =
-  "https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752";
+import { AppStoreLink } from "./AppStoreLink";
 
 const PLANS = [
   {
@@ -98,10 +96,8 @@ export function Pricing() {
                 ))}
               </div>
 
-              <a
-                href={APP_STORE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <AppStoreLink
+                placement={`pricing-${String(plan.name).toLowerCase()}`}
                 className={`mt-auto rounded-[16px] py-[15px] text-center text-[16px] font-semibold leading-none transition-colors ${
                   plan.featured
                     ? "bg-primaryText text-white hover:bg-[#0a2338]"
@@ -109,7 +105,7 @@ export function Pricing() {
                 }`}
               >
                 {plan.cta}
-              </a>
+              </AppStoreLink>
             </div>
           </Reveal>
         ))}

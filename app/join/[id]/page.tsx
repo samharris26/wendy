@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
+import { AppStoreLink } from "@/components/AppStoreLink";
 
 interface JoinPageProps {
   params: Promise<{ id: string }>;
@@ -57,12 +57,7 @@ export default async function JoinPage({ params }: JoinPageProps) {
         </div>
 
         {/* App Store link */}
-        <Link
-          href="https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block"
-        >
+        <AppStoreLink placement="join" className="inline-block">
           <Image
             src="/app-store-badge.svg"
             alt="Download on the App Store"
@@ -70,7 +65,7 @@ export default async function JoinPage({ params }: JoinPageProps) {
             height={54}
             priority
           />
-        </Link>
+        </AppStoreLink>
 
         <p className="text-xs text-secondaryText font-outfit">
           Already have Noa?{" "}

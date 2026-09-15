@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-const APP_STORE_URL =
-  "https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752";
+import { AppStoreLink } from "./AppStoreLink";
 
 const navItems = [
   { label: "Features", href: "/#features" },
@@ -51,14 +49,12 @@ export function Navbar() {
           <span className="hidden text-[13px] font-medium leading-none text-meta sm:block">
             Household free for 7 days
           </span>
-          <a
-            href={APP_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <AppStoreLink
+            placement="navbar"
             className="rounded-full bg-primaryText px-5 py-3 text-[15px] font-semibold leading-none text-white transition-colors hover:bg-[#0a2338]"
           >
             Download free
-          </a>
+          </AppStoreLink>
         </div>
       </div>
     </header>

@@ -22,7 +22,7 @@ export function TrialPanel() {
               assignment, briefings, WhatsApp for everyone. Cancel before the week is up and pay
               nothing.
             </p>
-            <StoreButton variant="white" className="self-start" />
+            <StoreButton placement="trial-panel" variant="white" className="self-start" />
             <span className="text-[13px] leading-none text-onNavyMeta">
               No card charged for 7 days &middot; no commitment
             </span>

@@ -20,6 +20,7 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { DockedBar } from "./DockedBar";
 import { StoreButton } from "./StoreButton";
+import { AndroidWaitlist } from "./AndroidWaitlist";
 import type { LandingPageData, IconName } from "@/lib/landing-pages";
 
 const iconMap: Record<IconName, React.ComponentType<{ className?: string }>> = {
@@ -52,7 +53,10 @@ export function LandingPage({ data }: { data: LandingPageData }) {
           <p className="max-w-[520px] text-[19px] leading-[1.6] text-secondaryText">
             {data.heroSubheadline}
           </p>
-          <StoreButton className="self-start" />
+          <div className="flex flex-col items-start gap-3">
+          <StoreButton placement="landing-hero" />
+          <AndroidWaitlist placement="landing-hero" />
+        </div>
         </div>
 
         {/* phone mockup */}

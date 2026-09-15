@@ -16,7 +16,7 @@ export function ClosingCta() {
               Download Noa free today — and give your household its calmest week yet with 7 days of
               Household, free.
             </p>
-            <StoreButton className="self-start" />
+            <StoreButton placement="closing-cta" className="self-start" />
             <span className="text-[13px] leading-none text-meta">
               Free to download &middot; Household free for 7 days &middot; Cancel anytime
             </span>

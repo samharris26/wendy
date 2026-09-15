@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { StoreButton } from "./StoreButton";
+import { AndroidWaitlist } from "./AndroidWaitlist";
 
 function Check() {
   return (
@@ -51,7 +52,10 @@ export function Hero() {
           shared with your family, and in sync even over WhatsApp.
         </p>
 
-        <StoreButton className="self-start" />
+        <div className="flex flex-col items-start gap-3">
+          <StoreButton placement="hero" />
+          <AndroidWaitlist placement="hero" />
+        </div>
 
         <div className="flex flex-wrap gap-[18px]">
           {["Free to download", "Household free for 7 days", "Cancel anytime"].map((t) => (

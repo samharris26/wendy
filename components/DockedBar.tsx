@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const APP_STORE_URL =
-  "https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752";
+import { AppStoreLink } from "./AppStoreLink";
 
 /**
  * Persistent download bar docked to the bottom of the viewport — mirrors the
@@ -52,14 +50,12 @@ export function DockedBar() {
         </span>
       </span>
 
-      <a
-        href={APP_STORE_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="ml-auto shrink-0 rounded-[14px] bg-white px-[22px] py-[13px] text-[15px] font-semibold leading-none text-primaryText transition-colors hover:bg-[#E6EAF3]"
+      <AppStoreLink
+            placement="docked-bar"
+            className="ml-auto shrink-0 rounded-[14px] bg-white px-[22px] py-[13px] text-[15px] font-semibold leading-none text-primaryText transition-colors hover:bg-[#E6EAF3]"
       >
         Download
-      </a>
+      </AppStoreLink>
       <button
         type="button"
         onClick={dismiss}

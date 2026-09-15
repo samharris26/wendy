@@ -1,7 +1,5 @@
 import Link from "next/link";
-
-const APP_STORE_URL =
-  "https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752";
+import { AppStoreLink } from "./AppStoreLink";
 
 const FEATURES = [
   ["Shared family calendar", "/features/shared-family-calendar"],
@@ -75,14 +73,12 @@ export function Footer() {
 
         <div className="flex flex-col gap-3">
           <span className="eyebrow">Get the app</span>
-          <a
-            href={APP_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <AppStoreLink
+            placement="footer"
             className="self-start rounded-[16px] bg-primaryText px-5 py-[13px] text-[15px] font-semibold leading-none text-white transition-colors hover:bg-[#0a2338]"
           >
             Download free
-          </a>
+          </AppStoreLink>
           <span className="flex items-center gap-2 text-[13px] font-medium leading-none text-meta">
             <span className="h-2 w-2 rounded-full bg-accent" />
             System operational
