@@ -1,17 +1,13 @@
 import { Reveal } from "./Reveal";
 
-const faqs = [
+const FAQS = [
   {
     q: "Is Noa free?",
-    a: "Yes — download Noa free and use it every day at no cost. The free plan includes tasks, lists, a calendar source and a monthly allowance of WhatsApp messages and voice commands. Upgrade only if you want more.",
+    a: "Yes — download Noa free and use it every day at no cost. The free plan includes tasks, lists, a calendar source and a monthly allowance of WhatsApp messages and voice commands.",
   },
   {
     q: "How does the Household free trial work?",
-    a: "Household comes with a 7-day free trial. You get everything — shared lists and calendars, task assignment, family briefings — for up to 6 people. You won't be charged until the trial ends, and you can cancel anytime in your App Store settings.",
-  },
-  {
-    q: "What happens after the trial?",
-    a: "If you love it, do nothing — your Household plan continues from £39.99/yr (or £5.99/mo). If not, cancel before the 7 days are up and you pay nothing. Your data stays safe on the free plan.",
+    a: "You get everything — shared lists and calendars, task assignment, family briefings — for up to 6 people, free for 7 days. Nothing is charged until the trial ends, and you can cancel anytime in your App Store settings.",
   },
   {
     q: "Which devices does Noa work on?",
@@ -29,44 +25,43 @@ const faqs = [
 
 export function Faq() {
   return (
-    <section id="faq" className="border-t border-[var(--color-rule)] px-6 py-24 lg:px-10">
-      <div className="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-[1fr_1.8fr]">
-        <Reveal>
-          <p className="eyebrow">FAQ</p>
-          <h2 className="mt-5 text-4xl text-primaryText sm:text-5xl">
-            Questions,{" "}
-            <em className="italic text-accent">answered.</em>
-          </h2>
-          <p className="mt-5 max-w-xs text-sm leading-relaxed text-secondaryText">
-            The short version: it&apos;s free to download, the Household trial
-            is genuinely free, and cancelling takes two taps.
-          </p>
-        </Reveal>
+    <section
+      id="faq"
+      className="mx-auto grid w-full max-w-[1120px] items-start gap-x-16 gap-y-8 px-6 pt-24 lg:grid-cols-[1fr_1.7fr]"
+    >
+      <Reveal className="flex flex-col gap-2.5">
+        <span className="eyebrow">FAQ</span>
+        <h2 className="font-display text-[clamp(32px,4.4vw,44px)] leading-[1.08] text-primaryText">
+          Questions, answered.
+        </h2>
+        <p className="text-[17px] leading-[1.6] text-secondaryText">
+          The short version: it&rsquo;s free to download, the Household trial is genuinely free, and
+          cancelling takes two taps.
+        </p>
+      </Reveal>
 
-        <div className="flex flex-col">
-          {faqs.map((faq, i) => (
-            <Reveal key={faq.q} delay={i * 60}>
-              <details className="group border-t border-[var(--color-rule)] py-5 last:border-b">
-                <summary className="flex cursor-pointer list-none items-baseline gap-5 text-left [&::-webkit-details-marker]:hidden">
-                  <span className="font-mono text-[10px] tracking-[0.22em] text-accent">
-                    Q_{String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="flex-1 text-lg text-primaryText md:text-xl">{faq.q}</span>
-                  <span
-                    aria-hidden
-                    className="font-mono text-xl leading-none text-accent transition-transform duration-200 group-open:rotate-45"
-                  >
-                    +
-                  </span>
-                </summary>
-                <p className="mt-4 max-w-2xl pl-[52px] text-sm leading-relaxed text-secondaryText md:pl-[58px]">
-                  {faq.a}
-                </p>
-              </details>
-            </Reveal>
+      <Reveal>
+        <div className="rounded-[26px] bg-card px-6 py-1">
+          {FAQS.map((f, i) => (
+            <details
+              key={f.q}
+              open={i === 0}
+              className="group border-b border-hairline py-5 last:border-b-0"
+            >
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 [&::-webkit-details-marker]:hidden">
+                <h3 className="text-[17px] font-semibold leading-[1.35] text-primaryText">{f.q}</h3>
+                <span
+                  aria-hidden
+                  className="mt-0.5 shrink-0 text-[18px] leading-none text-accent transition-transform duration-200 group-open:rotate-45"
+                >
+                  +
+                </span>
+              </summary>
+              <p className="mt-2 text-[15px] leading-[1.65] text-secondaryText">{f.a}</p>
+            </details>
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

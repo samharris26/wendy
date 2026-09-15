@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
+import { ClosingCta } from "@/components/ClosingCta";
 import { DayWithNoa } from "@/components/DayWithNoa";
+import { DockedBar } from "@/components/DockedBar";
 import { Faq } from "@/components/Faq";
 import { Features } from "@/components/Features";
-import { FinalCta } from "@/components/FinalCta";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
-import { HouseholdTrial } from "@/components/HouseholdTrial";
-import { HowItWorks } from "@/components/HowItWorks";
 import { Navbar } from "@/components/Navbar";
 import { Pricing } from "@/components/Pricing";
-import { StickyDownloadBar } from "@/components/StickyDownloadBar";
-import { Ticker } from "@/components/Ticker";
-import { WhatsAppAssistant } from "@/components/WhatsAppAssistant";
+import { TrialPanel } from "@/components/TrialPanel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -19,22 +16,19 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-24">
       <Navbar />
       <main>
         <Hero />
-        <Ticker />
         <Features />
         <DayWithNoa />
-        <HowItWorks />
-        <WhatsAppAssistant />
-        <HouseholdTrial />
+        <TrialPanel />
         <Pricing />
         <Faq />
-        <FinalCta />
+        <ClosingCta />
       </main>
       <Footer />
-      <StickyDownloadBar />
+      <DockedBar />
     </div>
   );
 }

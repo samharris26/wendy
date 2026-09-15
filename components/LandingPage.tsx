@@ -18,7 +18,8 @@ import {
 } from "lucide-react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import { AppStoreButton } from "./AppStoreButton";
+import { DockedBar } from "./DockedBar";
+import { StoreButton } from "./StoreButton";
 import type { LandingPageData, IconName } from "@/lib/landing-pages";
 
 const iconMap: Record<IconName, React.ComponentType<{ className?: string }>> = {
@@ -38,120 +39,94 @@ const iconMap: Record<IconName, React.ComponentType<{ className?: string }>> = {
 
 export function LandingPage({ data }: { data: LandingPageData }) {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-24">
       <Navbar />
 
       {/* ── Hero ── */}
-      <section className="relative flex min-h-[85vh] w-full items-center overflow-hidden bg-background px-6 md:px-16">
-        {/* background glow */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute left-1/2 top-1/4 h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-primaryText/5 opacity-70 blur-[100px]" />
+      <section className="mx-auto grid w-full max-w-[1120px] items-center gap-12 px-6 pt-16 [grid-template-columns:repeat(auto-fit,minmax(320px,1fr))]">
+        {/* copy */}
+        <div className="flex flex-col gap-[26px]">
+          <h1 className="font-display text-[clamp(36px,5.4vw,56px)] leading-[1.06] text-primaryText">
+            {data.heroHeadline}
+          </h1>
+          <p className="max-w-[520px] text-[19px] leading-[1.6] text-secondaryText">
+            {data.heroSubheadline}
+          </p>
+          <StoreButton className="self-start" />
         </div>
 
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-12 pt-16 md:pt-0 lg:flex-row lg:items-center lg:gap-16">
-          {/* copy */}
-          <div className="flex-1 text-center lg:text-left">
-            <h1 className="text-4xl font-bold leading-[1.08] tracking-tight text-primaryText md:text-5xl lg:text-6xl">
-              {data.heroHeadline}
-            </h1>
-            <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-secondaryText md:text-xl lg:mx-0">
-              {data.heroSubheadline}
-            </p>
-            <div className="mt-10 flex justify-center lg:justify-start">
-              <AppStoreButton />
-            </div>
-          </div>
-
-          {/* phone mockup */}
-          <div className="flex shrink-0 justify-center">
-            <div className="relative w-[260px] md:w-[280px]">
-              <div className="relative overflow-hidden rounded-[40px] border-[6px] border-primaryText/90 bg-primaryText shadow-surface-sm">
-                <div className="absolute left-1/2 top-2 z-20 h-[28px] w-[100px] -translate-x-1/2 rounded-full bg-primaryText" />
-                <div className="relative overflow-hidden rounded-[34px]">
-                  <Image
-                    src={data.heroImage}
-                    alt={`${data.keyword} — Noa app screenshot`}
-                    width={280}
-                    height={607}
-                    className="block w-full"
-                    priority
-                  />
-                </div>
-              </div>
+        {/* phone mockup */}
+        <div className="flex justify-center">
+          <div className="w-full max-w-[300px] rounded-[46px] bg-[#10151f] p-[9px] shadow-phone">
+            <div className="overflow-hidden rounded-[38px]">
+              <Image
+                src={data.heroImage}
+                alt={`${data.keyword} — Noa app screenshot`}
+                width={300}
+                height={650}
+                className="block w-full"
+                priority
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* ── Features ── */}
-      <section className="px-6 py-20 lg:px-10">
-        <div className="mx-auto w-full max-w-6xl">
-          <div className="mb-12 text-center">
-            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-accent">
-              Key features
-            </p>
-            <h2 className="text-3xl text-primaryText sm:text-4xl lg:text-5xl">
-              Why families choose Noa
-            </h2>
-          </div>
+      <section className="mx-auto w-full max-w-[1120px] px-6 pt-24">
+        <div className="mb-10 flex flex-col gap-2.5">
+          <span className="eyebrow">Key features</span>
+          <h2 className="font-display text-[clamp(32px,4.4vw,44px)] leading-[1.08] text-primaryText">
+            Why families choose Noa
+          </h2>
+        </div>
 
-          <div className="grid gap-5 md:grid-cols-3">
-            {data.features.map((feature) => {
-              const Icon = iconMap[feature.iconName];
-              return (
-                <article
-                  key={feature.title}
-                  className="rounded-2xl border border-primaryText/10 bg-card p-6 shadow-surface-xs"
-                >
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-accent/10">
-                    <Icon className="h-5 w-5 text-accent" />
-                  </div>
-                  <h3 className="text-lg text-primaryText">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-secondaryText">
-                    {feature.description}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
+        <div className="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
+          {data.features.map((feature) => {
+            const Icon = iconMap[feature.iconName];
+            return (
+              <article key={feature.title} className="flex flex-col gap-3 rounded-[22px] bg-card p-[22px]">
+                <span className="flex h-[38px] w-[38px] items-center justify-center rounded-full bg-accentTint">
+                  <Icon className="h-[18px] w-[18px] text-accent" />
+                </span>
+                <div className="flex flex-col gap-1.5">
+                  <h3 className="text-[18px] font-semibold leading-[1.25] text-primaryText">{feature.title}</h3>
+                  <p className="text-[15px] leading-[1.6] text-secondaryText">{feature.description}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
       {/* ── Content ── */}
-      <section className="bg-surface px-6 py-20 lg:px-10">
-        <div className="mx-auto w-full max-w-3xl">
-          <div className="rounded-2xl border border-primaryText/10 bg-card p-8 md:p-12">
-            {data.contentSections.map((section) => (
-              <div key={section.heading} className="mb-10 last:mb-0">
-                <h2 className="mb-4 text-2xl text-primaryText">
-                  {section.heading}
-                </h2>
-                {section.paragraphs.map((para, i) => (
-                  <p
-                    key={i}
-                    className="mb-4 text-base leading-relaxed text-secondaryText last:mb-0"
-                  >
-                    {para}
-                  </p>
-                ))}
-              </div>
-            ))}
-          </div>
+      <section className="mx-auto w-full max-w-[800px] px-6 pt-24">
+        <div className="rounded-[26px] bg-card p-8 md:p-12">
+          {data.contentSections.map((section) => (
+            <div key={section.heading} className="mb-10 last:mb-0">
+              <h2 className="mb-4 font-display text-[26px] leading-[1.2] text-primaryText">
+                {section.heading}
+              </h2>
+              {section.paragraphs.map((para, i) => (
+                <p key={i} className="mb-4 text-[16px] leading-[1.65] text-secondaryText last:mb-0">
+                  {para}
+                </p>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 
       {/* ── Internal Links ── */}
-      <section className="px-6 py-16 lg:px-10">
+      <section className="mx-auto w-full max-w-[800px] px-6 pt-24">
         <div className="mx-auto w-full max-w-3xl">
-          <h2 className="mb-6 text-center text-2xl text-primaryText">
+          <h2 className="mb-6 text-center font-display text-[26px] text-primaryText">
             Explore more
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/"
-              className="rounded-full border border-primaryText/10 bg-card px-5 py-2.5 text-sm font-medium text-secondaryText shadow-sm transition-colors hover:border-accent/30 hover:text-primaryText"
+              className="rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-secondaryText transition-colors hover:border-interactive hover:text-primaryText"
             >
               Home
             </Link>
@@ -159,7 +134,7 @@ export function LandingPage({ data }: { data: LandingPageData }) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-full border border-primaryText/10 bg-card px-5 py-2.5 text-sm font-medium text-secondaryText shadow-sm transition-colors hover:border-accent/30 hover:text-primaryText"
+                className="rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-secondaryText transition-colors hover:border-interactive hover:text-primaryText"
               >
                 {link.label}
               </Link>
@@ -169,6 +144,7 @@ export function LandingPage({ data }: { data: LandingPageData }) {
       </section>
 
       <Footer />
+      <DockedBar />
     </div>
   );
 }

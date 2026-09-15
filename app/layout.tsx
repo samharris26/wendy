@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Cormorant_Garamond,
-  IBM_Plex_Mono,
-  Plus_Jakarta_Sans,
-} from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -17,17 +13,11 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
+// Display serif — section headings and the wordmark only, never body.
+const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-ibm-plex-mono",
-  display: "swap",
-});
-
-const cormorantGaramond = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-cormorant",
+  weight: ["500", "600"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
@@ -112,10 +102,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${plusJakartaSans.variable} ${ibmPlexMono.variable} ${cormorantGaramond.variable}`}
-    >
+    <html lang="en" className={`${plusJakartaSans.variable} ${playfairDisplay.variable}`}>
       <head>
         <Script
           defer

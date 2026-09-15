@@ -21,12 +21,12 @@ export default function PrivacyPage() {
       <div className="mx-auto w-full max-w-3xl">
         <Link
           href="/"
-          className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+          className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-interactive hover:underline"
         >
           &larr; Back to Noa
         </Link>
 
-        <div className="rounded-2xl border border-primaryText/10 bg-card p-8 md:p-12">
+        <div className="noa-card p-8 md:p-12">
           <h1 className="text-3xl font-semibold tracking-tight text-primaryText">
             Privacy Policy
           </h1>
@@ -48,7 +48,7 @@ export default function PrivacyPage() {
                 For any privacy-related questions please contact us at{" "}
                 <a
                   href="mailto:privacy@asknoa.app"
-                  className="font-medium text-accent hover:underline"
+                  className="font-medium text-interactive hover:underline"
                 >
                   privacy@asknoa.app
                 </a>
@@ -211,7 +211,7 @@ export default function PrivacyPage() {
                 To exercise any of these rights, email{" "}
                 <a
                   href="mailto:privacy@asknoa.app"
-                  className="font-medium text-accent hover:underline"
+                  className="font-medium text-interactive hover:underline"
                 >
                   privacy@asknoa.app
                 </a>
@@ -267,7 +267,7 @@ export default function PrivacyPage() {
                 complaint, please contact us at{" "}
                 <a
                   href="mailto:privacy@asknoa.app"
-                  className="font-medium text-accent hover:underline"
+                  className="font-medium text-interactive hover:underline"
                 >
                   privacy@asknoa.app
                 </a>
@@ -277,7 +277,7 @@ export default function PrivacyPage() {
                   href="https://ico.org.uk"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium text-accent hover:underline"
+                  className="font-medium text-interactive hover:underline"
                 >
                   ico.org.uk
                 </a>

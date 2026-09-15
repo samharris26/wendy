@@ -40,12 +40,12 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         <div className="mx-auto w-full max-w-3xl">
           <Link
             href="/"
-            className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+            className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-interactive hover:underline"
           >
             &larr; Back to Noa
           </Link>
 
-          <h1 className="text-3xl font-semibold tracking-tight text-primaryText md:text-4xl">
+          <h1 className="text-4xl text-primaryText md:text-5xl">
             Blog
           </h1>
           <p className="mt-3 text-lg text-secondaryText">
@@ -62,19 +62,19 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 <article key={post.slug} className="group">
                   <Link href={`/blog/${post.slug}`} className="block">
                     <div className="flex items-center gap-3 text-xs text-secondaryText">
-                      <time className="font-mono">
+                      <time>
                         {new Date(post.date).toLocaleDateString("en-GB", {
                           day: "numeric",
                           month: "long",
                           year: "numeric",
                         })}
                       </time>
-                      <span className="text-primaryText/20">&middot;</span>
+                      <span className="text-border">&middot;</span>
                       <span>{post.author}</span>
-                      <span className="text-primaryText/20">&middot;</span>
+                      <span className="text-border">&middot;</span>
                       <span>{post.readTime} min read</span>
                     </div>
-                    <h2 className="mt-1 text-xl font-semibold tracking-tight text-primaryText transition-colors group-hover:text-accent">
+                    <h2 className="mt-1 text-2xl text-primaryText transition-colors group-hover:text-interactive">
                       {post.title}
                     </h2>
                     <p className="mt-2 text-sm leading-relaxed text-secondaryText">
@@ -84,7 +84,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full bg-surface px-2.5 py-0.5 font-mono text-xs text-secondaryText"
+                          className="rounded-full bg-surfaceAlt px-2.5 py-0.5 text-xs text-secondaryText"
                         >
                           {tag}
                         </span>
@@ -102,7 +102,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               {page > 1 && (
                 <Link
                   href={page === 2 ? "/blog" : `/blog?page=${page - 1}`}
-                  className="rounded-lg border border-primaryText/10 px-4 py-2 text-sm font-medium text-secondaryText transition-colors hover:border-primaryText/20 hover:text-primaryText"
+                  className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-secondaryText transition-colors hover:border-interactive hover:text-primaryText"
                 >
                   &larr; Previous
                 </Link>
@@ -114,7 +114,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   href={p === 1 ? "/blog" : `/blog?page=${p}`}
                   className={`rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
                     p === page
-                      ? "bg-primaryText text-white"
+                      ? "bg-interactive text-white"
                       : "text-secondaryText hover:text-primaryText"
                   }`}
                 >
@@ -125,7 +125,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               {page < totalPages && (
                 <Link
                   href={`/blog?page=${page + 1}`}
-                  className="rounded-lg border border-primaryText/10 px-4 py-2 text-sm font-medium text-secondaryText transition-colors hover:border-primaryText/20 hover:text-primaryText"
+                  className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-secondaryText transition-colors hover:border-interactive hover:text-primaryText"
                 >
                   Next &rarr;
                 </Link>

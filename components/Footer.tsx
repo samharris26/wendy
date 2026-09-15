@@ -1,119 +1,96 @@
-"use client";
-
 import Link from "next/link";
-import { AppStoreButton } from "./AppStoreButton";
+
+const APP_STORE_URL =
+  "https://apps.apple.com/gb/app/noa-your-life-organised/id6760316752?itscg=30200&itsct=apps_box_link&mttnsubad=6760316752";
+
+const FEATURES = [
+  ["Shared family calendar", "/features/shared-family-calendar"],
+  ["Tasks", "/features/tasks"],
+  ["Shared lists", "/features/shared-lists"],
+  ["WhatsApp assistant", "/features/whatsapp-assistant"],
+];
+
+const COMPANY = [
+  ["Blog", "/blog"],
+  ["Privacy policy", "/privacy"],
+  ["Terms of service", "/terms"],
+  ["Instagram", "https://www.instagram.com/asknoa.app"],
+];
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--color-rule)] bg-background px-6 pb-12 pt-20 lg:px-10">
-      {/* Top — Download CTA */}
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-12 border-b border-primaryText/10 pb-16 md:flex-row md:items-center">
-        <div className="max-w-lg">
-          <p className="text-3xl italic text-accent md:text-4xl" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>Noa</p>
-          <p className="mt-4 text-lg leading-relaxed text-secondaryText">
+    <footer className="mx-auto w-full max-w-[1120px] px-6 pt-[72px]">
+      {/* Slim third-party badge row */}
+      <div className="mb-10 flex flex-wrap items-center justify-center gap-4 opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0">
+        <a href="https://www.producthunt.com/products/noa-4" target="_blank" rel="noopener noreferrer">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1125090&theme=light&t=1776411913924"
+            alt="Noa on Product Hunt"
+            width={150}
+            height={33}
+          />
+        </a>
+        <a href="https://peerpush.net/p/noa" target="_blank" rel="noopener">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://peerpush.net/p/noa/badge.png" alt="Noa on PeerPush" width={150} height={33} />
+        </a>
+        <a href="https://tinylaunch.com" target="_blank" rel="noopener">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://tinylaunch.com/tinylaunch_badge_featured_on.svg" alt="Featured on TinyLaunch" width={150} height={33} />
+        </a>
+      </div>
+
+      <div className="grid gap-8 border-t border-border pt-9 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]">
+        <div className="flex flex-col gap-2.5">
+          <span className="font-display text-2xl leading-none text-primaryText">Noa</span>
+          <span className="max-w-[260px] text-[14px] leading-[1.6] text-secondaryText">
             Your life, organised. Calendars, tasks, lists and reminders — beautifully designed for iOS.
-          </p>
-          <p className="mt-2 text-sm text-secondaryText">
-            Free to download &middot; Household free for 7 days.
-          </p>
+          </span>
         </div>
-        <AppStoreButton />
-      </div>
 
-      {/* Link columns */}
-      <div className="mx-auto mt-12 grid w-full max-w-6xl grid-cols-2 gap-8 border-b border-primaryText/10 pb-12 sm:grid-cols-3 md:grid-cols-4">
-        <div>
-          <p className="mb-4 font-mono text-xs font-medium uppercase tracking-widest text-primaryText">
-            Features
-          </p>
-          <ul className="space-y-3 text-sm text-secondaryText">
-            <li>
-              <Link href="/features/shared-family-calendar" className="transition-colors hover:text-primaryText">
-                Shared family calendar
-              </Link>
-            </li>
-            <li>
-              <Link href="/features/tasks" className="transition-colors hover:text-primaryText">
-                Tasks
-              </Link>
-            </li>
-            <li>
-              <Link href="/features/shared-lists" className="transition-colors hover:text-primaryText">
-                Shared lists
-              </Link>
-            </li>
-            <li>
-              <Link href="/features/whatsapp-assistant" className="transition-colors hover:text-primaryText">
-                WhatsApp assistant
-              </Link>
-            </li>
-          </ul>
+        <div className="flex flex-col gap-3">
+          <span className="eyebrow">Features</span>
+          {FEATURES.map(([label, href]) => (
+            <Link key={href} href={href} className="text-[14px] font-medium leading-none text-secondaryText transition-colors hover:text-primaryText">
+              {label}
+            </Link>
+          ))}
         </div>
-        <div>
-          <p className="mb-4 font-mono text-xs font-medium uppercase tracking-widest text-primaryText">
-            Company
-          </p>
-          <ul className="space-y-3 text-sm text-secondaryText">
-            <li>
-              <Link href="/blog" className="transition-colors hover:text-primaryText">
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link href="/privacy" className="transition-colors hover:text-primaryText">
-                Privacy policy
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms" className="transition-colors hover:text-primaryText">
-                Terms of service
-              </Link>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/asknoa.app" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-primaryText">
-                Instagram
+
+        <div className="flex flex-col gap-3">
+          <span className="eyebrow">Company</span>
+          {COMPANY.map(([label, href]) =>
+            href.startsWith("http") ? (
+              <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="text-[14px] font-medium leading-none text-secondaryText transition-colors hover:text-primaryText">
+                {label}
               </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Bottom */}
-      <div className="mx-auto mt-8 flex w-full max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
-        <div className="flex items-center gap-2 font-mono text-xs text-secondaryText">
-          <span className="system-dot inline-block h-2.5 w-2.5 rounded-full bg-success" aria-hidden />
-          <span>System Operational</span>
+            ) : (
+              <Link key={href} href={href} className="text-[14px] font-medium leading-none text-secondaryText transition-colors hover:text-primaryText">
+                {label}
+              </Link>
+            )
+          )}
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4">
+        <div className="flex flex-col gap-3">
+          <span className="eyebrow">Get the app</span>
           <a
-            href="https://www.producthunt.com/products/noa-4?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-noa-4"
+            href={APP_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
+            className="self-start rounded-[16px] bg-primaryText px-5 py-[13px] text-[15px] font-semibold leading-none text-white transition-colors hover:bg-[#0a2338]"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              alt="Noa - Your life admin for quick availability and scheduling | Product Hunt"
-              width={160}
-              height={35}
-              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1125090&theme=light&t=1776411913924"
-              className="opacity-80 transition-opacity hover:opacity-100"
-            />
+            Download free
           </a>
-          <a href="https://peerpush.net/p/noa" target="_blank" rel="noopener">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://peerpush.net/p/noa/badge.png" alt="Noa on PeerPush" width={160} height={35} className="opacity-80 transition-opacity hover:opacity-100" />
-          </a>
-          <a href="https://tinylaunch.com" target="_blank" rel="noopener">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://tinylaunch.com/tinylaunch_badge_featured_on.svg" alt="Featured on TinyLaunch" width={160} height={35} className="opacity-80 transition-opacity hover:opacity-100" />
-          </a>
-        </div>
-
-        <div className="font-mono text-xs text-secondaryText">
-          <span>&copy; {new Date().getFullYear()} Noa.</span>
+          <span className="flex items-center gap-2 text-[13px] font-medium leading-none text-meta">
+            <span className="h-2 w-2 rounded-full bg-accent" />
+            System operational
+          </span>
         </div>
       </div>
+
+      <div className="pt-7 text-[13px] leading-none text-placeholder">&copy; {new Date().getFullYear()} Noa.</div>
     </footer>
   );
 }

@@ -39,7 +39,7 @@ export function RelatedLinks({ tags }: { tags: string[] }) {
   if (items.length === 0) return null;
 
   return (
-    <aside className="mt-10 rounded-2xl border border-primaryText/10 bg-surface p-6">
+    <aside className="mt-10 rounded-lg border border-border bg-surface/60 p-6">
       <p className="mb-1 text-base font-semibold text-primaryText">
         Get organised with Noa
       </p>
@@ -51,7 +51,7 @@ export function RelatedLinks({ tags }: { tags: string[] }) {
           <li key={l.href}>
             <Link
               href={l.href}
-              className="inline-flex items-center rounded-full border border-primaryText/10 bg-card px-4 py-2 text-sm font-medium text-primaryText transition hover:border-primaryText/25 hover:bg-primaryText/5"
+              className="inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-primaryText transition hover:border-interactive hover:text-interactive"
             >
               {l.label}
             </Link>
