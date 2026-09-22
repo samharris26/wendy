@@ -8,13 +8,15 @@ fewer, better posts written by Sam, built to be shared.
 ## The rules
 
 1. **Written by Sam, in the first person.** Every post is Sam's voice and
-   carries Sam's name. Nothing about Sam's household is ever invented: where
-   a real detail would help, the draft leaves `<!-- TODO(sam): … -->` and Sam
-   fills it in or deletes the line. These comments never reach the page.
+   carries Sam's name. First person is for opinions and advice, never for
+   invented anecdotes: nothing about Sam's household is made up, and scenes
+   are moments any house would recognise. Drafts arrive finished, with no
+   notes to fill in, so they only need a read-through. (If you do leave an
+   editing note, `<!-- … -->` comments are stripped from the page.)
 
 2. **Nothing publishes unedited.** Every other Tuesday the GitHub Action
    drafts the next brief with Claude and opens a **draft PR**, requests Sam's
-   review and emails Sam. Sam edits, then merges to publish. If a draft isn't
+   review and emails Sam. Sam reads it through, then merges to publish. If a draft isn't
    worth editing, close the PR: an unpublished post costs nothing, a bland
    one costs trust.
 
@@ -25,8 +27,8 @@ fewer, better posts written by Sam, built to be shared.
    - `data`: aggregate numbers from Noa, **on hold** until there are enough
      households for honest figures (139 users, 3 households on 2026-09-22)
 
-4. **Numbers need a source.** A stat block needs a named public source
-   (ONS, NHS, DfE, GOV.UK) in its `source` line, checked by Sam before merge.
+4. **Numbers need a source.** Drafts only use a stat block when the brief's
+   `sources` give the exact figure; otherwise the point is made without one.
    No invented statistics, studies or quotes. Ever.
 
 5. **Voice.**

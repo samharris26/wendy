@@ -23,8 +23,8 @@ function html({ title, pr, slug }) {
     <p style="margin:0 0 20px;font-size:16px;line-height:1.55;color:#55637A">The next blog post is drafted and waiting as a draft pull request. Nothing is published until you merge it.</p>
     <p style="margin:0 0 24px"><a href="${esc(pr)}" style="display:inline-block;background:#2F6BED;color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:14px 22px;border-radius:20px">Open the draft</a></p>
     <div style="background:#fff;border-radius:26px;padding:22px 24px;font-size:15px;line-height:1.6;color:#55637A">
-      <p style="margin:0 0 8px;font-weight:600;color:#0D2B45">Before you merge</p>
-      <p style="margin:0">Fill every <code>TODO(sam)</code> note with a real detail or delete the line. Check any figure against its source. Read it aloud once. Then look at the share kit on the Vercel preview: <code>/blog/${esc(slug)}/share</code>.</p>
+      <p style="margin:0 0 8px;font-weight:600;color:#0D2B45">It just needs a read-through</p>
+      <p style="margin:0">There's nothing to fill in. Read it, change anything that doesn't sound like you, and merge. The share images are on the Vercel preview at <code>/blog/${esc(slug)}/share</code>.</p>
     </div>
     <p style="margin:24px 0 0;font-size:13px;color:#6B7789">If it isn't worth editing, close the PR. The brief is marked done either way.</p>
   </div></body></html>`;

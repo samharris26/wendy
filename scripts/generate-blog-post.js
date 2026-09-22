@@ -39,6 +39,11 @@ function existingPosts() {
     });
 }
 
+function printables() {
+  const dir = path.join(ROOT, "public", "printables");
+  return fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith(".pdf")).map((f) => `/printables/${f}`) : [];
+}
+
 // The one post we treat as the reference for voice and frontmatter shape.
 function examplePost() {
   const f = fs.readdirSync(POSTS_DIR).find((n) => n.endsWith("sunday-reset-routine.md"));
@@ -48,7 +53,7 @@ function examplePost() {
 function buildPrompt(brief, posts, date) {
   const system = `You draft posts for the Noa blog (asknoa.app/blog). Noa is an iPhone app for households: one shared calendar, shared lists and tasks you can assign to a person. The blog is written in the first person by Sam, Noa's founder, for busy UK parents.
 
-Your draft goes to Sam in a pull request. Sam edits it before anything is published, so write the strongest honest draft you can, and mark the places only Sam can fill.
+Your draft goes to Sam in a pull request, and Sam will only read it through before publishing. So it must be finished: nothing left to fill in, and nothing a careful reader could catch out as untrue.
 
 The editorial policy below is binding:
 
@@ -57,15 +62,16 @@ ${EDITORIAL}
 </editorial_policy>
 
 Hard rules on truth, because this is published under a real person's name:
-- Never invent facts about Sam, Sam's household, children, partner, city or history. Where a personal detail would make the post land, write a neutral sentence and add an HTML comment right after it: <!-- TODO(sam): what to add here -->. Two to four of these per post.
-- Never invent statistics, studies or quotes. A :::stat block is only allowed for a figure from a named public source you are confident of (ONS, NHS, DfE, GOV.UK), and must be followed by <!-- TODO(sam): verify this figure at <source> -->. When unsure, leave the stat out.
-- Only describe Noa features you can see in this prompt: a shared calendar, colour per person, shared lists, tasks assigned to people with reminders, a morning briefing. If a point needs any other feature, add a TODO(sam) comment asking whether Noa does it.
+- Never invent facts about Sam, Sam's household, children, partner, city or history, and never tell a story as something that happened to Sam. First person is for opinions and advice ("I'd start with two jobs each"), not for anecdotes. Scenes are written as recognisable moments in any house ("It's 8.40 and someone at the school gate is wearing a onesie"), not as Sam's memories.
+- Never invent statistics, studies or quotes. Only use a :::stat block when the brief's sources give the exact figure; otherwise make the point without a number.
+- Only describe Noa features listed here: one shared calendar for the household, a colour for each person, events that repeat (including every year) with reminders, shared lists (with the whole household or just some members), tasks assigned to people with reminders, and a morning briefing. Never imply any other feature.
+- Leave no TODOs, placeholders, square-bracket gaps or notes to Sam. If a point can't be made truthfully without Sam's input, cut it.
 
 Markdown directives the site renders as designed blocks (use two to four, where they genuinely help):
 - :::checklist{label="..."} followed by a markdown list and :::
 - :::quote followed by one line and :::   (the line must also appear as the frontmatter quote)
 - ::app{src="/images/home.png" caption="..."}   (screenshots available: /images/home.png, /images/calendar.png, /images/lists.png, /images/tasks.png)
-- ::printable{pdf="/printables/<id>.pdf" title="..." body="..."}   (only for format printable, and add <!-- TODO(sam): build the PDF: add a sheet to scripts/build-printables.mjs --> next to it)
+- ::printable{pdf="..." title="..." body="..."}   (only with one of these existing PDFs: ${printables().join(", ") || "none"}; never invent a PDF path)
 - :::stat{figure="..." source="..."} caption :::   (see the truth rules)
 
 Output the complete markdown file and nothing else: YAML frontmatter, then the body. Frontmatter fields, in this order: title, cardTitle (40 characters or fewer, for the share card), date, description (140 to 155 characters, for search results), dek (one or two sentences under the title), keyword, format, tags (two to four), quote (under 200 characters, taken from the post), cover, and carousel (hook, sub, three points each with title and body, close, closeSub). Cover is one of: {kind: "title"}, {kind: "calendar", caption}, {kind: "phone", screenshot}, {kind: "checklist", items: [{text, done}] with four short items, the first two done}. Do not include author, pdf or featured; the site fills those in. Quote YAML strings with double quotes.
@@ -105,6 +111,10 @@ function validate(markdown, brief) {
   if (data.format !== brief.format) console.warn(`Note: brief asked for ${brief.format}, draft says ${data.format}`);
   if (data.quote.length > 260) throw new Error("Quote is over 260 characters; the quote card can't set it");
   if (content.trim().split(/\s+/).length < 300) throw new Error("Draft body is under 300 words");
+  // Drafts must be publishable after a read-through: no notes left for Sam.
+  if (/TODO|<!--|\[(?:insert|add|name|your)[^\]]*\]/i.test(markdown)) throw new Error("Draft still contains a TODO, comment or placeholder");
+  const pdfs = [...content.matchAll(/pdf="([^"]+)"/g)].map((m) => m[1]).filter((p) => !printables().includes(p));
+  if (pdfs.length) throw new Error(`Draft links a printable that doesn't exist: ${pdfs.join(", ")}`);
   return data;
 }
 
@@ -137,31 +147,46 @@ async function main() {
   }
 
   const client = new Anthropic();
-  const response = await client.beta.messages.create({
-    model: MODEL,
-    max_tokens: 16000,
-    thinking: { type: "adaptive" },
-    output_config: { effort: "high" },
-    // Server-side fallback if the request is declined by a safety classifier.
-    betas: ["server-side-fallback-2026-06-01"],
-    fallbacks: [{ model: "claude-opus-4-8" }],
-    system,
-    messages: [{ role: "user", content: user }],
-  });
+  const messages = [{ role: "user", content: user }];
+  let text;
+  let data;
+  let response;
+  // One retry: a draft that fails validation goes back with the reason.
+  for (let attempt = 1; ; attempt++) {
+    response = await client.beta.messages.create({
+      model: MODEL,
+      max_tokens: 16000,
+      thinking: { type: "adaptive" },
+      output_config: { effort: "high" },
+      // Server-side fallback if the request is declined by a safety classifier.
+      betas: ["server-side-fallback-2026-06-01"],
+      fallbacks: [{ model: "claude-opus-4-8" }],
+      system,
+      messages,
+    });
 
-  if (response.stop_reason === "refusal") {
-    throw new Error(`Draft declined: ${response.stop_details?.explanation ?? "no explanation"}`);
+    if (response.stop_reason === "refusal") {
+      throw new Error(`Draft declined: ${response.stop_details?.explanation ?? "no explanation"}`);
+    }
+    if (response.stop_reason === "max_tokens") throw new Error("Draft hit max_tokens before finishing");
+
+    text = response.content
+      .filter((b) => b.type === "text")
+      .map((b) => b.text)
+      .join("")
+      .trim()
+      .replace(/^```(?:markdown|md)?\n([\s\S]*?)\n```$/, "$1");
+
+    try {
+      data = validate(text, brief);
+      break;
+    } catch (err) {
+      if (attempt >= 2) throw err;
+      console.error(`Draft ${attempt} rejected (${err.message}); asking for a fix`);
+      messages.push({ role: "assistant", content: response.content });
+      messages.push({ role: "user", content: `That draft can't be used: ${err.message}. Return the complete corrected file, and nothing else.` });
+    }
   }
-  if (response.stop_reason === "max_tokens") throw new Error("Draft hit max_tokens before finishing");
-
-  const text = response.content
-    .filter((b) => b.type === "text")
-    .map((b) => b.text)
-    .join("")
-    .trim()
-    .replace(/^```(?:markdown|md)?\n([\s\S]*?)\n```$/, "$1");
-
-  const data = validate(text, brief);
   const slug = slugify(data.cardTitle || data.title);
   const file = path.join(POSTS_DIR, `${date}-${slug}.md`);
   if (fs.existsSync(file)) throw new Error(`${path.relative(ROOT, file)} already exists`);

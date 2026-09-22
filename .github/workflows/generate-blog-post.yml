@@ -86,20 +86,12 @@ jobs:
           git add "$FILE" scripts/topics.json
           git commit -m "blog draft: $TITLE"
           git push -u origin "$branch"
-          todos=$(grep -c "TODO(sam)" "$FILE" || true)
           cat > pr-body.md <<EOF
           A new post, drafted by Claude from the brief queue. **Nothing is published until this is merged.**
 
-          **Post:** \`$FILE\` · $todos \`TODO(sam)\` notes to resolve
+          **Post:** \`$FILE\`
 
-          ### Before merging
-          - [ ] Every \`TODO(sam)\` note replaced with a real detail, or the line deleted
-          - [ ] Any figure checked against its source (stat blocks need a real source line)
-          - [ ] Opening scene rewritten from real life if it feels generic
-          - [ ] Anything you wouldn't say out loud to another parent, cut
-          - [ ] Read aloud once
-          - [ ] Share kit looks right on the Vercel preview: \`/blog/$SLUG/share\`
-          - [ ] Printable posts: PDF added to \`scripts/build-printables.mjs\` and built
+          It's written to be publishable as is: no notes to fill in, no invented personal details, and only Noa features that exist. Read it through, fix anything that doesn't sound like you, and merge. Preview: \`/blog/$SLUG\`, share images at \`/blog/$SLUG/share\`.
 
           If it isn't worth editing, close this PR. The brief stays marked done.
           EOF

@@ -60,6 +60,18 @@ const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 const SHEETS = [
   {
+    id: "half-term-planner",
+    title: "Half-term planner",
+    body: () =>
+      header("Seasonal planner", "Half-term planner") +
+      intro("Nine days. Write the plan in pencil, the childcare in pen. Shade the one day nobody has to be anywhere.") +
+      table(
+        [{ label: "Day", width: 96 }, { label: "Plan" }, { label: "Who's on", width: 150 }, { label: "Cost", width: 106 }],
+        ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d) => ({ main: d, sub: "__ / __" })),
+      ) +
+      footer("The one quiet day", ["Half-term dates vary by council:", "check yours first. asknoa.app/blog"]),
+  },
+  {
     id: "sunday-reset-sheet",
     title: "The Sunday reset",
     body: () =>
