@@ -2,8 +2,8 @@ import fs from "fs";
 import path from "path";
 
 // Fonts for next/og. Satori can't read woff2 or variable fonts, so these are
-// static Latin WOFF files from @fontsource (SIL OFL), committed in assets/fonts.
-const DIR = path.join(process.cwd(), "assets", "fonts");
+// static Latin WOFF files from @fontsource (SIL OFL), committed in lib/cards/fonts.
+const DIR = path.join(process.cwd(), "lib", "cards", "fonts");
 
 type Weight = 400 | 500 | 600 | 700;
 
