@@ -46,7 +46,7 @@ export default function BlogPage() {
             Notes from a house that runs on a shared calendar
           </h1>
           <p className="text-[17px] leading-[1.55] text-secondaryText md:text-lg">
-            Written by Sam, who builds Noa and is also the one who forgets the trip money.
+            Practical ideas for running a busy house, from Sam, who builds Noa.
           </p>
         </header>
 

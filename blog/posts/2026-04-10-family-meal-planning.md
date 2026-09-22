@@ -29,8 +29,6 @@ carousel:
 
 It's five o'clock, everyone's hungry, and someone asks what's for tea. You open the fridge as if the answer might be written inside. It isn't. It's half a pepper and some yoghurt.
 
-<!-- TODO(sam): what's your house's default emergency dinner? -->
-
 Meal planning has a reputation for being a Sunday-afternoon project with colour-coded spreadsheets. It doesn't need to be. The version that sticks takes about ten minutes a week.
 
 :::quote

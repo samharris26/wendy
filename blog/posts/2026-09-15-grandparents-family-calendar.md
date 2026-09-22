@@ -15,10 +15,6 @@ cover:
 
 "Have you told your mum about Thursday?" is a question that can start an argument in almost any house. Thursday being the day she's doing pickup, which was agreed on the phone three weeks ago, and which has since moved to Wednesday.
 
-<!-- TODO(sam): check whether Noa can share one calendar with someone outside the household; if yes, say so in the 'smartphone calendar' paragraph. -->
-
-<!-- TODO(sam): who helps out in your family? Grandparents, a childminder, a neighbour? Swap in the real version. -->
-
 Grandparents and childminders are often the most important people in the week's logistics, and the least connected to wherever the plan actually lives.
 
 ## They don't need the whole diary

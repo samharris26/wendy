@@ -29,8 +29,6 @@ carousel:
 
 Every chore chart I've seen starts the same way. Laminated, colour-coded, stuck to the fridge with real ceremony. By the second Wednesday there's a sticker missing, by the third nobody's looking at it, and by half-term it's holding up a takeaway menu.
 
-<!-- TODO(sam): one line on your own chart that died, if there was one. -->
-
 The chart isn't the problem. The problem is that most charts ask for too much, too vaguely, and then nobody checks.
 
 ## What each age can actually do

@@ -15,8 +15,6 @@ cover:
 
 It's 8.40 on a Wednesday and someone at the school gate is wearing a onesie. It's a non-uniform day, in aid of something, and you'd have known if you'd read the second page of the newsletter that arrived in the school app, the class WhatsApp and the book bag, all on different days.
 
-<!-- TODO(sam): your own school-gate moment goes here, if you have one. -->
-
 School admin isn't hard. There's just a lot of it, and it arrives from five directions at once: the school app, email, paper letters, the class chat, and whatever your child remembers to mention at bedtime.
 
 ## The rule: one place, the moment you see it

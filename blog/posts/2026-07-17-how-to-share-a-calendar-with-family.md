@@ -24,8 +24,6 @@ carousel:
 
 Most families already have a shared calendar. Several, in fact. There's the one on the fridge, the one in someone's phone, the school newsletter nobody's read and the group chat where plans quietly change. The trouble isn't having nowhere to put things. It's having too many places.
 
-<!-- TODO(sam): how many "calendars" did your house have before? A real count is a good opener. -->
-
 Sharing a calendar properly means picking one of those and making it the place things go first.
 
 ## Pick one place

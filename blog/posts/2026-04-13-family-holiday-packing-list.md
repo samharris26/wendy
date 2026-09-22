@@ -20,8 +20,6 @@ cover:
 
 It's the night before the holiday. There are four open suitcases on the landing, somebody's crying about a missing teddy, and you're trying to remember if you packed the chargers or just thought about packing them.
 
-<!-- TODO(sam): your own "we forgot the…" story works well here. -->
-
 Holiday packing goes wrong for the same reason every time: the list gets made from scratch, in a hurry, the night before. The fix is to write it once, properly, and reuse it.
 
 :::quote

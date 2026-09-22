@@ -19,9 +19,7 @@ cover:
 
 The usual organising advice goes something like: write everything down, review it daily, keep your planner up to date. It's good advice for people whose brains will reliably remind them to open the planner. For a lot of people with ADHD, the planner is exactly the thing that gets forgotten.
 
-<!-- TODO(sam): if ADHD is part of your household, a sentence of your own here matters more than anything else in the post. If it isn't, say who you've learned this from. -->
-
-I'm not a clinician, and this isn't medical advice. It's what I've seen work in real households, and it comes down to one idea: the system should come and find you, not the other way round.
+I'm not a clinician, and this isn't medical advice. It's a set of habits that suit a lot of households, and it comes down to one idea: the system should come and find you, not the other way round.
 
 :::quote
 A system you have to remember to check is just one more thing to forget.

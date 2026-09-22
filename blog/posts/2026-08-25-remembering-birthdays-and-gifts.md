@@ -20,8 +20,6 @@ cover:
 
 Most people don't forget birthdays. They remember them on the day, in the kitchen, with no card, no present, and a sinking feeling about the second-class stamp.
 
-<!-- TODO(sam): whose birthday always catches you out? -->
-
 The date isn't the problem. The problem is everything that has to happen before it: noticing it's coming, thinking of a present, ordering it, finding a card, posting it. Those steps start about two weeks early, and nothing reminds you.
 
 ## Step one: every date in one list
@@ -60,6 +58,4 @@ If you'd rather keep it on paper, the tracker has a box for each month, space fo
 
 ::printable{pdf="/printables/birthday-tracker.pdf" title="Birthday and present tracker" body="Twelve months on one page, with room for gift ideas. Free, no email."}
 
-In [Noa](https://www.asknoa.app), birthdays can go in as yearly events with a reminder for whoever's buying the present, and the gift ideas can live in a shared list. Paper works too, as long as it's all in one place.
-
-<!-- TODO(sam): confirm Noa events can repeat yearly with a reminder before publishing this sentence. -->
+In [Noa](https://www.asknoa.app), birthdays go in as events that repeat every year, with a reminder as early as you like. The gift ideas can live in a list shared with just your partner, so the birthday person never sees it. Paper works too, as long as it's all in one place.

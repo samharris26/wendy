@@ -15,8 +15,6 @@ cover:
 
 Handover day is when most co-parenting friction shows up. Not because anyone's being difficult, but because the plan lived in a text thread from three weeks ago, and one of you read "the 14th" as the Thursday and the other as the Friday.
 
-<!-- TODO(sam): if you have a real story from a friend or reader, a line here makes it land. Don't invent one. -->
-
 A shared calendar won't fix a difficult relationship. What it can do is take the logistics out of the conversation, so the conversations you do have are about the kids and not about whose weekend it was.
 
 ## One calendar, not two

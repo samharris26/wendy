@@ -13,8 +13,6 @@ export const metadata: Metadata = {
 };
 
 // "About Sam ›" on the blog lands here. Keep it short and true.
-// TODO(sam): replace the second paragraph with your own words: where you
-// are, who's in your household, why you started.
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -32,8 +30,8 @@ export default function AboutPage() {
             everything.
           </p>
           <p>
-            I&rsquo;m an independent developer in the UK, and Noa is a small, independent app. There&rsquo;s no big
-            team behind it, which means when you email, you get me.
+            Noa is a small, independent app, made in the UK. It does a few things for a household and tries to do
+            them properly: the calendar, the lists, the tasks, and a morning briefing of what&rsquo;s on.
           </p>
           <p>
             The <Link href="/blog">blog</Link> is where I write up what&rsquo;s worked in real houses: routines, school

@@ -26,15 +26,13 @@ carousel:
 
 It's the moment on a Tuesday when you realise the swimming kit needs washing before Thursday, the dentist hasn't been booked, and there are four days until a birthday party with no present. Nobody asked you to hold all of that. You just do.
 
-<!-- TODO(sam): who carries this in your house, honestly? A line of your own here will do more than anything below. -->
-
 That's the mental load: the job of noticing, remembering and planning everything a household needs. It's real work, it's usually done by one person, and it almost never shows up on anyone's list of chores.
 
 :::stat{figure="60%" source="ONS, Women shoulder the responsibility of unpaid work, 2016"}
 more unpaid work is done by women than men in the UK, across cooking, childcare, housework and transport
 :::
 
-<!-- TODO(sam): before publishing, open the ONS article (ons.gov.uk, "Women shoulder the responsibility of 'unpaid work'", 10 Nov 2016) and confirm the 60% figure and wording still match. -->
+The Office for National Statistics put the gap at [60% more unpaid work](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/articles/womenshouldertheresponsibilityofunpaidwork/2016-11-10) on average, and the remembering is a big part of it.
 
 ## Why "just ask me" doesn't help
 
