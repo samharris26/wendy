@@ -1,137 +1,130 @@
-import { OG_IMAGES } from "@/lib/og";
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { getAllPosts } from "@/lib/blog";
-import type { Metadata } from "next";
+import { AppStoreLink } from "@/components/AppStoreLink";
+import { BlogSignup } from "@/components/blog/BlogSignup";
+import { FormatFilter } from "@/components/blog/FormatFilter";
+import { Avatar, cardUrl, NoaSymbol, PostCard } from "@/components/blog/parts";
+import { AUTHOR, FORMAT_LABELS, FORMAT_ORDER, formatPostDate, getAllPosts } from "@/lib/blog";
 
-const POSTS_PER_PAGE = 6;
+const TITLE = "The Noa blog — notes from a house that runs on a shared calendar";
+const DESCRIPTION =
+  "Short, practical posts from Sam, who builds Noa: family calendars, school admin, chores, printables and the routines that actually stick.";
 
-export const metadata: Metadata = {
-  title: "Blog — family organisation tips, guides and ideas | Noa",
-  description:
-    "Tips, guides, and insights on family productivity, shared calendar management, household task organisation, and getting your busy family life in order with Noa.",
-  alternates: { canonical: "/blog" },
-  openGraph: {
-    title: "Blog — family organisation tips, guides and ideas | Noa",
-    description:
-      "Tips, guides, and insights on family productivity, shared calendar management, household task organisation, and getting your busy family life in order with Noa.",
-    type: "website",
-    images: OG_IMAGES,
-  },
-};
-
-interface BlogPageProps {
-  searchParams: Promise<{ page?: string }>;
+export function generateMetadata(): Metadata {
+  const [featured] = pickFeatured();
+  const image = featured ? cardUrl(featured.slug) : "/og.png";
+  return {
+    title: TITLE,
+    description: DESCRIPTION,
+    alternates: { canonical: "/blog" },
+    openGraph: { title: TITLE, description: DESCRIPTION, type: "website", images: [{ url: image, width: 1200, height: 630 }] },
+    twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: [image] },
+  };
 }
 
-export default async function BlogPage({ searchParams }: BlogPageProps) {
-  const params = await searchParams;
-  const allPosts = getAllPosts();
-  const currentPage = Math.max(1, parseInt(params.page ?? "1", 10) || 1);
-  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
-  const page = Math.min(currentPage, totalPages || 1);
-  const posts = allPosts.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
+function pickFeatured() {
+  const posts = getAllPosts();
+  const featured = posts.find((p) => p.featured) ?? posts[0];
+  return [featured, posts.filter((p) => p !== featured)] as const;
+}
+
+export default function BlogPage() {
+  const [featured, rest] = pickFeatured();
+  const present = new Set(getAllPosts().map((p) => p.format));
+  const formats = FORMAT_ORDER.filter((f) => present.has(f)).map((id) => ({ id, label: FORMAT_LABELS[id] }));
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen overflow-x-hidden bg-background">
       <Navbar />
-      <main className="px-6 py-20 lg:px-10">
-        <div className="mx-auto w-full max-w-3xl">
-          <Link
-            href="/"
-            className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-interactive hover:underline"
-          >
-            &larr; Back to Noa
-          </Link>
-
-          <h1 className="text-4xl text-primaryText md:text-5xl">
-            Blog
+      <main className="mx-auto flex w-full max-w-[1120px] flex-col gap-[22px] px-5 pb-16 pt-6 md:gap-[34px] md:px-6 md:pt-11">
+        <header className="flex max-w-[640px] flex-col gap-3">
+          <span className="blog-label">The Noa blog</span>
+          <h1 className="font-display text-[33px] font-medium leading-[1.12] tracking-[-0.01em] text-primaryText md:text-[52px] md:leading-[1.08]">
+            Notes from a house that runs on a shared calendar
           </h1>
-          <p className="mt-3 text-lg text-secondaryText">
-            Practical tips on family productivity, calendar management, and staying organised.
+          <p className="text-[17px] leading-[1.55] text-secondaryText md:text-lg">
+            Written by Sam, who builds Noa and is also the one who forgets the trip money.
           </p>
+        </header>
 
-          {posts.length === 0 ? (
-            <p className="mt-12 text-sm text-secondaryText">
-              No posts yet. Check back soon!
+        {formats.length > 1 && <FormatFilter formats={formats} />}
+
+        <div data-blog-grid className="flex flex-col gap-[22px] md:gap-[34px]">
+          {featured && (
+            <Link
+              href={`/blog/${featured.slug}`}
+              data-format={featured.format}
+              className="group flex flex-col gap-0 overflow-hidden rounded-[26px] bg-card md:rounded-[34px] lg:flex-row lg:gap-10 lg:p-3.5"
+            >
+              <img
+                src={cardUrl(featured.slug)}
+                alt=""
+                width={1200}
+                height={630}
+                className="aspect-[1200/630] w-full flex-none object-cover lg:w-[540px] lg:self-center lg:rounded-[26px]"
+              />
+              <div className="flex min-w-0 flex-1 flex-col gap-4 p-6 lg:py-[30px] lg:pl-0 lg:pr-[30px]">
+                <span className="flex flex-wrap items-center gap-2.5">
+                  <span className="rounded-full bg-accentTint px-3 py-1.5 text-xs font-semibold leading-none text-accent">Featured</span>
+                  <span className="text-sm font-medium text-meta">
+                    {formatPostDate(featured.date)} &middot; {featured.readTime} min read
+                  </span>
+                </span>
+                <h2 className="font-display text-[25px] font-medium leading-[1.18] text-primaryText transition-colors group-hover:text-interactive md:text-[34px]">
+                  {featured.title}
+                </h2>
+                <p className="text-base leading-relaxed text-secondaryText md:text-[17px]">{featured.dek}</p>
+                <span className="mt-auto flex items-center gap-3 pt-2">
+                  <Avatar size={38} />
+                  <span className="text-[15px] font-medium text-secondaryText">
+                    {featured.author} &middot; {featured.authorRole}
+                  </span>
+                  <span className="ml-auto hidden text-[15px] font-semibold text-interactive sm:inline">Read the post &rsaquo;</span>
+                </span>
+              </div>
+            </Link>
+          )}
+
+          <div className="grid gap-[22px] md:grid-cols-2 md:gap-[26px] xl:grid-cols-3">
+            {rest.map((post) => (
+              <PostCard key={post.slug} post={post} compact={false} />
+            ))}
+          </div>
+          <p data-blog-empty className="hidden text-secondaryText">
+            Nothing in this one yet.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-4 rounded-[26px] bg-card p-6 sm:flex-row sm:items-center sm:gap-[22px] md:rounded-[34px] md:px-8 md:py-[26px]">
+          <div className="flex items-center gap-4 sm:contents">
+            <Avatar size={66} />
+            <span className="flex flex-col gap-[7px]">
+              <span className="text-[19px] font-semibold leading-none text-primaryText">Written by {AUTHOR.name}</span>
+              <span className="text-base leading-normal text-secondaryText">{AUTHOR.bio}</span>
+            </span>
+          </div>
+          <Link href="/about" className="flex-none text-[15px] font-semibold text-interactive hover:text-accentHover sm:ml-auto">
+            About Sam &rsaquo;
+          </Link>
+        </div>
+
+        <div className="grid gap-[22px] md:grid-cols-[1.25fr_1fr] md:gap-[26px]">
+          <BlogSignup />
+          <div className="flex flex-col gap-3.5 rounded-[34px] bg-card p-6 md:px-8 md:py-[30px]">
+            <NoaSymbol size={26} />
+            <p className="text-[17px] leading-[1.55] text-secondaryText">
+              Noa is the app underneath all of this: one shared calendar, lists and tasks for the whole house.
             </p>
-          ) : (
-            <div className="mt-12 space-y-8">
-              {posts.map((post) => (
-                <article key={post.slug} className="group">
-                  <Link href={`/blog/${post.slug}`} className="block">
-                    <div className="flex items-center gap-3 text-xs text-secondaryText">
-                      <time>
-                        {new Date(post.date).toLocaleDateString("en-GB", {
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                        })}
-                      </time>
-                      <span className="text-border">&middot;</span>
-                      <span>{post.author}</span>
-                      <span className="text-border">&middot;</span>
-                      <span>{post.readTime} min read</span>
-                    </div>
-                    <h2 className="mt-1 text-2xl text-primaryText transition-colors group-hover:text-interactive">
-                      {post.title}
-                    </h2>
-                    <p className="mt-2 text-sm leading-relaxed text-secondaryText">
-                      {post.description}
-                    </p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {post.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full bg-surfaceAlt px-2.5 py-0.5 text-xs text-secondaryText"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </Link>
-                </article>
-              ))}
-            </div>
-          )}
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <nav className="mt-16 flex items-center justify-center gap-2">
-              {page > 1 && (
-                <Link
-                  href={page === 2 ? "/blog" : `/blog?page=${page - 1}`}
-                  className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-secondaryText transition-colors hover:border-interactive hover:text-primaryText"
-                >
-                  &larr; Previous
-                </Link>
-              )}
-
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                <Link
-                  key={p}
-                  href={p === 1 ? "/blog" : `/blog?page=${p}`}
-                  className={`rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
-                    p === page
-                      ? "bg-interactive text-white"
-                      : "text-secondaryText hover:text-primaryText"
-                  }`}
-                >
-                  {p}
-                </Link>
-              ))}
-
-              {page < totalPages && (
-                <Link
-                  href={`/blog?page=${page + 1}`}
-                  className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-secondaryText transition-colors hover:border-interactive hover:text-primaryText"
-                >
-                  Next &rarr;
-                </Link>
-              )}
-            </nav>
-          )}
+            <AppStoreLink
+              placement="blog-index"
+              className="mt-auto inline-flex h-[46px] items-center self-start rounded-[20px] bg-accentTint px-5 text-[15px] font-semibold text-accent transition-colors hover:bg-[#DDE7FD]"
+            >
+              Try it free
+            </AppStoreLink>
+          </div>
         </div>
       </main>
       <Footer />

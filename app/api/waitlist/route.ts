@@ -7,10 +7,12 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json() as { name?: string; email?: string; source?: string };
     const { name, email } = body;
+    // The blog signup is a weekly-email subscriber like the waitlist, but only
+    // asks for an email, as the Android waitlist does.
+    const emailOnly = body.source === 'android' || body.source === 'blog';
     const source = body.source === 'android' ? 'android' : 'waitlist';
 
-    // The Android waitlist only asks for an email address.
-    if (!email || (!name && source !== 'android')) {
+    if (!email || (!name && !emailOnly)) {
       return NextResponse.json({ error: 'Name and email required' }, { status: 400 });
     }
 
