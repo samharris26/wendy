@@ -11,7 +11,8 @@
         "Your council's term dates page"
       ],
       "notes": "Half-term dates vary by council; say so, and don't state specific dates beyond 'late October'.",
-      "status": "todo"
+      "status": "done",
+      "draftedAs": "the-nine-day-half-term-plan"
     },
     {
       "id": "christmas-countdown-for-families",
