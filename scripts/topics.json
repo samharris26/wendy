@@ -1,185 +1,101 @@
 {
-  "_readme": "Topic queue for generate-blog-post.js. Each topic is written ONCE (status: todo → done). One topic = one target search query — never two topics for the same query. When the queue runs dry the workflow stops until new topics are added deliberately. Add topics from Search Console query data (things we get impressions for at position 20+) and People-Also-Ask boxes.",
-  "topics": [
+  "_readme": "Brief queue for scripts/generate-blog-post.js. Each brief is drafted ONCE (status todo -> done) into a draft PR for Sam to edit; merging publishes. A brief has a format (from-sam, printable, seasonal, data), a working title, an angle, and optionally a search query, trusted sources and Sam's notes. Order matters: the first todo brief is drafted next. See blog/EDITORIAL.md.",
+  "briefs": [
     {
-      "title": "How to Share a Calendar with Your Family",
-      "keyword": "how to share a calendar with family",
-      "prompt": "A practical walkthrough of sharing calendars across a household: Apple Family Sharing, sharing a Google calendar with a partner, the mess of mixing both ecosystems (very common: one iPhone parent, one Android/work-Google parent), and where a unified view helps. Include the co-parenting/childcare-swap case.",
-      "status": "done"
+      "id": "october-half-term-planner",
+      "format": "printable",
+      "title": "October half-term planner 2026",
+      "angle": "Nine days, two working parents, one sheet of A4. How to plan half-term childcare, one quiet day, and the cost, the Friday before it starts. Built around the free planner at /printables/half-term-planner.pdf.",
+      "keyword": "october half term planner",
+      "sources": [
+        "Your council's term dates page"
+      ],
+      "notes": "Half-term dates vary by council; say so, and don't state specific dates beyond 'late October'.",
+      "status": "todo"
     },
     {
-      "title": "Shared Calendars for Co-Parents",
-      "keyword": "co-parenting shared calendar",
-      "prompt": "How separated parents keep two households on one schedule: custody rotas, handover logistics, school events both parents need to see, and keeping communication factual rather than fraught. Sensitive, practical, no judgement. Noa's household sharing fits naturally here — mention once.",
-      "status": "done"
+      "id": "christmas-countdown-for-families",
+      "format": "seasonal",
+      "title": "The family Christmas countdown, working back from the 25th",
+      "angle": "A week-by-week timeline from mid-November: last posting dates, the school nativity, who's hosting, food orders. The point is doing each thing once, in the right week.",
+      "keyword": "family christmas planning checklist",
+      "sources": [
+        "Royal Mail last posting dates (check the current year)"
+      ],
+      "notes": "",
+      "status": "todo"
     },
     {
-      "title": "The Sunday Reset",
-      "keyword": "sunday reset routine family",
-      "prompt": "The 30-minute Sunday-evening reset that sets up a family's week: calendar sweep, meal shortlist, one shared list check, who-drives-what. Make it a concrete, timed routine someone can copy tonight — not vague principles.",
-      "status": "done"
+      "id": "school-morning-routine",
+      "format": "from-sam",
+      "title": "The school morning that runs on its own",
+      "angle": "Most morning chaos is decided the night before. Three evening decisions (clothes, bags, breakfast) and one rule for the car.",
+      "keyword": "school morning routine",
+      "sources": [],
+      "notes": "",
+      "status": "todo"
     },
     {
-      "title": "Age-Appropriate Chores That Stick",
-      "keyword": "chores for kids by age",
-      "prompt": "A realistic guide to chores by age (4-6, 7-10, 11-14, 15+), why chore charts die by week three, and what actually keeps them going (visibility, rotation, tying to something the child cares about). UK household examples.",
-      "status": "done"
+      "id": "how-many-clubs-is-too-many",
+      "format": "from-sam",
+      "title": "How many after-school clubs is too many?",
+      "angle": "A practical test for when the week is overbooked: count the evenings with nothing in them. Opinionated, kind, no judgement of busy families.",
+      "keyword": "how many after school activities",
+      "sources": [],
+      "notes": "",
+      "status": "todo"
     },
     {
-      "title": "Organising the Family WhatsApp Group",
-      "keyword": "family whatsapp group organisation",
-      "prompt": "Every family has The Group Chat; none of them can find anything in it. Practical rules for making a family WhatsApp group useful — and where a chat message should become a task, event or list item instead of scrolling into oblivion. Noa-on-WhatsApp is the natural once-only mention.",
-      "status": "done"
+      "id": "school-holiday-childcare-split",
+      "format": "from-sam",
+      "title": "Splitting childcare across the school holidays",
+      "angle": "Two working parents, a grandparent, a holiday club: how to lay out the six weeks early and fairly, and what to agree before anyone books leave.",
+      "keyword": "school holiday childcare plan",
+      "sources": [],
+      "notes": "Timely around Easter and May for the summer.",
+      "status": "todo"
     },
     {
-      "title": "A Digital Family Command Centre",
-      "keyword": "family command center digital",
-      "prompt": "The Pinterest 'family command centre' (noticeboard, wall calendar, chore magnets) — what it gets right, why it decays, and how to build the digital equivalent that's in everyone's pocket. Keep the warmth of the physical version; don't sneer at it.",
-      "status": "done"
-    },
-    {
-      "title": "Remembering Birthdays, Cards and Presents",
-      "keyword": "how to remember birthdays and gifts",
-      "prompt": "The birthday-industrial complex of a family's year: cards, presents, party RSVPs, teacher gifts. A system for never doing the 9pm petrol-station card run again: recurring reminders with lead time, a running gift-ideas list per person, delegation.",
-      "status": "done"
-    },
-    {
-      "title": "School Admin Without the Sunday-Night Panic",
-      "keyword": "school admin organisation parents",
-      "prompt": "Non-uniform day, forest school kit, £2 for the bake sale, permission slips — school admin arrives in bursts and dies in book bags. A capture habit for turning school letters and class-group messages into dated reminders the moment they appear. UK school specifics welcome.",
-      "status": "done"
-    },
-    {
-      "title": "Household Organisation with ADHD",
-      "keyword": "adhd household organisation",
-      "prompt": "Organising a household when one or both partners have ADHD: why generic advice ('just use a planner') fails, externalising memory, reducing capture friction to near zero, alarms over intentions, and self-compassion. Evidence-informed, warm, never preachy or medical-advice-y.",
-      "status": "done"
-    },
-    {
-      "title": "When Grandparents Do the School Run",
-      "keyword": "sharing family schedule with grandparents",
-      "prompt": "Coordinating the wider village — grandparents, childminders, regular babysitters — who cover pick-ups and appointments but aren't in the family's apps. Options by tech-comfort level, from a shared calendar view to WhatsApp. Household seats for extended family is the natural Noa mention.",
-      "status": "done"
-    },
-    {
-      "title": "Family Calendar Management",
-      "keyword": "family calendar management",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Shared To-Do Lists for Households",
-      "keyword": "shared to-do list for couples",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Morning Routines for Productive Parents",
-      "keyword": "morning routine for parents",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Reducing Mental Load with Technology",
-      "keyword": "mental load",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "WhatsApp as a Productivity Tool",
-      "keyword": "whatsapp productivity",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Weekly Planning for Families",
-      "keyword": "weekly family planning",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Back-to-School Organisation Tips",
-      "keyword": "back to school organisation",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Managing After-School Activities",
-      "keyword": "after school activities organisation",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Meal Planning for Busy Families",
-      "keyword": "family meal planning",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Digital vs Paper Planners",
-      "keyword": "digital vs paper planner",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Holiday and Travel Planning",
-      "keyword": "family holiday planning",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Productivity Tips for Working Parents",
-      "keyword": "working parent productivity",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "How to Stop Forgetting Things",
-      "keyword": "how to stop forgetting things",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Building Habits as a Family",
-      "keyword": "family habits",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Managing Household Chores Fairly",
-      "keyword": "dividing chores fairly",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Getting Things Done for Families",
-      "keyword": "gtd for families",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Screen Time and Intentional Tech Use",
-      "keyword": "family screen time",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Decluttering Your Digital Life",
-      "keyword": "digital declutter",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Reminders That Actually Work",
-      "keyword": "reminders that work",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
-    },
-    {
-      "title": "Calendar Blocking for Family Time",
-      "keyword": "calendar blocking family time",
-      "prompt": "(covered by earlier posts)",
-      "status": "done"
+      "id": "new-year-household-reset",
+      "format": "from-sam",
+      "title": "The January household reset: one hour, one list",
+      "angle": "Not resolutions. One hour in the first week of January putting the year's fixed dates in the calendar: birthdays, renewals, term dates, MOT, the boiler service.",
+      "keyword": "household admin checklist",
+      "sources": [],
+      "notes": "",
+      "status": "todo"
     }
+  ],
+  "retiredKeywords": [
+    "how to share a calendar with family",
+    "co-parenting shared calendar",
+    "sunday reset routine family",
+    "chores for kids by age",
+    "family whatsapp group organisation",
+    "family command center digital",
+    "how to remember birthdays and gifts",
+    "school admin organisation parents",
+    "adhd household organisation",
+    "sharing family schedule with grandparents",
+    "family calendar management",
+    "shared to-do list for couples",
+    "morning routine for parents",
+    "mental load",
+    "whatsapp productivity",
+    "weekly family planning",
+    "back to school organisation",
+    "after school activities organisation",
+    "family meal planning",
+    "digital vs paper planner",
+    "family holiday planning",
+    "working parent productivity",
+    "how to stop forgetting things",
+    "family habits",
+    "dividing chores fairly",
+    "gtd for families",
+    "family screen time",
+    "digital declutter",
+    "reminders that work",
+    "calendar blocking family time"
   ]
 }

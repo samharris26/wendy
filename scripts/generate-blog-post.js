@@ -1,174 +1,210 @@
-const OpenAI = require("openai");
+// Drafts the next blog post from the brief queue in scripts/topics.json, for
+// Sam to edit in a draft PR (see .github/workflows/generate-blog-post.yml and
+// blog/EDITORIAL.md). Nothing this script writes is published until merged.
+//
+//   node scripts/generate-blog-post.js            # draft the next brief
+//   node scripts/generate-blog-post.js --dry-run  # print the prompt, call nothing
+//
+// Writes blog/posts/<date>-<slug>.md, marks the brief done, and prints a JSON
+// line {"file","slug","title","briefId"} for the workflow to pick up.
+
+const Anthropic = require("@anthropic-ai/sdk");
+const matter = require("gray-matter");
 const fs = require("fs");
 const path = require("path");
 
-const POSTS_DIR = path.join(__dirname, "..", "blog", "posts");
+const ROOT = path.join(__dirname, "..");
+const POSTS_DIR = path.join(ROOT, "blog", "posts");
 const TOPICS_PATH = path.join(__dirname, "topics.json");
+const EDITORIAL = fs.readFileSync(path.join(ROOT, "blog", "EDITORIAL.md"), "utf-8");
+const MODEL = "claude-opus-5";
 
-// Pages the model may link to inline (1–2 per post, only where genuinely relevant)
-const INTERNAL_LINKS = `
-- https://www.asknoa.app/features/shared-family-calendar — shared family calendar feature
-- https://www.asknoa.app/features/tasks — tasks & assignment feature
-- https://www.asknoa.app/features/shared-lists — shared lists feature
-- https://www.asknoa.app/features/whatsapp-assistant — WhatsApp assistant feature`;
+const FORMATS = ["from-sam", "printable", "seasonal", "data"];
+
+// Pages the draft may link to inline, where genuinely relevant.
+const LINKS = `
+- /blog/<slug> for any existing post listed above
+- https://www.asknoa.app/shared-family-calendar (shared family calendar)
+- https://www.asknoa.app/features/tasks (tasks you can assign)
+- https://www.asknoa.app/family-shopping-list (shared shopping list)
+- https://www.asknoa.app/shared-list-app (shared lists)`;
+
+function existingPosts() {
+  return fs
+    .readdirSync(POSTS_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map((f) => {
+      const { data } = matter(fs.readFileSync(path.join(POSTS_DIR, f), "utf-8"));
+      return { slug: f.replace(/\.md$/, "").replace(/^\d{4}-\d{2}-\d{2}-/, ""), title: data.title, format: data.format };
+    });
+}
+
+function printables() {
+  const dir = path.join(ROOT, "public", "printables");
+  return fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith(".pdf")).map((f) => `/printables/${f}`) : [];
+}
+
+// The one post we treat as the reference for voice and frontmatter shape.
+function examplePost() {
+  const f = fs.readdirSync(POSTS_DIR).find((n) => n.endsWith("sunday-reset-routine.md"));
+  return f ? fs.readFileSync(path.join(POSTS_DIR, f), "utf-8") : "";
+}
+
+function buildPrompt(brief, posts, date) {
+  const system = `You draft posts for the Noa blog (asknoa.app/blog). Noa is an iPhone app for households: one shared calendar, shared lists and tasks you can assign to a person. The blog is written in the first person by Sam, Noa's founder, for busy UK parents.
+
+Your draft goes to Sam in a pull request, and Sam will only read it through before publishing. So it must be finished: nothing left to fill in, and nothing a careful reader could catch out as untrue.
+
+The editorial policy below is binding:
+
+<editorial_policy>
+${EDITORIAL}
+</editorial_policy>
+
+Hard rules on truth, because this is published under a real person's name:
+- Never invent facts about Sam, Sam's household, children, partner, city or history, and never tell a story as something that happened to Sam. First person is for opinions and advice ("I'd start with two jobs each"), not for anecdotes. Scenes are written as recognisable moments in any house ("It's 8.40 and someone at the school gate is wearing a onesie"), not as Sam's memories.
+- Never invent statistics, studies or quotes. Only use a :::stat block when the brief's sources give the exact figure; otherwise make the point without a number.
+- Only describe Noa features listed here: one shared calendar for the household, a colour for each person, events that repeat (including every year) with reminders, shared lists (with the whole household or just some members), tasks assigned to people with reminders, and a morning briefing. Never imply any other feature.
+- Leave no TODOs, placeholders, square-bracket gaps or notes to Sam. If a point can't be made truthfully without Sam's input, cut it.
+
+Markdown directives the site renders as designed blocks (use two to four, where they genuinely help):
+- :::checklist{label="..."} followed by a markdown list and :::
+- :::quote followed by one line and :::   (the line must also appear as the frontmatter quote)
+- ::app{src="/images/home.png" caption="..."}   (screenshots available: /images/home.png, /images/calendar.png, /images/lists.png, /images/tasks.png)
+- ::printable{pdf="..." title="..." body="..."}   (only with one of these existing PDFs: ${printables().join(", ") || "none"}; never invent a PDF path)
+- :::stat{figure="..." source="..."} caption :::   (see the truth rules)
+
+Output the complete markdown file and nothing else: YAML frontmatter, then the body. Frontmatter fields, in this order: title, cardTitle (40 characters or fewer, for the share card), date, description (140 to 155 characters, for search results), dek (one or two sentences under the title), keyword, format, tags (two to four), quote (under 200 characters, taken from the post), cover, and carousel (hook, sub, three points each with title and body, close, closeSub). Cover is one of: {kind: "title"}, {kind: "calendar", caption}, {kind: "phone", screenshot}, {kind: "checklist", items: [{text, done}] with four short items, the first two done}. Do not include author, pdf or featured; the site fills those in. Quote YAML strings with double quotes.
+
+Here is a published post that shows the voice, the directives and the frontmatter shape exactly:
+
+<example_post>
+${examplePost()}
+</example_post>`;
+
+  const user = `Draft the next post.
+
+<brief>
+Format: ${brief.format}
+Working title: ${brief.title}
+Angle: ${brief.angle}
+${brief.keyword ? `Search query to serve: ${brief.keyword}` : "No search target: write for sharing, not for search."}
+${brief.sources?.length ? `Sources Sam trusts for this one: ${brief.sources.join("; ")}` : ""}
+${brief.notes ? `Sam's notes: ${brief.notes}` : ""}
+</brief>
+
+Date for the frontmatter: ${date}
+
+Existing posts (link to one or two where it helps; never cover the same ground):
+${posts.map((p) => `- /blog/${p.slug}: ${p.title} (${p.format})`).join("\n")}
+
+Other pages you may link to:${LINKS}`;
+
+  return { system, user };
+}
+
+function validate(markdown, brief) {
+  const { data, content } = matter(markdown);
+  const missing = ["title", "cardTitle", "description", "dek", "format", "quote", "cover"].filter((k) => !data[k]);
+  if (missing.length) throw new Error(`Draft frontmatter is missing: ${missing.join(", ")}`);
+  if (!FORMATS.includes(data.format)) throw new Error(`Unknown format "${data.format}"`);
+  if (data.format !== brief.format) console.warn(`Note: brief asked for ${brief.format}, draft says ${data.format}`);
+  if (data.quote.length > 260) throw new Error("Quote is over 260 characters; the quote card can't set it");
+  if (content.trim().split(/\s+/).length < 300) throw new Error("Draft body is under 300 words");
+  // Drafts must be publishable after a read-through: no notes left for Sam.
+  if (/TODO|<!--|\[(?:insert|add|name|your)[^\]]*\]/i.test(markdown)) throw new Error("Draft still contains a TODO, comment or placeholder");
+  const pdfs = [...content.matchAll(/pdf="([^"]+)"/g)].map((m) => m[1]).filter((p) => !printables().includes(p));
+  if (pdfs.length) throw new Error(`Draft links a printable that doesn't exist: ${pdfs.join(", ")}`);
+  return data;
+}
+
+function slugify(s) {
+  return s
+    .toLowerCase()
+    .replace(/[’']/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .split("-")
+    .slice(0, 8)
+    .join("-");
+}
 
 async function main() {
-  if (!fs.existsSync(POSTS_DIR)) {
-    fs.mkdirSync(POSTS_DIR, { recursive: true });
-  }
-
-  // Topic queue: each topic is written exactly once. No rotation, no repeats —
-  // repeating a topic produces a near-duplicate post competing with our own
-  // earlier one for the same query.
-  const topicsFile = JSON.parse(fs.readFileSync(TOPICS_PATH, "utf-8"));
-  const topic = topicsFile.topics.find((t) => t.status === "todo");
-
-  if (!topic) {
-    console.log(
-      "Topic queue is empty — no post generated. Add new topics to scripts/topics.json (source them from Search Console queries and People-Also-Ask boxes)."
-    );
+  const dryRun = process.argv.includes("--dry-run");
+  const queue = JSON.parse(fs.readFileSync(TOPICS_PATH, "utf-8"));
+  const brief = queue.briefs.find((b) => b.status === "todo");
+  if (!brief) {
+    console.error("Brief queue is empty: no draft. Add briefs to scripts/topics.json.");
     return;
   }
 
-  const existingPosts = fs
-    .readdirSync(POSTS_DIR)
-    .filter((f) => f.endsWith(".md"));
+  const date = new Date().toISOString().slice(0, 10);
+  const { system, user } = buildPrompt(brief, existingPosts(), date);
 
-  const today = new Date();
-  const dateStr = today.toISOString().split("T")[0]; // YYYY-MM-DD
-
-  const alreadyExists = existingPosts.some((f) => f.startsWith(dateStr));
-  if (alreadyExists) {
-    console.log(`A post for ${dateStr} already exists. Skipping.`);
+  if (dryRun) {
+    console.log(`--- system (${system.length} chars) ---\n${system}\n\n--- user ---\n${user}`);
     return;
   }
 
-  console.log(`Generating draft: ${topic.title}`);
-  console.log(`Target query: ${topic.keyword}`);
+  const client = new Anthropic();
+  const messages = [{ role: "user", content: user }];
+  let text;
+  let data;
+  let response;
+  // One retry: a draft that fails validation goes back with the reason.
+  for (let attempt = 1; ; attempt++) {
+    response = await client.beta.messages.create({
+      model: MODEL,
+      max_tokens: 16000,
+      thinking: { type: "adaptive" },
+      output_config: { effort: "high" },
+      // Server-side fallback if the request is declined by a safety classifier.
+      betas: ["server-side-fallback-2026-06-01"],
+      fallbacks: [{ model: "claude-opus-4-8" }],
+      system,
+      messages,
+    });
 
-  const systemPrompt = `You write for the blog of Noa (www.asknoa.app), an iPhone app that brings a family's calendars, tasks and shopping lists into one place, with a WhatsApp assistant. Readers are busy UK parents and couples.
+    if (response.stop_reason === "refusal") {
+      throw new Error(`Draft declined: ${response.stop_details?.explanation ?? "no explanation"}`);
+    }
+    if (response.stop_reason === "max_tokens") throw new Error("Draft hit max_tokens before finishing");
 
-Your job is a strong FIRST DRAFT for a human editor — clarity and specificity beat polish.
+    text = response.content
+      .filter((b) => b.type === "text")
+      .map((b) => b.text)
+      .join("")
+      .trim()
+      .replace(/^```(?:markdown|md)?\n([\s\S]*?)\n```$/, "$1");
 
-VOICE — this is the most important section:
-- Open inside a specific, recognisable scene from family life (the overflowing bin, the crumpled letter in the book bag, the 9pm "have we got a card?"). Never open with a definition, a statistic, or a question to the reader.
-- Write like one specific person with opinions, not a consensus document. Take positions ("chore charts die by week three, and it's not your fault").
-- Concrete beats abstract, always: "the £2 bake-sale coins" not "school-related financial obligations". UK texture: school run, book bags, bin night, half-term, the big shop.
-- Vary sentence length aggressively. Some sentences should be four words. Contractions always.
-- It's fine to be funny once or twice; it must never be fine to be bland.
-
-STRUCTURE:
-- 700–1000 words. Shorter and sharper beats longer and thorough.
-- ## for section headings (no H1 — the template handles the title). Headings should be interesting on their own, not labels ("The Argument That Isn't About the Bins", not "Communication Problems").
-- Bullet lists only when a list is genuinely the clearest form — at most one per post. Never end a post with a list.
-- End with one closing thought that lands the core idea, followed by a single soft sentence pointing at Noa with a markdown link: [Noa](https://www.asknoa.app). No hard sell, no feature list.
-
-SEO (quiet, not stuffed):
-- The post targets ONE query, given by the user. Work it (or a close natural variant) into the title, exactly one H2, and the first 100 words. Nowhere else on purpose.
-- Where genuinely relevant, link 1–2 of these pages inline with descriptive anchor text (markdown links only):${INTERNAL_LINKS}
-
-BANNED — these mark text as machine-written:
-- Openers: "In today's fast-paced world", "Are you tired of", "We've all been there", "Picture this", "Let's face it", "In the hustle and bustle".
-- Words: journey, game-changer, unlock, leverage, revolutionise, empower, seamless, effortless, dive in, delve, elevate, supercharge, foster, streamline, robust.
-- Structures: a bold-label bullet list of "benefits"; three-item parallel sentences ("It's not X. It's not Y. It's Z.") more than once; a summary section that restates the post; rhetorical questions as transitions.
-- Any sentence that could appear unchanged in a competitor's blog.
-
-FORMAT: no frontmatter or YAML. UK English throughout.`;
-
-  const userPrompt = `Target query: "${topic.keyword}"
-
-Brief: ${topic.prompt}
-
-Return exactly this format:
-TITLE: <title — compelling first, keyword-bearing second; sentence case; no colons-plus-subtitle formula>
-DESCRIPTION: <140–155 chars for the meta description — a hook written for a human skimming search results, not a summary>
-
-<article body in markdown>`;
-
-  const client = new OpenAI();
-  const response = await client.chat.completions.create({
-    model: "gpt-4o",
-    max_tokens: 2200,
-    messages: [
-      { role: "system", content: systemPrompt },
-      { role: "user", content: userPrompt },
-    ],
-  });
-
-  const content = response.choices[0].message.content;
-
-  // Parse TITLE / DESCRIPTION header lines
-  const lines = content.split("\n");
-  let title = topic.title;
-  let description = "";
-  let bodyStartIndex = 0;
-
-  for (let i = 0; i < Math.min(lines.length, 5); i++) {
-    if (lines[i].startsWith("TITLE: ")) {
-      title = lines[i].replace("TITLE: ", "").trim();
-      bodyStartIndex = i + 1;
-    } else if (lines[i].startsWith("DESCRIPTION: ")) {
-      description = lines[i].replace("DESCRIPTION: ", "").trim();
-      bodyStartIndex = i + 1;
+    try {
+      data = validate(text, brief);
+      break;
+    } catch (err) {
+      if (attempt >= 2) throw err;
+      console.error(`Draft ${attempt} rejected (${err.message}); asking for a fix`);
+      messages.push({ role: "assistant", content: response.content });
+      messages.push({ role: "user", content: `That draft can't be used: ${err.message}. Return the complete corrected file, and nothing else.` });
     }
   }
-  while (lines[bodyStartIndex] && lines[bodyStartIndex].trim() === "") {
-    bodyStartIndex++;
-  }
+  const slug = slugify(data.cardTitle || data.title);
+  const file = path.join(POSTS_DIR, `${date}-${slug}.md`);
+  if (fs.existsSync(file)) throw new Error(`${path.relative(ROOT, file)} already exists`);
+  fs.writeFileSync(file, text.endsWith("\n") ? text : `${text}\n`);
 
-  const body = lines.slice(bodyStartIndex).join("\n").trim();
+  brief.status = "done";
+  brief.draftedAs = slug;
+  fs.writeFileSync(TOPICS_PATH, JSON.stringify(queue, null, 2) + "\n");
 
-  // Fallback description: first paragraph, stripped
-  if (!description) {
-    const firstParagraph = body
-      .split("\n\n")
-      .find((p) => p && !p.startsWith("#"));
-    description = firstParagraph
-      ? firstParagraph
-          .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-          .replace(/[*_`]/g, "")
-          .slice(0, 155)
-          .trim() + "..."
-      : topic.title;
-  }
-
-  const slug = title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-
-  const baseTags = ["family", "organisation"];
-  const kw = topic.keyword.toLowerCase();
-  const extraTags = [];
-  if (/calendar|schedul|plan/.test(kw)) extraTags.push("calendar");
-  if (/task|chore|todo|to-do/.test(kw)) extraTags.push("tasks");
-  if (/whatsapp|digital|tech|screen/.test(kw)) extraTags.push("technology");
-  if (/meal|holiday|travel|school|birthday/.test(kw)) extraTags.push("lifestyle");
-  const tags = [...new Set([...baseTags, ...extraTags])];
-
-  const frontmatter = `---
-title: "${title.replace(/"/g, '\\"')}"
-date: "${dateStr}"
-description: "${description.replace(/"/g, '\\"')}"
-keyword: "${topic.keyword.replace(/"/g, '\\"')}"
-author: "The Noa Team"
-tags: [${tags.map((t) => `"${t}"`).join(", ")}]
----`;
-
-  const fileContent = `${frontmatter}\n\n${body}\n`;
-  const filename = `${dateStr}-${slug}.md`;
-  fs.writeFileSync(path.join(POSTS_DIR, filename), fileContent, "utf-8");
-
-  // Mark the topic done so it is never written twice
-  topic.status = "done";
-  fs.writeFileSync(TOPICS_PATH, JSON.stringify(topicsFile, null, 2) + "\n", "utf-8");
-
-  console.log(`Written: blog/posts/${filename}`);
-  console.log(`Title: ${title}`);
-  console.log(`Remaining topics in queue: ${topicsFile.topics.filter((t) => t.status === "todo").length}`);
+  console.error(`Drafted ${path.relative(ROOT, file)} (${response.usage.output_tokens} output tokens)`);
+  console.log(JSON.stringify({ file: path.relative(ROOT, file), slug, title: data.title, briefId: brief.id }));
 }
 
 main().catch((err) => {
-  console.error("Failed to generate blog post:", err);
+  if (err instanceof Anthropic.APIError) {
+    console.error(`Claude API error ${err.status}: ${err.message}`);
+  } else {
+    console.error("Failed to draft blog post:", err.message ?? err);
+  }
   process.exit(1);
 });

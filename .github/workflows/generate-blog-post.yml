@@ -1,51 +1,108 @@
-name: Generate Blog Post
+name: Draft blog post
+
+# Every other Tuesday, Claude drafts the next brief from scripts/topics.json
+# into a DRAFT pull request, requests a review from Sam (GitHub sends an email) and
+# sends a short email with the link. Nothing publishes until Sam merges.
+# See blog/EDITORIAL.md.
+#
+# One-off repo setup: Settings → Actions → General → "Allow GitHub Actions to
+# create and approve pull requests", plus the repo secrets NOA_BLOG_DRAFTS (Anthropic API key)
+# and RESEND_API_DRAFTS (Resend sending key).
 
 on:
   schedule:
-    # Run at 06:00 UTC on Tuesday (1 post/week). The topic queue in
-    # scripts/topics.json is finite and one-shot — each topic is written
-    # exactly once and marked done, so posts never duplicate.
+    # 06:00 UTC every Tuesday; the fortnight guard below skips odd weeks.
     - cron: "0 6 * * 2"
-  workflow_dispatch: # Allow manual trigger
+  workflow_dispatch: # manual run: always drafts, ignores the fortnight guard
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
-  generate:
+  draft:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Fortnight guard
+        id: guard
+        run: |
+          week=$(date -u +%V)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ $((10#$week % 2)) -ne 0 ]; then
+            echo "Odd ISO week ($week): skipping."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Checkout repository
+        if: steps.guard.outputs.run == 'true'
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Set up Node.js 22
+        if: steps.guard.outputs.run == 'true'
         uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: "npm"
 
       - name: Install dependencies
+        if: steps.guard.outputs.run == 'true'
         run: npm ci
 
-      - name: Generate blog post
-        run: npm run generate-blog
+      - name: Draft the next brief
+        if: steps.guard.outputs.run == 'true'
+        id: draft
         env:
-          OPENAI_API_KEY: ${{ secrets.NOA_BLOG }}
-
-      # Auto-commit the new post AND the updated topics.json (which marks the
-      # topic done). Committing topics.json is essential — without it the same
-      # topic regenerates every week and duplicates return.
-      - name: Commit and push
+          ANTHROPIC_API_KEY: ${{ secrets.NOA_BLOG_DRAFTS }}
         run: |
+          out=$(node scripts/generate-blog-post.js)
+          if [ -z "$out" ]; then
+            echo "No draft (brief queue empty)."
+            echo "made=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "made=true" >> "$GITHUB_OUTPUT"
+          echo "file=$(echo "$out" | jq -r .file)" >> "$GITHUB_OUTPUT"
+          echo "slug=$(echo "$out" | jq -r .slug)" >> "$GITHUB_OUTPUT"
+          echo "brief=$(echo "$out" | jq -r .briefId)" >> "$GITHUB_OUTPUT"
+          { echo "title<<EOF"; echo "$out" | jq -r .title; echo "EOF"; } >> "$GITHUB_OUTPUT"
+
+      - name: Open a draft pull request
+        if: steps.draft.outputs.made == 'true'
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: ${{ steps.draft.outputs.title }}
+          SLUG: ${{ steps.draft.outputs.slug }}
+          FILE: ${{ steps.draft.outputs.file }}
+        run: |
+          branch="blog/draft-${{ steps.draft.outputs.brief }}"
           git config user.name "samharris26"
           git config user.email "99657574+samharris26@users.noreply.github.com"
-          git add blog/posts/ scripts/topics.json
-          if git diff --cached --quiet; then
-            echo "No new post to commit (topic queue may be empty)"
-          else
-            git commit -m "blog: add post for $(date -u +%Y-%m-%d)"
-            git push
-          fi
+          git checkout -b "$branch"
+          git add "$FILE" scripts/topics.json
+          git commit -m "blog draft: $TITLE"
+          git push -u origin "$branch"
+          cat > pr-body.md <<EOF
+          A new post, drafted by Claude from the brief queue. **Nothing is published until this is merged.**
+
+          **Post:** \`$FILE\`
+
+          It's written to be publishable as is: no notes to fill in, no invented personal details, and only Noa features that exist. Read it through, fix anything that doesn't sound like you, and merge. Preview: \`/blog/$SLUG\`, share images at \`/blog/$SLUG/share\`.
+
+          If it isn't worth editing, close this PR. The brief stays marked done.
+          EOF
+          url=$(gh pr create --draft --base main --head "$branch" --title "Blog draft: $TITLE" --body-file pr-body.md --reviewer samharris26)
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+      - name: Email Sam
+        if: steps.pr.outputs.url != ''
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_DRAFTS }}
+          TITLE: ${{ steps.draft.outputs.title }}
+          SLUG: ${{ steps.draft.outputs.slug }}
+          PR_URL: ${{ steps.pr.outputs.url }}
+        run: node scripts/notify-draft.js --slug "$SLUG" --title "$TITLE" --pr "$PR_URL"
