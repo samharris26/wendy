@@ -6,8 +6,8 @@ name: Draft blog post
 # See blog/EDITORIAL.md.
 #
 # One-off repo setup: Settings → Actions → General → "Allow GitHub Actions to
-# create and approve pull requests", plus secrets ANTHROPIC_API_KEY and
-# RESEND_API_KEY.
+# create and approve pull requests", plus the repo secrets NOA_BLOG_DRAFTS (Anthropic API key)
+# and RESEND_API_DRAFTS (Resend sending key).
 
 on:
   schedule:
@@ -56,7 +56,7 @@ jobs:
         if: steps.guard.outputs.run == 'true'
         id: draft
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.NOA_BLOG_DRAFTS }}
         run: |
           out=$(node scripts/generate-blog-post.js)
           if [ -z "$out" ]; then
@@ -101,7 +101,7 @@ jobs:
       - name: Email Sam
         if: steps.pr.outputs.url != ''
         env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_DRAFTS }}
           TITLE: ${{ steps.draft.outputs.title }}
           SLUG: ${{ steps.draft.outputs.slug }}
           PR_URL: ${{ steps.pr.outputs.url }}
