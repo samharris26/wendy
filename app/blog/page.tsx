@@ -106,9 +106,18 @@ export default function BlogPage() {
               <span className="text-base leading-normal text-secondaryText">{AUTHOR.bio}</span>
             </span>
           </div>
-          <Link href="/about" className="flex-none text-[15px] font-semibold text-interactive hover:text-accentHover sm:ml-auto">
-            About Sam &rsaquo;
-          </Link>
+          <span className="flex flex-none items-center gap-4 sm:ml-auto">
+            <Link href="/about" className="text-[15px] font-semibold text-interactive hover:text-accentHover">
+              About Sam &rsaquo;
+            </Link>
+            <a
+              href="/rss.xml"
+              className="text-[15px] font-medium text-meta hover:text-primaryText"
+              title="Subscribe to the Noa blog by RSS"
+            >
+              RSS
+            </a>
+          </span>
         </div>
 
         <div className="grid gap-[22px] md:grid-cols-[1.25fr_1fr] md:gap-[26px]">
