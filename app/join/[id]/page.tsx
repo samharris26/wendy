@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { AppStoreLink } from "@/components/AppStoreLink";
+import { AndroidWaitlist } from "@/components/AndroidWaitlist";
 
 interface JoinPageProps {
   params: Promise<{ id: string }>;
@@ -49,7 +50,7 @@ export default async function JoinPage({ params }: JoinPageProps) {
         <div className="text-left space-y-3">
           <p className="text-sm font-medium text-primaryText font-outfit">How to join:</p>
           <ol className="text-sm text-secondaryText font-outfit space-y-2 list-decimal list-inside">
-            <li>Download Noa from the App Store</li>
+            <li>Download Noa from the App Store (iPhone and iPad only for now)</li>
             <li>Create your account and complete onboarding</li>
             <li>Go to Settings &rarr; Household</li>
             <li>Paste the invite code above and tap &ldquo;Join household&rdquo;</li>
@@ -57,15 +58,22 @@ export default async function JoinPage({ params }: JoinPageProps) {
         </div>
 
         {/* App Store link */}
-        <AppStoreLink placement="join" className="inline-block">
-          <Image
-            src="/app-store-badge.svg"
-            alt="Download on the App Store"
-            width={160}
-            height={54}
-            priority
-          />
-        </AppStoreLink>
+        <div className="flex flex-col items-center gap-4">
+          <AppStoreLink placement="join" className="inline-block">
+            <Image
+              src="/app-store-badge.svg"
+              alt="Download on the App Store"
+              width={160}
+              height={54}
+              priority
+            />
+          </AppStoreLink>
+
+          {/* Invites get shared with whole families, and some of them are on
+              Android. Without this they reach an App Store button they can't
+              use and there is nothing else to do. */}
+          <AndroidWaitlist placement="join" />
+        </div>
 
         <p className="text-xs text-secondaryText font-outfit">
           Already have Noa?{" "}
