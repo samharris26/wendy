@@ -79,6 +79,9 @@ export const metadata: Metadata = {
   description:
     "Noa brings your family's calendars, tasks, lists and reminders into one calm, beautifully designed app — even over WhatsApp. Free to download on iOS, with a 7-day free trial of Household.",
   metadataBase: new URL(siteUrl),
+  alternates: {
+    types: { "application/rss+xml": [{ url: "/rss.xml", title: "The Noa blog" }] },
+  },
   openGraph: {
     title: "Noa — family organiser app for calendar, tasks and lists",
     description:
