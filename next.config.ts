@@ -70,11 +70,20 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   outputFileTracingRoot: process.cwd(),
   async redirects() {
-    return removedBlogPostRedirects.map(([from, to]) => ({
-      source: `/blog/${from}`,
-      destination: `/blog/${to}`,
-      permanent: true,
-    }));
+    return [
+      // Short address for pairing a kitchen display; the display itself is
+      // served by the web app (noa-app). Not permanent so it can move.
+      {
+        source: "/display",
+        destination: "https://app.asknoa.app/display",
+        permanent: false,
+      },
+      ...removedBlogPostRedirects.map(([from, to]) => ({
+        source: `/blog/${from}`,
+        destination: `/blog/${to}`,
+        permanent: true,
+      })),
+    ];
   },
 };
 
